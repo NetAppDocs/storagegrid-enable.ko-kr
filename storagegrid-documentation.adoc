@@ -1,0 +1,21 @@
+---
+permalink: storagegrid-documentation.html 
+sidebar: sidebar 
+keywords: storagegrid, 11.6, 11.5, 11.4, 11.3, 11.2 
+summary: 각 NetApp StorageGRID 릴리스에 대한 전체 문서는 여기 에서 확인할 수 있습니다. 
+---
+= NetApp StorageGRID 문서
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+각 NetApp StorageGRID 릴리스에 대한 전체 설명서는 여기에서 확인할 수 있습니다.
+
+* https://docs.netapp.com/us-en/storagegrid-116/index.html["StorageGRID 11.6"^]
+* https://docs.netapp.com/sgws-115/index.jsp["StorageGRID 11.5"^]
+* https://docs.netapp.com/sgws-114/index.jsp["StorageGRID 11.4"^]
+* https://docs.netapp.com/sgws-113/index.jsp["StorageGRID 11.3"^]
+* https://docs.netapp.com/sgws-112/index.jsp["StorageGRID 11.2"^]
+

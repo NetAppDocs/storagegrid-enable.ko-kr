@@ -1,0 +1,222 @@
+---
+permalink: examples/test-demonstrate-S3-object-lock.html 
+sidebar: sidebar 
+keywords: cli, aws, S3, object lock, compliance, worm, api 
+summary: Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WORM 모델을 제공합니다. StorageGRID의 객체 잠금 구현은 규제 요구사항을 충족하고, 객체 보존에 대한 법적 보류 및 규정 준수 모드를 지원하고, 기본 버킷 보존 정책을 지원하는 데 도움이 되는 코호트 평가입니다. 
+---
+= StorageGRID에서 S3 오브젝트 잠금을 테스트하고 시연합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WORM 모델을 제공합니다. StorageGRID의 객체 잠금 구현은 규제 요구사항을 충족하고, 객체 보존에 대한 법적 보류 및 규정 준수 모드를 지원하고, 기본 버킷 보존 정책을 지원하는 데 도움이 되는 코호트 평가입니다.
+
+이 가이드에서는 S3 오브젝트 잠금 API를 보여 줍니다.
+
+
+
+== 법적 증거 자료 보관
+
+* 개체 잠금 법적 보류는 개체에 적용되는 간단한 켜기/끄기 상태입니다.
++
+[source, console]
+----
+aws s3api put-object-legal-hold --bucket <bucket> --key <file> --legal-hold Status=ON --endpoint-url https://s3.company.com
+----
+* 가져오기 작업으로 확인합니다.
++
+[source, console]
+----
+aws s3api get-object-legal-hold --bucket <bucket> --key <file> --endpoint-url https://s3.company.com
+----
++
+[listing]
+----
+{
+    "LegalHold": {
+        "Status": "ON"
+    }
+}
+----
+* 법적 증거 자료 보관 기능을 끕니다
++
+[source, console]
+----
+aws s3api put-object-legal-hold --bucket <bucket> --key <file> --legal-hold Status=OFF --endpoint-url https://s3.company.com
+----
+* 가져오기 작업으로 확인합니다.
++
+[source, console]
+----
+aws s3api get-object-legal-hold --bucket <bucket> --key <file> --endpoint-url https://s3.company.com
+----
++
+[listing]
+----
+{
+    "LegalHold": {
+        "Status": "OFF"
+    }
+}
+----
+
+
+
+
+== 준수 모드
+
+* 개체 보존은 타임스탬프까지 보존하여 수행됩니다.
++
+[source, console]
+----
+aws s3api put-object-retention --bucket <bucket> --key <file> --retention '{"Mode":"COMPLIANCE", "RetainUntilDate": "2025-06-10T16:00:00"}' --endpoint-url https://s3.company.com
+----
+* 보존 상태를 확인합니다
++
+[source, console]
+----
+aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url https://s3.company.com
++
+----
++
+[listing]
+----
+{
+    "Retention": {
+        "Mode": "COMPLIANCE",
+        "RetainUntilDate": "2025-06-10T16:00:00+00:00"
+    }
+}
+----
+
+
+
+
+== 기본 보존
+
+* 객체 API에 정의된 보존 종료 날짜를 기준으로 보존 기간을 일 및 년 단위로 설정합니다.
++
+[source, console]
+----
+aws s3api put-object-lock-configuration --bucket <bucket> --object-lock-configuration '{"ObjectLockEnabled": "Enabled", "Rule": { "DefaultRetention": { "Mode": "COMPLIANCE", "Days": 10 }}}' --endpoint-url https://s3.company.com
+----
+* 보존 상태를 확인합니다
++
+[source, console]
+----
+aws s3api get-object-lock-configuration --bucket <bucket> --endpoint-url https://s3.company.com
+----
++
+[listing]
+----
+{
+    "ObjectLockConfiguration": {
+        "ObjectLockEnabled": "Enabled",
+        "Rule": {
+            "DefaultRetention": {
+                "Mode": "COMPLIANCE",
+                "Days": 10
+            }
+        }
+    }
+}
+----
+* 물체를 버킷에 넣으십시오
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket> --key <file> --body "file" --endpoint-url https://s3.example.com
+----
+* 버킷에 설정된 보존 기간은 객체의 보존 타임 스탬프로 변환됩니다.
++
+[source, console]
+----
+aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url https://s3.company.com
+----
++
+[listing]
+----
+{
+    "Retention": {
+        "Mode": "COMPLIANCE",
+        "RetainUntilDate": "2022-03-02T15:22:47.202000+00:00"
+    }
+}
+----
+
+
+
+
+== 정의된 보존 개체가 있는 개체 삭제 테스트
+
+오브젝트 잠금은 버전 관리를 기반으로 합니다. 보존은 개체 버전에 정의됩니다. 보존이 정의되어 있고 버전이 지정되지 않은 개체를 삭제하려고 하면 삭제 표식이 개체의 현재 버전으로 만들어집니다.
+
+* 보존이 정의된 개체를 삭제합니다
++
+[source, console]
+----
+aws s3api delete-object --bucket <bucket> --key <file> --endpoint-url https://s3.example.com
+----
+* 버킷의 물체를 나열합니다
++
+[source, console]
+----
+aws s3api list-objects --bucket <bucket> --endpoint-url https://s3.example.com
+----
++
+** 개체가 나열되지 않은 것을 확인합니다.
+
+
+* 버전 목록을 사용하여 삭제 마커와 원래 잠긴 버전을 확인합니다
++
+[source, console]
+----
+aws s3api list-object-versions --bucket <bucket> --prefix <file> --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+{
+    "Versions": [
+        {
+            "ETag": "\"82e8bfb872e778a4687a26e6c0b36bc1\"",
+            "Size": 47,
+            "StorageClass": "STANDARD",
+            "Key": "file.txt",
+            "VersionId": "RDVDMjYwMTQtQkNDQS0xMUVDLThGOEUtNjQ3NTAwQzAxQTk1",
+            "IsLatest": false,
+            "LastModified": "2022-04-15T14:46:29.734000+00:00",
+            "Owner": {
+                "DisplayName": "Tenant01",
+                "ID": "56622399308951294926"
+            }
+        }
+    ],
+    "DeleteMarkers": [
+        {
+            "Owner": {
+                "DisplayName": "Tenant01",
+                "ID": "56622399308951294926"
+            },
+            "Key": "file01.txt",
+            "VersionId": "QjVDQzgzOTAtQ0FGNi0xMUVDLThFMzgtQ0RGMjAwQjk0MjM1",
+            "IsLatest": true,
+            "LastModified": "2022-05-03T15:35:50.248000+00:00"
+        }
+    ]
+}
+----
+* 객체의 잠긴 버전을 삭제합니다
++
+[source, console]
+----
+aws s3api delete-object  --bucket <bucket> --key <file> --version-id "<VersionId>" --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+An error occurred (AccessDenied) when calling the DeleteObject operation: Access Denied
+----
+

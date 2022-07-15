@@ -1,0 +1,88 @@
+---
+permalink: tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html 
+sidebar: sidebar 
+keywords: cli, aws, S3, s3cmd, api 
+summary: S3cmd 는 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니다. S3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연할 수 있습니다. 
+---
+= S3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+S3cmd 는 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니다. s3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연할 수 있습니다.
+
+
+
+== S3cmd를 설치하고 구성합니다
+
+워크스테이션이나 서버에 S3cmd를 설치하려면 에서 다운로드합니다 https://s3tools.org/s3cmd["명령줄 S3 클라이언트"^]. s3cmd 는 문제 해결을 지원하기 위한 도구로 각 StorageGRID 노드에 미리 설치되어 있습니다.
+
+
+
+== 초기 구성 단계
+
+. s3cmd -- 구성
+. access_key와 secret_key만 제공하십시오. 나머지는 기본값을 유지합니다.
+. 제공된 자격 증명으로 액세스를 테스트하시겠습니까? [Y/n]:n(실패하므로 테스트 생략)
+. 설정을 저장하시겠습니까? [y/N]y입니다
++
+.. 구성이 '/root/.s3cfg'에 저장되었습니다.
+
+
+. s3cfg에서 "=" 기호 다음에 host_base 및 host_bucket 필드가 비어 있도록 합니다.
++
+.. host_base=
+.. host_bucket=
+
+
+
+
+====
+
+NOTE: 4단계에서 host_base 및 host_bucket을 지정하는 경우 CLI에서 -host를 사용하여 엔드포인트를 지정할 필요가 없습니다. 예:
+
+....
+            host_base = 192.168.1.91:8082
+            host_bucket = bucketX.192.168.1.91:8082
+            s3cmd ls s3://bucketX --no-check-certificate
+....
+====
+
+
+== 기본 명령 예
+
+* * 버킷 생성: *
++
+S 3cmd MB S3://s3cmdbucket -- host=<endpoint>:<port> -- no-check-certificate
+
+* * 모든 버킷 나열: *
++
+S 3cmd ls -- host=<endpoint>:<port> -- no-check-certificate
+
+* * 모든 버킷과 해당 내용을 나열합니다. *
++
+S 3cmd la--host=<endpoint>:<port>--no-check-certificate
+
+* * 특정 버킷의 오브젝트 목록: *
++
+'s3cmd ls s3://<bucket>--host=<endpoint>:<port>--no-check-certificate'
+
+* * 버킷 삭제: *
++
+S 3cmd rb s3://s3cmdbucket -- host=<endpoint>:<port> -- no-check-certificate
+
+* * 개체 넣기: *
++
+S 3cmd put <file>S3:/<bucket>--host=<endpoint>:<port>--no-check-certificate
+
+* * 개체 가져오기: *
++
+'s3cmd get s3://<bucket>/<object><file>--host=<endpoint>:<port>--no-check-certificate'
+
+* * 개체 삭제: *
++
+S 3cmd del S3://<bucket>/<object>--host=<endpoint>:<port>--no-check-certificate
+
+

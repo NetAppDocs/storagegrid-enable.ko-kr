@@ -1,0 +1,72 @@
+---
+permalink: third-party/116-3rd-party-list.html 
+sidebar: sidebar 
+keywords: 11.6, third-party applications, storagegrid, ISV 
+summary: StorageGRID 11.6에 대해 검증된 타사 솔루션 
+---
+= StorageGRID 11.6 검증된 타사 솔루션
+:allow-uri-read: 
+
+
+[role="lead"]
+다음 타사 솔루션은 StorageGRID 11.6에서 사용하도록 검증되었습니다. + 찾으려는 솔루션이 목록에 없는 경우 NetApp 고객 담당자에게 문의하십시오.
+
+
+
+== StorageGRID에서 검증된 타사 솔루션
+
+이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
+
+* Actifio(활성)
+* 아파치 카프카
+* 캔템오
+* Citrix 콘텐츠 협업
+* Commvault 11
+* Ctera 포털 6
+* 다레트
+* Data Dynamics StorageX를 나타냅니다
+* DefendX
+* Fujifilm 개체 아카이브
+* GitHub 엔터프라이즈 서버
+* IBM Filenet
+* IBM Spectrum Protect Plus
+* 인터카
+* 고마프라이즈
+* Microsoft SQL Server 빅 데이터 클러스터
+* 문워크 유니버설
+* 멋져
+* 나스니
+* OpenText Documentum 16.4
+* OpenText Documentum 21.4
+* OpenText InfoArchive 16 EP7
+* CyanGate Cloud를 사용한 OpenText Media Management 16.5
+* 판주라
+* PixitMedia ngenea 를 참조하십시오
+* 포인트 아카이브 게이트웨이 2.0
+* 포인트 스토리지 관리자 6.4
+* Primestream
+* Quantum StorNext 5.4.0.1
+* Rubrik CDM 5.0.1 P1-1342
+* 용감합니다
+* Splunk 스마트스토어
+* 간편한 보관
+* Varnish Enterprise 6.0.4
+* Veeam 11
+* Veritas Enterprise Vault 14
+* Veritas NetBackup 8.0
+* Vertica 10.x
+* 비딘
+* Weka v3.10 이상
+* eMAM
+
+
+
+
+== StorageGRID에서 오브젝트 잠금을 통해 검증된 타사 솔루션
+
+이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
+
+* CommVault 11 기능 릴리스 26
+* OpenText Documentum 21.4
+* Veeam 11
+

@@ -1,0 +1,187 @@
+---
+permalink: examples/test-demonstrate-S3-encryption.html 
+sidebar: sidebar 
+keywords: cli, aws, S3, encryption, SSE, SSE-C, SSE-S3, api 
+summary: StorageGRID와 S3 API를 사용하면 유휴 데이터를 다양한 방법으로 암호화할 수 있습니다. 
+---
+= StorageGRID에서 S3 암호화 옵션 테스트 및 시연
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID와 S3 API를 사용하면 유휴 데이터를 다양한 방법으로 암호화할 수 있습니다. 자세한 내용은 을 참조하십시오 https://docs.netapp.com/us-en/storagegrid-116/admin/reviewing-storagegrid-encryption-methods.html["StorageGRID 암호화 방법을 검토합니다"^].
+
+이 가이드에서는 S3 API 암호화 방법을 보여 줍니다.
+
+
+
+== 서버 측 암호화(SSE)
+
+SSE를 사용하면 클라이언트가 개체를 저장하고 StorageGRID에서 관리하는 고유 키로 암호화할 수 있습니다. 개체가 요청되면 StorageGRID 에 저장된 키에 의해 개체가 해독됩니다.
+
+
+
+=== SSE 예
+
+* SSE가 있는 개체를 넣습니다
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket>  --key <file> --body "<file>" --server-side-encryption AES256 --endpoint-url https://s3.example.com
+----
+* 객체를 확인하여 암호화를 확인합니다
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket>  --key <file>   --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2022-05-02T19:03:03+00:00",
+    "ContentLength": 47,
+    "ETag": "\"82e8bfb872e778a4687a26e6c0b36bc1\"",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+----
+* 객체를 가져옵니다
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
+----
+
+
+
+
+== 고객 제공 키(SSE-C)를 사용한 서버측 암호화
+
+SSE를 사용하면 클라이언트가 객체를 저장하고 해당 객체와 함께 제공된 고유 키를 사용하여 해당 객체를 암호화할 수 있습니다. 개체가 요청될 때 개체를 해독하고 반환하려면 동일한 키를 제공해야 합니다.
+
+
+
+=== SSE-C의 예
+
+* 테스트 또는 데모용으로 암호화 키를 만들 수 있습니다
++
+** 암호화 키를 만듭니다
++
+[source, console]
+----
+openssl enc -aes-128-cbc -pass pass:secret -P`
+----
++
+[listing]
+----
+salt=E9DBB6603C7B3D2A
+key=23832BAC16516152E560F933F261BF03
+iv =71E87C0F6EC3C45921C2754BA131A315
+----
+
+
+* 생성된 키가 있는 개체를 넣습니다
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket> --key <file> --body "file" --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
+* 물체를 향하십시오
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket> --key <file> --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+            {
+                "AcceptRanges": "bytes",
+                "LastModified": "2022-05-02T19:20:02+00:00",
+                "ContentLength": 47,
+                "ETag": "\"f92ef20ab87e0e13951d9bee862e9f9a\"",
+                "ContentType": "binary/octet-stream",
+                "Metadata": {},
+                "SSECustomerAlgorithm": "AES256",
+                "SSECustomerKeyMD5": "rjGuMdjLpPV1eRuotNaPMQ=="
+            }
+----
+
+
+
+NOTE: 암호화 키를 제공하지 않으면 "HeadObject 작업을 호출할 때 오류 발생(404): 찾을 수 없음" 오류가 발생합니다.
+
+* 객체를 가져옵니다
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket> --key <file> <file> --sse-customer-algorithm AES256 --sse-customer-key 23832BAC16516152E560F933F261BF03 --endpoint-url https://s3.example.com
+----
+
+
+
+NOTE: 암호화 키를 제공하지 않으면 "GetObject 작업을 호출할 때 오류가 발생했습니다(InvalidRequest). 즉, 개체가 서버측 암호화 형식을 사용하여 저장되었습니다."라는 오류가 발생합니다. 객체를 검색하려면 올바른 매개 변수를 제공해야 합니다."
+
+
+
+== 버킷 서버 측 암호화(SSE-S3)
+
+SSE-S3를 사용하면 클라이언트가 버킷에 저장된 모든 오브젝트에 대해 기본 암호화 동작을 정의할 수 있습니다. 개체는 StorageGRID 에서 관리하는 고유 키로 암호화됩니다. 개체가 요청되면 StorageGRID 에 저장된 키에 의해 개체가 해독됩니다.
+
+
+
+=== 버킷 SSE-S3의 예
+
+* 새 버킷을 생성하고 기본 암호화 정책을 설정합니다
++
+** 새 버킷을 생성합니다
++
+[source, console]
+----
+aws s3api create-bucket --bucket <bucket> --region us-east-1 --endpoint-url https://s3.example.com
+----
+** 버킷 암호화
++
+[source, console]
+----
+aws s3api put-bucket-encryption --bucket <bucket> --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}' --endpoint-url https://s3.example.com
+----
+
+
+* 물체를 버킷에 넣으십시오
++
+[source, console]
+----
+aws s3api put-object --bucket <bucket> --key <file> --body "file" --endpoint-url https://s3.example.com
+----
+* 물체를 향하십시오
++
+[source, console]
+----
+aws s3api head-object --bucket <bucket> --key <file> --endpoint-url https://s3.example.com
+----
++
+[listing]
+----
+{
+"AcceptRanges": "bytes",
+"LastModified": "2022-05-02T20:16:23+00:00",
+"ContentLength": 47,
+"ETag": "\"82e8bfb872e778a4687a26e6c0b36bc1\"",
+"ContentType": "binary/octet-stream",
+"ServerSideEncryption": "AES256",
+"Metadata": {}
+}
+----
+* 객체를 가져옵니다
++
+[source, console]
+----
+aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
+----
+

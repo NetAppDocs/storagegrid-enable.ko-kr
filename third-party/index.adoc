@@ -1,0 +1,15 @@
+---
+permalink: third-party/index.html 
+sidebar: sidebar 
+keywords: third-party applications, storagegrid 
+summary: NetApp은 파트너와 협력하여 이러한 솔루션을 StorageGRID와 함께 사용할 수 있도록 검증했습니다. 이 섹션의 정보를 검토하여 검증된 솔루션을 확인하고 해당하는 경우 추가 지침을 얻습니다. 
+---
+= 검증된 타사 솔루션: 개요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+NetApp은 파트너와 협력하여 이러한 솔루션을 StorageGRID와 함께 사용할 수 있도록 검증했습니다. 이 섹션의 정보를 검토하여 검증된 솔루션을 확인하고 해당하는 경우 추가 지침을 얻습니다.
+
+NetApp과 함께 업계 최고의 검증된 NetApp 솔루션을 구축하여 포트폴리오 혁신을 가속하고 시장 인지도를 높이며 매출을 늘리십시오. https://www.netapp.com/partners/#become["지금 바로 제휴 파트너가 되십시오"^].

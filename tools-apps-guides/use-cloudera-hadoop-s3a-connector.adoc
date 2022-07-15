@@ -1,0 +1,255 @@
+---
+permalink: tools-apps-guides/use-cloudera-hadoop-s3a-connector.html 
+sidebar: sidebar 
+keywords: hadoop, cloudera, s3a 
+summary: Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사용하여 컴퓨터 클러스터 전반에 걸쳐 대규모 데이터 세트를 분산 처리할 수 있습니다. Hadoop은 각 시스템이 로컬 컴퓨팅과 스토리지를 제공하는 수천 대의 시스템으로 단일 서버에서 스케일업할 수 있도록 설계되었습니다. 
+---
+= StorageGRID와 함께 Cloudera Hadoop S3A 커넥터를 사용하십시오
+:allow-uri-read: 
+
+
+[role="lead"]
+Hadoop은 데이터 과학자가 즐겨 찾는 솔루션입니다. Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사용하여 컴퓨터 클러스터 전반에 걸쳐 대규모 데이터 세트를 분산 처리할 수 있습니다. Hadoop은 단일 서버에서 수천 개의 시스템으로 스케일업할 수 있도록 설계되었으며, 각 시스템은 로컬 컴퓨팅과 스토리지를 소유합니다.
+
+
+
+== Hadoop 워크플로우에 S3A를 사용하는 이유는 무엇입니까?
+
+시간이 지나면서 데이터 양이 증가함에 따라 자체 컴퓨팅 및 스토리지로 새 시스템을 추가하는 방식이 비효율적으로 되었습니다. 선형적 확장은 리소스를 효율적으로 사용하고 인프라를 관리하는 데 따르는 과제를 해결합니다.
+
+이러한 과제를 해결하기 위해 Hadoop S3A 클라이언트는 S3 오브젝트 스토리지에 대한 고성능 I/O를 제공합니다. S3A를 사용하여 Hadoop 워크플로우를 구축하면 오브젝트 스토리지를 데이터 저장소로 활용할 수 있으며, 컴퓨팅과 스토리지를 독립적으로 확장할 수 있는 분리된 컴퓨팅 및 스토리지를 사용할 수 있습니다. 또한 컴퓨팅과 스토리지를 분리하여 컴퓨팅 작업에 적절한 양의 리소스를 할당하고 데이터 세트 크기에 따라 용량을 제공할 수 있습니다. 따라서 Hadoop 워크플로우의 전체 TCO를 줄일 수 있습니다.
+
+
+
+== StorageGRID를 사용하도록 S3A 커넥터를 구성합니다
+
+
+
+=== 필수 구성 요소
+
+* StorageGRID S3 엔드포인트 URL, 테넌트 S3 액세스 키 및 Hadoop S3A 연결 테스트를 위한 암호 키입니다.
+* Java 패키지를 설치하기 위해 클러스터의 각 호스트에 대한 Cloudera 클러스터 및 루트 또는 sudo 권한입니다.
+
+
+2022년 4월 현재, Cloudera 7.1.7을 사용한 Java 11.0.14는 StorageGRID 11.5 및 11.6을 대상으로 테스트를 마쳤습니다. 그러나 Java 버전 번호는 새로 설치할 때 다를 수 있습니다.
+
+
+
+=== Java 패키지를 설치합니다
+
+. 를 확인하십시오 https://docs.cloudera.com/cdp-private-cloud-upgrade/latest/release-guide/topics/cdpdc-java-requirements.html["Cloudera 지원 매트릭스"^] 지원되는 JDK 버전.
+. 를 다운로드합니다 https://www.oracle.com/java/technologies/downloads/["Java 11.x 패키지"^] 이 운영 체제는 Cloudera 클러스터 운영 체제와 일치합니다. 이 패키지를 클러스터의 각 호스트에 복사합니다. 이 예에서는 CentOS에 rpm 패키지가 사용됩니다.
+. 각 호스트에 루트로 로그인하거나 sudo 권한이 있는 계정을 사용합니다. 각 호스트에서 다음 단계를 수행합니다.
++
+.. 패키지 설치:
++
+[listing]
+----
+$ sudo rpm -Uvh jdk-11.0.14_linux-x64_bin.rpm
+----
+.. Java가 설치된 위치를 확인합니다. 여러 버전이 설치된 경우 새로 설치된 버전을 기본값으로 설정합니다.
++
+[listing, subs="specialcharacters,quotes"]
+----
+alternatives --config java
+
+There are 2 programs which provide 'java'.
+
+  Selection    Command
+-----------------------------------------------
+ +1           /usr/java/jre1.8.0_291-amd64/bin/java
+  2           /usr/java/jdk-11.0.14/bin/java
+
+Enter to keep the current selection[+], or type selection number: 2
+----
+.. 이 줄을 '/etc/profile' 끝에 추가합니다. 경로는 위의 선택 경로와 일치해야 합니다.
++
+[listing]
+----
+export JAVA_HOME=/usr/java/jdk-11.0.14
+----
+.. 프로파일을 적용하려면 다음 명령을 실행합니다.
++
+[listing]
+----
+source /etc/profile
+----
+
+
+
+
+
+
+=== Cloudera HDFS S3A 구성
+
+* 단계 *
+
+. Cloudera Manager GUI에서 클러스터 > HDFS를 선택하고 Configuration을 선택합니다.
+. 범주 아래에서 고급을 선택하고 아래로 스크롤하여 core-site.xml에 대한 클러스터 차원의 고급 구성 조각(안전 밸브)을 찾습니다.
+. (+) 기호를 클릭하고 다음 값 쌍을 추가합니다.
++
+[cols="1a,4a"]
+|===
+| 이름 | 값 
+
+
+ a| 
+fs.s3a.access.key
+ a| 
+_<StorageGRID의 테넌트 S3 액세스 키> _
+
+
+
+ a| 
+fs.s3a.secret.key
+ a| 
+_<StorageGRID의 테넌트 S3 비밀 키> _
+
+
+
+ a| 
+FS.s3a.CONNECTION.SSL.ENABLED
+ a| 
+[true 또는 false] (이 항목이 누락된 경우 기본값은 https)
+
+
+
+ a| 
+FS.s3a.endpoint
+ a| 
+_<StorageGRID S3 엔드포인트: port> _
+
+
+
+ a| 
+FS.s3a.IMPL
+ a| 
+org.apache.하둡.fs.s3a.s3aFileSystem
+
+
+
+ a| 
+FS.s3a.path.style.access
+ a| 
+[TRUE 또는 FALSE](이 항목이 누락된 경우 기본값은 가상 호스트 스타일)
+
+|===
++
+* 샘플 스크린샷 *
+
++
+image::../media/hadoop-s3a/hadoop-s3a-configuration.png[S3A 구성]
+
+. 변경 내용 저장 단추를 클릭합니다. HDFS 메뉴 표시줄에서 오래된 구성 아이콘을 선택하고 다음 페이지에서 오래된 서비스 다시 시작 을 선택한 다음 지금 다시 시작 을 선택합니다.
++
+image::../media/hadoop-s3a/hadoop-restart-stale-service-icon.png[Hadoop의 오래된 서비스 아이콘을 다시 시작합니다]
+
+
+
+
+
+== StorageGRID에 대한 S3A 연결을 테스트합니다
+
+
+
+=== 기본 연결 테스트를 수행합니다
+
+Cloudera 클러스터의 호스트 중 하나에 로그인하고 'Hadoop fs-ls s3a://_<bucket-name>_/'를 입력합니다.
+
+다음 예에서는 경로 syle을 기존 HDFS 테스트 버킷과 테스트 객체와 함께 사용합니다.
+
+[listing]
+----
+[root@ce-n1 ~]# hadoop fs -ls s3a://hdfs-test/
+22/02/15 18:24:37 WARN impl.MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+22/02/15 18:24:37 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+22/02/15 18:24:37 INFO impl.MetricsSystemImpl: s3a-file-system metrics system started
+22/02/15 18:24:37 INFO Configuration.deprecation: No unit for fs.s3a.connection.request.timeout(0) assuming SECONDS
+Found 1 items
+-rw-rw-rw-   1 root root       1679 2022-02-14 16:03 s3a://hdfs-test/test
+22/02/15 18:24:38 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+22/02/15 18:24:38 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+22/02/15 18:24:38 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+----
+
+
+=== 문제 해결
+
+
+
+==== 시나리오 1
+
+StorageGRID에 대한 HTTPS 연결을 사용하고 15분 시간 제한 후 "shake_failure" 오류가 발생합니다.
+
+* 이유: * StorageGRID 연결을 위해 오래되었거나 지원되지 않는 TLS 암호 제품군을 사용하는 이전 JRE/JDK 버전.
+
+* 샘플 오류 메시지 *
+
+[listing]
+----
+[root@ce-n1 ~]# hadoop fs -ls s3a://hdfs-test/
+22/02/15 18:52:34 WARN impl.MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+22/02/15 18:52:34 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+22/02/15 18:52:34 INFO impl.MetricsSystemImpl: s3a-file-system metrics system started
+22/02/15 18:52:35 INFO Configuration.deprecation: No unit for fs.s3a.connection.request.timeout(0) assuming SECONDS
+22/02/15 19:04:51 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+22/02/15 19:04:51 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+22/02/15 19:04:51 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+22/02/15 19:04:51 WARN fs.FileSystem: Failed to initialize fileystem s3a://hdfs-test/: org.apache.hadoop.fs.s3a.AWSClientIOException: doesBucketExistV2 on hdfs: com.amazonaws.SdkClientException: Unable to execute HTTP request: Received fatal alert: handshake_failure: Unable to execute HTTP request: Received fatal alert: handshake_failure
+ls: doesBucketExistV2 on hdfs: com.amazonaws.SdkClientException: Unable to execute HTTP request: Received fatal alert: handshake_failure: Unable to execute HTTP request: Received fatal alert: handshake_failure
+----
+* 해상도: * JDK 11.x 이상이 설치되어 있는지 확인하고 Java 라이브러리를 기본값으로 설정합니다. 을 참조하십시오 <<Install Java package>> 섹션을 참조하십시오.
+
+
+
+==== 시나리오 2:
+
+"요청한 대상에 대한 유효한 인증 경로를 찾을 수 없습니다."라는 오류 메시지와 함께 StorageGRID에 연결하지 못했습니다.
+
+* 이유: * StorageGRID S3 엔드포인트 서버 인증서가 Java 프로그램에서 신뢰되지 않습니다.
+
+샘플 오류 메시지:
+
+[listing]
+----
+[root@hdp6 ~]# hadoop fs -ls s3a://hdfs-test/
+22/03/11 20:58:12 WARN impl.MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+22/03/11 20:58:13 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+22/03/11 20:58:13 INFO impl.MetricsSystemImpl: s3a-file-system metrics system started
+22/03/11 20:58:13 INFO Configuration.deprecation: No unit for fs.s3a.connection.request.timeout(0) assuming SECONDS
+22/03/11 21:12:25 INFO impl.MetricsSystemImpl: Stopping s3a-file-system metrics system...
+22/03/11 21:12:25 INFO impl.MetricsSystemImpl: s3a-file-system metrics system stopped.
+22/03/11 21:12:25 INFO impl.MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+22/03/11 21:12:25 WARN fs.FileSystem: Failed to initialize fileystem s3a://hdfs-test/: org.apache.hadoop.fs.s3a.AWSClientIOException: doesBucketExistV2 on hdfs: com.amazonaws.SdkClientException: Unable to execute HTTP request: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target: Unable to execute HTTP request: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+----
+* 해결 방법: * 알려진 공개 인증서 서명 기관에서 발급한 서버 인증서를 사용하여 인증이 보안되는지 확인하는 것이 좋습니다. 또는 사용자 지정 CA 또는 서버 인증서를 Java 신뢰 저장소에 추가합니다.
+
+StorageGRID 사용자 지정 CA 또는 서버 인증서를 Java 신뢰 저장소에 추가하려면 다음 단계를 수행하십시오.
+
+. 기존 기본 Java cacerts 파일을 백업합니다.
++
+[listing]
+----
+cp -ap $JAVA_HOME/lib/security/cacerts $JAVA_HOME/lib/security/cacerts.orig
+----
+. StorageGRID S3 끝점 인증서를 Java 신뢰 저장소로 가져옵니다.
++
+[listing, subs="specialcharacters,quotes"]
+----
+keytool -import -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -alias sg-lb -file _<StorageGRID CA or server cert in pem format>_
+----
+
+
+
+
+==== 문제 해결 팁
+
+. 디버깅하려면 Hadoop 로그 수준을 높입니다.
++
+export hadoop_root_logger=hadoop.root.logger=debug, console
+
+. 명령을 실행하고 로그 메시지를 error.log로 전달합니다.
++
+'Hadoop fs-ls s3a://_<bucket-name>_/&> error.log'
+
+

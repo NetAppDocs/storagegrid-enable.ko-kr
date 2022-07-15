@@ -1,0 +1,10 @@
+---
+section: tools-apps-guides
+title: 툴 및 애플리케이션 가이드
+entries:
+- title: Cloudera Hadoop S3A 커넥터를 사용하십시오
+  url: "/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html"
+- title: S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다
+  url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
+- title: 공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다
+  url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
