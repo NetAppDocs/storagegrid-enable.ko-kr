@@ -47,7 +47,7 @@ homepage:
     - title: Azure Blob 스토리지용 Cloud Storage Pool 생성
       url: "/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html"
     - title: 백업에 클라우드 스토리지 풀 사용
-      url: product-feature-guides/use-a-cloud-storage-pool-for-backup.html
+      url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
     - title: 검색 통합 서비스를 구성합니다
       url: "/product-feature-guides/storagegrid-search-integration-service.html"
   - title: 툴 및 애플리케이션 가이드
@@ -58,6 +58,8 @@ homepage:
       url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
     - title: S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다
       url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
+    - title: 로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
+      url: "/tools-apps-guides/elk-instructions.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다
@@ -70,6 +72,8 @@ homepage:
       url: https://www.youtube.com/playlist?list=PLdXI3bZJEw7nh2wGRA65iulXhtXwLiqrY
     - title: NetApp 학습 서비스
       url: https://www.netapp.com/support-and-training/netapp-university/
+    - title: 엘크 스택 사용 StorageGRID 로그 분석 | NetApp TV
+      url: https://www.netapp.tv/details/29396
   - title: 더 많은 리소스
     links:
     - title: StorageGRID 지원 페이지

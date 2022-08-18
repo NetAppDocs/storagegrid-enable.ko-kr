@@ -626,4 +626,62 @@
   <block id="024f3a8ba5709643c2f09c8eabccae87" category="sidebar">검증된 타사 솔루션 - 개요</block>
   <block id="f4bf6c62a8784f065cebbacf57a1c62c" category="sidebar">S3 오브젝트 잠금을 테스트하고 시연합니다</block>
   <block id="401b6d44d3c927f0424adce982cc6506" category="list-text">Veritas Enterprise Vault 14.2.2</block>
+  <block id="51e1f53c9c33ce7f260e99f66853181d" category="summary">StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 이 문서에는 로그 메시지 패턴, Kibana 쿼리, 차트 및 대시보드 샘플을 필터링하고 정의하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있는 Logstash 구성 샘플이 포함되어 있습니다.</block>
+  <block id="ba8b98c81be3d04d10309b1945f41b3c" category="doc">ELK 스택을 사용한 StorageGRID 로그 분석</block>
+  <block id="febdad8f949c4133d32f6ec0e8b0ca1c" category="inline-link">ELK 비디오를 사용한 StorageGRID 로그 분석</block>
+  <block id="b165bee40a44e630afb8a902059ed458" category="paragraph">StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 를 참조하십시오<block ref="1c3903c549bd0599ac0ebb1c424871aa" category="inline-link-rx"></block> 샘플 ELK 구성 및 장애 발생 S3 요청을 식별하고 해결하는 데 사용할 수 있는 방법을 확인합니다. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.</block>
+  <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="section-title">요구 사항</block>
+  <block id="b30496f397e70350f3c0324082c41741" category="list-text">StorageGRID 11.6.0.2 이상</block>
+  <block id="b8dc02d4e6fb27304a65c0d58fbdf121" category="list-text">엘크(Elasticsearch, Logstash 및 Kibana) 7.1x 이상 설치 및 작동 중</block>
+  <block id="9db4c047fbc2df77e904876ca407a10a" category="section-title">샘플 파일</block>
+  <block id="7d62fedde871da77290cb136048ab8ae" category="inline-link-macro">Logstash 7.x 샘플 파일 패키지를 다운로드합니다</block>
+  <block id="7f736656dd8100c22291010843e5658f" category="list-text"><block ref="f317985ee56adafb12c2258472a6183e" category="inline-link-macro-rx"></block> + * MD5 체크섬 * 148c23d0021d9a4b4a6c0287464deab + * SHA256 체크섬 * f51ec9e2e3f842d5a7861566ba561bbbb4373038b4e7b3b3b3d522adf2d6</block>
+  <block id="69cc1f5bcff32557cde6f7f5b4b365ed" category="inline-link-macro">Logstash 8.x 샘플 파일 패키지를 다운로드합니다</block>
+  <block id="a87365d5d3e0619dfacb72153399871c" category="list-text"><block ref="61afb638ef1cfaa2ac62beb76c59b80b" category="inline-link-macro-rx"></block> + * MD5 체크섬 * e11bae3a662f87c310ef363d0fe06835+ * SHA256 체크섬 * 5c670755742cfdf5a723a596ba087e0153a65baef3934afdb682f61cd278d</block>
+  <block id="cdcccab01175eb4e232499c66bfa50af" category="section-title">가정</block>
+  <block id="430bacfb127efaca8a86b36b918f14b8" category="paragraph">독자는 StorageGRID 및 ELK 용어와 운영에 대해 잘 알고 있습니다.</block>
+  <block id="c742c5a36b6307267bb709355feb2c41" category="section-title">지침</block>
+  <block id="eac3387862d4c7d3f970561bfc3f7c02" category="paragraph">두 가지 샘플 버전은 그로크 패턴으로 정의된 이름의 차이로 인해 제공됩니다. 예를 들어, Logstash 구성 파일의 SYSLOGBASE 그로크 패턴은 설치된 Logstash 버전에 따라 필드 이름을 다르게 정의합니다.</block>
+  <block id="4f709f3097a2dcda180a37ee47844c13" category="paragraph">* Logstash 7.17 샘플 *</block>
+  <block id="4f81ab746526b7ac4b040718ec7acade" category="image-alt">Logstash 7.17 샘플</block>
+  <block id="91106d0591f097e8bbf222df7706bd2d" category="paragraph">* Logstash 8.23 샘플 *</block>
+  <block id="c59ad685927ef7bba94abe95eaa87376" category="image-alt">Logstash 8.23 샘플</block>
+  <block id="bb8122fb7f8c30744fed84c9462b305d" category="list-text">설치된 엘크 버전을 기반으로 제공된 샘플의 압축을 풉니다. + 샘플 폴더에는 + * sglog-2-file.conf: * 이 구성 파일은 데이터 변환 없이 Logstash의 파일에 StorageGRID 로그 메시지를 출력합니다. 이 옵션을 사용하여 로그 스타재가 StorageGRID 메시지를 수신하는지 확인하거나 StorageGRID 로그 패턴을 이해하는 데 도움을 줄 수 있습니다. + * sglog-2-es.conf: * 이 구성 파일은 다양한 패턴과 필터를 사용하여 StorageGRID 로그 메시지를 변환합니다. 여기에는 패턴 또는 필터를 기반으로 메시지를 드롭하는 Drop 문 예가 포함되어 있습니다. 인덱싱을 위해 Elasticsearch로 출력이 전송됩니다. + 파일 내의 명령에 따라 선택한 구성 파일을 사용자 지정합니다.</block>
+  <block id="3ed4288764d66f2a65f7b85b652b32d3" category="list-text">사용자 지정 구성 파일 테스트:</block>
+  <block id="4c6585842bcd6ea99d8f33b205b2620e" category="paragraph">마지막으로 반환된 줄이 아래 줄과 비슷하면 구성 파일에 구문 오류가 없는 것입니다.</block>
+  <block id="49e1ff176740ef27a71315d47a28cec0" category="list-text">/etc/logstash/logstash.yml에서 config.reload.automatic 를 활성화하지 않은 경우 Logstash 서버의 config:/etc/logstash/conf.d+에 사용자 지정된 conf 파일을 복사합니다. 그렇지 않으면 구성 다시 로드 간격이 경과될 때까지 기다립니다.</block>
+  <block id="1e2849b34515b73b14e350b3cfc6a222" category="list-text">/var/log/logstash/logstash-plain.log 를 확인하고 새 구성 파일로 Logstash를 시작하는 데 오류가 없는지 확인합니다.</block>
+  <block id="25b182c5b3173c341b5471a371174d7d" category="list-text">TCP 포트가 시작되고 수신 중인지 확인합니다. + 이 예에서는 TCP 포트 5000이 사용됩니다.</block>
+  <block id="225e60e541052bd49fdac4b77ffecbc9" category="inline-link">데모 비디오</block>
+  <block id="fa1074da41258119adddd6a31eb40641" category="list-text">StorageGRID 관리자 GUI에서 로그 메시지를 Logstash로 보내도록 외부 syslog 서버를 구성합니다. 을 참조하십시오<block ref="144d48037e96a9804672c6dc7123d436" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="defe6f8b45f596c620301bef8fdfbee9" category="list-text">정의된 TCP 포트에 대한 StorageGRID 노드 연결을 허용하려면 Logstash 서버에서 방화벽을 구성하거나 비활성화해야 합니다.</block>
+  <block id="9391523be65dad63e7fad8e0d28ee818" category="list-text">Kibana GUI에서 관리 -&gt; 개발 도구 를 선택합니다. 콘솔 페이지에서 이 가져오기 명령을 실행하여 Elasticsearch에 새 인덱스가 생성되었는지 확인합니다.</block>
+  <block id="30d46e8002bdd5c520a62523d772ebca" category="list-text">키바나 GUI에서 인덱스 패턴(엘크 7.x) 또는 데이터 뷰(엘크 8.x)를 생성합니다.</block>
+  <block id="291020c626f44ee2ce32684bc3a13980" category="list-text">Kibana GUI의 상단 중앙에 있는 검색 상자에 '저장된 개체'를 입력합니다. + 저장된 개체 페이지에서 가져오기 를 선택합니다. 불러오기 옵션 아래에서 '충돌 시 작업 요청'을 선택합니다.</block>
+  <block id="d5a554fb68642d807aee43887546b43a" category="image-alt">Kibana 불러오기 옵션</block>
+  <block id="42451b291f11e82724f65b3c852cca1d" category="paragraph">ELK &lt;version&gt; -query-chart-sample.ndjson을 가져옵니다. + 충돌을 해결할 것인지 묻는 메시지가 나타나면 8단계에서 만든 색인 패턴이나 데이터 보기를 선택합니다.</block>
+  <block id="bc1a8499a0350f03b4ca75964eaad9cb" category="image-alt">키바나 갈등</block>
+  <block id="d304b6866d45389dd644b1c1788bfd5a" category="paragraph">다음 Kibana 객체를 가져옵니다. + * 쿼리 * + * 감사-메시지 -s3rq -orlm + * bycast 로그 S3 관련 메시지 + * 로그 수준 경고 이상 + * 실패한 보안 이벤트 + * 차트 * + * bycast.log 기반 S3 요청 수 + * HTTP 상태 코드 + * 유형별 감사 메시지 분석 + * 평균 S3 응답 위 차트를 사용하는 시간 + * 대시보드 * + * S3 요청 대시보드</block>
+  <block id="367c071ddbe8d1248ceb63f940e9b3cc" category="paragraph">이제 Kibana를 사용하여 StorageGRID 로그 분석을 수행할 준비가 되었습니다.</block>
+  <block id="8cd58c89ff3d51a256ecfe3fe8bab20f" category="section-title">추가 리소스</block>
+  <block id="925a38c6c8bc1c84ae702d840efa1ef4" category="inline-link">syslog101</block>
+  <block id="43b4ce193ce75a7c51a41a392da0e953" category="list-text"><block ref="43b4ce193ce75a7c51a41a392da0e953" category="inline-link-rx"></block></block>
+  <block id="36df17c33644048e4c07c17be01b2524" category="inline-link">엘크 스택</block>
+  <block id="2403480f61f37fce13a75f67d092ed18" category="list-text"><block ref="2403480f61f37fce13a75f67d092ed18" category="inline-link-rx"></block></block>
+  <block id="19d3c10a857b63064e06411baf1285b1" category="inline-link">Grok 패턴 목록</block>
+  <block id="7c6102b1302815b75a46740d436c93fc" category="list-text"><block ref="7c6102b1302815b75a46740d436c93fc" category="inline-link-rx"></block></block>
+  <block id="13fc1087c795f112d8979eb5e2780e5c" category="inline-link">Logstash:Grok에 대한 초보자용 가이드</block>
+  <block id="a39eed6135a0acdcad49fe799eb1bd27" category="list-text"><block ref="a39eed6135a0acdcad49fe799eb1bd27" category="inline-link-rx"></block></block>
+  <block id="1482da3b9a25b116ee5827795ac8fbbd" category="inline-link">Logstash: syslog 심층 탐구 실습 가이드</block>
+  <block id="9a51320cc75988e79a130ea7dc86875c" category="list-text"><block ref="9a51320cc75988e79a130ea7dc86875c" category="inline-link-rx"></block></block>
+  <block id="3a280b4922aa9eb7ce4c328f7f7dbbb3" category="inline-link">Kibana 가이드 – 문서 탐색</block>
+  <block id="ffe5d2718c9048b9edb4a4a97d96e90f" category="list-text"><block ref="ffe5d2718c9048b9edb4a4a97d96e90f" category="inline-link-rx"></block></block>
+  <block id="98d2f29265a464a9765db0d88f294336" category="inline-link">StorageGRID 감사 로그 메시지 참조</block>
+  <block id="baba0109751acb7c22b021c76b6d7b51" category="list-text"><block ref="baba0109751acb7c22b021c76b6d7b51" category="inline-link-rx"></block></block>
+  <block id="288e0e9ab8b8ac8737afefecf16f61fd" category="list-text">드리미오</block>
+  <block id="e07088b3eedf498bf832f9346b0e3c02" category="list-text">Reveille v10 빌드 220706 이상</block>
+  <block id="edf1439075a83a447fb8b630ddc9c8de" category="list-text">스노우플레이크</block>
+  <block id="e6a211de1fc20ed87589cd9c30f29ac3" category="list-text">Virtalica StorageFabric</block>
+  <block id="e2b1887bff53094ff4de31a5b6be8203" category="sidebar">로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다</block>
+  <block id="958e51c613c42a5edd4e8f06fad6128b" category="sidebar">엘크 스택 사용 StorageGRID 로그 분석 | NetApp TV</block>
 </blocks>

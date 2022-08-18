@@ -26,6 +26,8 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * 다레트
 * Data Dynamics StorageX를 나타냅니다
 * DefendX
+* 드리미오
+* eMAM
 * Fujifilm 개체 아카이브
 * GitHub 엔터프라이즈 서버
 * IBM Filenet
@@ -46,8 +48,10 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * 포인트 스토리지 관리자 6.4
 * Primestream
 * Quantum StorNext 5.4.0.1
+* Reveille v10 빌드 220706 이상
 * Rubrik CDM 5.0.1 P1-1342
 * 용감합니다
+* 스노우플레이크
 * Splunk 스마트스토어
 * 간편한 보관
 * Varnish Enterprise 6.0.4
@@ -56,8 +60,8 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * Veritas NetBackup 8.0
 * Vertica 10.x
 * 비딘
+* Virtalica StorageFabric
 * Weka v3.10 이상
-* eMAM
 
 
 

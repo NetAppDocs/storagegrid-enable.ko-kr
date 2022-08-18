@@ -7,6 +7,6 @@ entries:
 - title: Azure Blob 스토리지용 Cloud Storage Pool 생성
   url: "/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html"
 - title: 백업에 클라우드 스토리지 풀 사용
-  url: product-feature-guides/use-a-cloud-storage-pool-for-backup.html
+  url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
 - title: 검색 통합 서비스를 구성합니다
   url: "/product-feature-guides/storagegrid-search-integration-service.html"
