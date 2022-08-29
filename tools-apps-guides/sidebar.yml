@@ -10,3 +10,5 @@ entries:
   url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
 - title: 로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
   url: "/tools-apps-guides/elk-instructions.html"
+- title: Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
+  url: "/tools-apps-guides/federate-prometheus.html"
