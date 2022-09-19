@@ -35,6 +35,7 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * 인터카
 * 고마프라이즈
 * Microsoft SQL Server 빅 데이터 클러스터
+* 모델9
 * 문워크 유니버설
 * 멋져
 * 나스니
