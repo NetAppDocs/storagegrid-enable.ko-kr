@@ -556,7 +556,6 @@
   <block id="e33f6ccf77d0d8efe2a762267b6fd088" category="list-text"><block ref="e33f6ccf77d0d8efe2a762267b6fd088" category="inline-link-rx"></block></block>
   <block id="12934b080defe99c475857cf35fc736b" category="summary">StorageGRID 오브젝트를 외부 S3 버킷으로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다. 외부 버킷은 Amazon S3(AWS) 또는 Google Cloud에 속할 수 있습니다.</block>
   <block id="5726c3e825fdb258e1525c22d51442ea" category="doc">AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">무엇을 &amp;#8217;필요로 할거야</block>
   <block id="3ed256c1f351a8fcb6f88836f9344657" category="list-text">StorageGRID 11.6이 구성되었습니다.</block>
   <block id="d3c15aac7a26c8e69f0d3a923ebea0d3" category="list-text">AWS 또는 Google Cloud에서 외부 S3 버킷을 이미 설정했습니다.</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">단계</block>
@@ -776,4 +775,6 @@
   <block id="7045f46ad76322e4dc3af49b0bb57c27" category="list-text">모델9</block>
   <block id="d5b38301ef87d6a23fb50fbf5a064be8" category="list-text">Modzy</block>
   <block id="d48885bf40ed8b15489c6b02ba7daa08" category="list-text">디스크 오버 데이터</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="list-title">필요한 것</block>
+  <block id="9db3241b54bebb9425e6b4d63d712bb2" category="paragraph-title">예상 결과</block>
 </blocks>
