@@ -7,7 +7,7 @@ settings:
     pdf_enabled: false
     harmony_enabled: false
   search: storagegrid-116
-  langs: ko-kr,us-en,ja-jp,zh-cn,zh-tw,fr-fr,de-de
+  langs: ko-kr,us-en,ja-jp,zh-cn,zh-tw,de-de,es-es,fr-fr
 sidebar:
   entries:
   - title: StorageGRID를 활성화하는 방법
