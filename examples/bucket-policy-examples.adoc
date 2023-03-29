@@ -1,0 +1,120 @@
+---
+permalink: examples/bucket-policy-examples.html 
+sidebar: sidebar 
+keywords: iam, bucket policy, group policy, policy 
+summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.' 
+---
+= 버킷 및 그룹(IAM) 정책의 예
+:allow-uri-read: 
+
+
+[role="lead"]
+다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
+
+
+
+== 그룹 정책(IAM)
+
+
+
+=== 홈 디렉토리 스타일 버킷 액세스
+
+이 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스할 수 있도록 허용합니다.
+
+[source, json]
+----
+"Statement": [
+    {
+      "Sid": "AllowListBucketOfASpecificUserPrefix",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::home",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "${aws:username}/*"
+        }
+      }
+    },
+    {
+      "Sid": "AllowUserSpecificActionsOnlyInTheSpecificUserPrefix",
+      "Effect": "Allow",
+      "Action": "s3:*Object",
+      "Resource": "arn:aws:s3:::home/?/?/${aws:username}/*"
+    }
+
+  ]
+}
+----
+
+
+=== 오브젝트 잠금 버킷 생성을 거부합니다
+
+이 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.
+
+[NOTE]
+====
+이 정책은 StorageGRID UI에서 적용되지 않으며 S3 API에서만 적용됩니다.
+
+====
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Action": "s3:*",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Action": [
+                "s3:PutBucketObjectLockConfiguration",
+                "s3:PutBucketVersioning"
+            ],
+            "Effect": "Deny",
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+----
+
+
+=== 읽기 전용 액세스 권한이 있는 단일 사용자로 버킷을 제한합니다
+
+이 정책을 사용하면 단일 사용자가 버킷에 대한 읽기 전용 액세스를 가질 수 있고 다른 모든 사용자에 대한 액세스를 명시적으로 부인할 수 있습니다. 정책 맨 위에 있는 Deny 문을 그룹화하는 것은 보다 빠른 평가를 위한 좋은 방법입니다.
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Sid": "Deny non user1",
+            "Effect": "Deny",
+            "NotPrincipal": {
+                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "urn:sgws:s3:::bucket1",
+                "urn:sgws:s3:::bucket1/*"
+            ]
+        },
+        {
+            "Sid": "Allow user1 read access to bucket bucket1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "urn:sgws:s3:::bucket1",
+                "urn:sgws:s3:::bucket1/*"
+            ]
+        }
+    ]
+}
+----

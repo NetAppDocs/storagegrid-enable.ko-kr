@@ -6,3 +6,5 @@ entries:
   url: "/examples/test-demonstrate-S3-encryption.html"
 - title: S3 오브젝트 잠금을 테스트하고 시연합니다
   url: "/examples/test-demonstrate-S3-object-lock.html"
+- title: 버킷 및 그룹 정책 예
+  url: "/examples/bucket-policy-examples.html"

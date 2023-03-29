@@ -50,6 +50,10 @@ homepage:
       url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
     - title: 검색 통합 서비스를 구성합니다
       url: "/product-feature-guides/storagegrid-search-integration-service.html"
+    - title: 노드 클론 고려 사항 및 성능
+      url: "/product-feature-guides/node-clone.html"
+    - title: 포트 재매핑 사용 방법
+      url: "/product-feature-guides/port-remap.html"
   - title: 툴 및 애플리케이션 가이드
     links:
     - title: Cloudera Hadoop S3A 커넥터를 사용하십시오
@@ -62,12 +66,16 @@ homepage:
       url: "/tools-apps-guides/elk-instructions.html"
     - title: Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
       url: "/tools-apps-guides/federate-prometheus.html"
+    - title: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
+      url: "/tools-apps-guides/use-datadog-snmp.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다
       url: "/examples/test-demonstrate-S3-encryption.html"
     - title: S3 오브젝트 잠금을 테스트하고 시연합니다
       url: "/examples/test-demonstrate-S3-object-lock.html"
+    - title: 버킷 및 그룹 정책 예
+      url: "/examples/bucket-policy-examples.html"
   - title: 데모 자습서
     links:
     - title: StorageGRID 비디오 라이브러리

@@ -10,3 +10,7 @@ entries:
   url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
 - title: 검색 통합 서비스를 구성합니다
   url: "/product-feature-guides/storagegrid-search-integration-service.html"
+- title: 노드 클론 고려 사항 및 성능
+  url: "/product-feature-guides/node-clone.html"
+- title: 포트 재매핑 사용 방법
+  url: "/product-feature-guides/port-remap.html"
