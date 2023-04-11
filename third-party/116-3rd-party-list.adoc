@@ -52,7 +52,7 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * Primestream
 * Quantum StorNext 5.4.0.1
 * Reveille v10 빌드 220706 이상
-* Rubrik CDM 5.0.1 P1-1342
+* Rubrik CDM
 * 용감합니다
 * 스노우플레이크
 * Splunk 스마트스토어

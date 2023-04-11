@@ -1006,4 +1006,5 @@
   <block id="a6bea44dd82287d3b479cc898439fad9" category="sidebar">노드 클론 고려 사항 및 성능</block>
   <block id="e5b8a0443d27d612e7426f6f3f8681c2" category="sidebar">StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다</block>
   <block id="45c8288f990abd9a185e596536152688" category="sidebar">버킷 및 그룹 정책 예</block>
+  <block id="38d38399d4a7514463d665125ae50a4a" category="list-text">Rubrik CDM</block>
 </blocks>
