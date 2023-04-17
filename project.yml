@@ -68,6 +68,8 @@ homepage:
       url: "/tools-apps-guides/federate-prometheus.html"
     - title: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
       url: "/tools-apps-guides/use-datadog-snmp.html"
+    - title: rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다
+      url: "/tools-apps-guides/use-rclone-migrate-delete.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다

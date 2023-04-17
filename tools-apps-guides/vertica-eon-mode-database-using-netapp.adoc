@@ -6,9 +6,9 @@ summary: 이 가이드에서는 NetApp StorageGRID에서 공용 스토리지를 
 ---
 = NetApp StorageGRID를 공동 스토리지로 사용하는 Vertica Eon 모드 데이터베이스
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_ Angela Cheng _
 
 [role="lead"]
 이 가이드에서는 NetApp StorageGRID에서 공용 스토리지를 사용하는 Vertica Eon Mode 데이터베이스를 생성하는 절차를 설명합니다.

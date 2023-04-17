@@ -6,9 +6,9 @@ summary: StorageGRID 객체를 외부 Azure 컨테이너로 이동하려는 경�
 ---
 = Azure Blob Storage용 클라우드 스토리지 풀 생성
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_Jonathan Wong _
 
 [role="lead"]
 StorageGRID 오브젝트를 외부 Azure 컨테이너로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다.

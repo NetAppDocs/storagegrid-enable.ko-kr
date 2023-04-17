@@ -8,6 +8,8 @@ summary: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 Datadog HQ를 
 :allow-uri-read: 
 
 
+아론 클라인입니다
+
 [role="lead"]
 StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다.
 

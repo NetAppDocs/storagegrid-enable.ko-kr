@@ -6,9 +6,9 @@ summary: 이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Ama
 ---
 = StorageGRID 검색 통합 서비스를 구성합니다
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+_ Angela Cheng _
 
 [role="lead"]
 이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Amazon OpenSearch Service 또는 사내 Elasticsearch와 구성하기 위한 자세한 지침을 제공합니다.

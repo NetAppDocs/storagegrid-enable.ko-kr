@@ -6,9 +6,9 @@ summary: 노드 클론 성능 및 모범 사례
 ---
 = 노드 클론
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
+
+아론 클라인입니다
 
 [role="lead"]
 노드 클론 고려 사항 및 성능
