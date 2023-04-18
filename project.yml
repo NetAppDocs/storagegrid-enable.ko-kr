@@ -12,20 +12,16 @@ sidebar:
   entries:
   - title: StorageGRID를 활성화하는 방법
     url: "/index.html"
-  - title: 새로운 소식
-    url: "/whats-new.html"
   - section: third-party
   - section: product-feature-guides
   - section: tools-apps-guides
   - section: examples
+  - title: 블로그 게시물
+    url: "/blogs.html"
   - title: StorageGRID 설명서
     url: "/storagegrid-documentation.html"
 homepage:
   tiles:
-  - title: 시작하십시오
-    links:
-    - title: 새로운 소식
-      url: "/whats-new.html"
   - title: 검증된 타사 솔루션
     links:
     - title: 개요
@@ -78,6 +74,10 @@ homepage:
       url: "/examples/test-demonstrate-S3-object-lock.html"
     - title: 버킷 및 그룹 정책 예
       url: "/examples/bucket-policy-examples.html"
+  - title: 블로그 게시물
+    links:
+    - title: StorageGRID 블로그
+      url: "/blogs.html"
   - title: 데모 자습서
     links:
     - title: StorageGRID 비디오 라이브러리

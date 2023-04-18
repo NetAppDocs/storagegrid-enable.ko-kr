@@ -1,0 +1,39 @@
+---
+permalink: blogs.html 
+sidebar: sidebar 
+keywords: storagegrid, blogs 
+summary: 여기 에서 NetApp StorageGRID 블로그를 확인할 수 있습니다. 
+---
+= NetApp StorageGRID 블로그
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+여기에서 몇 가지 훌륭한 NetApp StorageGRID 블로그를 찾을 수 있습니다.
+
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-and-ONTAP-S3-support-Differences-similarities-and-integration/ba-p/439706["StorageGRID 및 ONTAP S3 지원: 차이점, 유사점 및 통합"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-back-up-Epic-Systems-EHR-databases-with-one-command-in-a-3-2-1-compliant/ba-p/442426["3:2:1 호환 아키텍처에서 하나의 명령으로 Epic Systems EHR 데이터베이스를 백업하는 방법"^]
+* https://www.netapp.com/blog/3-2-1-backup-bluexp-ontap-storagegrid-rest-apis/["BlueXP를 사용하여 3:2:1 호환 백업 정책으로 Epic EHR을 보호할 수 있습니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Take-these-Metrics-and-Graph-it/ba-p/437919["다음 메트릭을 사용하여 그래프로 표시합니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Revisiting-the-Match-Made-in-Heaven-are-StorageGRID-and-FabricPool-still-in/ba-p/433608["“천국의 일치” 재방문: StorageGRID와 FabricPool는 여전히 신혼여행을 하고 있습니까?"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-storing-and-managing-the-on-premises-backup-and-replication-data/ba-p/435322["사내 백업 및 복제 데이터의 저장 및 관리"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Integrating-StorageGRID-with-the-open-source-ELK-stack-to-enhance-customer/ba-p/437420["StorageGRID를 오픈 소스 엘크 스택과 통합하여 고객 경험을 개선합니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Enabling-StorageGRID-AutoSupport-and-integrating-with-Active-IQ/ba-p/171339["StorageGRID AutoSupport 활성화 및 Active IQ와의 통합"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Mountpoint-for-Amazon-S3-alpha-release-with-StorageGRID/ba-p/442993["StorageGRID를 사용한 Amazon S3 알파 릴리스 마운트 지점"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/NetApp-StorageGRID-earns-Common-Criteria-security-certification/ba-p/437143["NetApp StorageGRID는 일반 조건 보안 인증을 획득했습니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-achieves-KPMG-compliance-certification/ba-p/440343["StorageGRID는 KPMG 규정 준수 인증을 획득했습니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/StorageGRID-renews-NF203-and-ISO-IEC-25051-compliance-certification/ba-p/440942["StorageGRID는 NF203 및 ISO/IEC 25051 준수 인증을 갱신합니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Is-StorageGRID-cozy-with-COSI-yet/ba-p/432440["StorageGRID는 아직 COSI와 아늑합니까?"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/NetApp-StorageGRID-for-service-providers/ba-p/438658["서비스 공급자를 위한 NetApp StorageGRID"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/NetApp-Cloud-Insights-adds-StorageGRID-gallery-dashboards/ba-p/438882["NetApp Cloud Insights에는 StorageGRID 갤러리 대시보드가 추가되었습니다"^]
+* https://www.netapp.com/blog/modernize-analytics-workloads-netapp-alluxio/["NetApp과 Alluxio로 분석 워크로드를 현대화하십시오"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Use-Cloudera-Hadoop-S3A-connector-with-StorageGRID/ba-p/435801["StorageGRID와 함께 Cloudera Hadoop S3A 커넥터를 사용하십시오"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/It-all-starts-with-Object-Locking-Building-a-S3-storage-ecosystem-for-critical/ba-p/437464["이 모든 것은 개체 잠금에서 시작됩니다… 중요 백업 애플리케이션을 위한 S3 스토리지 에코시스템 구축"^]
+* https://www.netapp.com/blog/build-your-data-lake-storagegrid/["StorageGRID에서 데이터 레이크를 구축합니다"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/DataLock-and-Ransomware-Protection-Support-for-StorageGRID/ba-p/438222["StorageGRID용 DataLock 및 랜섬웨어 보호 지원"^]
+* https://community.netapp.com/t5/Tech-ONTAP-Blogs/Defrost-your-data-on-StorageGRID-for-Snowflake/ba-p/438883#M131["스노우플레이크(Snowflake)용 StorageGRID에서 데이터를 해동하십시오"^]
+* https://www.netapp.com/blog/explainable-AI-netapp-modzy/["NetApp과 Modzy가 제공하는 MLOps를 통한 설명 가능한 AI"^]
+* https://www.netapp.com/blog/bedag-storagegrid-story/["초콜릿, 스키, 시계, 메인프레임의 공통점은 무엇입니까?"^]
+

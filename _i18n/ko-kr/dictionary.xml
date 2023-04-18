@@ -597,9 +597,7 @@
   <block id="d00aaeae3c5233d689ab6c1fa3391d6c" category="paragraph">보존 다이어그램에 백업용 StorageGRID 및 클라우드 스토리지 풀에 로컬로 저장된 객체가 표시되는지 확인합니다.</block>
   <block id="eccd0905bbb9877cfd0ba7f4cc26a3c6" category="paragraph">ILM 규칙이 트리거되면 클라우드 스토리지 풀에 복사본이 존재하므로 오브젝트 복원을 수행하지 않고 로컬에서 개체를 검색할 수 있는지 확인합니다.</block>
   <block id="c27ce751e131719af380702f6711a49d" category="sidebar">StorageGRID를 활성화하는 방법</block>
-  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">새로운 소식</block>
   <block id="3778f3873debfe11e2ace6bb6af1e417" category="sidebar">StorageGRID 설명서</block>
-  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하십시오</block>
   <block id="7b99b0e0bb2f7f24ff67fbcc39f899f1" category="sidebar">검증된 타사 솔루션</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">개요</block>
   <block id="bc7a074f94cb3e6b09ba943468b03bd0" category="sidebar">제품 기능 가이드</block>
@@ -1044,4 +1042,55 @@
   <block id="962d558c72bf1abd2cc8b9e5afeb68a3" category="list-text">* 버켓과 모든 오브젝트 내용 삭제 *</block>
   <block id="7e5b74d29f73a6689f5cd32f8ae54eb5" category="paragraph"><block ref="f86e9aa25395ad4bf2f0b9bc89f29ea1" prefix="" category="inline-code"></block></block>
   <block id="5773479209c86b5b3661ca194636b3ba" category="paragraph">rclone purge sgdemo: test01 -- 진행률</block>
+  <block id="2cb17b2342827cbd786d4c1f770e1500" category="summary">여기 에서 NetApp StorageGRID 블로그를 확인할 수 있습니다.</block>
+  <block id="83ebfab760fb0afe2d53222522d9d7d0" category="doc">NetApp StorageGRID 블로그</block>
+  <block id="cef804ce13ad4c50f8e67f920713d8e1" category="paragraph">여기에서 몇 가지 훌륭한 NetApp StorageGRID 블로그를 찾을 수 있습니다.</block>
+  <block id="47616b8bc2ca38cd93158370f35f1fb1" category="inline-link">StorageGRID 및 ONTAP S3 지원: 차이점, 유사점 및 통합</block>
+  <block id="78b9682420d9ab94f161ea542039e85c" category="list-text"><block ref="78b9682420d9ab94f161ea542039e85c" category="inline-link-rx"></block></block>
+  <block id="4624650819454e10f32e020046bb76ae" category="inline-link">3:2:1 호환 아키텍처에서 하나의 명령으로 Epic Systems EHR 데이터베이스를 백업하는 방법</block>
+  <block id="224e9eec2fd87e16d2279d6b3af39ffd" category="list-text"><block ref="224e9eec2fd87e16d2279d6b3af39ffd" category="inline-link-rx"></block></block>
+  <block id="0640f8426a4e2b6fd26e5781a0d83423" category="inline-link">BlueXP를 사용하여 3:2:1 호환 백업 정책으로 Epic EHR을 보호할 수 있습니다</block>
+  <block id="877c5c5f7c8dea5977d0afa33b04ba27" category="list-text"><block ref="877c5c5f7c8dea5977d0afa33b04ba27" category="inline-link-rx"></block></block>
+  <block id="95a83699f1df2afc6db5cefab9b1faea" category="inline-link">다음 메트릭을 사용하여 그래프로 표시합니다</block>
+  <block id="0d3070d9b3e203b82acc3648bc6640bc" category="list-text"><block ref="0d3070d9b3e203b82acc3648bc6640bc" category="inline-link-rx"></block></block>
+  <block id="c7ac4da048763b47bbcdece35b85888c" category="inline-link">“천국의 일치” 재방문: StorageGRID와 FabricPool는 여전히 신혼여행을 하고 있습니까?</block>
+  <block id="55b8b087867c64daf35174d860d118f8" category="list-text"><block ref="55b8b087867c64daf35174d860d118f8" category="inline-link-rx"></block></block>
+  <block id="66a87c45817234dc192962234400d3be" category="inline-link">사내 백업 및 복제 데이터의 저장 및 관리</block>
+  <block id="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="list-text"><block ref="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="inline-link-rx"></block></block>
+  <block id="e53ca4cf41c016e5c7bcc4ddd097afa4" category="inline-link">StorageGRID를 오픈 소스 엘크 스택과 통합하여 고객 경험을 개선합니다</block>
+  <block id="18221e85be3f55a15b54ea06c961322b" category="list-text"><block ref="18221e85be3f55a15b54ea06c961322b" category="inline-link-rx"></block></block>
+  <block id="553a4eedf96f515c58307c5a4de771f4" category="inline-link">StorageGRID AutoSupport 활성화 및 Active IQ와의 통합</block>
+  <block id="078ed0e8d4116a19a21863270ee53134" category="list-text"><block ref="078ed0e8d4116a19a21863270ee53134" category="inline-link-rx"></block></block>
+  <block id="4597c6456c903b0438172862b21e44a3" category="inline-link">StorageGRID를 사용한 Amazon S3 알파 릴리스 마운트 지점</block>
+  <block id="0fc658012801f67f5e1fbf52dea93faa" category="list-text"><block ref="0fc658012801f67f5e1fbf52dea93faa" category="inline-link-rx"></block></block>
+  <block id="090d6d22cbcf3abf1c59e0bbfa33247e" category="inline-link">NetApp StorageGRID는 일반 조건 보안 인증을 획득했습니다</block>
+  <block id="7518fead03521bc046cf7f6aa25d27f5" category="list-text"><block ref="7518fead03521bc046cf7f6aa25d27f5" category="inline-link-rx"></block></block>
+  <block id="179a10301fc37bd566b117df96c0cf5a" category="inline-link">StorageGRID는 KPMG 규정 준수 인증을 획득했습니다</block>
+  <block id="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="list-text"><block ref="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="inline-link-rx"></block></block>
+  <block id="2ed8ae3807508906882c40f16d022099" category="inline-link">StorageGRID는 NF203 및 ISO/IEC 25051 준수 인증을 갱신합니다</block>
+  <block id="22056b4073bdfc4a3a0d7e41b5c73905" category="list-text"><block ref="22056b4073bdfc4a3a0d7e41b5c73905" category="inline-link-rx"></block></block>
+  <block id="13a0bb19d4dba2a85f8ce89067551360" category="inline-link">StorageGRID는 아직 COSI와 아늑합니까?</block>
+  <block id="d3ae1cab85f1bc42cc244202309c2052" category="list-text"><block ref="d3ae1cab85f1bc42cc244202309c2052" category="inline-link-rx"></block></block>
+  <block id="2ed6d70b5e2da609ab0189205d91bfdf" category="inline-link">서비스 공급자를 위한 NetApp StorageGRID</block>
+  <block id="b0683f88401e885e0b3666425fc2ece4" category="list-text"><block ref="b0683f88401e885e0b3666425fc2ece4" category="inline-link-rx"></block></block>
+  <block id="6cbbedbe1a7c21e39c47b4f1a82a163f" category="inline-link">NetApp Cloud Insights에는 StorageGRID 갤러리 대시보드가 추가되었습니다</block>
+  <block id="2bcdd95f3cb8f3103d11364e112764a4" category="list-text"><block ref="2bcdd95f3cb8f3103d11364e112764a4" category="inline-link-rx"></block></block>
+  <block id="19c82d20138dc6c19a1867bb09242586" category="inline-link">NetApp과 Alluxio로 분석 워크로드를 현대화하십시오</block>
+  <block id="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="list-text"><block ref="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="inline-link-rx"></block></block>
+  <block id="a81323b2951f0fa374a55f20035b40fa" category="list-text"><block ref="a81323b2951f0fa374a55f20035b40fa" category="inline-link-rx"></block></block>
+  <block id="75b3da38185f43fa45f8c192cf70fee6" category="inline-link">이 모든 것은 개체 잠금에서 시작됩니다… 중요 백업 애플리케이션을 위한 S3 스토리지 에코시스템 구축</block>
+  <block id="d26d933f097b6d60c44039496ebd9870" category="list-text"><block ref="d26d933f097b6d60c44039496ebd9870" category="inline-link-rx"></block></block>
+  <block id="17691c35f7a924dab178837550e01894" category="inline-link">StorageGRID에서 데이터 레이크를 구축합니다</block>
+  <block id="3111459beb2b4cd09e2c8a19cea53dae" category="list-text"><block ref="3111459beb2b4cd09e2c8a19cea53dae" category="inline-link-rx"></block></block>
+  <block id="af9f1a77fa9bd1ac998aca9149105fc2" category="inline-link">StorageGRID용 DataLock 및 랜섬웨어 보호 지원</block>
+  <block id="17158b84260059ff1aa18625167a5a6c" category="list-text"><block ref="17158b84260059ff1aa18625167a5a6c" category="inline-link-rx"></block></block>
+  <block id="b7eaf149486b5f672a67a1b9225ffdf1" category="inline-link">스노우플레이크(Snowflake)용 StorageGRID에서 데이터를 해동하십시오</block>
+  <block id="43c09b3603cc727adf8a48b8bcb279fa" category="list-text"><block ref="43c09b3603cc727adf8a48b8bcb279fa" category="inline-link-rx"></block></block>
+  <block id="49cef513124e46e406c7202a3021a460" category="inline-link">NetApp과 Modzy가 제공하는 MLOps를 통한 설명 가능한 AI</block>
+  <block id="cbbde27bb1462ff9c4461c927cdea6f8" category="list-text"><block ref="cbbde27bb1462ff9c4461c927cdea6f8" category="inline-link-rx"></block></block>
+  <block id="d75270f11a8c4b0a352ba60a70b2e51e" category="inline-link">초콜릿, 스키, 시계, 메인프레임의 공통점은 무엇입니까?</block>
+  <block id="3e19204799798377076bd778ab168941" category="list-text"><block ref="3e19204799798377076bd778ab168941" category="inline-link-rx"></block></block>
+  <block id="bda9db150ef3470445a403dda26b131c" category="admonition">SSL 인증서를 무시해야 하는 경우 -- 확인 안 함 - 인증서를 사용합니다.</block>
+  <block id="47edbb9e6d6e6e874eb40c274a0e2e0f" category="sidebar">블로그 게시물</block>
+  <block id="3e786c26b331e7dd273f5cb3ee10f59e" category="sidebar">StorageGRID 블로그</block>
 </blocks>

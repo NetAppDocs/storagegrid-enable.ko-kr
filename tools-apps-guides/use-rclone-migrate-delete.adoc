@@ -324,6 +324,10 @@ e/n/d/r/c/s/q> q
 rclone mkdir sgdemo:test01
 
 ====
++
+
+NOTE: SSL 인증서를 무시해야 하는 경우 -- 확인 안 함 - 인증서를 사용합니다.
+
 * * 모든 버킷 나열: *
 +
 `rclone lsd remote:`
