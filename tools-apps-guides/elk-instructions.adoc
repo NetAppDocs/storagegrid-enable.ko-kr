@@ -11,7 +11,7 @@ summary: 'StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog �
 _ Angela Cheng _
 
 [role="lead"]
-StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 를 참조하십시오 https://www.netapp.tv/details/29396["ELK 비디오를 사용한 StorageGRID 로그 분석"] 샘플 ELK 구성 및 장애 발생 S3 요청을 식별하고 해결하는 데 사용할 수 있는 방법을 확인합니다. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.
+StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 를 참조하십시오 https://["ELK 비디오를 사용한 StorageGRID 로그 분석"] 샘플 ELK 구성 및 장애 발생 S3 요청을 식별하고 해결하는 데 사용할 수 있는 방법을 확인합니다. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.
 
 
 
@@ -87,7 +87,7 @@ config.reload.interval: 5s
 netstat -ntpa | grep 5000
 tcp6       0      0 :::5000                 :::*                    LISTEN      25744/java
 ----
-. StorageGRID 관리자 GUI에서 로그 메시지를 Logstash로 보내도록 외부 syslog 서버를 구성합니다. 을 참조하십시오 https://www.netapp.tv/details/29396["데모 비디오"] 를 참조하십시오.
+. StorageGRID 관리자 GUI에서 로그 메시지를 Logstash로 보내도록 외부 syslog 서버를 구성합니다. 을 참조하십시오 https://["데모 비디오"] 를 참조하십시오.
 . 정의된 TCP 포트에 대한 StorageGRID 노드 연결을 허용하려면 Logstash 서버에서 방화벽을 구성하거나 비활성화해야 합니다.
 . Kibana GUI에서 관리 -> 개발 도구 를 선택합니다. 콘솔 페이지에서 이 가져오기 명령을 실행하여 Elasticsearch에 새 인덱스가 생성되었는지 확인합니다.
 +
@@ -117,11 +117,11 @@ image::../media/elk-config/kibana-import-conflict.png[키바나 갈등]
 
 == 추가 리소스
 
-* https://coralogix.com/blog/syslog-101-everything-you-need-to-know-to-get-started/["syslog101"]
-* https://www.elastic.co/what-is/elk-stack["엘크 스택"]
-* https://github.com/hpcugent/logstash-patterns/blob/master/files/grok-patterns["Grok 패턴 목록"]
-* https://logz.io/blog/logstash-grok/["Logstash:Grok에 대한 초보자용 가이드"]
-* https://coralogix.com/blog/a-practical-guide-to-logstash-syslog-deep-dive/["Logstash: syslog 심층 탐구 실습 가이드"]
-* https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana 가이드 – 문서 탐색"]
-* https://docs.netapp.com/us-en/storagegrid-116/audit/index.html["StorageGRID 감사 로그 메시지 참조"]
+* https://["syslog101"]
+* https://["엘크 스택"]
+* https://["Grok 패턴 목록"]
+* https://["Logstash:Grok에 대한 초보자용 가이드"]
+* https://["Logstash: syslog 심층 탐구 실습 가이드"]
+* https://["Kibana 가이드 – 문서 탐색"]
+* https://["StorageGRID 감사 로그 메시지 참조"]
 
