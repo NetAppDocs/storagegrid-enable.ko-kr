@@ -17,7 +17,7 @@ rclone은 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니�
 
 == rclone을 설치하고 구성합니다
 
-워크스테이션 또는 서버에 rclone을 설치하려면 에서 다운로드하십시오 https://["rclone.org"^].
+워크스테이션 또는 서버에 rclone을 설치하려면 에서 다운로드하십시오 https://rclone.org/downloads/["rclone.org"^].
 
 
 
