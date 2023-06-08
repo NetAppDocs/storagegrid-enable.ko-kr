@@ -2,11 +2,11 @@
 settings:
   name: How to enable StorageGRID in your environment
   internal:
-    pdf_enabled: true
-  prod:
     pdf_enabled: false
+    termcheck_enabled: false
+  prod:
+    pdf_enabled: true
     harmony_enabled: false
-  search: storagegrid-116
   langs: ko-kr,us-en,ja-jp,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
@@ -20,97 +20,3 @@ sidebar:
     url: "/blogs.html"
   - title: StorageGRID 설명서
     url: "/storagegrid-documentation.html"
-homepage:
-  tiles:
-  - title: 검증된 타사 솔루션
-    links:
-    - title: 개요
-      url: "/third-party/index.html"
-    - title: StorageGRID 11.7
-      url: "/third-party/117-3rd-party-list.html"
-    - title: StorageGRID 11.6
-      url: "/third-party/116-3rd-party-list.html"
-    - title: StorageGRID 11.5
-      url: "/third-party/115-3rd-party-list.html"
-    - title: StorageGRID 11.4
-      url: "/third-party/114-3rd-party-list.html"
-    - title: StorageGRID 11.3
-      url: "/third-party/113-3rd-party-list.html"
-    - title: StorageGRID 11.2
-      url: "/third-party/112-3rd-party-list.html"
-  - title: 제품 기능 가이드
-    links:
-    - title: AWS 또는 Google용 Cloud Storage Pool을 생성합니다
-      url: "/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html"
-    - title: Azure Blob 스토리지용 Cloud Storage Pool 생성
-      url: "/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html"
-    - title: 백업에 클라우드 스토리지 풀 사용
-      url: "/product-feature-guides/use-a-cloud-storage-pool-for-backup.html"
-    - title: 검색 통합 서비스를 구성합니다
-      url: "/product-feature-guides/storagegrid-search-integration-service.html"
-    - title: 노드 클론 고려 사항 및 성능
-      url: "/product-feature-guides/node-clone.html"
-    - title: 포트 재매핑 사용 방법
-      url: "/product-feature-guides/port-remap.html"
-  - title: 툴 및 애플리케이션 가이드
-    links:
-    - title: Cloudera Hadoop S3A 커넥터를 사용하십시오
-      url: "/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html"
-    - title: 공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다
-      url: "/tools-apps-guides/vertica-eon-mode-database-using-netapp-storageGRID.html"
-    - title: S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다
-      url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
-    - title: 로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
-      url: "/tools-apps-guides/elk-instructions.html"
-    - title: Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
-      url: "/tools-apps-guides/federate-prometheus.html"
-    - title: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
-      url: "/tools-apps-guides/use-datadog-snmp.html"
-    - title: rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다
-      url: "/tools-apps-guides/use-rclone-migrate-delete.html"
-  - title: 절차 및 API 예
-    links:
-    - title: S3 암호화를 테스트하고 시연합니다
-      url: "/examples/test-demonstrate-S3-encryption.html"
-    - title: S3 오브젝트 잠금을 테스트하고 시연합니다
-      url: "/examples/test-demonstrate-S3-object-lock.html"
-    - title: 버킷 및 그룹 정책 예
-      url: "/examples/bucket-policy-examples.html"
-  - title: 블로그 게시물
-    links:
-    - title: StorageGRID 블로그
-      url: "/blogs.html"
-  - title: 데모 자습서
-    links:
-    - title: StorageGRID 비디오 라이브러리
-      url: https://www.youtube.com/playlist?list=PLdXI3bZJEw7nh2wGRA65iulXhtXwLiqrY
-    - title: NetApp 학습 서비스
-      url: https://www.netapp.com/support-and-training/netapp-university/
-    - title: 엘크 스택 사용 StorageGRID 로그 분석 | NetApp TV
-      url: https://www.netapp.tv/details/29396
-  - title: 더 많은 리소스
-    links:
-    - title: StorageGRID 지원 페이지
-      url: https://mysupport.netapp.com/site/products/all/details/5d9f1107e01d9c0001ee50f6/downloads-tab
-    - title: NetApp 상호 운용성 매트릭스 툴(IMT)
-      url: https://mysupport.netapp.com/matrix
-    - title: StorageGRID 기술 자료
-      url: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID
-    - title: NetApp 블로그
-      url: https://netapp.com/blog/
-    - title: NetApp 커뮤니티
-      url: https://community.netapp.com/t5/Object-Storage/bd-p/object-storage
-  - title: StorageGRID 설명서
-    links:
-    - title: StorageGRID 11.7
-      url: https://docs.netapp.com/us-en/storagegrid-117/index.html
-    - title: StorageGRID 11.6
-      url: https://docs.netapp.com/us-en/storagegrid-116/index.html
-    - title: StorageGRID 11.5
-      url: https://docs.netapp.com/sgws-115/index.jsp
-    - title: StorageGRID 11.4
-      url: https://docs.netapp.com/sgws-114/index.jsp
-    - title: StorageGRID 11.3
-      url: https://docs.netapp.com/sgws-113/index.jsp
-    - title: StorageGRID 11.2
-      url: https://docs.netapp.com/sgws-112/index.jsp
