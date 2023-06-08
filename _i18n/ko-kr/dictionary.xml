@@ -1097,4 +1097,23 @@
   <block id="b46c07776ecb7ae8067bc1552a439f7b" category="doc">StorageGRID 11.7 검증된 타사 솔루션</block>
   <block id="9480cbe24fa04a10e30355eb0f12d82c" category="sidebar">StorageGRID 11.7</block>
   <block id="89188812a26ecaeff35e35d0bffb0d62" category="paragraph">다음 타사 솔루션은 StorageGRID 11.7에서 사용하도록 검증되었습니다. + 찾으려는 솔루션이 목록에 없는 경우 NetApp 고객 담당자에게 문의하십시오.</block>
+  <block id="08a9313727f7bbd910b58b7b474eefdf" category="list-text">브리지스톤</block>
+  <block id="40ae64b68c5b0e0ae599d76815332612" category="section-title">StorageGRID에서 지원되는 타사 솔루션</block>
+  <block id="27ef9f8b4c2764f7579e12a741210f85" category="paragraph">이러한 솔루션은 테스트를 거쳤습니다.</block>
+  <block id="6e9c68d7409676ad81189c7ef5822c3a" category="list-text">Archiware를 참조하십시오</block>
+  <block id="5d1891a5c99631f59c0a8f3b32a1e1cf" category="list-text">Axis 통신</block>
+  <block id="ef0aa57a38184a5667aa748dc4019df0" category="list-text">코너 360</block>
+  <block id="670d48cd026746c6ce7a8b00a2c83978" category="list-text">DataFrameworks</block>
+  <block id="3c5839fdf2b2c6a2442cfa6e74bfe0f2" category="list-text">EcoDigital DIVA 플랫폼</block>
+  <block id="6791faed97260b2919c3417535378ee0" category="list-text">Encoding.com</block>
+  <block id="675085b268143e0ab20d246ddf943b45" category="list-text">GE Centricity Enterprise Archive</block>
+  <block id="83b62dfdb6ca9afb88cf0d9d7c17e925" category="list-text">하이랜드 아쿠오</block>
+  <block id="3b4c3720fc990485ac26abd2cc00c4cc" category="list-text">IBM Aspera</block>
+  <block id="753b802ea6930a7aa61f75097ba1fec9" category="list-text">마일스톤 시스템</block>
+  <block id="e67ef9adcaef7f4d9e4a526b051b579a" category="list-text">ONSSI</block>
+  <block id="de41187129b3e57753781b3d1b8b9db0" category="list-text">리치 엔진</block>
+  <block id="7589966aa63e01bf55855dd27c17dfa1" category="list-text">SilverTrak</block>
+  <block id="a711a341b646257e8c46098745540d38" category="list-text">소프트NAS</block>
+  <block id="2a5e41515ada8ef1147f2dd259b58947" category="list-text">품질</block>
+  <block id="f1ec21951287a8923728f8f362e49ad5" category="list-text">벨라시아</block>
 </blocks>

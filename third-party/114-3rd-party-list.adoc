@@ -18,6 +18,7 @@ summary: StorageGRID 11.4용으로 검증된 타사 솔루션
 이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
 
 * Actifio(활성)
+* 브리지스톤
 * 캔템오
 * Citrix 콘텐츠 협업
 * Commvault 11
@@ -47,4 +48,29 @@ summary: StorageGRID 11.4용으로 검증된 타사 솔루션
 * Veritas NetBackup 8.0
 * Vertica 10.x
 * 비딘
+
+
+
+
+== StorageGRID에서 지원되는 타사 솔루션
+
+이러한 솔루션은 테스트를 거쳤습니다.
+
+* Archiware를 참조하십시오
+* Axis 통신
+* 코너 360
+* DataFrameworks
+* EcoDigital DIVA 플랫폼
+* Encoding.com
+* Fujifilm 개체 아카이브
+* GE Centricity Enterprise Archive
+* 하이랜드 아쿠오
+* IBM Aspera
+* 마일스톤 시스템
+* ONSSI
+* 리치 엔진
+* SilverTrak
+* 소프트NAS
+* 품질
+* 벨라시아
 
