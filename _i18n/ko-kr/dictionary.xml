@@ -995,9 +995,7 @@
   <block id="3f2327c90ede247dca9387ef500bf746" category="doc">버킷 및 그룹(IAM) 정책의 예</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">그룹 정책(IAM)</block>
   <block id="06c73db3763c74cabb8ece8e96fe7c5d" category="section-title">홈 디렉토리 스타일 버킷 액세스</block>
-  <block id="0a86daa722ca043525363e55dce2f201" category="paragraph">이 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스할 수 있도록 허용합니다.</block>
   <block id="8569c05df75ec9b148a67ed5998ad8b0" category="section-title">오브젝트 잠금 버킷 생성을 거부합니다</block>
-  <block id="9cea9229d238df9d490e17e9c09f43d4" category="paragraph">이 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.</block>
   <block id="01a232853896677ed5b2f61bbd35128f" category="paragraph">이 정책은 StorageGRID UI에서 적용되지 않으며 S3 API에서만 적용됩니다.</block>
   <block id="6d16e4029056ceaf0b44cac8903e3f2e" category="section-title">읽기 전용 액세스 권한이 있는 단일 사용자로 버킷을 제한합니다</block>
   <block id="c49b1c74a2176733b070d19773700eb6" category="paragraph">이 정책을 사용하면 단일 사용자가 버킷에 대한 읽기 전용 액세스를 가질 수 있고 다른 모든 사용자에 대한 액세스를 명시적으로 부인할 수 있습니다. 정책 맨 위에 있는 Deny 문을 그룹화하는 것은 보다 빠른 평가를 위한 좋은 방법입니다.</block>
@@ -1134,4 +1132,11 @@
   <block id="29007b92e2b6688072358d8f25529d24" category="paragraph"><block ref="29007b92e2b6688072358d8f25529d24" category="inline-link-rx"></block></block>
   <block id="d31ba7e4c6f469a6c88f05aac3e0e91c" category="list-text">다타도비</block>
   <block id="8727881150b0ace8b598a648cdfcd4e1" category="sidebar">NetApp StorageGRID는 퍼블릭, 프라이빗 및 하이브리드 멀티 클라우드 환경에서 다양한 사용 사례를 지원하는 소프트웨어 정의 오브젝트 스토리지 제품군입니다. StorageGRID은 Amazon S3 API를 기본적으로 지원하며 자동화된 라이프사이클 관리와 같은 업계 최고의 혁신 기능을 제공하여 비정형 데이터를 장기적으로 비용 효율적으로 저장, 보호 및 보존합니다.</block>
+  <block id="a88f9b6efeacfebaca582083cb9bd819" category="paragraph">이 그룹 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스하는 것만 허용합니다.</block>
+  <block id="a16b735f7d349dcc23b45a7a101460f3" category="paragraph">이 그룹 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.</block>
+  <block id="5ccd1d9b602b536952729ea6084688f1" category="section-title">개체 잠금 보존 제한</block>
+  <block id="e2fc2c3ef79779a5164b3961924241c1" category="paragraph">이 버킷 정책은 객체 잠금 보존 기간을 10일 이하로 제한합니다</block>
+  <block id="578c6a63b7f6efe56f08f3f9c3c5a690" category="section-title">버전 ID를 기준으로 개체를 삭제하지 못하도록 제한합니다</block>
+  <block id="151d6c6a5174c6a3f739cdb8ec8d1ce5" category="paragraph">이 그룹 정책은 버전 ID를 기준으로 버전이 지정된 개체를 삭제하지 못하도록 제한합니다</block>
+  <block id="d5c59b735ec0b06ade2e2d7c842dfe9e" category="paragraph">이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다</block>
 </blocks>

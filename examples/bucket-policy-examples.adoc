@@ -19,7 +19,7 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
 
 === 홈 디렉토리 스타일 버킷 액세스
 
-이 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스할 수 있도록 허용합니다.
+이 그룹 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스하는 것만 허용합니다.
 
 [source, json]
 ----
@@ -49,7 +49,7 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
 
 === 오브젝트 잠금 버킷 생성을 거부합니다
 
-이 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.
+이 그룹 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.
 
 [NOTE]
 ====
@@ -74,6 +74,91 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
             "Resource": "arn:aws:s3:::*"
         }
     ]
+}
+----
+
+
+=== 개체 잠금 보존 제한
+
+이 버킷 정책은 객체 잠금 보존 기간을 10일 이하로 제한합니다
+
+[source, json]
+----
+{
+ "Version":"2012-10-17",
+ "Id":"CustSetRetentionLimits",
+ "Statement": [
+   {
+    "Sid":"CustSetRetentionPeriod",
+    "Effect":"Deny",
+    "Principal":"*",
+    "Action": [
+      "s3:PutObjectRetention"
+    ],
+    "Resource":"arn:aws:s3:::testlock-01/*",
+    "Condition": {
+      "NumericGreaterThan": {
+        "s3:object-lock-remaining-retention-days":"10"
+      }
+    }
+   }
+  ]
+}
+----
+
+
+=== 버전 ID를 기준으로 개체를 삭제하지 못하도록 제한합니다
+
+이 그룹 정책은 버전 ID를 기준으로 버전이 지정된 개체를 삭제하지 못하도록 제한합니다
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:DeleteObjectVersion"
+            ],
+            "Effect": "Deny",
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Action": "s3:*",
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+----
+이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:DeleteObjectVersion"
+      ],
+      "Effect": "Deny",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    },
+    {
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    }
+  ]
 }
 ----
 
