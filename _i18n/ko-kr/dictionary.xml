@@ -1139,4 +1139,5 @@
   <block id="578c6a63b7f6efe56f08f3f9c3c5a690" category="section-title">버전 ID를 기준으로 개체를 삭제하지 못하도록 제한합니다</block>
   <block id="151d6c6a5174c6a3f739cdb8ec8d1ce5" category="paragraph">이 그룹 정책은 버전 ID를 기준으로 버전이 지정된 개체를 삭제하지 못하도록 제한합니다</block>
   <block id="d5c59b735ec0b06ade2e2d7c842dfe9e" category="paragraph">이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다</block>
+  <block id="c5d41f2814e9eff276a87d54a833d212" category="list-text">Veeam 12</block>
 </blocks>
