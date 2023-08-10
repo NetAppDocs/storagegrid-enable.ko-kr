@@ -18,6 +18,7 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
 
 * Actifio(활성)
+* 알럭시오
 * 아파치 카프카
 * 브리지스톤
 * 캔템오
@@ -55,10 +56,12 @@ summary: StorageGRID 11.6에 대해 검증된 타사 솔루션
 * Quantum StorNext 5.4.0.1
 * Reveille v10 빌드 220706 이상
 * Rubrik CDM
+* s3a 를 참조하십시오
 * 용감합니다
 * 스노우플레이크
 * Splunk 스마트스토어
 * 간편한 보관
+* 트리노
 * Varnish Enterprise 6.0.4
 * Veeam 12
 * Veritas Enterprise Vault 14

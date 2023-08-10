@@ -18,6 +18,7 @@ summary: StorageGRID 11.5용으로 검증된 타사 솔루션
 이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
 
 * Actifio(활성)
+* 알럭시오
 * 브리지스톤
 * 캔템오
 * Citrix 콘텐츠 협업
@@ -42,8 +43,10 @@ summary: StorageGRID 11.5용으로 검증된 타사 솔루션
 * Primestream
 * Quantum StorNext 5.4.0.1
 * Rubrik CDM
+* s3a 를 참조하십시오
 * 용감합니다
 * Splunk 스마트스토어
+* 트리노
 * Varnish Enterprise 6.0.4
 * Veeam 11
 * Veritas Enterprise Vault 11
