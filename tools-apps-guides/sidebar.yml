@@ -16,3 +16,5 @@ entries:
   url: "/tools-apps-guides/use-datadog-snmp.html"
 - title: rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다
   url: "/tools-apps-guides/use-rclone-migrate-delete.html"
+- title: StorageGRID에 Veeam 백업 및 복제를 사용하십시오
+  url: "/tools-apps-guides/veeam-br.html"
