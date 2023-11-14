@@ -1042,50 +1042,22 @@
   <block id="83ebfab760fb0afe2d53222522d9d7d0" category="doc">NetApp StorageGRID 블로그</block>
   <block id="cef804ce13ad4c50f8e67f920713d8e1" category="paragraph">여기에서 몇 가지 훌륭한 NetApp StorageGRID 블로그를 찾을 수 있습니다.</block>
   <block id="47616b8bc2ca38cd93158370f35f1fb1" category="inline-link">StorageGRID 및 ONTAP S3 지원: 차이점, 유사점 및 통합</block>
-  <block id="78b9682420d9ab94f161ea542039e85c" category="list-text"><block ref="78b9682420d9ab94f161ea542039e85c" category="inline-link-rx"></block></block>
   <block id="4624650819454e10f32e020046bb76ae" category="inline-link">3:2:1 호환 아키텍처에서 하나의 명령으로 Epic Systems EHR 데이터베이스를 백업하는 방법</block>
-  <block id="224e9eec2fd87e16d2279d6b3af39ffd" category="list-text"><block ref="224e9eec2fd87e16d2279d6b3af39ffd" category="inline-link-rx"></block></block>
-  <block id="0640f8426a4e2b6fd26e5781a0d83423" category="inline-link">BlueXP를 사용하여 3:2:1 호환 백업 정책으로 Epic EHR을 보호할 수 있습니다</block>
-  <block id="877c5c5f7c8dea5977d0afa33b04ba27" category="list-text"><block ref="877c5c5f7c8dea5977d0afa33b04ba27" category="inline-link-rx"></block></block>
   <block id="95a83699f1df2afc6db5cefab9b1faea" category="inline-link">다음 메트릭을 사용하여 그래프로 표시합니다</block>
-  <block id="0d3070d9b3e203b82acc3648bc6640bc" category="list-text"><block ref="0d3070d9b3e203b82acc3648bc6640bc" category="inline-link-rx"></block></block>
-  <block id="c7ac4da048763b47bbcdece35b85888c" category="inline-link">“천국의 일치” 재방문: StorageGRID와 FabricPool는 여전히 신혼여행을 하고 있습니까?</block>
-  <block id="55b8b087867c64daf35174d860d118f8" category="list-text"><block ref="55b8b087867c64daf35174d860d118f8" category="inline-link-rx"></block></block>
-  <block id="66a87c45817234dc192962234400d3be" category="inline-link">사내 백업 및 복제 데이터의 저장 및 관리</block>
-  <block id="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="list-text"><block ref="0c9ab203493ddea3f1fa7c7a3e7ea13e" category="inline-link-rx"></block></block>
   <block id="e53ca4cf41c016e5c7bcc4ddd097afa4" category="inline-link">StorageGRID를 오픈 소스 엘크 스택과 통합하여 고객 경험을 개선합니다</block>
-  <block id="18221e85be3f55a15b54ea06c961322b" category="list-text"><block ref="18221e85be3f55a15b54ea06c961322b" category="inline-link-rx"></block></block>
-  <block id="553a4eedf96f515c58307c5a4de771f4" category="inline-link">StorageGRID AutoSupport 활성화 및 Active IQ와의 통합</block>
-  <block id="078ed0e8d4116a19a21863270ee53134" category="list-text"><block ref="078ed0e8d4116a19a21863270ee53134" category="inline-link-rx"></block></block>
   <block id="4597c6456c903b0438172862b21e44a3" category="inline-link">StorageGRID를 사용한 Amazon S3 알파 릴리스 마운트 지점</block>
-  <block id="0fc658012801f67f5e1fbf52dea93faa" category="list-text"><block ref="0fc658012801f67f5e1fbf52dea93faa" category="inline-link-rx"></block></block>
   <block id="090d6d22cbcf3abf1c59e0bbfa33247e" category="inline-link">NetApp StorageGRID는 일반 조건 보안 인증을 획득했습니다</block>
-  <block id="7518fead03521bc046cf7f6aa25d27f5" category="list-text"><block ref="7518fead03521bc046cf7f6aa25d27f5" category="inline-link-rx"></block></block>
   <block id="179a10301fc37bd566b117df96c0cf5a" category="inline-link">StorageGRID는 KPMG 규정 준수 인증을 획득했습니다</block>
-  <block id="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="list-text"><block ref="ea5d153cad1f6ffbb88f8e766d3ba9ad" category="inline-link-rx"></block></block>
   <block id="2ed8ae3807508906882c40f16d022099" category="inline-link">StorageGRID는 NF203 및 ISO/IEC 25051 준수 인증을 갱신합니다</block>
-  <block id="22056b4073bdfc4a3a0d7e41b5c73905" category="list-text"><block ref="22056b4073bdfc4a3a0d7e41b5c73905" category="inline-link-rx"></block></block>
-  <block id="13a0bb19d4dba2a85f8ce89067551360" category="inline-link">StorageGRID는 아직 COSI와 아늑합니까?</block>
-  <block id="d3ae1cab85f1bc42cc244202309c2052" category="list-text"><block ref="d3ae1cab85f1bc42cc244202309c2052" category="inline-link-rx"></block></block>
   <block id="2ed6d70b5e2da609ab0189205d91bfdf" category="inline-link">서비스 공급자를 위한 NetApp StorageGRID</block>
-  <block id="b0683f88401e885e0b3666425fc2ece4" category="list-text"><block ref="b0683f88401e885e0b3666425fc2ece4" category="inline-link-rx"></block></block>
   <block id="6cbbedbe1a7c21e39c47b4f1a82a163f" category="inline-link">NetApp Cloud Insights에는 StorageGRID 갤러리 대시보드가 추가되었습니다</block>
-  <block id="2bcdd95f3cb8f3103d11364e112764a4" category="list-text"><block ref="2bcdd95f3cb8f3103d11364e112764a4" category="inline-link-rx"></block></block>
   <block id="19c82d20138dc6c19a1867bb09242586" category="inline-link">NetApp과 Alluxio로 분석 워크로드를 현대화하십시오</block>
-  <block id="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="list-text"><block ref="4cc268a01e6c9acfc87fa9d77f1ee5c7" category="inline-link-rx"></block></block>
-  <block id="a81323b2951f0fa374a55f20035b40fa" category="list-text"><block ref="a81323b2951f0fa374a55f20035b40fa" category="inline-link-rx"></block></block>
   <block id="75b3da38185f43fa45f8c192cf70fee6" category="inline-link">이 모든 것은 개체 잠금에서 시작됩니다… 중요 백업 애플리케이션을 위한 S3 스토리지 에코시스템 구축</block>
-  <block id="d26d933f097b6d60c44039496ebd9870" category="list-text"><block ref="d26d933f097b6d60c44039496ebd9870" category="inline-link-rx"></block></block>
   <block id="17691c35f7a924dab178837550e01894" category="inline-link">StorageGRID에서 데이터 레이크를 구축합니다</block>
-  <block id="3111459beb2b4cd09e2c8a19cea53dae" category="list-text"><block ref="3111459beb2b4cd09e2c8a19cea53dae" category="inline-link-rx"></block></block>
   <block id="af9f1a77fa9bd1ac998aca9149105fc2" category="inline-link">StorageGRID용 DataLock 및 랜섬웨어 보호 지원</block>
-  <block id="17158b84260059ff1aa18625167a5a6c" category="list-text"><block ref="17158b84260059ff1aa18625167a5a6c" category="inline-link-rx"></block></block>
   <block id="b7eaf149486b5f672a67a1b9225ffdf1" category="inline-link">스노우플레이크(Snowflake)용 StorageGRID에서 데이터를 해동하십시오</block>
-  <block id="43c09b3603cc727adf8a48b8bcb279fa" category="list-text"><block ref="43c09b3603cc727adf8a48b8bcb279fa" category="inline-link-rx"></block></block>
   <block id="49cef513124e46e406c7202a3021a460" category="inline-link">NetApp과 Modzy가 제공하는 MLOps를 통한 설명 가능한 AI</block>
-  <block id="cbbde27bb1462ff9c4461c927cdea6f8" category="list-text"><block ref="cbbde27bb1462ff9c4461c927cdea6f8" category="inline-link-rx"></block></block>
   <block id="d75270f11a8c4b0a352ba60a70b2e51e" category="inline-link">초콜릿, 스키, 시계, 메인프레임의 공통점은 무엇입니까?</block>
-  <block id="3e19204799798377076bd778ab168941" category="list-text"><block ref="3e19204799798377076bd778ab168941" category="inline-link-rx"></block></block>
   <block id="bda9db150ef3470445a403dda26b131c" category="admonition">SSL 인증서를 무시해야 하는 경우 -- 확인 안 함 - 인증서를 사용합니다.</block>
   <block id="47edbb9e6d6e6e874eb40c274a0e2e0f" category="sidebar">블로그 게시물</block>
   <block id="3e786c26b331e7dd273f5cb3ee10f59e" category="sidebar">StorageGRID 블로그</block>
@@ -1163,11 +1135,8 @@
   <block id="e7e23fdc645b150075b11f4c4918739b" category="paragraph">Veeam Backup &amp; Replication 12 시스템에 최신 핫픽스를 적용하는 것이 좋습니다. 현재는 최소한 Veeam 패치 P20230718을 설치할 것을 권장합니다.</block>
   <block id="8a30f8c97261f6be55fd4a89233559fc" category="section-title">S3 저장소 구성</block>
   <block id="6ee286a7db9c406f8c2971e8ec86b74d" category="paragraph">스케일아웃 백업 저장소(SOBR)는 S3 오브젝트 스토리지의 용량 계층입니다. 용량 계층은 기본 저장소의 확장 기능으로, 데이터 보존 기간이 길고 스토리지 솔루션이 저렴합니다. Veeam은 S3 Object Lock API를 통해 불변성을 제공하는 기능을 제공합니다. Veeam 12는 스케일아웃 저장소에서 여러 버킷을 사용할 수 있습니다. StorageGRID은 단일 버킷의 오브젝트 또는 용량에 대한 제한이 없습니다. 여러 버킷을 사용하면 백업 데이터가 오브젝트에서 페타바이트 규모로 증가할 수 있는 대규모 데이터 세트를 백업할 때 성능이 향상될 수 있습니다.</block>
-  <block id="48911c3ddb06d15c07c25b15627109d6" category="paragraph">특정 솔루션 및 요구 사항의 사이징에 따라 동시 작업을 제한해야 할 수 있습니다. 기본 설정에서는 2개의 리포지토리 작업 슬롯을 지정하고 각 작업 슬롯에 대해 동시 작업 슬롯 제한 “S3ConcurentTaskLimit” 레지스트리 키 값은 64입니다. 개체 저장소에 대한 총 128개의 동시 스레드 여기에는 PUT, GET, BATCH Delete가 포함됩니다. Veeam 백업이 새로운 백업 및 백업 데이터의 안정적 상태에 도달하고 만료 예정인 경우 시작할 작업 슬롯에 대해 보수적인 제한을 선택하고 이 값을 조정하는 것이 좋습니다. NetApp 어카운트 팀과 협력하여 원하는 시간 및 성능을 만족하도록 StorageGRID 시스템의 크기를 적절하게 조정해 주십시오. 최적의 솔루션을 제공하기 위해 슬롯당 작업 슬롯의 수와 작업 제한을 조정해야 할 수 있습니다.</block>
   <block id="274d09dbf63a4b2cf6067da7bdccc520" category="section-title">백업 작업 구성입니다</block>
-  <block id="6859565d94b1aa5262122016e1d0ca31" category="paragraph">Veeam 백업 작업은 신중하게 고려해야 하는 다양한 블록 크기 옵션으로 구성할 수 있습니다. 기본 블록 크기는 1MB이며, 압축 및 중복제거를 통해 Veeam이 제공하는 스토리지 효율성을 통해 초기 전체 백업에는 약 500KB의 오브젝트 크기와 증분 작업에 대해서는 100~200kB 오브젝트를 생성합니다. NetApp은 더 큰 백업 블록 크기를 선택하여 성능을 크게 향상시키고 오브젝트 저장소 요구 사항을 축소할 수 있습니다. 블록 크기가 클수록 오브젝트 저장소의 성능이 크게 향상되지만, 스토리지 효율성 성능의 저하로 인해 기본 스토리지 용량 요구사항이 증가할 가능성이 있습니다. 전체 백업에 대해 약 2MB의 객체를 생성하는 4MB 블록 크기로 백업 작업을 구성하고 증가분에 대해 700kB-1MB 객체 크기를 생성하는 것이 좋습니다. 고객은 "UIShowLegacyBlockSize" 레지스트리 키를 구현할 수 있는 8MB의 블록 크기를 사용하여 백업 작업을 구성할 수도 있습니다.</block>
   <block id="0e71d2971c1d3e37252ab5b94a556ab5" category="paragraph">변경 불가능한 백업을 구현하면 오브젝트 저장소에서 S3 오브젝트 잠금을 사용합니다. 불변성 옵션은 객체에 대한 목록 및 보존 업데이트를 위해 객체 저장소에 대한 요청을 더 많이 생성합니다.</block>
-  <block id="2ae57a117ceed123c4f715126adb75bf" category="paragraph">백업 보존 기간이 만료되면 백업 작업이 객체 삭제를 처리합니다. Veeam은 요청당 1,000개의 오브젝트가 포함된 다중 오브젝트 삭제 요청의 삭제 요청을 오브젝트 저장소로 전송합니다. 소규모 솔루션의 경우 요청당 개체 수를 줄이기 위해 “S3MultiObjectDeleteLimit” 레지스트리 키를 사용하여 조정해야 할 수 있습니다. 이 값을 낮추면 삭제 요청을 StorageGRID 시스템의 노드에 고르게 분산시킬 수 있는 이점이 추가됩니다. 다중 개체 삭제 제한을 구성할 때는 아래 표의 값을 시작점으로 사용하는 것이 좋습니다. 테이블의 값에 선택한 어플라이언스 유형의 노드 수를 곱하여 Veeam의 레지스트리 설정 값을 가져옵니다. 이 값이 1000보다 크거나 같으면 레지스트리 설정의 기본값을 조정할 필요가 없습니다.</block>
   <block id="f155778379e9bde49e66b15a4cb59aa4" category="cell">어플라이언스 모델</block>
   <block id="09e895a7d52e3b7e14028a710c859bf4" category="cell">노드별 S3MultiObjectDeleteLimit</block>
   <block id="d23f070363a51bb19a371740717fb008" category="cell">SG5712를 참조하십시오</block>
@@ -1237,4 +1206,75 @@
   <block id="2c03d0abe3f02a4e8010af61356f3a13" category="paragraph"><block ref="2c03d0abe3f02a4e8010af61356f3a13" category="inline-image-macro-rx" type="image"></block></block>
   <block id="41626bdee063e6c3bb48894a7b384438" category="list-text"><block ref="81bbc4df100e2c72e0ac40c7f4e45348" category="inline-link-macro-rx"></block></block>
   <block id="112e3eabbbb552d94c0e006c23999aa3" category="sidebar">StorageGRID에 Veeam 백업 및 복제를 사용하십시오</block>
+  <block id="2e296ce530e2049ec036a4c14f33b6d8" category="paragraph">특정 솔루션 및 요구 사항의 사이징에 따라 동시 작업을 제한해야 할 수 있습니다. 기본 설정에서는 각 CPU 코어와 각 작업 슬롯에 대해 하나의 리포지토리 작업 슬롯을 지정하고 동시 작업 슬롯 제한은 64입니다. 예를 들어 서버에 2개의 CPU 코어가 있는 경우 총 128개의 동시 스레드가 개체 저장소에 사용됩니다. 여기에는 PUT, GET, BATCH Delete가 포함됩니다. Veeam 백업이 새로운 백업 및 백업 데이터의 안정적 상태에 도달하고 만료 예정인 경우 시작할 작업 슬롯에 대해 보수적인 제한을 선택하고 이 값을 조정하는 것이 좋습니다. NetApp 어카운트 팀과 협력하여 원하는 시간 및 성능을 만족하도록 StorageGRID 시스템의 크기를 적절하게 조정해 주십시오. 최적의 솔루션을 제공하기 위해 슬롯당 작업 슬롯의 수와 작업 제한을 조정해야 할 수 있습니다.</block>
+  <block id="088329f80e8f7c77482109c96eff3a31" category="paragraph">Veeam 백업 작업은 신중하게 고려해야 하는 다양한 블록 크기 옵션으로 구성할 수 있습니다. 기본 블록 크기는 1MB이며, 압축 및 중복제거를 통해 Veeam이 제공하는 스토리지 효율성을 통해 초기 전체 백업에는 약 500KB의 오브젝트 크기와 증분 작업에 대해서는 100~200kB 오브젝트를 생성합니다. NetApp은 더 큰 백업 블록 크기를 선택하여 성능을 크게 향상시키고 오브젝트 저장소 요구 사항을 축소할 수 있습니다. 블록 크기가 클수록 오브젝트 저장소의 성능이 크게 향상되지만, 스토리지 효율성 성능의 저하로 인해 기본 스토리지 용량 요구사항이 증가할 가능성이 있습니다. 전체 백업에 대해 약 2MB의 객체를 생성하는 4MB 블록 크기로 백업 작업을 구성하고 증가분에 대해 700kB-1MB 객체 크기를 생성하는 것이 좋습니다. 고객은 Veeam 지원의 도움을 받아 8MB 블록 크기를 사용하여 백업 작업을 구성하는 것도 고려할 수 있습니다.</block>
+  <block id="592907ef9f546e11799fa30830cdbbf8" category="paragraph">백업 보존 기간이 만료되면 백업 작업이 객체 삭제를 처리합니다. Veeam은 요청당 1,000개의 오브젝트가 포함된 다중 오브젝트 삭제 요청의 삭제 요청을 오브젝트 저장소로 전송합니다. 소규모 솔루션의 경우 요청당 객체 수를 줄이기 위해 조정해야 할 수 있습니다. 이 값을 낮추면 삭제 요청을 StorageGRID 시스템의 노드에 고르게 분산시킬 수 있는 이점이 추가됩니다. 다중 개체 삭제 제한을 구성할 때는 아래 표의 값을 시작점으로 사용하는 것이 좋습니다. 표의 값에 선택한 어플라이언스 유형의 노드 수를 곱하여 Veeam의 설정 값을 구합니다. 이 값이 1000보다 크거나 같으면 기본값을 조정할 필요가 없습니다. 이 값을 조정해야 하는 경우, Veeam 지원에 문의하여 변경하십시오.</block>
+  <block id="6e288d3dc69075a7b00e3a5eccc75f53" category="summary">StorageGRID를 사용하여 Dremio 데이터 소스를 구성합니다</block>
+  <block id="1d7ab5441faeddab8907d949dffcf445" category="paragraph">Dremio는 클라우드 기반 또는 온프레미스 오브젝트 스토리지를 비롯한 다양한 데이터 소스를 지원합니다.  StorageGRID를 오브젝트 스토리지 데이터 소스로 사용하도록 Dremio를 구성할 수 있습니다.</block>
+  <block id="51854bc16ca42e133bfde4123211eeec" category="section-title">Dremio 데이터 소스를 구성합니다</block>
+  <block id="e94a48672671c2f16283c02dcd7e1ed4" category="list-text">StorageGRID S3 끝점 URL, 테넌트 S3 액세스 키 ID 및 보안 액세스 키</block>
+  <block id="cc4a915b35ae50b8e57f0283d6015e40" category="list-text">StorageGRID 구성 권장 사항: 압축을 사용하지 않도록 설정(기본적으로 해제됨)  를 누릅니다
+Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 동시에 가져오기 위해 바이트 범위 GET를 사용합니다.  일반적으로 바이트 범위 요청의 크기는 1MB입니다. 압축된 객체는 바이트 범위 가져오기 성능을 저하시킵니다.</block>
+  <block id="e331942f70e82f4959f01731cbfb1328" category="section-title">Dremio 가이드</block>
+  <block id="141251846236cc8d2f20c851f61ea3f9" category="inline-link">Amazon S3에 연결 - S3 호환 스토리지 구성</block>
+  <block id="c4db22c6e122c5ccedb3f043979a4a4c" category="paragraph"><block ref="d976dfca18716e67b46df95d5b29f87e" category="inline-link-rx"></block>.</block>
+  <block id="39b41a7ee2c69c38d0a4a470a61e4998" category="list-text">Dremio Datasets 페이지에서 + 기호를 클릭하여 소스를 추가하고 'Amazon S3'를 선택합니다.</block>
+  <block id="8dff40ea2a76ab9fc22d69c42706243c" category="list-text">이 새 데이터 소스의 이름, StorageGRID S3 테넌트 액세스 키 ID 및 비밀 액세스 키를 입력합니다.</block>
+  <block id="7eacc2961df39c56af10b4230194cc77" category="list-text">StorageGRID S3 끝점에 연결하기 위해 https를 사용하는 경우 '연결 암호화' 확인란을 선택합니다. 를 누릅니다
+이 S3 끝점에 대해 자체 서명된 CA 인증서를 사용하는 경우 Dremio 가이드 지침에 따라 이 CA 인증서를 Dremio 서버의 &lt;JAVA_HOME&gt;/JRE/lib/security+에 추가합니다
+* 샘플 스크린샷 *</block>
+  <block id="41b33d7f98a9cf866375085c504e7a7f" category="image-alt">새 소스 - 일반</block>
+  <block id="db492536be467309872671bce85cee04" category="list-text">'고급 옵션'을 클릭하고 '호환 모드 사용'을 선택합니다.</block>
+  <block id="c8a971d9405e02862be7569e04d2ede1" category="list-text">연결 속성에서 + 속성 추가를 클릭하고 이러한 s3a 속성을 추가합니다.</block>
+  <block id="e43ca2d39dd7142ec638ac64443b6f0d" category="list-text">FS.s3a.connection. 최대 기본값은 100입니다.  S3 데이터 세트에 100개 이상의 열이 있는 대형 Parquet 파일이 포함된 경우 에서 100보다 큰 값을 입력해야 합니다.  이 설정은 Dremio 가이드를 참조하십시오.</block>
+  <block id="b326b5062b2f0e69046810717534cb09" category="paragraph">참</block>
+  <block id="7493cad84b7f7b5b1c3a6d47a5acc12d" category="paragraph">FS.s3a.connection.maximum입니다</block>
+  <block id="55b13b50c6791d963f403e8ab7a5ec9a" category="paragraph">_&lt; 100보다 큰 값 &gt; _</block>
+  <block id="066fdfceeffa2c65588a0f6b8d7953de" category="image-alt">새 소스 - 고급 옵션</block>
+  <block id="79af4add835219b58d07f6d1876a3e3b" category="list-text">조직 또는 응용 프로그램 요구 사항에 따라 다른 Dremio 옵션을 구성합니다.</block>
+  <block id="09ac23f768d2697bd567221390fbafe7" category="list-text">이 새 데이터 원본을 만들려면 저장 단추를 클릭합니다.</block>
+  <block id="af514c8f85939e6df535289d025e6acd" category="list-text">StorageGRID 데이터 소스가 성공적으로 추가되면 버킷 목록이 왼쪽 패널에 표시됩니다. 를 누릅니다
+* 샘플 스크린샷 *</block>
+  <block id="3b55448bec6300a3af924b399eb26957" category="image-alt">새 데이터 원본이 추가되었습니다</block>
+  <block id="2804a96d012f15794c6aaa8f11797dfc" category="inline-link">Lab on Demand는 StorageGRID를 위한 최고의 영업 툴입니다</block>
+  <block id="bd00951af49350539c0b3c83069c10d7" category="list-text">5월 10일:<block ref="debc4c6191d7e706232e96c2789d3930" category="inline-link-rx"></block></block>
+  <block id="f831e1930f47c4aab7026c9b3fd8b63a" category="list-text">5월 24일:<block ref="efe27e9a7520722932d06c2a314e517b" category="inline-link-rx"></block></block>
+  <block id="d2634778cafa4c3045e5e3351c9098fc" category="inline-link">StorageGRID: 사내 백업 및 복제 데이터 저장 및 관리</block>
+  <block id="84726e93025c87cd938d691b89d3f639" category="list-text">5월 26일:<block ref="919c9f44a16e685bcbda321efc4479b1" category="inline-link-rx"></block></block>
+  <block id="fc1b196880b3fb677bc0664f3b3558dd" category="list-text">6월 9일:<block ref="bc61cc71bae06945f8e3338c0faa1d28" category="inline-link-rx"></block></block>
+  <block id="f49b908c8064ba5b4ab223b14e8d376a" category="inline-link">StorageGRID의 검증된 파트너 솔루션 목록 을 확인하십시오</block>
+  <block id="4e4854ee1dbabb6501c2ad5e2db49e79" category="list-text">7월 26일:<block ref="dcc8150a969e49a02dd3cd5f53c489a0" category="inline-link-rx"></block></block>
+  <block id="835d683a9952f5aac9469c1ede8ba395" category="list-text">8월 5일:<block ref="262aaa550c02638a3973245ae3d6d03e" category="inline-link-rx"></block></block>
+  <block id="0ca94b4799049f29d9ab6b15cdbdcd9f" category="list-text">8월 16일:<block ref="b2f8710f8f504eba14016ef400ef8a20" category="inline-link-rx"></block></block>
+  <block id="4127789560b28b4c403fdfbdfc5eed08" category="list-text">8월 17일:<block ref="2cb03523d29d45df344e7e35aeae9b09" category="inline-link-rx"></block></block>
+  <block id="38176191294d1e8ad7a85b48d0817ab6" category="list-text">8월 23일:<block ref="e69bd0d41d124ab466e32e26b75521a0" category="inline-link-rx"></block></block>
+  <block id="16d6a17ba907f2aaabc05d0e9374b9e7" category="list-text">9월 1일:<block ref="6fba2287f3b879f9355d55f6093dd086" category="inline-link-rx"></block></block>
+  <block id="f448282611ca0fd56d7631be9d78c632" category="list-text">9월 19일:<block ref="d3b1520ae76b2d8916030b44fa119b18" category="inline-link-rx"></block></block>
+  <block id="71a7022fb195acbc7636097156a6b24e" category="list-text">9월 26일:<block ref="bac8af8866fb18858bb2bc38accfee93" category="inline-link-rx"></block></block>
+  <block id="12b5ffe0dda514d44a5959f0d4ce1565" category="list-text">10월 5일:<block ref="743b55649bf0de5fef17881c2182c74e" category="inline-link-rx"></block></block>
+  <block id="0c916e3c762e297dcf2e2fb5fb7d7c57" category="list-text">10월 5일:<block ref="7a820536864c4b8ba1158a633db675d7" category="inline-link-rx"></block></block>
+  <block id="7b64a6cb40cb02632443e1013c298656" category="list-text">11월 7일:<block ref="c8168f81ebd9cd26583947065ec9bf4e" category="inline-link-rx"></block></block>
+  <block id="6e34863e3dd3ed9c1dbd78f02c8f8e07" category="list-text">11월 23일:<block ref="67d6d3a21cc9af1520f991806f578b6b" category="inline-link-rx"></block></block>
+  <block id="92eb8dae85c6ef95da075172842bc3fe" category="list-text">12월 6일:<block ref="e235608a45034e1deea87e6e77daddf3" category="inline-link-rx"></block></block>
+  <block id="5651e92851825e5a0e8222e952670765" category="list-text">1월 16일:<block ref="68d21b96499b1933cc9fc03f94f1e388" category="inline-link-rx"></block></block>
+  <block id="47ac119989829cf384ff1ad266df420f" category="inline-link">StorageGRID S3 오브젝트 잠금은 Veritas NetBackup에서 검증되었습니다</block>
+  <block id="dc468876fffa7c2d7c4ed6843ea250d1" category="list-text">1월 18일:<block ref="6ea6516d4586962fa5f8e8460c33ccd0" category="inline-link-rx"></block></block>
+  <block id="16a0cfdc7c0bfce417b18af07ddddc59" category="list-text">2월 14일:<block ref="276d9658a5f8a049f2dcc595745c0879" category="inline-link-rx"></block></block>
+  <block id="32c5d0704854c4b5e7209732f36776fe" category="list-text">3월 14일:<block ref="3c7ed37db994ec363730d455072b8b2b" category="inline-link-rx"></block></block>
+  <block id="0883099d6628246c0f3172404097c1d1" category="inline-link">BlueXP를 사용하여 3:2:1 호환 백업 정책으로 Epic EHR을 보호합니다</block>
+  <block id="aa343baad902cd182f9c8de146e9cef1" category="list-text">3월 30일:<block ref="b439a8f44229e6c1e7b2461211f6849b" category="inline-link-rx"></block></block>
+  <block id="da8fd7d6e7f3612bc460f85954532237" category="list-text">3월 30일:<block ref="3a37c13e60469949c226e6fe44730d5d" category="inline-link-rx"></block></block>
+  <block id="1e81f3787bf865826867c808345c93cf" category="inline-link">StorageGRID 오브젝트 스토리지 제품군의 새로운 기능</block>
+  <block id="e08d2fc1e7efc48dd610ca33e91f3865" category="list-text">5월 16일:<block ref="55400ccf8fd45f41eb658085301654a8" category="inline-link-rx"></block></block>
+  <block id="f0d2294cd432ef286ea4c0d40d486219" category="inline-link">StorageGRID 11.7 및 새로운 All-Flash 오브젝트 스토리지 어플라이언스 SGF6112를 소개합니다</block>
+  <block id="96a50e94edaba5ec9fe3b3c43f94ce1a" category="list-text">5월 16일:<block ref="822011c4a35ab965678b4e99560374f9" category="inline-link-rx"></block></block>
+  <block id="3cc60dd0d810d80d23db5dfe54b351da" category="inline-link">Amazon S3 파일 시스템의 마운트 지점이 이제 GA로 변경되었습니다</block>
+  <block id="5aa7060311e71d085890eeaf60f649b1" category="list-text">8월 30일:<block ref="90e42dccda167e27664cb4046795d9d2" category="inline-link-rx"></block></block>
+  <block id="dd6f0ba1a70b208ed9294a411ace7f5b" category="inline-link">Cloud Insights를 활용하여 Fluent Bit을 사용하여 로그를 모니터링하고 수집합니다</block>
+  <block id="c19c164e1f7d2decc0e8ce134540a517" category="list-text">9월 1일:<block ref="71f54938bd1ce25b1fc86aa20da828f4" category="inline-link-rx"></block></block>
+  <block id="831dc58cce04528855c0f71b7c4c7427" category="inline-link">하둡을 통한 전환: Dremio 및 StorageGRID로 데이터 분석 현대화</block>
+  <block id="cac309a9762976e1cd514f372dcc5d5d" category="list-text">10월 17일:<block ref="64e3b33ccfb012d90bff9bcf09d2035a" category="inline-link-rx"></block></block>
+  <block id="0de69010a0b885390944d59945579799" category="inline-link">StorageGRID를 이용한 온프레미스 글레이셔 스펙트럼 로직</block>
+  <block id="cda1cacdbb2c1506d847fed8599faa68" category="list-text">11월 7일:<block ref="4558e5f7bc147029e407b74c0a6768e6" category="inline-link-rx"></block></block>
+  <block id="d8d45aa5142f174e3e83b7f1de8895a1" category="sidebar">StorageGRID를 사용하여 Dremio를 구성합니다</block>
 </blocks>
