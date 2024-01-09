@@ -1278,4 +1278,6 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="cda1cacdbb2c1506d847fed8599faa68" category="list-text">11월 7일:<block ref="4558e5f7bc147029e407b74c0a6768e6" category="inline-link-rx"></block></block>
   <block id="d8d45aa5142f174e3e83b7f1de8895a1" category="sidebar">StorageGRID를 사용하여 Dremio를 구성합니다</block>
   <block id="9792e23419583666b178605decaec552" category="list-text">기트랩주식회사</block>
+  <block id="d2f2caed07026483a659ddedff29363a" category="section-title">그룹을 읽기 전용 권한으로 단일 하위 디렉토리(접두사)로 제한합니다</block>
+  <block id="12e569a2475c87038546154b45eafa4f" category="paragraph">이 정책을 사용하면 그룹의 구성원이 버킷 내의 하위 디렉터리(접두사)에 읽기 전용 액세스 권한을 가질 수 있습니다. 버킷 이름은 "study"이고 하위 디렉토리는 "study01"입니다.</block>
 </blocks>
