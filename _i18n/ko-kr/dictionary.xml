@@ -1280,4 +1280,14 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="9792e23419583666b178605decaec552" category="list-text">기트랩주식회사</block>
   <block id="d2f2caed07026483a659ddedff29363a" category="section-title">그룹을 읽기 전용 권한으로 단일 하위 디렉토리(접두사)로 제한합니다</block>
   <block id="12e569a2475c87038546154b45eafa4f" category="paragraph">이 정책을 사용하면 그룹의 구성원이 버킷 내의 하위 디렉터리(접두사)에 읽기 전용 액세스 권한을 가질 수 있습니다. 버킷 이름은 "study"이고 하위 디렉토리는 "study01"입니다.</block>
+  <block id="d40d489ee06ec7f85fb2d17fd332ec2c" category="list-text">AWS 마운트 지점</block>
+  <block id="dab38c58c86e39075df5ca86464b6e59" category="summary">StorageGRID 11.8에서 검증된 타사 솔루션</block>
+  <block id="43c9d447791c3e84501a3b86b522a4c1" category="doc">StorageGRID 11.8은 타사 솔루션으로 검증되었습니다</block>
+  <block id="80880f7955cf3e0bbe904bbb677a357b" category="paragraph">다음 타사 솔루션은 StorageGRID 11.8과 함께 사용할 수 있도록 검증되었습니다. 를 누릅니다
+찾고 있는 솔루션이 목록에 없으면 NetApp 계정 담당자에게 문의하십시오.</block>
+  <block id="9283e244bcd98f1bdd350c1b4f2da148" category="inline-link">StorageGRID 어플라이언스</block>
+  <block id="eff26b146dbf07b93a3af4954ea77c6d" category="list-text"><block ref="eff26b146dbf07b93a3af4954ea77c6d" category="inline-link-rx"></block></block>
+  <block id="0c116dd1f4daf14c460a0c77a9e0e674" category="inline-link">StorageGRID 11.8</block>
+  <block id="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="list-text"><block ref="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="inline-link-rx"></block></block>
+  <block id="fca3b43498fce810dfcc0f52e38e42a6" category="list-text"><block ref="fca3b43498fce810dfcc0f52e38e42a6" category="inline-link-rx"></block></block>
 </blocks>

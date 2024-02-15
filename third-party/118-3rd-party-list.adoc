@@ -1,15 +1,16 @@
 ---
-permalink: third-party/117-3rd-party-list.html 
+permalink: third-party/118-3rd-party-list.html 
 sidebar: sidebar 
 keywords: 11.7, third-party applications, storagegrid, ISV 
-summary: StorageGRID 11.7에 대해 검증된 타사 솔루션 
+summary: StorageGRID 11.8에서 검증된 타사 솔루션 
 ---
-= StorageGRID 11.7 검증된 타사 솔루션
+= StorageGRID 11.8은 타사 솔루션으로 검증되었습니다
 :allow-uri-read: 
 
 
 [role="lead"]
-다음 타사 솔루션은 StorageGRID 11.7에서 사용하도록 검증되었습니다. + 찾으려는 솔루션이 목록에 없는 경우 NetApp 고객 담당자에게 문의하십시오.
+다음 타사 솔루션은 StorageGRID 11.8과 함께 사용할 수 있도록 검증되었습니다. 를 누릅니다
+찾고 있는 솔루션이 목록에 없으면 NetApp 계정 담당자에게 문의하십시오.
 
 
 
