@@ -5,10 +5,11 @@ keywords: cloud storage pool, aws, S3, amazon web services, google cloud
 summary: 'StorageGRID 오브젝트를 외부 S3 버킷으로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다. 외부 버킷은 Amazon S3(AWS) 또는 Google Cloud에 속할 수 있습니다.' 
 ---
 = AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Jonathan Wong _
 
 [role="lead"]
 StorageGRID 오브젝트를 외부 S3 버킷으로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다. 외부 버킷은 Amazon S3(AWS) 또는 Google Cloud에 속할 수 있습니다.
@@ -50,3 +51,5 @@ Create Cloud Storage Pool 팝업이 나타납니다.
 
 .예상 결과
 Amazon S3 또는 Google Cloud에 대한 클라우드 스토리지 풀이 생성되었는지 확인합니다.
+
+Jonathan Wong이 _

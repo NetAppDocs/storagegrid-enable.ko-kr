@@ -5,10 +5,11 @@ keywords: cloud storage pool, azure, microsoft azure, azure blob storage
 summary: StorageGRID 객체를 외부 Azure 컨테이너로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다. 
 ---
 = Azure Blob Storage용 클라우드 스토리지 풀 생성
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Jonathan Wong _
 
 [role="lead"]
 StorageGRID 오브젝트를 외부 Azure 컨테이너로 이동하려는 경우 클라우드 스토리지 풀을 사용할 수 있습니다.
@@ -47,3 +48,5 @@ Create Cloud Storage Pool 팝업이 나타납니다.
 
 .예상 결과
 Azure Blob Storage용 Cloud Storage Pool이 생성되었는지 확인합니다.
+
+Jonathan Wong이 _

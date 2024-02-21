@@ -5,6 +5,7 @@ keywords:
 summary:  
 ---
 = 법적 고지
+:hardbreaks:
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

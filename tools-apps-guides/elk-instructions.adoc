@@ -5,10 +5,11 @@ keywords: ELK, log analytics, log analysis, StorageGRID troubleshooting
 summary: 'StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 이 문서에는 로그 메시지 패턴, Kibana 쿼리, 차트 및 대시보드 샘플을 필터링하고 정의하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있는 Logstash 구성 샘플이 포함되어 있습니다.' 
 ---
 = ELK 스택을 사용한 StorageGRID 로그 분석
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/elk-config/
 
-
-_ Angela Cheng _
 
 [role="lead"]
 StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 를 참조하십시오 https://www.netapp.tv/details/29396["ELK 비디오를 사용한 StorageGRID 로그 분석"] 샘플 ELK 구성 및 장애 발생 S3 요청을 식별하고 해결하는 데 사용할 수 있는 방법을 확인합니다. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.
@@ -47,11 +48,11 @@ match => {"message" => '<%{POSINT:syslog_pri}>%{SYSLOGBASE} %{GREEDYDATA:msg-det
 ----
 * Logstash 7.17 샘플 *
 
-image::../media/elk-config/logstash-7.17.fields-sample.png[Logstash 7.17 샘플]
+image::logstash-7.17.fields-sample.png[Logstash 7.17 샘플]
 
 * Logstash 8.23 샘플 *
 
-image::../media/elk-config/logstash-8.x.fields-sample.png[Logstash 8.23 샘플]
+image::logstash-8.x.fields-sample.png[Logstash 8.23 샘플]
 
 * 단계 *
 
@@ -98,13 +99,13 @@ GET /_cat/indices/*?v=true&s=index
 . 키바나 GUI에서 인덱스 패턴(엘크 7.x) 또는 데이터 뷰(엘크 8.x)를 생성합니다.
 . Kibana GUI의 상단 중앙에 있는 검색 상자에 '저장된 개체'를 입력합니다. + 저장된 개체 페이지에서 가져오기 를 선택합니다. 불러오기 옵션 아래에서 '충돌 시 작업 요청'을 선택합니다.
 +
-image::../media/elk-config/kibana-import-options.png[Kibana 불러오기 옵션]
+image::kibana-import-options.png[Kibana 불러오기 옵션]
 
 +
 ELK <version> -query-chart-sample.ndjson을 가져옵니다. + 충돌을 해결할 것인지 묻는 메시지가 나타나면 8단계에서 만든 색인 패턴이나 데이터 보기를 선택합니다.
 
 +
-image::../media/elk-config/kibana-import-conflict.png[키바나 갈등]
+image::kibana-import-conflict.png[키바나 갈등]
 
 +
 다음 Kibana 객체를 가져옵니다. + * 쿼리 * + * 감사-메시지 -s3rq -orlm + * bycast 로그 S3 관련 메시지 + * 로그 수준 경고 이상 + * 실패한 보안 이벤트 + * 차트 * + * bycast.log 기반 S3 요청 수 + * HTTP 상태 코드 + * 유형별 감사 메시지 분석 + * 평균 S3 응답 위 차트를 사용하는 시간 + * 대시보드 * + * S3 요청 대시보드
@@ -125,3 +126,5 @@ image::../media/elk-config/kibana-import-conflict.png[키바나 갈등]
 * https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana 가이드 – 문서 탐색"]
 * https://docs.netapp.com/us-en/storagegrid-116/audit/index.html["StorageGRID 감사 로그 메시지 참조"]
 
+
+안젤라 청 _ 에 의해

@@ -5,10 +5,11 @@ keywords: cloud storage pool, backup, ILM, CSP
 summary: ILM 규칙을 생성하여 백업을 위해 오브젝트를 클라우드 스토리지 풀로 이동할 수 있습니다. 
 ---
 = 백업에 클라우드 스토리지 풀 사용
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-_Jonathan Wong _
 
 [role="lead"]
 ILM 규칙을 생성하여 백업을 위해 오브젝트를 클라우드 스토리지 풀로 이동할 수 있습니다.
@@ -34,3 +35,5 @@ ILM 규칙을 생성하여 백업을 위해 오브젝트를 클라우드 스토�
 보존 다이어그램에 백업용 StorageGRID 및 클라우드 스토리지 풀에 로컬로 저장된 객체가 표시되는지 확인합니다.
 
 ILM 규칙이 트리거되면 클라우드 스토리지 풀에 복사본이 존재하므로 오브젝트 복원을 수행하지 않고 로컬에서 개체를 검색할 수 있는지 확인합니다.
+
+Jonathan Wong이 _

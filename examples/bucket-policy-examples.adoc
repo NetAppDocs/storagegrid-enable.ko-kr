@@ -5,7 +5,10 @@ keywords: iam, bucket policy, group policy, policy
 summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.' 
 ---
 = 버킷 및 그룹(IAM) 정책의 예
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

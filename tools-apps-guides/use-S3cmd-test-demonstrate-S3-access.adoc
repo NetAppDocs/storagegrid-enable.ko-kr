@@ -5,10 +5,11 @@ keywords: cli, aws, S3, s3cmd, api
 summary: S3cmd 는 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니다. S3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연할 수 있습니다. 
 ---
 = S3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연합니다
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
-
-아론 클라인입니다
 
 [role="lead"]
 S3cmd 는 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니다. s3cmd를 사용하여 StorageGRID에서 S3 액세스를 테스트하고 시연할 수 있습니다.
@@ -87,3 +88,5 @@ S 3cmd put <file>S3:/<bucket>--host=<endpoint>:<port>--no-check-certificate
 S 3cmd del S3://<bucket>/<object>--host=<endpoint>:<port>--no-check-certificate
 
 
+
+_ 아론 클라인 _

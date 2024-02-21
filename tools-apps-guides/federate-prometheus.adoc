@@ -5,10 +5,11 @@ keywords: prometheus, on-premises, grafana, metrics
 summary: 이 기술 보고서에서는 외부 Prometheus 및 Grafana 서비스를 사용하여 NetApp StorageGRID 11.6을 구성하는 방법에 대해 자세히 설명합니다. 
 ---
 = Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/prometheus/
 
-
-아론 클라인입니다
 
 [role="lead"]
 이 기술 보고서에서는 외부 Prometheus 및 Grafana 서비스를 사용하여 NetApp StorageGRID 11.6을 구성하는 방법에 대해 자세히 설명합니다.
@@ -39,11 +40,11 @@ StorageGRID에 저장된 Prometheus 메트릭에 액세스하려면 개인 키�
 . 인증서 페이지에서 "클라이언트" 탭을 선택하고 "추가" 버튼을 클릭합니다.
 . 액세스 권한이 부여된 클라이언트의 이름을 제공하고 이 인증서를 사용합니다. "권한" 아래의 "Prometheus 허용" 앞의 상자를 클릭하고 계속 단추를 클릭합니다.
 +
-image::../media/prometheus/cert_name.png[인증서 이름입니다]
+image::cert_name.png[인증서 이름입니다]
 
 . CA 서명 인증서가 있는 경우 "인증서 업로드" 라디오 버튼을 선택할 수 있지만, 여기서는 "인증서 생성" 라디오 버튼을 선택하여 StorageGRID가 클라이언트 인증서를 생성하도록 할 것입니다. 필수 필드가 입력되어 표시됩니다. 클라이언트 서버의 FQDN, 서버의 IP, 제목 및 유효한 날짜를 입력합니다. 그런 다음 "생성" 버튼을 클릭합니다.
 +
-image::../media/prometheus/cert_detail.png[인증서 세부 정보]
+image::cert_detail.png[인증서 세부 정보]
 
 
 
@@ -53,7 +54,7 @@ image::../media/prometheus/cert_detail.png[인증서 세부 정보]
 ====
 . 인증서 PEM 파일과 개인 키 PEM 파일을 다운로드합니다.
 +
-image::../media/prometheus/cert_download.png[인증서 다운로드]
+image::cert_download.png[인증서 다운로드]
 
 
 
@@ -253,18 +254,18 @@ Aug 22 15:14:24 aj-deb-prom01 prometheus[6498]: ts=2022-08-22T19:14:24.832Z call
 ----
 . 이제 Prometheus 서버의 UI로 이동할 수 있습니다 http://Prometheus-server:9090[] UI를 참조하십시오
 +
-image::../media/prometheus/prometheus_ui.png[Prometheus UI 페이지]
+image::prometheus_ui.png[Prometheus UI 페이지]
 
 . "상태" 대상 아래에서 Prometheus.yml에서 구성한 StorageGRID 끝점의 상태를 볼 수 있습니다
 +
-image::../media/prometheus/prometheus_targets.png[Prometheus 상태 메뉴]
+image::prometheus_targets.png[Prometheus 상태 메뉴]
 
 +
-image::../media/prometheus/prometheus_target_status.png[Prometheus 대상 페이지]
+image::prometheus_target_status.png[Prometheus 대상 페이지]
 
 . 그래프 페이지에서 테스트 쿼리를 실행하고 데이터가 스크레핑되었는지 확인할 수 있습니다. 예를 들어 쿼리 표시줄에 "StorageGrid_node_cpu_Utilization_percentage"를 입력하고 실행 단추를 클릭합니다.
 +
-image::../media/prometheus/prometheus_execute.png[Prometheus 쿼리가 실행됩니다]
+image::prometheus_execute.png[Prometheus 쿼리가 실행됩니다]
 
 
 
@@ -321,14 +322,14 @@ Grafana와 Prometheus가 설치 및 실행되었으므로 이제 데이터 소�
 . Prometheus는 최고의 데이터 소스 중 하나가 될 것입니다. 그렇지 않은 경우 검색 표시줄을 사용하여 "Prometheus"를 찾습니다.
 . Prometheus 인스턴스의 URL과 Prometheus 간격에 맞게 스크레핑 간격을 입력하여 Prometheus 소스를 구성합니다. Prometheus에서 경고 관리자를 구성하지 않았기 때문에 알림 섹션도 비활성화했습니다.
 +
-image::../media/prometheus/grafana_prometheus_conf.png[이식편 프로메테우스(Grafana Prometheus) 구성]
+image::grafana_prometheus_conf.png[이식편 프로메테우스(Grafana Prometheus) 구성]
 
 . 원하는 설정을 입력한 후 아래로 스크롤하여 "Save & Test(저장 및 테스트)"를 클릭합니다.
 . 구성 테스트가 완료되면 탐색 버튼을 클릭합니다.
 +
 .. 탐색 창에서 Prometheus를 "StorageGrid_node_cpu_Utilization_percentage"로 테스트한 것과 동일한 메트릭을 사용하고 "쿼리 실행" 단추를 클릭할 수 있습니다
 +
-image::../media/prometheus/grafana_source_explore.png[이식편 프로메테우스(Grafana Prometheus) 지표 살펴보기]
+image::grafana_source_explore.png[이식편 프로메테우스(Grafana Prometheus) 지표 살펴보기]
 
 
 
@@ -338,7 +339,7 @@ image::../media/prometheus/grafana_source_explore.png[이식편 프로메테우�
 .. "Add a new panel(새 패널 추가)"을 선택합니다.
 .. 메트릭을 선택하여 새 패널을 구성합니다. 다시 "StorageGrid_node_cpu_Utilization_percentage"를 사용하고, 패널 제목을 입력하고, 하단에 있는 "Options"를 확장하고, 범례를 사용자 지정으로 변경하려면 "{{instance}"를 입력하고, 오른쪽 창에 "Standard options"에서 "Unit"을 "Misc/Percent(0-100)"로 설정합니다. 그런 다음 "적용"을 클릭하여 패널을 대시보드에 저장합니다.
 +
-image::../media/prometheus/grafana_panel_conf.png[이식편 패널을 구성합니다]
+image::grafana_panel_conf.png[이식편 패널을 구성합니다]
 
 
 
@@ -347,31 +348,31 @@ image::../media/prometheus/grafana_panel_conf.png[이식편 패널을 구성합�
 .. StorageGRID 관리 인터페이스의 왼쪽 창에서 "지원"을 선택하고 "도구" 열 아래쪽에서 "메트릭"을 클릭합니다.
 .. 메트릭스 내에서 중간 열의 맨 위에 있는 "Grid" 링크를 선택하겠습니다.
 +
-image::../media/prometheus/storagegrid_metrics.png[StorageGRID 메트릭]
+image::storagegrid_metrics.png[StorageGRID 메트릭]
 
 .. Grid 대시보드에서 "Storage Used - Object Metadata" 패널을 선택합니다. 작은 아래쪽 화살표 및 패널 제목 끝을 클릭하여 메뉴를 드롭다운합니다. 이 메뉴에서 "검사" 및 "패널 JSON"을 선택합니다.
 +
-image::../media/prometheus/storagegrid_dashboard_insp.png[StorageGRID 대시보드]
+image::storagegrid_dashboard_insp.png[StorageGRID 대시보드]
 
 .. JSON 코드를 복사하고 창을 닫습니다.
 +
-image::../media/prometheus/storagegrid_panel_inspect.png[StorageGRID JSON을 참조하십시오]
+image::storagegrid_panel_inspect.png[StorageGRID JSON을 참조하십시오]
 
 .. 새 대시보드에서 아이콘을 클릭하여 새 패널을 추가합니다.
 +
-image::../media/prometheus/grafana_add_panel.png[이식편 추가 패널]
+image::grafana_add_panel.png[이식편 추가 패널]
 
 .. 변경하지 않고 새 패널을 적용합니다
 .. StorageGRID 패널과 마찬가지로 JSON을 검사하십시오. JSON 코드를 모두 제거하고 StorageGRID 패널에서 복사한 코드로 교체합니다.
 +
-image::../media/prometheus/grafana_panel_inspect.png[이식편 검사 패널]
+image::grafana_panel_inspect.png[이식편 검사 패널]
 
 .. 새 패널을 편집하면 오른쪽에 "migrate(마이그레이션)" 버튼이 있는 Migration(마이그레이션) 메시지가 표시됩니다. 버튼을 클릭한 다음 "적용" 버튼을 클릭합니다.
 +
-image::../media/prometheus/grafana_panel_edit_menu.png[이식편 편집 패널 메뉴]
+image::grafana_panel_edit_menu.png[이식편 편집 패널 메뉴]
 
 +
-image::../media/prometheus/grafana_panel_edit.png[이식편 편집 패널]
+image::grafana_panel_edit.png[이식편 편집 패널]
 
 
 
@@ -383,3 +384,5 @@ image::../media/prometheus/grafana_panel_edit.png[이식편 편집 패널]
 === 결론
 
 이제 Prometheus 서버에 맞춤형 데이터 보존 및 스토리지 용량을 추가할 수 있습니다. 이를 통해 운영 관련 메트릭이 포함된 자체 대시보드를 지속적으로 구축할 수 있습니다. 에서 수집된 Prometheus 메트릭에 대한 자세한 정보를 확인할 수 있습니다 https://docs.netapp.com/us-en/storagegrid-116/monitor/commonly-used-prometheus-metrics.html["StorageGRID 설명서"^].
+
+_ 아론 클라인 _
