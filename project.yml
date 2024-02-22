@@ -20,3 +20,5 @@ sidebar:
     url: "/blogs.html"
   - title: StorageGRID 설명서
     url: "/storagegrid-documentation.html"
+  - title: 법적 고지
+    url: "/legal-notices.html"

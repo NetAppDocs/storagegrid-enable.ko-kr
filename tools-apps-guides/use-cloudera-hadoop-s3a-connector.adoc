@@ -8,7 +8,7 @@ summary: Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/hadoop-s3a/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -141,11 +141,11 @@ FS.s3a.path.style.access
 * 샘플 스크린샷 *
 
 +
-image::hadoop-s3a-configuration.png[S3A 구성]
+image::hadoop-s3a/hadoop-s3a-configuration.png[S3A 구성]
 
 . 변경 내용 저장 단추를 클릭합니다. HDFS 메뉴 표시줄에서 오래된 구성 아이콘을 선택하고 다음 페이지에서 오래된 서비스 다시 시작 을 선택한 다음 지금 다시 시작 을 선택합니다.
 +
-image::hadoop-restart-stale-service-icon.png[Hadoop의 오래된 서비스 아이콘을 다시 시작합니다]
+image::hadoop-s3a/hadoop-restart-stale-service-icon.png[Hadoop의 오래된 서비스 아이콘을 다시 시작합니다]
 
 
 

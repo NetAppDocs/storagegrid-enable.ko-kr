@@ -19,4 +19,4 @@ entries:
 - title: StorageGRID에 Veeam 백업 및 복제를 사용하십시오
   url: "/tools-apps-guides/veeam-br.html"
 - title: StorageGRID를 사용하여 Dremio를 구성합니다
-  url: "/tools-apps-guides/configure-Dremio-StorageGRID.html"
+  url: "/tools-apps-guides/configure-dremio-storagegrid.html"
