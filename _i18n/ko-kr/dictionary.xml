@@ -319,9 +319,7 @@
   <block id="ea9349a37bfee247df0f87cbcacca796" category="paragraph">최초 릴리스.</block>
   <block id="0a7fcea811cb899434230e06e3477b84" category="summary">Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사용하여 컴퓨터 클러스터 전반에 걸쳐 대규모 데이터 세트를 분산 처리할 수 있습니다. Hadoop은 각 시스템이 로컬 컴퓨팅과 스토리지를 제공하는 수천 대의 시스템으로 단일 서버에서 스케일업할 수 있도록 설계되었습니다.</block>
   <block id="e28a2374ec10c84082a75afb2254f4e2" category="doc">StorageGRID와 함께 Cloudera Hadoop S3A 커넥터를 사용하십시오</block>
-  <block id="69cfaca1831444acadd7835297b7d501" category="paragraph">Hadoop은 데이터 과학자가 즐겨 찾는 솔루션입니다. Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사용하여 컴퓨터 클러스터 전반에 걸쳐 대규모 데이터 세트를 분산 처리할 수 있습니다. Hadoop은 단일 서버에서 수천 개의 시스템으로 스케일업할 수 있도록 설계되었으며, 각 시스템은 로컬 컴퓨팅과 스토리지를 소유합니다.</block>
   <block id="ae19997258b86e93601b9072dd73b100" category="section-title">Hadoop 워크플로우에 S3A를 사용하는 이유는 무엇입니까?</block>
-  <block id="edb332fdf13a795cb04d8673475e7002" category="paragraph">시간이 지나면서 데이터 양이 증가함에 따라 자체 컴퓨팅 및 스토리지로 새 시스템을 추가하는 방식이 비효율적으로 되었습니다. 선형적 확장은 리소스를 효율적으로 사용하고 인프라를 관리하는 데 따르는 과제를 해결합니다.</block>
   <block id="ab8402eb6a573e76dfe21f21689c9ae9" category="paragraph">이러한 과제를 해결하기 위해 Hadoop S3A 클라이언트는 S3 오브젝트 스토리지에 대한 고성능 I/O를 제공합니다. S3A를 사용하여 Hadoop 워크플로우를 구축하면 오브젝트 스토리지를 데이터 저장소로 활용할 수 있으며, 컴퓨팅과 스토리지를 독립적으로 확장할 수 있는 분리된 컴퓨팅 및 스토리지를 사용할 수 있습니다. 또한 컴퓨팅과 스토리지를 분리하여 컴퓨팅 작업에 적절한 양의 리소스를 할당하고 데이터 세트 크기에 따라 용량을 제공할 수 있습니다. 따라서 Hadoop 워크플로우의 전체 TCO를 줄일 수 있습니다.</block>
   <block id="95c00c41a442070ea0794b977de417b8" category="section-title">StorageGRID를 사용하도록 S3A 커넥터를 구성합니다</block>
   <block id="ee68e5b99222bbc29a480fcb0d1d6ee2" category="section-title">필수 구성 요소</block>
@@ -1083,7 +1081,6 @@
   <block id="21b17c7b7d71861473c6337e153ea6ea" category="paragraph"><block ref="21b17c7b7d71861473c6337e153ea6ea" category="inline-link-rx"></block></block>
   <block id="29007b92e2b6688072358d8f25529d24" category="paragraph"><block ref="29007b92e2b6688072358d8f25529d24" category="inline-link-rx"></block></block>
   <block id="d31ba7e4c6f469a6c88f05aac3e0e91c" category="list-text">다타도비</block>
-  <block id="8727881150b0ace8b598a648cdfcd4e1" category="sidebar">NetApp StorageGRID는 퍼블릭, 프라이빗 및 하이브리드 멀티 클라우드 환경에서 다양한 사용 사례를 지원하는 소프트웨어 정의 오브젝트 스토리지 제품군입니다. StorageGRID은 Amazon S3 API를 기본적으로 지원하며 자동화된 라이프사이클 관리와 같은 업계 최고의 혁신 기능을 제공하여 비정형 데이터를 장기적으로 비용 효율적으로 저장, 보호 및 보존합니다.</block>
   <block id="a88f9b6efeacfebaca582083cb9bd819" category="paragraph">이 그룹 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스하는 것만 허용합니다.</block>
   <block id="a16b735f7d349dcc23b45a7a101460f3" category="paragraph">이 그룹 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.</block>
   <block id="5ccd1d9b602b536952729ea6084688f1" category="section-title">개체 잠금 보존 제한</block>
@@ -1266,4 +1263,7 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="9224315283279b10c8f6eac37416df31" category="paragraph">Jonathan Wong이 _</block>
   <block id="8cd84a7eff267a91caead66f5ac5a7d2" category="paragraph">S3 속도 및 활성 요청을 보면 각 노드가 처리 중인 로드의 양과 유형별로 전체 요청 수를 확인할 수 있습니다.
 이미지: veeam-bp/s3_over_rates.png[S3 개요 비율]</block>
+  <block id="66dc7cd0b0a02168bc30f9fcad8cdbb3" category="paragraph">Hadoop은 한동안 데이터 과학자들이 선호하는 분야입니다. Hadoop을 사용하면 간단한 프로그래밍 프레임워크를 사용하여 컴퓨터 클러스터 전반에 걸쳐 대규모 데이터 세트를 분산 처리할 수 있습니다. Hadoop은 단일 서버에서 수천 개의 시스템으로 스케일업할 수 있도록 설계되었으며, 각 시스템은 로컬 컴퓨팅과 스토리지를 소유합니다.</block>
+  <block id="afa1796bcfe5f602d94a2ed1d5b82a74" category="paragraph">시간이 지나면서 데이터 양이 증가함에 따라 자체 컴퓨팅 및 스토리지로 새 시스템을 추가하는 방식이 비효율적으로 되었습니다. 선형적으로 확장하면 리소스를 효율적으로 사용하고 인프라를 관리하는 데 어려움이 발생합니다.</block>
+  <block id="1ed32842544e52d59a55b4b962d478b4" category="sidebar">NetApp StorageGRID는 퍼블릭, 프라이빗 및 하이브리드 멀티 클라우드 환경에서 다양한 사용 사례를 지원하는 소프트웨어 정의 오브젝트 스토리지 제품군입니다. StorageGRID은 Amazon S3 API를 기본적으로 지원하며 자동화된 라이프사이클 관리와 같은 업계 최고의 혁신 기능을 제공하여 비정형 데이터를 장기적으로 비용 효율적으로 저장, 보호 및 보존합니다.</block>
 </blocks>
