@@ -38,7 +38,7 @@ StorageGRID는 세 가지 유형의 플랫폼 서비스를 지원합니다.
 . Grid Manager를 사용하여 S3 테넌트를 생성하고 표시 이름을 입력한 다음 S3 프로토콜을 선택합니다.
 . 사용 권한 페이지에서 플랫폼 서비스 허용 옵션을 선택합니다. 필요한 경우 다른 사용 권한을 선택합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-select-permissions.png[권한 스크린샷을 선택합니다]
+image:storagegrid-search-integration-service/sg-sis-select-permissions.png["권한 스크린샷을 선택합니다"]
 
 . 테넌트 루트 사용자 초기 암호를 설정하거나, 격자에서 페더레이션 식별 이 설정된 경우 테넌트 계정을 구성할 루트 액세스 권한이 있는 통합 그룹을 선택합니다.
 . 루트로 로그인 을 클릭하고 버킷:버킷 생성 및 관리 를 선택합니다.
@@ -102,7 +102,7 @@ NOTE: OpenSearch 서비스에 가입하려면 유효한 AWS 콘솔 로그인, �
 }
 ----
 +
-image::storagegrid-search-integration-service/sg-sis-search-integration-amazon-opensearch.png[검색 통합 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-search-integration-amazon-opensearch.png["검색 통합 스크린샷"]
 
 
 
@@ -110,17 +110,17 @@ image::storagegrid-search-integration-service/sg-sis-search-integration-amazon-o
 
 . 도메인이 활성화될 때까지 15-20분 정도 기다립니다.
 +
-image::storagegrid-search-integration-service/sg-sis-activating-domain.png[도메인 스크린 샷을 활성화하는 중입니다]
+image:storagegrid-search-integration-service/sg-sis-activating-domain.png["도메인 스크린 샷을 활성화하는 중입니다"]
 
 . OpenSearch Dashboards URL 을 클릭하여 새 탭에서 도메인을 열고 대시보드에 액세스합니다. 액세스 거부 오류가 발생하면 도메인 대시보드에 액세스할 수 있도록 액세스 정책 원본 IP 주소가 컴퓨터 공용 IP로 올바르게 설정되어 있는지 확인합니다.
 . 대시보드 시작 페이지에서 직접 탐색 을 선택합니다. 메뉴에서 관리 -> 개발 도구 로 이동합니다
 . 개발 도구 -> 콘솔에서 StorageGRID 개체 메타데이터를 저장하기 위해 인덱스를 사용하는 'Put <index>'를 입력합니다. 다음 예에서는 인덱스 이름 'gmetadata'를 사용합니다. 작은 삼각형 기호를 클릭하여 PUT 명령을 실행합니다. 다음 예제 스크린샷과 같이 오른쪽 패널에 예상 결과가 표시됩니다.
 +
-image::storagegrid-search-integration-service/sg-sis-using-put-command-for-index.png[인덱스 스크린샷에 Put 명령을 사용합니다]
+image:storagegrid-search-integration-service/sg-sis-using-put-command-for-index.png["인덱스 스크린샷에 Put 명령을 사용합니다"]
 
 . 색인이 sgdomain > Indices 아래의 Amazon OpenSearch UI에서 표시되는지 확인합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-verifying-the-index.png[verifying-the-index 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-verifying-the-index.png["verifying-the-index 스크린샷"]
 
 
 
@@ -140,17 +140,17 @@ image::storagegrid-search-integration-service/sg-sis-verifying-the-index.png[ver
 이 예에서 URN은 'arn:aws:es:us-east-1:211234567890:domain/sgdemo/sgmedata/_doc'가 됩니다.
 
 +
-image::storagegrid-search-integration-service/sg-sis-enter-end-points-details.png[끝점 - 세부 정보 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-enter-end-points-details.png["끝점 - 세부 정보 스크린샷"]
 
 
 
 . Amazon OpenSearch sgdomain에 액세스하려면 인증 유형으로 Access Key를 선택한 다음 Amazon S3 액세스 키와 암호 키를 입력합니다. 다음 페이지로 이동하려면 계속 을 클릭합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-authenticate-connections-to-endpoints.png[끝점 연결 인증 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-authenticate-connections-to-endpoints.png["끝점 연결 인증 스크린샷"]
 
 . 끝점을 확인하려면 운영 체제 CA 인증서 사용 및 끝점 테스트 및 만들기 를 선택합니다. 확인이 성공하면 다음 그림과 유사한 엔드포인트 화면이 표시됩니다. 확인이 실패하면 경로 끝에 URN에 "/<index>/_doc"가 포함되어 있고 AWS 액세스 키와 비밀 키가 올바른지 확인합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-platform-service-endpoints.png[플랫폼 서비스 끝점 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-platform-service-endpoints.png["플랫폼 서비스 끝점 스크린샷"]
 
 
 
@@ -198,14 +198,14 @@ sudo systemctl start docker
 TIP: 참고 Elasticsearch에서 만든 사용자 이름/암호 및 토큰을 아래로 하여 Kibana UI 및 StorageGRID 플랫폼 엔드포인트 인증을 시작해야 합니다.
 
 +
-image::storagegrid-search-integration-service/sg-sis-search-integration-elasticsearch.png[검색 통합 탄력검색 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-search-integration-elasticsearch.png["검색 통합 탄력검색 스크린샷"]
 
 . Kibana Docker 컨테이너가 시작되면 URL 링크 '\https://0.0.0.0:5601` 가 콘솔에 표시됩니다. 0.0.0.0을 URL의 서버 IP 주소로 바꿉니다.
 . 사용자 이름 탄력성과 이전 단계에서 Elastic에 의해 생성된 암호를 사용하여 Kibana UI에 로그인합니다.
 . 처음 로그인하는 경우 대시보드 시작 페이지에서 직접 탐색 을 선택합니다. 메뉴에서 관리 > 개발 도구 를 선택합니다.
 . 개발 도구 콘솔 화면에서 StorageGRID 개체 메타데이터를 저장하기 위해 이 인덱스를 사용하는 "Put <index>"를 입력합니다. 이 예에서는 인덱스 이름 'gmetadata'를 사용합니다. 작은 삼각형 기호를 클릭하여 PUT 명령을 실행합니다. 다음 예제 스크린샷과 같이 오른쪽 패널에 예상 결과가 표시됩니다.
 +
-image::storagegrid-search-integration-service/sg-sis-execute-put-command.png[PUT 명령 스크린샷을 실행합니다]
+image:storagegrid-search-integration-service/sg-sis-execute-put-command.png["PUT 명령 스크린샷을 실행합니다"]
 
 
 
@@ -222,17 +222,17 @@ image::storagegrid-search-integration-service/sg-sis-execute-put-command.png[PUT
 ** Uri:'\https://<elasticsearch-server-ip or hostname>:9200'입니다
 ** urn:'urn:<something>:es:::<some-unique-text>/<index-name>/_doc' 여기서 index-name은 Kibana 콘솔에서 사용한 이름입니다. 예: 'urn:local:es::::sgmd/sgmetadata/_doc'
 +
-image::storagegrid-search-integration-service/sg-sis-platform-service-endpoint-details.png[플랫폼 서비스 끝점 세부 정보 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-platform-service-endpoint-details.png["플랫폼 서비스 끝점 세부 정보 스크린샷"]
 
 
 
 . 인증 유형으로 기본 HTTP 를 선택하고 Elasticsearch 설치 프로세스에서 생성된 사용자 이름 'elastic'과 암호를 입력합니다. 다음 페이지로 이동하려면 계속 을 클릭합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-platform-service-endpoint-authentication-type.png[플랫폼 서비스 끝점 인증 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-platform-service-endpoint-authentication-type.png["플랫폼 서비스 끝점 인증 스크린샷"]
 
 . 인증서 확인 안 함 및 테스트 및 끝점 만들기 를 선택하여 끝점을 확인합니다. 확인이 성공하면 다음 스크린샷과 유사한 엔드포인트 화면이 표시됩니다. 확인에 실패하면 URN, URI 및 사용자 이름/암호 항목이 올바른지 확인합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-successfully-verified-endpoint.png[끝점을 확인했습니다]
+image:storagegrid-search-integration-service/sg-sis-successfully-verified-endpoint.png["끝점을 확인했습니다"]
 
 
 
@@ -271,7 +271,7 @@ image::storagegrid-search-integration-service/sg-sis-successfully-verified-endpo
 ----
 . S3 브라우저를 사용하여 테넌트 액세스/암호 키를 사용하여 StorageGRID에 연결하고, 테스트 객체를 '메타데이터 테스트' 버킷에 업로드하고, 태그나 사용자 지정 메타데이터를 객체에 추가합니다.
 +
-image::storagegrid-search-integration-service/sg-sis-upload-test-objects.png[테스트 개체 업로드 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-upload-test-objects.png["테스트 개체 업로드 스크린샷"]
 
 . Kibana UI를 사용하여 오브젝트 메타데이터가 sgmetadata의 인덱스에 로드되었는지 확인합니다.
 +
@@ -291,7 +291,7 @@ GET sgmetadata/_search
 }
 ----
 +
-image::storagegrid-search-integration-service/sg-sis-query1-sample-result.png[쿼리 1 샘플 결과 스크린샷]
+image:storagegrid-search-integration-service/sg-sis-query1-sample-result.png["쿼리 1 샘플 결과 스크린샷"]
 
 +
 다음 스크린샷의 쿼리 2 샘플 결과는 태그 유형 jpg의 두 레코드를 보여 줍니다.
@@ -310,7 +310,7 @@ GET sgmetadata/_search
 }
 ----
 +
-image::storagegrid-search-integration-service/sg-sis-query-two-sample.png[쿼리 2 샘플]
+image:storagegrid-search-integration-service/sg-sis-query-two-sample.png["쿼리 2 샘플"]
 
 
 

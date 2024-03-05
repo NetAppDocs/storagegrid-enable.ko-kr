@@ -48,11 +48,11 @@ match => {"message" => '<%{POSINT:syslog_pri}>%{SYSLOGBASE} %{GREEDYDATA:msg-det
 ----
 * Logstash 7.17 샘플 *
 
-image::elk-config/logstash-7.17.fields-sample.png[Logstash 7.17 샘플]
+image:elk-config/logstash-7.17.fields-sample.png["Logstash 7.17 샘플"]
 
 * Logstash 8.23 샘플 *
 
-image::elk-config/logstash-8.x.fields-sample.png[Logstash 8.23 샘플]
+image:elk-config/logstash-8.x.fields-sample.png["Logstash 8.23 샘플"]
 
 * 단계 *
 
@@ -99,13 +99,13 @@ GET /_cat/indices/*?v=true&s=index
 . 키바나 GUI에서 인덱스 패턴(엘크 7.x) 또는 데이터 뷰(엘크 8.x)를 생성합니다.
 . Kibana GUI의 상단 중앙에 있는 검색 상자에 '저장된 개체'를 입력합니다. + 저장된 개체 페이지에서 가져오기 를 선택합니다. 불러오기 옵션 아래에서 '충돌 시 작업 요청'을 선택합니다.
 +
-image::elk-config/kibana-import-options.png[Kibana 불러오기 옵션]
+image:elk-config/kibana-import-options.png["Kibana 불러오기 옵션"]
 
 +
 ELK <version> -query-chart-sample.ndjson을 가져옵니다. + 충돌을 해결할 것인지 묻는 메시지가 나타나면 8단계에서 만든 색인 패턴이나 데이터 보기를 선택합니다.
 
 +
-image::elk-config/kibana-import-conflict.png[키바나 갈등]
+image:elk-config/kibana-import-conflict.png["키바나 갈등"]
 
 +
 다음 Kibana 객체를 가져옵니다. + * 쿼리 * + * 감사-메시지 -s3rq -orlm + * bycast 로그 S3 관련 메시지 + * 로그 수준 경고 이상 + * 실패한 보안 이벤트 + * 차트 * + * bycast.log 기반 S3 요청 수 + * HTTP 상태 코드 + * 유형별 감사 메시지 분석 + * 평균 S3 응답 위 차트를 사용하는 시간 + * 대시보드 * + * S3 요청 대시보드

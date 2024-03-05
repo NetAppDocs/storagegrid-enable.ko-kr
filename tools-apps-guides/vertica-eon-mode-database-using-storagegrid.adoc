@@ -34,7 +34,7 @@ eon Mode는 컴퓨팅 리소스를 데이터베이스의 공용 스토리지 계
 
 eon Mode는 사내 또는 Amazon S3에 호스팅된 공유 오브젝트 저장소인 S3 버킷에 데이터를 저장합니다.
 
-image::vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png[공용 스토리지가 있는 Vertica Eon Mode 클러스터]
+image:vertica-eon/sg-vertica-eon-mode-cluster-with-communal-storage.png["공용 스토리지가 있는 Vertica Eon Mode 클러스터"]
 
 
 

@@ -115,25 +115,25 @@ StorageGRID는 StorageGRID 노드와 사이트에서 오브젝트 레벨의 보�
 
 불변성이 필요한 경우 StorageGRID 시스템에서 오브젝트 잠금이 활성화되어 있는지 확인합니다. 관리 UI의 구성/S3 오브젝트 잠금 아래에서 옵션을 찾습니다.
 
-image::veeam-bp/obj_lock_en.png[Grid Wide Object Lock(그리드 전체 개체 잠금)을 활성화합니다]
+image:veeam-bp/obj_lock_en.png["Grid Wide Object Lock(그리드 전체 개체 잠금)을 활성화합니다"]
 
 버킷을 생성할 때 불변의 백업에 이 버킷을 사용하려면 "S3 오브젝트 잠금 활성화"를 선택하십시오. 이렇게 하면 버킷 버전 관리가 자동으로 활성화됩니다. Veeam에서 객체 보존을 명시적으로 설정하므로 기본 보존을 사용하지 않도록 설정합니다. Veeam에서 변경 불가능한 백업을 생성하지 않는 경우 버전 관리 및 S3 오브젝트 잠금을 선택하지 않아야 합니다.
 
-image::veeam-bp/obj_lock_bucket.png[버킷에서 오브젝트 잠금을 활성화합니다]
+image:veeam-bp/obj_lock_bucket.png["버킷에서 오브젝트 잠금을 활성화합니다"]
 
 버킷이 생성되면 생성된 버킷의 세부 정보 페이지로 이동합니다. 정합성 보장 수준을 선택합니다.
 
-image::veeam-bp/bucket_consist_1.png[버킷 선택사양]
+image:veeam-bp/bucket_consist_1.png["버킷 선택사양"]
 
 Veeam을 사용하려면 S3 버킷에 대해 강력한 일관성이 필요합니다. 따라서 Veeam을 통해 여러 위치의 데이터에 액세스할 수 있는 멀티 사이트 배포의 경우 "강력한 글로벌"을 선택하십시오. Veeam 백업 및 복원을 단일 사이트에서만 수행할 경우 일관성 수준을 "강력한 사이트"로 설정해야 합니다. 변경 사항을 저장합니다.
 
-image::veeam-bp/bucket_consist_2.png[버킷 일관성]
+image:veeam-bp/bucket_consist_2.png["버킷 일관성"]
 
 StorageGRID는 모든 관리 노드와 전용 게이트웨이 노드에서 통합 로드 밸런서 서비스를 제공합니다. 이 로드 밸런서를 사용하면 QoS(트래픽 분류 정책)를 구성할 수 있다는 이점이 많습니다. 이러한 기능은 다른 클라이언트 워크로드에 대한 애플리케이션 영향을 제한하거나 다른 워크로드에 대한 우선 순위를 지정하는 데 주로 사용되지만 모니터링에 도움이 되는 추가 메트릭 수집도 제공합니다.
 
 구성 탭에서 "트래픽 분류"를 선택하고 새 정책을 생성합니다. 규칙의 이름을 지정하고 유형으로 버킷 또는 테넌트를 선택합니다. 버킷 또는 테넌트의 이름을 입력하십시오. QoS가 필요한 경우 제한을 설정하지만 대부분의 구현에서는 모니터링 이점을 추가하려고 하므로 제한을 설정하지 마십시오.
 
-image::veeam-bp/tc_policy.png[TC 정책을 생성합니다]
+image:veeam-bp/tc_policy.png["TC 정책을 생성합니다"]
 
 
 
@@ -141,15 +141,15 @@ image::veeam-bp/tc_policy.png[TC 정책을 생성합니다]
 
 StorageGRID 어플라이언스의 모델 및 수량에 따라 버킷에서 동시 작업 수의 제한을 선택하고 구성해야 할 수 있습니다.
 
-image::veeam-bp/veeam_concur_limit.png[Veeam 동시 작업 제한]
+image:veeam-bp/veeam_concur_limit.png["Veeam 동시 작업 제한"]
 
 Veeam 콘솔의 백업 작업 구성에 관한 Veeam 설명서를 따라 마법사를 시작합니다. VM을 추가한 후 SOBR 리포지토리를 선택합니다.
 
-image::veeam-bp/veeam_1.png[백업 작업]
+image:veeam-bp/veeam_1.png["백업 작업"]
 
 고급 설정 을 클릭하고 저장소 최적화 설정을 4MB 이상으로 변경합니다. 압축 및 중복제거가 활성화되어야 합니다. 요구 사항에 따라 게스트 설정을 변경하고 백업 작업 일정을 구성합니다.
 
-image::veeam-bp/veeam_blk_sz.png[자동으로 생성된 컴퓨터 설명 스크린샷,320,375]
+image:veeam-bp/veeam_blk_sz.png["자동으로 생성된 컴퓨터 설명, 너비 = 320, 높이 = 375 스크린샷"]
 
 
 
@@ -160,25 +160,25 @@ Veeam과 StorageGRID가 함께 작동하는 방식을 자세히 보려면 첫 �
 StorageGRID는 지원 탭 메트릭 페이지에 있는 시스템 작동을 모니터링하는 편리한 차트를 제공합니다. 주요 대시보드는 정책을 생성한 경우 S3 개요, ILM 및 트래픽 분류 정책입니다. S3 개요 대시보드에서 S3 작업 속도, 지연 시간 및 요청 응답에 대한 정보를 확인할 수 있습니다.
 
 S3 속도 및 활성 요청을 보면 각 노드가 처리 중인 로드의 양과 유형별로 전체 요청 수를 확인할 수 있습니다.
-이미지: veeam-bp/s3_over_rates.png[S3 개요 비율]
+image:veeam-bp/s3_over_rates.png["S3 개요 요금"]
 
 Average Duration(평균 기간) 차트에는 각 노드가 각 요청 유형에 대해 걸리는 평균 시간이 표시됩니다. 이는 요청의 평균 대기 시간이며 추가 튜닝이 필요하거나 StorageGRID 시스템이 더 많은 로드를 처리할 수 있는 공간이 있음을 나타내는 좋은 지표가 될 수 있습니다.
 
-image::veeam-bp/s3_over_duration.png[S3 개요 기간]
+image:veeam-bp/s3_over_duration.png["S3 개요 기간"]
 
 총 완료된 요청 차트에서 유형 및 응답 코드별로 요청을 볼 수 있습니다. 응답에 대해 200(OK)이 아닌 응답이 표시되면 StorageGRID 시스템이 503(느린 속도) 응답을 보내면서 로드가 과중하게 로드되고 있는 것과 같은 문제일 수 있으며 추가적인 튜닝이 필요하거나 로드가 증가하기 위해 시스템을 확장할 시간이 되었을 수 있습니다.
 
-image::veeam-bp/s3_over_requests.png[S3 개요 요청]
+image:veeam-bp/s3_over_requests.png["S3 개요 요청"]
 
 ILM 대시보드에서 StorageGRID 시스템의 삭제 성능을 모니터링할 수 있습니다. StorageGRID는 각 노드에서 동기 및 비동기 삭제를 결합하여 모든 요청의 전반적인 성능을 최적화하고 시도합니다.
 
-image::veeam-bp/ilm_delete.png[ILM을 삭제합니다]
+image:veeam-bp/ilm_delete.png["ILM을 삭제합니다"]
 
 트래픽 분류 정책을 사용하면 로드 밸런서에 대한 메트릭을 볼 수 있습니다. 요청 처리량, 속도, 기간, Veeam이 전송 및 수신하는 객체 크기 등을 확인할 수 있습니다.
 
-image::veeam-bp/tc_1.png[트래픽 분류 정책 메트릭]
+image:veeam-bp/tc_1.png["트래픽 분류 정책 메트릭"]
 
-image::veeam-bp/tc_2.png[트래픽 분류 정책 메트릭]
+image:veeam-bp/tc_2.png["트래픽 분류 정책 메트릭"]
 
 
 
