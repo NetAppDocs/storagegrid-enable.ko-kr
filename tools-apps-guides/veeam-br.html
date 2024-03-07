@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head class="at-element-marker">
+  <title>Veeam 백업 및 복제를 사용한 구축에 대한 StorageGRID 모범 사례</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Veeam 백업 및 복제를 사용한 구축에 대한 StorageGRID 모범 사례" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+	<meta property="og:description" content="이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업 및 복제를 중점적으로 다룹니다. 이 문서는 Linux 시스템에 익숙하고 Veeam 백업 및 복제와 함께 NetApp StorageGRID 시스템의 유지 관리 또는 구축을 담당하는 스토리지 및 네트워크 관..." />
+  <meta property="og:image" content="https://docs.netapp.com/ko-kr/storagegrid-enable/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업 및 복제를 중점적으로 다룹니다. 이 문서는 Linux 시스템에 익숙하고 Veeam 백업 및 복제와 함께 NetApp StorageGRID 시스템의 유지 관리 또는 구축을 담당하는 스토리지 및 네트워크 관...">
+  <meta name="keywords" content=" veeam,backup,veeam12,veeam11,"><!-- Icons -->
+  <link rel="icon" href="/ko-kr/storagegrid-enable/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/storagegrid-enable/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ko-kr/storagegrid-enable/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ko-kr/storagegrid-enable/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/storagegrid-enable/tools-apps-guides/veeam-br.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ko-kr/storagegrid-enable/js/na-search.js'></script><script src='/ko-kr/storagegrid-enable/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ko-kr/storagegrid-enable/js/custom-dropdown.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/FileSaver.min.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/jszip-utils.min.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/jszip.min.js'></script><script src='/ko-kr/storagegrid-enable/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ko-kr/storagegrid-enable/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/kr">
+                <image id="ie-header-logo" src="/ko-kr/storagegrid-enable/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">문서</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ko-kr/storagegrid-enable/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">한국어</span>
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/storagegrid-enable/tools-apps-guides/veeam-br.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ko-kr/storagegrid-enable/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">모든 NetApp</span>
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">지원</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">기술 자료</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/ko/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">교육</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">모든 문서</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ko-kr/storagegrid-enable/">-->
+      How to enable StorageGRID in your environment
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ko-kr/storagegrid-enable/search.html" 
+        data-type="widget"
+        data-placeholder="설명서 검색"
+        data-no-results-found="{query}에 대한 결과를 찾을 수 없습니다"
+        data-did-you-mean="{suggestion}을(를) 검색하십시오."
+        data-no-results-found-did-you-mean="{query}에 대한 결과가 없습니다. {suggestion}을(를) 찾고 계시는 건가요?"
+        data-results-found="{hitCount}개의 결과를 찾았습니다"
+        data-error-message="오류가 발생했습니다. 다시 시도해 주십시오."
+        data-error-reset="검색 재설정"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID를 활성화하는 방법"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/index.html">
+        StorageGRID를 활성화하는 방법
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검증된 타사 솔루션"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 검증된 타사 솔루션</div>-->
+         검증된 타사 솔루션
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검증된 타사 솔루션 - 개요"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/index.html">
+        개요
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.8"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/118-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/118-3rd-party-list.html">
+        StorageGRID 11.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.7"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/117-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/117-3rd-party-list.html">
+        StorageGRID 11.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.6"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/116-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/116-3rd-party-list.html">
+        StorageGRID 11.6
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.5"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/115-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/115-3rd-party-list.html">
+        StorageGRID 11.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.4"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/114-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/114-3rd-party-list.html">
+        StorageGRID 11.4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.3"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/113-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/113-3rd-party-list.html">
+        StorageGRID 11.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.2"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/third-party/112-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/112-3rd-party-list.html">
+        StorageGRID 11.2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="제품 기능 가이드"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 제품 기능 가이드</div>-->
+         제품 기능 가이드
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html">
+        AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Blob 스토리지용 Cloud Storage Pool 생성"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html">
+        Azure Blob 스토리지용 Cloud Storage Pool 생성
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="백업에 클라우드 스토리지 풀 사용"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/use-a-cloud-storage-pool-for-backup.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/use-a-cloud-storage-pool-for-backup.html">
+        백업에 클라우드 스토리지 풀 사용
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검색 통합 서비스를 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html">
+        검색 통합 서비스를 구성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="노드 클론 고려 사항 및 성능"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/node-clone.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/node-clone.html">
+        노드 클론 고려 사항 및 성능
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="포트 재매핑 사용 방법"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/product-feature-guides/port-remap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/port-remap.html">
+        포트 재매핑 사용 방법
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="툴 및 애플리케이션 가이드"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 툴 및 애플리케이션 가이드</div>-->
+         툴 및 애플리케이션 가이드
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloudera Hadoop S3A 커넥터를 사용하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html">
+        Cloudera Hadoop S3A 커넥터를 사용하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html">
+        S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html">
+        공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/elk-instructions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/elk-instructions.html">
+        로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/federate-prometheus.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/federate-prometheus.html">
+        Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-datadog-snmp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-datadog-snmp.html">
+        StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/use-rclone-migrate-delete.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-rclone-migrate-delete.html">
+        rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID에 Veeam 백업 및 복제를 사용하십시오"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/veeam-br.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html">
+        StorageGRID에 Veeam 백업 및 복제를 사용하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID를 사용하여 Dremio를 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/tools-apps-guides/configure-dremio-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/configure-dremio-storagegrid.html">
+        StorageGRID를 사용하여 Dremio를 구성합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="절차 및 API 예"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 절차 및 API 예</div>-->
+         절차 및 API 예
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3 암호화를 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-encryption.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/test-demonstrate-S3-encryption.html">
+        S3 암호화를 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3 오브젝트 잠금을 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-object-lock.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/test-demonstrate-S3-object-lock.html">
+        S3 오브젝트 잠금을 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="버킷 및 그룹 정책 예"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/examples/bucket-policy-examples.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/bucket-policy-examples.html">
+        버킷 및 그룹 정책 예
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="블로그 게시물"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/blogs.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/blogs.html">
+        블로그 게시물
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 설명서"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/storagegrid-documentation.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/storagegrid-documentation.html">
+        StorageGRID 설명서
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="법적 고지"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/tools-apps-guides/veeam-br.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/legal-notices.html">
+        법적 고지
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ko-kr/storagegrid-enable"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ko-kr/storagegrid-enable"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ko-kr/storagegrid-enable/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 본 한국어 번역은 사용자 편의를 위해 제공되는 기계 번역입니다. 영어 버전과 한국어 버전이 서로 어긋나는 경우에는 언제나 영어 버전이 우선합니다. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Veeam 백업 및 복제를 사용한 구축에 대한 StorageGRID 모범 사례</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2024-03-07 04:52:01 +0000">03/07/2024</time>
+        
+    
+    
+        <span>기여자
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ko-kr/storagegrid-enable/images/discuss-sm.svg" alt="" class="github-icon" />변경 제안</span>
+        <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable.ko-kr/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html&page-title=Veeam 백업 및 복제를 사용한 구축에 대한 StorageGRID 모범 사례" class="page-nav-contribute-link" role="button">문서 변경사항 요청</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable/blob/main/tools-apps-guides/veeam-br.adoc" class="page-nav-contribute-link" role="button">이 페이지 편집</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >기여하는 방법 알아보기</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ko-kr/storagegrid-enable/pdfs/fullsite-sidebar/사용자_환경에서_StorageGRID를_활성화하는_방법.pdf" >
+                    <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>이 문서 사이트의 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/검증된_타사_솔루션.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            검증된 타사 솔루션
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/제품_기능_가이드.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            제품 기능 가이드
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/툴_및_애플리케이션_가이드.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            툴 및 애플리케이션 가이드
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/절차_및_API_예.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            절차 및 API 예
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ko-kr/storagegrid-enable/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>별도의 PDF 문서 모음<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업 및 복제를 중점적으로 다룹니다. 이 문서는 Linux 시스템에 익숙하고 Veeam 백업 및 복제와 함께 NetApp StorageGRID 시스템의 유지 관리 또는 구축을 담당하는 스토리지 및 네트워크 관리자를 위해 작성되었습니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="개요">개요</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>스토리지 관리자는 가용성, 빠른 복구 목표, 요구 사항에 맞게 확장 및 장기 데이터 보존을 위한 정책을 자동화하는 솔루션을 사용하여 증가하는 데이터를 관리할 수 있습니다. 이러한 솔루션은 손실 또는 악의적인 공격으로부터 보호되어야 합니다. Veeam과 NetApp은 파트너십을 통해 Veeam 백업 및 복구를 사내 오브젝트 스토리지에 NetApp StorageGRID과 결합하는 데이터 보호 솔루션을 만들었습니다.</p>
+</div>
+<div class="paragraph">
+<p>Veeam과 NetApp StorageGRID는 전 세계적으로 빠르게 증가하는 데이터 및 늘어나는 규정 요구 사항을 충족하는 사용하기 쉬운 솔루션을 제공합니다. 클라우드 기반 오브젝트 스토리지는 복원력, 확장 기능, 운영 및 비용 효율성으로 인해 백업 대상으로 자연스럽게 선택할 수 있는 것으로 유명합니다. 이 문서는 Veeam 백업 솔루션 및 StorageGRID 시스템 구성에 대한 지침과 권장사항을 제공합니다.</p>
+</div>
+<div class="paragraph">
+<p>Veeam의 오브젝트 워크로드에는 작은 오브젝트의 여러 동시 배치, 삭제 및 목록 작업이 생성됩니다. 불변성을 설정하면 보존 및 목록 버전을 설정하기 위한 요청 수가 개체 저장소에 추가됩니다. 백업 작업의 프로세스에는 일일 변경 사항에 대한 객체 쓰기가 포함되며 새 쓰기가 완료된 후 작업은 백업의 보존 정책에 따라 모든 객체를 삭제합니다. 백업 작업의 스케줄링은 거의 항상 중복됩니다. 이렇게 겹치면 객체 저장소의 50/50 PUT/DELETE 워크로드로 구성된 백업 윈도우의 상당 부분이 발생합니다. Veeam에서 작업 슬롯 설정을 사용하여 동시 작업 수를 조정하면 백업 작업 블록 크기를 늘리고 다중 개체 삭제 요청의 객체 수를 줄여 객체 크기를 늘릴 수 있습니다. 또한 작업을 완료할 최대 기간을 선택하면 성능 및 비용에 맞게 솔루션을 최적화할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>에 대한 제품 설명서를 읽어야 합니다 <a href="https://www.veeam.com/documentation-guides-datasheets.html?productId=8&amp;version=product%3A8%2F221" target="_blank" rel="noopener">"Veeam 백업 및 복제"</a> 및 <a href="https://docs.netapp.com/us-en/storagegrid-117/" target="_blank" rel="noopener">"StorageGRID"</a> 시작하기 전에. Veeam을 사용하면 StorageGRID 솔루션을 사이징하기 전에 사용해야 할 Veeam 인프라 및 용량 요구사항의 크기를 이해할 수 있습니다. 의 Veeam Ready 프로그램 웹 사이트에서 Veeam-NetApp의 검증된 구성을 항상 확인하십시오 <a href="https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&amp;page=1" target="_blank" rel="noopener">"Veeam Ready Object, Object Immutability 및 Repository를 사용할 수 있습니다"</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="veeam-구성">Veeam 구성</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="권장-버전">권장 버전</h3>
+<div class="paragraph">
+<p>Veeam Backup &amp; Replication 12 시스템에 최신 핫픽스를 적용하는 것이 좋습니다. 현재는 최소한 Veeam 패치 P20230718을 설치할 것을 권장합니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s3-저장소-구성">S3 저장소 구성</h3>
+<div class="paragraph">
+<p>스케일아웃 백업 저장소(SOBR)는 S3 오브젝트 스토리지의 용량 계층입니다. 용량 계층은 기본 저장소의 확장 기능으로, 데이터 보존 기간이 길고 스토리지 솔루션이 저렴합니다. Veeam은 S3 Object Lock API를 통해 불변성을 제공하는 기능을 제공합니다. Veeam 12는 스케일아웃 저장소에서 여러 버킷을 사용할 수 있습니다. StorageGRID은 단일 버킷의 오브젝트 또는 용량에 대한 제한이 없습니다. 여러 버킷을 사용하면 백업 데이터가 오브젝트에서 페타바이트 규모로 증가할 수 있는 대규모 데이터 세트를 백업할 때 성능이 향상될 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>특정 솔루션 및 요구 사항의 사이징에 따라 동시 작업을 제한해야 할 수 있습니다. 기본 설정에서는 각 CPU 코어와 각 작업 슬롯에 대해 하나의 리포지토리 작업 슬롯을 지정하고 동시 작업 슬롯 제한은 64입니다. 예를 들어 서버에 2개의 CPU 코어가 있는 경우 총 128개의 동시 스레드가 개체 저장소에 사용됩니다. 여기에는 PUT, GET, BATCH Delete가 포함됩니다. Veeam 백업이 새로운 백업 및 백업 데이터의 안정적 상태에 도달하고 만료 예정인 경우 시작할 작업 슬롯에 대해 보수적인 제한을 선택하고 이 값을 조정하는 것이 좋습니다. NetApp 어카운트 팀과 협력하여 원하는 시간 및 성능을 만족하도록 StorageGRID 시스템의 크기를 적절하게 조정해 주십시오. 최적의 솔루션을 제공하기 위해 슬롯당 작업 슬롯의 수와 작업 제한을 조정해야 할 수 있습니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="백업-작업-구성입니다">백업 작업 구성입니다</h3>
+<div class="paragraph">
+<p>Veeam 백업 작업은 신중하게 고려해야 하는 다양한 블록 크기 옵션으로 구성할 수 있습니다. 기본 블록 크기는 1MB이며, 압축 및 중복제거를 통해 Veeam이 제공하는 스토리지 효율성을 통해 초기 전체 백업에는 약 500KB의 오브젝트 크기와 증분 작업에 대해서는 100~200kB 오브젝트를 생성합니다. NetApp은 더 큰 백업 블록 크기를 선택하여 성능을 크게 향상시키고 오브젝트 저장소 요구 사항을 축소할 수 있습니다. 블록 크기가 클수록 오브젝트 저장소의 성능이 크게 향상되지만, 스토리지 효율성 성능의 저하로 인해 기본 스토리지 용량 요구사항이 증가할 가능성이 있습니다. 전체 백업에 대해 약 2MB의 객체를 생성하는 4MB 블록 크기로 백업 작업을 구성하고 증가분에 대해 700kB-1MB 객체 크기를 생성하는 것이 좋습니다. 고객은 Veeam 지원의 도움을 받아 8MB 블록 크기를 사용하여 백업 작업을 구성하는 것도 고려할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>변경 불가능한 백업을 구현하면 오브젝트 저장소에서 S3 오브젝트 잠금을 사용합니다. 불변성 옵션은 객체에 대한 목록 및 보존 업데이트를 위해 객체 저장소에 대한 요청을 더 많이 생성합니다.</p>
+</div>
+<div class="paragraph">
+<p>백업 보존 기간이 만료되면 백업 작업이 객체 삭제를 처리합니다. Veeam은 요청당 1,000개의 오브젝트가 포함된 다중 오브젝트 삭제 요청의 삭제 요청을 오브젝트 저장소로 전송합니다. 소규모 솔루션의 경우 요청당 객체 수를 줄이기 위해 조정해야 할 수 있습니다. 이 값을 낮추면 삭제 요청을 StorageGRID 시스템의 노드에 고르게 분산시킬 수 있는 이점이 추가됩니다. 다중 개체 삭제 제한을 구성할 때는 아래 표의 값을 시작점으로 사용하는 것이 좋습니다. 표의 값에 선택한 어플라이언스 유형의 노드 수를 곱하여 Veeam의 설정 값을 구합니다. 이 값이 1000보다 크거나 같으면 기본값을 조정할 필요가 없습니다. 이 값을 조정해야 하는 경우, Veeam 지원에 문의하여 변경하십시오.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">어플라이언스 모델</th>
+<th class="tableblock halign-left valign-top">노드별 S3MultiObjectDeleteLimit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG5712를 참조하십시오</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG5760입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75를</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SG6060입니다</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-enable/images/note.svg" alt="참고">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>특정 요구 사항에 맞는 권장 구성을 위해 NetApp 세일즈 팀과 협력하십시오. Veeam 구성 권장 사항에는 다음이 포함됩니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>백업 작업 블록 크기 = 4MB</p>
+</li>
+<li>
+<p>SOBR 작업 슬롯 제한 = 2-16</p>
+</li>
+<li>
+<p>다중 개체 삭제 제한 = 34-1000</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storagegrid-구성">StorageGRID 구성</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="권장-버전-2">권장 버전</h3>
+<div class="paragraph">
+<p>최신 핫픽스가 포함된 NetApp StorageGRID 11.6 또는 11.7은 Veeam 구축에 권장되는 버전입니다. StorageGRID 11.6.0.11 및 11.7.0.4에 많은 최적화 기능이 도입되어 Veeam 워크로드에 유용합니다. 항상 최신 상태를 유지하고 StorageGRID 시스템에 최신 핫픽스를 적용하는 것이 좋습니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="로드-밸런서-및-s3-엔드포인트-구성">로드 밸런서 및 S3 엔드포인트 구성</h3>
+<div class="paragraph">
+<p>Veeam을 사용하면 HTTPS를 통해서만 엔드포인트를 연결해야 합니다. 암호화되지 않은 연결은 Veeam에서 지원되지 않습니다. SSL 인증서는 자체 서명된 인증서, 신뢰할 수 있는 개인 인증 기관 또는 신뢰할 수 있는 공용 인증 기관일 수 있습니다. S3 저장소에 대한 지속적인 액세스를 보장하려면 HA 구성에서 로드 밸런서를 2개 이상 사용하는 것이 좋습니다. 로드 밸런서는 모든 관리 노드 및 게이트웨이 노드에 있는 StorageGRID에서 제공하는 통합 로드 밸런서 서비스이거나 F5, Kemp, Hafroxy, Loadbalanacer.org 등과 같은 타사 솔루션일 수 있습니다 StorageGRID 로드 밸런서를 사용하면 Veeam 워크로드의 우선순위를 지정할 수 있는 트래픽 분류자(QoS 규칙)를 설정하거나, Veeam을 StorageGRID 시스템에서 우선순위가 높은 워크로드에 영향을 미치지 않도록 제한할 수 있습니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s3-버킷">S3 버킷</h3>
+<div class="paragraph">
+<p>StorageGRID는 안전한 멀티 테넌트 스토리지 시스템입니다. Veeam 워크로드를 위한 전용 테넌트를 생성하는 것이 좋습니다. 필요에 따라 스토리지 할당량을 할당할 수 있습니다. 최선의 방법으로 "자체 ID 소스 사용"을 활성화합니다. 적절한 암호를 사용하여 테넌트 루트 관리 사용자를 보호합니다. Veeam Backup 12는 S3 버킷의 경우 강력한 일관성이 필요합니다. StorageGRID은 버킷 수준에서 구성된 다양한 정합성 보장 옵션을 제공합니다. Veeam이 여러 위치의 데이터에 액세스할 수 있는 멀티 사이트 배포의 경우 "강력한 글로벌"을 선택하십시오. Veeam 백업 및 복원을 단일 사이트에서만 수행할 경우 일관성 수준을 "강력한 사이트"로 설정해야 합니다. 버킷 일관성 수준에 대한 자세한 내용은 을 참조하십시오 <a href="https://docs.netapp.com/us-en/storagegrid-117/s3/consistency-controls.html">"문서화"</a>. Veeam 불변성 백업을 위해 StorageGRID를 사용하려면 S3 오브젝트 잠금을 글로벌로 사용하도록 설정하고 버킷 생성 중에 버킷에 구성해야 합니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="라이프사이클-관리">라이프사이클 관리</h3>
+<div class="paragraph">
+<p>StorageGRID는 StorageGRID 노드와 사이트에서 오브젝트 레벨의 보호를 위해 복제 및 삭제 코딩을 지원합니다. 삭제 코딩에는 최소 200kB 오브젝트 크기가 필요합니다. Veeam의 1MB에 대한 기본 블록 크기는 Veeam의 스토리지 효율성 후 종종 이 200kB 권장 최소 크기보다 작을 수 있는 오브젝트 크기를 생성합니다. 솔루션의 성능을 위해 사이트 간 연결이 지연 시간을 추가하거나 StorageGRID 시스템의 대역폭을 제한하지 않는 한 여러 사이트에 걸쳐 있는 삭제 코딩 프로필을 사용하지 않는 것이 좋습니다. 다중 사이트 StorageGRID 시스템에서는 각 사이트에 단일 복제본을 저장하도록 ILM 규칙을 구성할 수 있습니다. 내구성을 최대화하기 위해 각 사이트에 삭제 코딩 복사본을 저장하도록 규칙을 구성할 수 있습니다. 이 워크로드를 위해 Veeam Backup 서버에 로컬에 2개의 복제본을 사용하는 것이 가장 좋습니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="구현-핵심-사항">구현 핵심 사항</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="storagegrid">StorageGRID</h3>
+<div class="paragraph">
+<p>불변성이 필요한 경우 StorageGRID 시스템에서 오브젝트 잠금이 활성화되어 있는지 확인합니다. 관리 UI의 구성/S3 오브젝트 잠금 아래에서 옵션을 찾습니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/obj_lock_en.png" alt="Grid Wide Object Lock(그리드 전체 개체 잠금)을 활성화합니다"></span></p>
+</div>
+<div class="paragraph">
+<p>버킷을 생성할 때 불변의 백업에 이 버킷을 사용하려면 "S3 오브젝트 잠금 활성화"를 선택하십시오. 이렇게 하면 버킷 버전 관리가 자동으로 활성화됩니다. Veeam에서 객체 보존을 명시적으로 설정하므로 기본 보존을 사용하지 않도록 설정합니다. Veeam에서 변경 불가능한 백업을 생성하지 않는 경우 버전 관리 및 S3 오브젝트 잠금을 선택하지 않아야 합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/obj_lock_bucket.png" alt="버킷에서 오브젝트 잠금을 활성화합니다"></span></p>
+</div>
+<div class="paragraph">
+<p>버킷이 생성되면 생성된 버킷의 세부 정보 페이지로 이동합니다. 정합성 보장 수준을 선택합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/bucket_consist_1.png" alt="버킷 선택사양"></span></p>
+</div>
+<div class="paragraph">
+<p>Veeam을 사용하려면 S3 버킷에 대해 강력한 일관성이 필요합니다. 따라서 Veeam을 통해 여러 위치의 데이터에 액세스할 수 있는 멀티 사이트 배포의 경우 "강력한 글로벌"을 선택하십시오. Veeam 백업 및 복원을 단일 사이트에서만 수행할 경우 일관성 수준을 "강력한 사이트"로 설정해야 합니다. 변경 사항을 저장합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/bucket_consist_2.png" alt="버킷 일관성"></span></p>
+</div>
+<div class="paragraph">
+<p>StorageGRID는 모든 관리 노드와 전용 게이트웨이 노드에서 통합 로드 밸런서 서비스를 제공합니다. 이 로드 밸런서를 사용하면 QoS(트래픽 분류 정책)를 구성할 수 있다는 이점이 많습니다. 이러한 기능은 다른 클라이언트 워크로드에 대한 애플리케이션 영향을 제한하거나 다른 워크로드에 대한 우선 순위를 지정하는 데 주로 사용되지만 모니터링에 도움이 되는 추가 메트릭 수집도 제공합니다.</p>
+</div>
+<div class="paragraph">
+<p>구성 탭에서 "트래픽 분류"를 선택하고 새 정책을 생성합니다. 규칙의 이름을 지정하고 유형으로 버킷 또는 테넌트를 선택합니다. 버킷 또는 테넌트의 이름을 입력하십시오. QoS가 필요한 경우 제한을 설정하지만 대부분의 구현에서는 모니터링 이점을 추가하려고 하므로 제한을 설정하지 마십시오.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_policy.png" alt="TC 정책을 생성합니다"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="veeam을-선택합니다">Veeam을 선택합니다</h3>
+<div class="paragraph">
+<p>StorageGRID 어플라이언스의 모델 및 수량에 따라 버킷에서 동시 작업 수의 제한을 선택하고 구성해야 할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_concur_limit.png" alt="Veeam 동시 작업 제한"></span></p>
+</div>
+<div class="paragraph">
+<p>Veeam 콘솔의 백업 작업 구성에 관한 Veeam 설명서를 따라 마법사를 시작합니다. VM을 추가한 후 SOBR 리포지토리를 선택합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_1.png" alt="백업 작업"></span></p>
+</div>
+<div class="paragraph">
+<p>고급 설정 을 클릭하고 저장소 최적화 설정을 4MB 이상으로 변경합니다. 압축 및 중복제거가 활성화되어야 합니다. 요구 사항에 따라 게스트 설정을 변경하고 백업 작업 일정을 구성합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/veeam_blk_sz.png" alt="자동으로 생성된 컴퓨터 설명, 너비 = 320, 높이 = 375 스크린샷"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storagegrid-모니터링">StorageGRID 모니터링</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Veeam과 StorageGRID가 함께 작동하는 방식을 자세히 보려면 첫 번째 백업의 보존 시간이 만료될 때까지 기다려야 합니다. 지금까지는 Veeam 워크로드가 주로 PUT 작업으로 구성되며 삭제가 발생하지 않습니다. 백업 데이터가 만료되고 정리가 시작되면 오브젝트 저장소에서 전체 일관된 사용량을 확인하고 필요한 경우 Veeam에서 설정을 조정할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>StorageGRID는 지원 탭 메트릭 페이지에 있는 시스템 작동을 모니터링하는 편리한 차트를 제공합니다. 주요 대시보드는 정책을 생성한 경우 S3 개요, ILM 및 트래픽 분류 정책입니다. S3 개요 대시보드에서 S3 작업 속도, 지연 시간 및 요청 응답에 대한 정보를 확인할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>S3 속도 및 활성 요청을 보면 각 노드가 처리 중인 로드의 양과 유형별로 전체 요청 수를 확인할 수 있습니다.<br>
+<span class="image"><img src="../media/veeam-bp/s3_over_rates.png" alt="S3 개요 요금"></span></p>
+</div>
+<div class="paragraph">
+<p>Average Duration(평균 기간) 차트에는 각 노드가 각 요청 유형에 대해 걸리는 평균 시간이 표시됩니다. 이는 요청의 평균 대기 시간이며 추가 튜닝이 필요하거나 StorageGRID 시스템이 더 많은 로드를 처리할 수 있는 공간이 있음을 나타내는 좋은 지표가 될 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/s3_over_duration.png" alt="S3 개요 기간"></span></p>
+</div>
+<div class="paragraph">
+<p>총 완료된 요청 차트에서 유형 및 응답 코드별로 요청을 볼 수 있습니다. 응답에 대해 200(OK)이 아닌 응답이 표시되면 StorageGRID 시스템이 503(느린 속도) 응답을 보내면서 로드가 과중하게 로드되고 있는 것과 같은 문제일 수 있으며 추가적인 튜닝이 필요하거나 로드가 증가하기 위해 시스템을 확장할 시간이 되었을 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/s3_over_requests.png" alt="S3 개요 요청"></span></p>
+</div>
+<div class="paragraph">
+<p>ILM 대시보드에서 StorageGRID 시스템의 삭제 성능을 모니터링할 수 있습니다. StorageGRID는 각 노드에서 동기 및 비동기 삭제를 결합하여 모든 요청의 전반적인 성능을 최적화하고 시도합니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/ilm_delete.png" alt="ILM을 삭제합니다"></span></p>
+</div>
+<div class="paragraph">
+<p>트래픽 분류 정책을 사용하면 로드 밸런서에 대한 메트릭을 볼 수 있습니다. 요청 처리량, 속도, 기간, Veeam이 전송 및 수신하는 객체 크기 등을 확인할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_1.png" alt="트래픽 분류 정책 메트릭"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/veeam-bp/tc_2.png" alt="트래픽 분류 정책 메트릭"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="추가-정보를-찾을-수-있는-위치">추가 정보를 찾을 수 있는 위치</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/storagegrid-117/" target="_blank" rel="noopener">"NetApp StorageGRID 11.7 제품 문서"</a></p>
+</li>
+<li>
+<p><a href="https://www.veeam.com/documentation-guides-datasheets.html?productId=8&amp;version=product%3A8%2F221" target="_blank" rel="noopener">"Veeam 백업 및 복제"</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>올리버 헨셀과 아론 클라인 작사</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">이 페이지에서</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">이용 약관</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">개인 정보 보호 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">쿠키 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">쿠키 설정</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">이 페이지에 대한 피드백 보내기</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/prism.js'></script>
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ko-kr/storagegrid-enable/js/ie-tabbed-blocks.js'></script>
+    <script src='/ko-kr/storagegrid-enable/js/ie-sidebar.js'></script>
+  </body>
+
+</html>

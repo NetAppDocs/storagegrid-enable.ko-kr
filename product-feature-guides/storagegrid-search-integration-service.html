@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head class="at-element-marker">
+  <title>StorageGRID 검색 통합 서비스를 구성합니다</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="StorageGRID 검색 통합 서비스를 구성합니다" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+	<meta property="og:description" content="이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Amazon OpenSearch Service 또는 사내 Elasticsearch와 구성하기 위한 자세한 지침을 제공합니다." />
+  <meta property="og:image" content="https://docs.netapp.com/ko-kr/storagegrid-enable/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Amazon OpenSearch Service 또는 사내 Elasticsearch와 구성하기 위한 자세한 지침을 제공합니다.">
+  <meta name="keywords" content=" Amazon OpenSearch Service, on-premises, Elasticsearch"><!-- Icons -->
+  <link rel="icon" href="/ko-kr/storagegrid-enable/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/storagegrid-enable/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ko-kr/storagegrid-enable/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ko-kr/storagegrid-enable/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ko-kr/storagegrid-enable/js/na-search.js'></script><script src='/ko-kr/storagegrid-enable/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ko-kr/storagegrid-enable/js/custom-dropdown.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/FileSaver.min.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/jszip-utils.min.js'></script>
+  <script src='/ko-kr/storagegrid-enable/js/jszip.min.js'></script><script src='/ko-kr/storagegrid-enable/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ko-kr/storagegrid-enable/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/kr">
+                <image id="ie-header-logo" src="/ko-kr/storagegrid-enable/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">문서</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ko-kr/storagegrid-enable/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">한국어</span>
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ko-kr/storagegrid-enable/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">모든 NetApp</span>
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">지원</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">기술 자료</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/ko/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">교육</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">모든 문서</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ko-kr/storagegrid-enable/">-->
+      How to enable StorageGRID in your environment
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ko-kr/storagegrid-enable/search.html" 
+        data-type="widget"
+        data-placeholder="설명서 검색"
+        data-no-results-found="{query}에 대한 결과를 찾을 수 없습니다"
+        data-did-you-mean="{suggestion}을(를) 검색하십시오."
+        data-no-results-found-did-you-mean="{query}에 대한 결과가 없습니다. {suggestion}을(를) 찾고 계시는 건가요?"
+        data-results-found="{hitCount}개의 결과를 찾았습니다"
+        data-error-message="오류가 발생했습니다. 다시 시도해 주십시오."
+        data-error-reset="검색 재설정"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID를 활성화하는 방법"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/index.html">
+        StorageGRID를 활성화하는 방법
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검증된 타사 솔루션"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 검증된 타사 솔루션</div>-->
+         검증된 타사 솔루션
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검증된 타사 솔루션 - 개요"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/index.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/index.html">
+        개요
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.8"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/118-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/118-3rd-party-list.html">
+        StorageGRID 11.8
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.7"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/117-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/117-3rd-party-list.html">
+        StorageGRID 11.7
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.6"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/116-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/116-3rd-party-list.html">
+        StorageGRID 11.6
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.5"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/115-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/115-3rd-party-list.html">
+        StorageGRID 11.5
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.4"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/114-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/114-3rd-party-list.html">
+        StorageGRID 11.4
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.3"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/113-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/113-3rd-party-list.html">
+        StorageGRID 11.3
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 11.2"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/third-party/112-3rd-party-list.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/third-party/112-3rd-party-list.html">
+        StorageGRID 11.2
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="제품 기능 가이드"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 제품 기능 가이드</div>-->
+         제품 기능 가이드
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html">
+        AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Blob 스토리지용 Cloud Storage Pool 생성"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/create-cloud-storage-pool-azure-blob-storage.html">
+        Azure Blob 스토리지용 Cloud Storage Pool 생성
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="백업에 클라우드 스토리지 풀 사용"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/use-a-cloud-storage-pool-for-backup.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/use-a-cloud-storage-pool-for-backup.html">
+        백업에 클라우드 스토리지 풀 사용
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="검색 통합 서비스를 구성합니다"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html">
+        검색 통합 서비스를 구성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="노드 클론 고려 사항 및 성능"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/node-clone.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/node-clone.html">
+        노드 클론 고려 사항 및 성능
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="포트 재매핑 사용 방법"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/product-feature-guides/port-remap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/product-feature-guides/port-remap.html">
+        포트 재매핑 사용 방법
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="툴 및 애플리케이션 가이드"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 툴 및 애플리케이션 가이드</div>-->
+         툴 및 애플리케이션 가이드
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloudera Hadoop S3A 커넥터를 사용하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-cloudera-hadoop-s3a-connector.html">
+        Cloudera Hadoop S3A 커넥터를 사용하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html">
+        S3cmd를 사용하여 S3 액세스를 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/vertica-eon-mode-database-using-storagegrid.html">
+        공용 스토리지를 사용하여 Vertica Eon Mode 데이터베이스를 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/elk-instructions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/elk-instructions.html">
+        로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/federate-prometheus.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/federate-prometheus.html">
+        Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/use-datadog-snmp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-datadog-snmp.html">
+        StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/use-rclone-migrate-delete.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/use-rclone-migrate-delete.html">
+        rclone을 사용하여 StorageGRID에서 개체를 마이그레이션, 저장 및 삭제합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID에 Veeam 백업 및 복제를 사용하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/veeam-br.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/veeam-br.html">
+        StorageGRID에 Veeam 백업 및 복제를 사용하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID를 사용하여 Dremio를 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/tools-apps-guides/configure-dremio-storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/tools-apps-guides/configure-dremio-storagegrid.html">
+        StorageGRID를 사용하여 Dremio를 구성합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="절차 및 API 예"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/storagegrid-enable/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/storagegrid-enable/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 절차 및 API 예</div>-->
+         절차 및 API 예
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3 암호화를 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-encryption.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/test-demonstrate-S3-encryption.html">
+        S3 암호화를 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S3 오브젝트 잠금을 테스트하고 시연합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/examples/test-demonstrate-S3-object-lock.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/test-demonstrate-S3-object-lock.html">
+        S3 오브젝트 잠금을 테스트하고 시연합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="버킷 및 그룹 정책 예"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/examples/bucket-policy-examples.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/storagegrid-enable/examples/bucket-policy-examples.html">
+        버킷 및 그룹 정책 예
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="블로그 게시물"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/blogs.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/blogs.html">
+        블로그 게시물
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID 설명서"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/storagegrid-documentation.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/storagegrid-documentation.html">
+        StorageGRID 설명서
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="법적 고지"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/product-feature-guides/storagegrid-search-integration-service.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/storagegrid-enable/legal-notices.html">
+        법적 고지
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ko-kr/storagegrid-enable"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ko-kr/storagegrid-enable"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ko-kr/storagegrid-enable/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 본 한국어 번역은 사용자 편의를 위해 제공되는 기계 번역입니다. 영어 버전과 한국어 버전이 서로 어긋나는 경우에는 언제나 영어 버전이 우선합니다. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">StorageGRID 검색 통합 서비스를 구성합니다</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2024-03-07 04:52:01 +0000">03/07/2024</time>
+        
+    
+    
+        <span>기여자
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ko-kr/storagegrid-enable/images/discuss-sm.svg" alt="" class="github-icon" />변경 제안</span>
+        <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable.ko-kr/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ko-kr/storagegrid-enable/product-feature-guides/storagegrid-search-integration-service.html&page-title=StorageGRID 검색 통합 서비스를 구성합니다" class="page-nav-contribute-link" role="button">문서 변경사항 요청</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/storagegrid-enable/blob/main/product-feature-guides/storagegrid-search-integration-service.adoc" class="page-nav-contribute-link" role="button">이 페이지 편집</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >기여하는 방법 알아보기</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ko-kr/storagegrid-enable/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ko-kr/storagegrid-enable/pdfs/fullsite-sidebar/사용자_환경에서_StorageGRID를_활성화하는_방법.pdf" >
+                    <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>이 문서 사이트의 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/검증된_타사_솔루션.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            검증된 타사 솔루션
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/제품_기능_가이드.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            제품 기능 가이드
+          </a>
+          
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/툴_및_애플리케이션_가이드.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            툴 및 애플리케이션 가이드
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/storagegrid-enable/pdfs/sidebar/절차_및_API_예.pdf" 
+            
+          >
+            <img src="/ko-kr/storagegrid-enable/images/pdf-icon.png" alt="" width="16" height="16"/>
+            절차 및 API 예
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ko-kr/storagegrid-enable/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>별도의 PDF 문서 모음<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Amazon OpenSearch Service 또는 사내 Elasticsearch와 구성하기 위한 자세한 지침을 제공합니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="소개">소개</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>StorageGRID는 세 가지 유형의 플랫폼 서비스를 지원합니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>* StorageGRID CloudMirror 복제 *. StorageGRID 버킷에서 지정된 외부 대상으로 특정 객체를 미러링합니다.</p>
+</li>
+<li>
+<p>* 알림 *. 객체에서 수행한 특정 작업에 대한 알림을 지정된 외부 Amazon SNS(Amazon Simple Notification Service)로 보내는 버킷당 이벤트 알림입니다.</p>
+</li>
+<li>
+<p>* 통합 서비스 검색 *. S3(Simple Storage Service) 개체 메타데이터를 지정된 Elasticsearch 인덱스에 전송하여 외부 서비스를 사용하여 메타데이터를 검색하거나 분석할 수 있습니다.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>플랫폼 서비스는 테넌트 관리자 UI를 통해 S3 테넌트에서 구성합니다. 자세한 내용은 을 참조하십시오 <a href="https://docs.netapp.com/us-en/storagegrid-116/tenant/considerations-for-using-platform-services.html" target="_blank" rel="noopener">"플랫폼 서비스 사용에 대한 고려 사항"</a>.</p>
+</div>
+<div class="paragraph">
+<p>이 문서는 에 대한 보충 자료로 사용됩니다 <a href="https://docs.netapp.com/us-en/storagegrid-116/tenant/index.html" target="_blank" rel="noopener">"StorageGRID 11.6 테넌트 가이드"</a> 및 에서는 검색 통합 서비스를 위한 엔드포인트 및 버킷 구성에 대한 단계별 지침과 예제를 제공합니다. 여기에 포함된 AWS(Amazon Web Services) 또는 온프레미스 Elasticsearch 설정 지침은 기본 테스트 또는 데모 전용입니다.</p>
+</div>
+<div class="paragraph">
+<p>대상 고객은 그리드 관리자, 테넌트 관리자에 익숙해야 하며, StorageGRID 검색 통합 테스트를 위한 기본 업로드(PUT) 및 다운로드(GET) 작업을 수행하기 위해 S3 브라우저에 액세스할 수 있어야 합니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="테넌트-생성-및-플랫폼-서비스-활성화">테넌트 생성 및 플랫폼 서비스 활성화</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Grid Manager를 사용하여 S3 테넌트를 생성하고 표시 이름을 입력한 다음 S3 프로토콜을 선택합니다.</p>
+</li>
+<li>
+<p>사용 권한 페이지에서 플랫폼 서비스 허용 옵션을 선택합니다. 필요한 경우 다른 사용 권한을 선택합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-select-permissions.png" alt="권한 스크린샷을 선택합니다"></span></p>
+</div>
+</li>
+<li>
+<p>테넌트 루트 사용자 초기 암호를 설정하거나, 격자에서 페더레이션 식별 이 설정된 경우 테넌트 계정을 구성할 루트 액세스 권한이 있는 통합 그룹을 선택합니다.</p>
+</li>
+<li>
+<p>루트로 로그인 을 클릭하고 버킷:버킷 생성 및 관리 를 선택합니다.</p>
+<div class="paragraph">
+<p>그러면 Tenant Manager 페이지로 이동합니다.</p>
+</div>
+</li>
+<li>
+<p>Tenant Manager에서 내 액세스 키를 선택하여 나중에 테스트할 S3 액세스 키를 생성하고 다운로드합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="amazon-opensearch로-통합-서비스를-검색합니다">Amazon OpenSearch로 통합 서비스를 검색합니다</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="amazon-opensearch이전의-elasticsearch-서비스-설정">Amazon OpenSearch(이전의 Elasticsearch) 서비스 설정</h3>
+<div class="paragraph">
+<p>테스트/데모용으로만 OpenSearch 서비스를 빠르고 간편하게 설정하려면 이 절차를 사용하십시오. 온-프레미스 Elasticsearch를 사용하여 검색 통합 서비스를 사용하는 경우 섹션을 참조하십시오 <a href="#search-integration-services-with-on-premises-elasticsearch">온-프레미스 Elasticsearch와 통합 서비스를 검색합니다</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-enable/images/note.svg" alt="참고">
+</td>
+<td class="content">
+OpenSearch 서비스에 가입하려면 유효한 AWS 콘솔 로그인, 액세스 키, 비밀 액세스 키 및 권한이 있어야 합니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>의 지침에 따라 새 도메인을 만듭니다 <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/gsgcreate-domain.html" target="_blank" rel="noopener">"AWS OpenSearch 서비스 시작"</a>다음 사항을 제외한 경우:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>4단계. 도메인 이름: sgdemo</p>
+</li>
+<li>
+<p>10단계. 세분화된 액세스 제어: 세분화된 액세스 제어 사용 옵션을 선택 취소합니다.</p>
+</li>
+<li>
+<p>12단계. 액세스 정책: 레벨 액세스 정책 구성을 선택하고 JSON 탭을 선택하여 다음 예를 사용하여 액세스 정책을 수정합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>강조 표시된 텍스트를 사용자 고유의 AWS ID 및 액세스 관리(IAM) ID 및 사용자 이름으로 바꿉니다.</p>
+</li>
+<li>
+<p>강조 표시된 텍스트(IP 주소)를 AWS 콘솔에 액세스하는 데 사용한 로컬 컴퓨터의 공용 IP 주소로 바꿉니다.</p>
+</li>
+<li>
+<p>브라우저 탭을 에 엽니다 <a href="https://checkip.amazonaws.com/" target="_blank" rel="noopener">"https://checkip.amazonaws.com"</a> 공용 IP를 찾습니다.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Effect": "Allow",
+        "Principal":
+        {"AWS": "arn:aws:iam:: nnnnnn:user/xyzabc"},
+        "Action": "es:*",
+        "Resource": "arn:aws:es:us-east-1:nnnnnn:domain/sgdemo/*"
+        },
+        {
+        "Effect": "Allow",
+        "Principal": {"AWS": "*"},
+        "Action": [
+        "es:ESHttp*"
+                ],
+        "Condition": {
+            "IpAddress": {
+                "aws:SourceIp": [ "nnn.nnn.nn.n/nn"
+                    ]
+                }
+        },
+        "Resource": "arn:aws:es:us-east-1:nnnnnn:domain/sgdemo/*"
+        }
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-search-integration-amazon-opensearch.png" alt="검색 통합 스크린샷"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>도메인이 활성화될 때까지 15-20분 정도 기다립니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-activating-domain.png" alt="도메인 스크린 샷을 활성화하는 중입니다"></span></p>
+</div>
+</li>
+<li>
+<p>OpenSearch Dashboards URL 을 클릭하여 새 탭에서 도메인을 열고 대시보드에 액세스합니다. 액세스 거부 오류가 발생하면 도메인 대시보드에 액세스할 수 있도록 액세스 정책 원본 IP 주소가 컴퓨터 공용 IP로 올바르게 설정되어 있는지 확인합니다.</p>
+</li>
+<li>
+<p>대시보드 시작 페이지에서 직접 탐색 을 선택합니다. 메뉴에서 관리 &#8594; 개발 도구 로 이동합니다</p>
+</li>
+<li>
+<p>개발 도구 &#8594; 콘솔에서 StorageGRID 개체 메타데이터를 저장하기 위해 인덱스를 사용하는 'Put &lt;index&gt;'를 입력합니다. 다음 예에서는 인덱스 이름 'gmetadata'를 사용합니다. 작은 삼각형 기호를 클릭하여 PUT 명령을 실행합니다. 다음 예제 스크린샷과 같이 오른쪽 패널에 예상 결과가 표시됩니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-using-put-command-for-index.png" alt="인덱스 스크린샷에 Put 명령을 사용합니다"></span></p>
+</div>
+</li>
+<li>
+<p>색인이 sgdomain &gt; Indices 아래의 Amazon OpenSearch UI에서 표시되는지 확인합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-verifying-the-index.png" alt="verifying-the-index 스크린샷"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="플랫폼-서비스-엔드포인트-구성">플랫폼 서비스 엔드포인트 구성</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>플랫폼 서비스 끝점을 구성하려면 다음 단계를 수행하십시오.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>테넌트 관리자 에서 스토리지(S3) &gt; 플랫폼 서비스 엔드포인트 로 이동합니다.</p>
+</li>
+<li>
+<p>끝점 만들기 를 클릭하고 다음을 입력한 다음 계속 을 클릭합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>표시 이름 예 AWS-OpenSearch</p>
+</li>
+<li>
+<p>예제 스크린샷의 도메인 끝점은 URI 필드의 이전 절차의 2단계 아래에 있습니다.</p>
+</li>
+<li>
+<p>URN 필드의 이전 절차 2단계에서 사용한 ARN 도메인을 ARN의 끝에 추가하는 /&lt;index&gt;/_doc'를 추가한다.</p>
+<div class="paragraph">
+<p>이 예에서 URN은 'arn:aws:es:us-east-1:211234567890:domain/sgdemo/sgmedata/_doc'가 됩니다.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-enter-end-points-details.png" alt="끝점 - 세부 정보 스크린샷"></span></p>
+</div>
+</li>
+<li>
+<p>Amazon OpenSearch sgdomain에 액세스하려면 인증 유형으로 Access Key를 선택한 다음 Amazon S3 액세스 키와 암호 키를 입력합니다. 다음 페이지로 이동하려면 계속 을 클릭합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-authenticate-connections-to-endpoints.png" alt="끝점 연결 인증 스크린샷"></span></p>
+</div>
+</li>
+<li>
+<p>끝점을 확인하려면 운영 체제 CA 인증서 사용 및 끝점 테스트 및 만들기 를 선택합니다. 확인이 성공하면 다음 그림과 유사한 엔드포인트 화면이 표시됩니다. 확인이 실패하면 경로 끝에 URN에 "/&lt;index&gt;/_doc"가 포함되어 있고 AWS 액세스 키와 비밀 키가 올바른지 확인합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoints.png" alt="플랫폼 서비스 끝점 스크린샷"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="온-프레미스-elasticsearch와-통합-서비스를-검색합니다">온-프레미스 Elasticsearch와 통합 서비스를 검색합니다</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="온-프레미스-elasticsearch-설정">온-프레미스 Elasticsearch 설정</h3>
+<div class="paragraph">
+<p>이 절차는 테스트 목적으로만 Docker를 사용하여 사내 Elasticsearch 및 Kibana를 빠르게 설정하기 위한 것입니다. Elasticsearch 및 Kibana 서버가 이미 있는 경우 5단계로 이동합니다.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>다음 단계를 따르십시오 <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener">"Docker 설치 절차"</a> Docker를 설치합니다. 을 사용합니다 <a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">"CentOS Docker 설치 절차"</a> 를 클릭합니다.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>재부팅 후 Docker를 시작하려면 다음을 입력합니다.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>sudo systemctl enable docker</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>VM.max_map_count 값을 262144로 설정한다.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>sysctl -w vm.max_map_count=262144</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>재부팅 후 설정을 유지하려면 다음을 입력합니다.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>echo 'vm.max_map_count=262144' &gt;&gt; /etc/sysctl.conf</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>를 따릅니다 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html" target="_blank" rel="noopener">"Elasticsearch 빠른 시작 가이드"</a> Elasticsearch 및 Kibana Docker를 설치하고 실행하기 위한 자가 관리 섹션입니다. 이 예에서는 버전 8.1을 설치했습니다.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-enable/images/tip.svg" alt="팁">
+</td>
+<td class="content">
+참고 Elasticsearch에서 만든 사용자 이름/암호 및 토큰을 아래로 하여 Kibana UI 및 StorageGRID 플랫폼 엔드포인트 인증을 시작해야 합니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-search-integration-elasticsearch.png" alt="검색 통합 탄력검색 스크린샷"></span></p>
+</div>
+</li>
+<li>
+<p>Kibana Docker 컨테이너가 시작되면 URL 링크 'https://0.0.0.0:5601` 가 콘솔에 표시됩니다. 0.0.0.0을 URL의 서버 IP 주소로 바꿉니다.</p>
+</li>
+<li>
+<p>사용자 이름 탄력성과 이전 단계에서 Elastic에 의해 생성된 암호를 사용하여 Kibana UI에 로그인합니다.</p>
+</li>
+<li>
+<p>처음 로그인하는 경우 대시보드 시작 페이지에서 직접 탐색 을 선택합니다. 메뉴에서 관리 &gt; 개발 도구 를 선택합니다.</p>
+</li>
+<li>
+<p>개발 도구 콘솔 화면에서 StorageGRID 개체 메타데이터를 저장하기 위해 이 인덱스를 사용하는 "Put &lt;index&gt;"를 입력합니다. 이 예에서는 인덱스 이름 'gmetadata'를 사용합니다. 작은 삼각형 기호를 클릭하여 PUT 명령을 실행합니다. 다음 예제 스크린샷과 같이 오른쪽 패널에 예상 결과가 표시됩니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-execute-put-command.png" alt="PUT 명령 스크린샷을 실행합니다"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="플랫폼-서비스-엔드포인트-구성-2">플랫폼 서비스 엔드포인트 구성</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>플랫폼 서비스에 대한 끝점을 구성하려면 다음 단계를 수행하십시오.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>테넌트 관리자에서 스토리지(S3) &gt; 플랫폼 서비스 엔드포인트로 이동합니다</p>
+</li>
+<li>
+<p>끝점 만들기 를 클릭하고 다음을 입력한 다음 계속 을 클릭합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>이름 표시 예: 탄력적인 검색</p>
+</li>
+<li>
+<p>Uri:'https://&lt;elasticsearch-server-ip or hostname&gt;:9200'입니다</p>
+</li>
+<li>
+<p>urn:'urn:&lt;something&gt;:es:::&lt;some-unique-text&gt;/&lt;index-name&gt;/_doc' 여기서 index-name은 Kibana 콘솔에서 사용한 이름입니다. 예: 'urn:local:es::::sgmd/sgmetadata/_doc'</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoint-details.png" alt="플랫폼 서비스 끝점 세부 정보 스크린샷"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>인증 유형으로 기본 HTTP 를 선택하고 Elasticsearch 설치 프로세스에서 생성된 사용자 이름 'elastic'과 암호를 입력합니다. 다음 페이지로 이동하려면 계속 을 클릭합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-platform-service-endpoint-authentication-type.png" alt="플랫폼 서비스 끝점 인증 스크린샷"></span></p>
+</div>
+</li>
+<li>
+<p>인증서 확인 안 함 및 테스트 및 끝점 만들기 를 선택하여 끝점을 확인합니다. 확인이 성공하면 다음 스크린샷과 유사한 엔드포인트 화면이 표시됩니다. 확인에 실패하면 URN, URI 및 사용자 이름/암호 항목이 올바른지 확인합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-successfully-verified-endpoint.png" alt="끝점을 확인했습니다"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="버킷-검색-통합-서비스-구성">버킷 검색 통합 서비스 구성</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>플랫폼 서비스 끝점을 만든 후 다음 단계는 개체가 생성, 삭제 또는 해당 메타데이터 또는 태그가 업데이트될 때마다 개체 메타데이터를 정의된 끝점으로 보내도록 버킷 수준에서 이 서비스를 구성하는 것입니다.</p>
+</div>
+<div class="paragraph">
+<p>다음과 같이 테넌트 관리자를 사용하여 사용자 지정 StorageGRID 구성 XML을 버킷에 적용하여 검색 통합을 구성할 수 있습니다.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>테넌트 관리자 에서 스토리지(S3) &gt; 버킷 으로 이동합니다</p>
+</li>
+<li>
+<p>Create Bucket을 클릭하고 bucket 이름(예: 'gmetadata-test')을 입력한 후 기본 us-east-1 영역을 그대로 사용합니다.</p>
+</li>
+<li>
+<p>계속 &gt; 버킷 생성 을 클릭합니다.</p>
+</li>
+<li>
+<p>버킷 개요 페이지를 표시하려면 버킷 이름을 클릭한 다음 플랫폼 서비스를 선택합니다.</p>
+</li>
+<li>
+<p>검색 통합 활성화 대화 상자를 선택합니다. 제공된 XML 상자에 이 구문을 사용하여 구성 XML을 입력합니다.</p>
+<div class="paragraph">
+<p>강조 표시된 URN은 사용자가 정의한 플랫폼 서비스 끝점과 일치해야 합니다. 다른 브라우저 탭을 열어 테넌트 관리자에 액세스하고 정의된 플랫폼 서비스 끝점에서 URN을 복사할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>이 예에서는 접두어를 사용하지 않았습니다. 즉, 이 버킷의 모든 객체에 대한 메타데이터가 이전에 정의된 Elasticsearch 끝점으로 전송됩니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;MetadataNotificationConfiguration&gt;
+    &lt;Rule&gt;
+        &lt;ID&gt;Rule-1&lt;/ID&gt;
+        &lt;Status&gt;Enabled&lt;/Status&gt;
+        &lt;Prefix&gt;&lt;/Prefix&gt;
+        &lt;Destination&gt;
+            &lt;Urn&gt; urn:local:es:::sgmd/sgmetadata/_doc&lt;/Urn&gt;
+        &lt;/Destination&gt;
+    &lt;/Rule&gt;
+&lt;/MetadataNotificationConfiguration&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>S3 브라우저를 사용하여 테넌트 액세스/암호 키를 사용하여 StorageGRID에 연결하고, 테스트 객체를 '메타데이터 테스트' 버킷에 업로드하고, 태그나 사용자 지정 메타데이터를 객체에 추가합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-upload-test-objects.png" alt="테스트 개체 업로드 스크린샷"></span></p>
+</div>
+</li>
+<li>
+<p>Kibana UI를 사용하여 오브젝트 메타데이터가 sgmetadata의 인덱스에 로드되었는지 확인합니다.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>메뉴에서 관리 &gt; 개발 도구 를 선택합니다.</p>
+</li>
+<li>
+<p>왼쪽의 콘솔 패널에 샘플 쿼리를 붙여넣고 삼각형 기호를 클릭하여 실행합니다.</p>
+<div class="paragraph">
+<p>다음 예제 스크린샷의 쿼리 1 예제 결과는 네 개의 레코드를 보여 줍니다. 이는 버킷의 오브젝트 수와 일치합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GET sgmetadata/_search
+{
+    "query": {
+        "match_all": { }
+}
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-query1-sample-result.png" alt="쿼리 1 샘플 결과 스크린샷"></span></p>
+</div>
+<div class="paragraph">
+<p>다음 스크린샷의 쿼리 2 샘플 결과는 태그 유형 jpg의 두 레코드를 보여 줍니다.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GET sgmetadata/_search
+{
+    "query": {
+        "match": {
+            "tags.type": {
+                "query" : "jpg" }
+                }
+            }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+<br>
+<span class="image"><img src="../media/storagegrid-search-integration-service/sg-sis-query-two-sample.png" alt="쿼리 2 샘플"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="추가-정보를-찾을-수-있는-위치">추가 정보를 찾을 수 있는 위치</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/storagegrid-116/tenant/what-platform-services-are.html" target="_blank" rel="noopener">"플랫폼 서비스란 무엇입니까"</a></p>
+</li>
+<li>
+<p><a href="https://docs.netapp.com/us-en/storagegrid-116/index.html" target="_blank" rel="noopener">"StorageGRID 11.6 문서"</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>안젤라 청 _ 에 의해</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ko-kr/storagegrid-enable/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">이 페이지에서</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">이용 약관</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">개인 정보 보호 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">쿠키 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">쿠키 설정</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">이 페이지에 대한 피드백 보내기</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/prism.js'></script>
+      <script type="text/javascript" src='/ko-kr/storagegrid-enable/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ko-kr/storagegrid-enable/js/ie-tabbed-blocks.js'></script>
+    <script src='/ko-kr/storagegrid-enable/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
