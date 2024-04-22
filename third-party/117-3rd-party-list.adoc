@@ -27,6 +27,7 @@ summary: StorageGRID 11.7에 대해 검증된 타사 솔루션
 * 브리지스톤
 * 캔템오
 * Citrix 콘텐츠 협업
+* Collibra(최소 Collibra 데이터 품질 버전 2024.02)
 * Commvault 11
 * Ctera 포털 6
 * 다레트

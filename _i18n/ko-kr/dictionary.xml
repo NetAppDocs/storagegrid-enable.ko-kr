@@ -1342,4 +1342,190 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="29271d5d57f8d6e8670b7fc88d53d6e8" category="paragraph"><block ref="29271d5d57f8d6e8670b7fc88d53d6e8" category="inline-image-macro-rx" type="image"></block></block>
   <block id="cef940a89117c81a10863795c4ddd30e" category="paragraph"><block ref="cef940a89117c81a10863795c4ddd30e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="db42e15c186d3f7b8ba7a666052fc779" category="paragraph"><block ref="db42e15c186d3f7b8ba7a666052fc779" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a9ad8a7a7798500b5e52f25607ed3485" category="list-text">Collibra(최소 Collibra 데이터 품질 버전 2024.02)</block>
+  <block id="f56cff2f7966f4ffe98e416084bb7e95" category="list-text">타겟 스토리지 어플라이언스의 볼륨 수는 소스 노드의 볼륨 수보다 크거나 같아야 합니다. 오브젝트 저장소 볼륨(rangedb)이 16개인 소스 노드를 12개의 오브젝트 저장소 볼륨이 있는 타겟 스토리지 어플라이언스에 클론 복제할 수 없습니다. 타겟 어플라이언스에 소스 노드보다 용량이 더 큰 경우에도 마찬가지입니다. 오브젝트 저장소 볼륨이 12개뿐인 SGF6112 스토리지 어플라이언스를 제외하고 대부분의 스토리지 어플라이언스에는 16개의 오브젝트 저장소 볼륨이 있습니다. 예를 들어, SG5760에서 SGF6112로 클론을 생성할 수 없습니다.</block>
+  <block id="301ed7b461a16811c00829d5bd1c6624" category="summary">이 가이드에서는 GitLab을 사용한 StorageGRID 구성에 대한 정보를 제공합니다.</block>
+  <block id="ef012cefa8ad7693b5c808fa1ce94bbd" category="doc">GitLab을 사용한 NetApp StorageGRID</block>
+  <block id="75049db1e349683b35a7dca115f7b290" category="inline-link">GitLab 객체 스토리지 구성 가이드</block>
+  <block id="830a8857ba237b976f92dcbaa5cdec26" category="paragraph">NetApp은 GitLab에서 StorageGRID를 테스트했습니다. 아래의 GitLab 구성 샘플을 참조하십시오.  을 참조하십시오<block ref="1fbed9049876aa2874e9bb4887a0f320" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="dc74db24a8e5e1f23203fff3257066b1" category="section-title">객체 저장소 연결 예</block>
+  <block id="4e2805091f9d6d4c2bf36af3331432cc" category="paragraph">Linux 패키지 설치의 경우, 이 예제는 의 예입니다<block ref="4717d53ebfdfea8477f780ec66151dcb" prefix=" " category="inline-code"></block> 통합 양식의 설정입니다. 편집<block ref="371d9aee577f2cef4df0163cf7dc8a0c" prefix=" " category="inline-code"></block> 원하는 값으로 다음 줄을 추가합니다.</block>
+  <block id="38ffd8c22488922588812e688de792ac" category="summary">이 보고서에서는 StorageGRID용 S3A를 튜닝하는 방법에 대해 설명합니다.</block>
+  <block id="c422c82e21b1ef6485ec6d88beb6b06c" category="doc">Hadoop S3A 튜닝</block>
+  <block id="1b40687ad18cfd6efdf4810ebb337b1a" category="paragraph">Hadoop S3A 커넥터는 Hadoop 기반 애플리케이션과 S3 오브젝트 스토리지 간의 원활한 상호 작용을 지원합니다. S3 오브젝트 스토리지로 작업할 때 성능을 최적화하려면 Hadoop S3A Connector를 튜닝해야 합니다. 세부 조정을 시작하기에 앞서, Hadoop과 그 구성 요소에 대한 기본적인 이해를 갖췄습니다.</block>
+  <block id="e41757b122e008baee063abf23c19c8e" category="section-title">Hadoop이란?</block>
+  <block id="b654c608145226171f0898ccbae5cec7" category="paragraph">* Hadoop * 은 대규모 데이터 처리 및 스토리지를 처리하도록 설계된 강력한 오픈 소스 프레임워크입니다. 이를 통해 컴퓨터 클러스터 간에 분산 스토리지 및 병렬 처리가 가능합니다.</block>
+  <block id="286bb4752ab8cc6c9ab926108e89ff74" category="paragraph">Hadoop의 3가지 핵심 구성 요소는 다음과 같습니다.</block>
+  <block id="b27a1acd006213b6e473f4749269fd71" category="list-text">* Hadoop HDFS (Hadoop 분산 파일 시스템) * : 스토리지를 처리하고 데이터를 블록으로 분할하여 노드에 분산시킵니다.</block>
+  <block id="88d3606426a43318176abdbbccebd0bf" category="list-text">* Hadoop MapReduce *: 작업을 작은 청크로 분할하고 병렬로 실행하여 데이터를 처리합니다.</block>
+  <block id="4e3559b639014f651bda365ff91a1be1" category="inline-link">리소스를 관리하고 작업을 효율적으로 예약합니다</block>
+  <block id="27a5b1eb9e47fddd3fa124843d505156" category="list-text">* Hadoop YARN (또 다른 리소스 협상 담당자) : *<block ref="0a2f651ef2ec562f49ee6f3ee518be8b" category="inline-link-rx"></block></block>
+  <block id="d00c5d3d4637dd8d67672efd5e9370a7" category="section-title">Hadoop HDFS 및 S3A 커넥터</block>
+  <block id="a3d3b46a8ca353af62834cbd44407f28" category="paragraph">HDFS는 Hadoop 에코시스템의 핵심 구성 요소로, 효율적인 빅 데이터 처리에 중요한 역할을 합니다. HDFS는 안정적인 스토리지 및 관리를 지원합니다. 병렬 처리 및 최적화된 데이터 스토리지를 보장하여 데이터 액세스 및 분석 속도가 빨라집니다.</block>
+  <block id="7cba2f74e0ab52b47dc032ae00b28539" category="paragraph">빅데이터 처리 시 HDFS는 대규모 데이터 세트를 위한 내결함성 스토리지를 제공하는 데 탁월합니다. 이 점은 데이터 복제를 통해 실현됩니다. 데이터 웨어하우스 환경에서 대량의 정형 데이터와 비정형 데이터를 저장하고 관리할 수 있습니다. 또한 Apache Spark, Hive, Pig 및 Flink와 같은 선도적인 빅 데이터 처리 프레임워크와 원활하게 통합되어 확장 가능하고 효율적인 데이터 처리가 가능합니다. Unix 기반(Linux) 운영 체제와 호환되기 때문에 빅 데이터 처리를 위해 Linux 기반 환경을 사용하는 것을 선호하는 기업에 이상적인 선택입니다.</block>
+  <block id="19db330c0bad5316cc12c5dfd0667649" category="paragraph">시간이 지나면서 데이터 볼륨이 증가함에 따라 자체 컴퓨팅 및 스토리지를 사용하여 Hadoop 클러스터에 새 시스템을 추가하는 방식이 비효율적이 되었습니다. 선형적으로 확장하면 리소스를 효율적으로 사용하고 인프라를 관리하는 데 어려움이 발생합니다.</block>
+  <block id="22e7bb54fa5c10b5b025b5533a88999d" category="paragraph">이러한 과제를 해결하기 위해 Hadoop S3A 커넥터는 S3 오브젝트 스토리지에 대한 고성능 I/O를 제공합니다. S3A를 사용하여 Hadoop 워크플로우를 구축하면 오브젝트 스토리지를 데이터 저장소로 활용할 수 있으며, 컴퓨팅과 스토리지를 독립적으로 확장할 수 있는 분리된 컴퓨팅 및 스토리지를 사용할 수 있습니다. 또한 컴퓨팅과 스토리지를 분리하면 컴퓨팅 작업에 적절한 양의 리소스를 투입하고 데이터 세트의 크기에 따라 용량을 제공할 수 있습니다. 따라서 Hadoop 워크플로우의 전체 TCO를 줄일 수 있습니다.</block>
+  <block id="bea7f21895dd503dbb2c3260b3af74b5" category="section-title">Hadoop S3A 커넥터 튜닝</block>
+  <block id="53fa8f489fea78504f2a690e70f6624d" category="paragraph">S3는 HDFS와 다르게 동작하며 파일 시스템의 모양을 유지하려는 일부 시도는 공격적으로 최적화되지 않습니다. S3 리소스를 가장 효율적으로 활용하려면 신중한 튜닝/테스트/실험이 필요합니다.</block>
+  <block id="485a45d91872aeb5af4b8a55fa265c39" category="inline-link">Hadoop 3.3.5 core-site.xml</block>
+  <block id="413d791e09959ec487ff70f6a5fa8f5f" category="paragraph">이 문서의 Hadoop 옵션은 Hadoop 3.3.5를 기반으로 합니다. 을 참조하십시오<block ref="ff5a0a931f8a3b6af413721cf09c3790" category="inline-link-rx"></block> 사용 가능한 모든 옵션</block>
+  <block id="18e3e9625172b950f27bfa276bc9bac2" category="paragraph">참고 – 일부 Hadoop fs.s3a 설정의 기본값은 Hadoop 버전마다 다릅니다. 현재 Hadoop 버전과 관련된 기본값을 확인하십시오. 이러한 설정이 Hadoop core-site.xml에 지정되지 않은 경우 기본값이 사용됩니다. Spark 또는 Hive 구성 옵션을 사용하여 런타임에 값을 재정의할 수 있습니다.</block>
+  <block id="85745090e2519b4e232f691071d9b425" category="inline-link">아파치 하둡 페이지</block>
+  <block id="78c46ef71aa9afef44c6367560cca566" category="paragraph">이 페이지로 이동해야 합니다<block ref="abad591e30e327768342ad907b293959" category="inline-link-rx"></block> 각 fs.s3a 옵션을 이해합니다. 가능한 경우 비운영 Hadoop 클러스터에서 테스트하여 최적의 값을 찾습니다.</block>
+  <block id="85d6e5d0078a84fc29dd42a208f9629b" category="inline-link">S3A 커넥터로 작업할 때 성능을 극대화합니다</block>
+  <block id="dcab9d5d9c10d726c90c6c4d3ac65fe0" category="paragraph">읽어야 합니다<block ref="bd3cc6effa7ab467cddf323c1824c302" category="inline-link-rx"></block> 기타 튜닝 권장 사항</block>
+  <block id="d909d5361378ec585bfd069b0711a66f" category="paragraph">몇 가지 주요 고려 사항을 살펴보겠습니다.</block>
+  <block id="245a20d95f90b2748cffdfc73cbffb3f" category="paragraph">* 1. 데이터 압축 *</block>
+  <block id="77223f8255f1260a06b0735cd6f7cfe8" category="paragraph">StorageGRID 압축을 활성화하지 마십시오. 대부분의 빅 데이터 시스템은 전체 객체를 검색하는 대신 바이트 범위 GET를 사용합니다. 압축된 객체와 함께 GET 바이트 범위를 사용하면 GET 성능이 크게 저하됩니다.</block>
+  <block id="4dd2bed9c1980f32df795815ba1bc2c9" category="paragraph">* 2. S3A 커밋 *</block>
+  <block id="d478615245634189a8210b6069fb0383" category="inline-link">일반 S3A 커밋 옵션 페이지</block>
+  <block id="7ac30a4c19c86427129a4848b169de86" category="paragraph">일반적으로 magic s3a committer가 권장됩니다. 이를 참조하십시오<block ref="7bd5d7726ff15eb3278019d14d9791ad" category="inline-link-rx"></block> 마법 커밋 및 관련 s3a 설정에 대한 더 나은 이해를 얻기 위해.</block>
+  <block id="1c90757eed18fc6bd4eb8aba8421533f" category="paragraph">매직 커미터:</block>
+  <block id="5fd47885b78e7fc30d2f24ef46be983b" category="paragraph">Magic Committer는 특히 S3Guard에 의존하여 S3 오브젝트 저장소에서 일관된 디렉토리 목록을 제공합니다.</block>
+  <block id="1299ce4463815e5b17364f972f897e66" category="paragraph">이제 일관된 S3(이 경우)를 통해 Magic Committer를 모든 S3 버킷과 함께 안전하게 사용할 수 있습니다.</block>
+  <block id="83f0ca20cfa52e6400b17cab93a1cf17" category="paragraph">선택 및 실험:</block>
+  <block id="fb9962c4a0d3937d268fc2deb23bea85" category="paragraph">사용 사례에 따라 클러스터 HDFS 파일 시스템에 의존하는 스테이징 커밋자와 Magic committer 중에서 선택할 수 있습니다.</block>
+  <block id="bcdd4afe5d0cbdf8cc04de0c92ddc7df" category="paragraph">두 가지를 모두 실험하여 귀사의 워크로드 및 요구사항에 가장 적합한 솔루션을 결정하십시오.</block>
+  <block id="b2272f16c45a7fc4af509338bc22504e" category="paragraph">요약하면, S3A committers는 S3에 대한 일관적이고, 고성능의 안정적인 출력 약속이라는 근본적인 과제에 대한 솔루션을 제공합니다. 내부 설계로 데이터 무결성을 유지하면서 효율적인 데이터 전송을 보장합니다.</block>
+  <block id="81501235b286178b5df292f16c6e8b47" category="inline-image-macro">S3A 옵션 표</block>
+  <block id="749d1c1d8a18506e442bfbbaec54f349" category="paragraph"><block ref="749d1c1d8a18506e442bfbbaec54f349" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc1717f3744878e6dbb68b8a22974e06" category="paragraph">* 3. 스레드, 연결 풀 크기 및 블록 크기 *</block>
+  <block id="b35c467aea8fb0e4ad9d636d48d0b8db" category="list-text">단일 버킷과 상호 작용하는 각 * S3A * 클라이언트에는 업로드 및 복사 작업을 위한 개방형 HTTP 1.1 연결 전용 풀과 스레드가 있습니다.</block>
+  <block id="4b7fc1639229d7f089f2e8c85436106e" category="inline-link">이러한 풀 크기를 조정하여 성능과 메모리/스레드 사용량 간의 균형을 맞출 수 있습니다</block>
+  <block id="901a6addd359ee8998a8f1e41f45789f" category="list-text"><block ref="801a4dc74c7b120220c9c416fd446c6b" category="inline-link-rx"></block>.</block>
+  <block id="10fbe332f21fbd575e849cde38283e2e" category="list-text">S3에 데이터를 업로드하면 블록으로 나뉩니다. 기본 블록 크기는 32MB입니다. fs.s3a.block.size 속성을 설정하여 이 값을 사용자 지정할 수 있습니다.</block>
+  <block id="ffa0e6a713cabf752ba8055eaaede5fc" category="list-text">블록 크기가 클수록 업로드 시 다중 파트 관리 오버헤드를 줄여 대용량 데이터 업로드의 성능을 향상시킬 수 있습니다. 대용량 데이터 세트의 권장 값은 256MB 이상입니다.</block>
+  <block id="06227b83b2c17941a4d807e7d9b74710" category="paragraph"><block ref="06227b83b2c17941a4d807e7d9b74710" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f40f5a29dd719649854707ad2ed54faa" category="paragraph">* 4. 멀티 파트 업로드 *</block>
+  <block id="289795451e85a0a16d75e7868c7480d0" category="paragraph">s3a committers * 항상 * MPU(멀티 파트 업로드)를 사용하여 데이터를 S3 버킷에 업로드합니다. 작업 실패, 추측에 의한 작업 실행, 커밋 전 작업 중단 등을 허용하기 위해 필요합니다. 다음은 다중 파트 업로드와 관련된 몇 가지 주요 사양입니다.</block>
+  <block id="a9da1ffc95aa8035dfd68dae308c2231" category="list-text">최대 개체 크기: 5TiB(테라바이트)</block>
+  <block id="d0fb74e477b55b97737f386acec3b84e" category="list-text">업로드당 최대 부품 수: 10,000.</block>
+  <block id="83b29781f2e067cdc992c431a51a9935" category="list-text">부품 번호: 1 ~ 10,000 범위(포함).</block>
+  <block id="7345af9128ab03965deea092bbcd2202" category="list-text">부품 크기: 5MiB에서 5GiB 사이. 멀티 파트 업로드의 마지막 부분에 대한 최소 크기 제한은 없습니다.</block>
+  <block id="f9064148ac19ecdf76f9ddca593dbddb" category="paragraph">S3 멀티 파트 업로드에 더 작은 파트 크기를 사용하면 장점과 단점이 모두 있습니다.</block>
+  <block id="1ef80274ba7e199b46d885662e8e2e9f" category="paragraph">* 장점 *:</block>
+  <block id="e4461ace39f3509a41ff3e20c71902cf" category="list-text">네트워크 문제에서 빠른 복구: 작은 부품을 업로드하면 네트워크 오류로 인해 실패한 업로드를 다시 시작할 때의 영향이 최소화됩니다. 부품에 오류가 발생하면 전체 오브젝트가 아닌 특정 부분만 다시 업로드하면 됩니다.</block>
+  <block id="df3a8de4dd7f4c840c5cd07e596cb5de" category="list-text">향상된 병렬 처리: 다중 스레딩 또는 동시 연결을 활용하여 더 많은 파트를 병렬로 업로드할 수 있습니다. 이 병렬화는 특히 큰 파일을 처리할 때 성능을 향상시킵니다.</block>
+  <block id="c44c778d63d4fd51a252f196604c2ec6" category="paragraph">* 단점 *:</block>
+  <block id="5c62a121681103dd6392f0859e18473a" category="list-text">네트워크 오버헤드: 파트 크기가 작을수록 업로드할 파트가 더 많아지며 각 파트마다 자체 HTTP 요청이 필요합니다. HTTP 요청이 많을수록 개별 요청을 시작 및 완료하는 데 따르는 오버헤드가 증가합니다. 많은 수의 작은 파트를 관리하면 성능에 영향을 줄 수 있습니다.</block>
+  <block id="748b6dc8bff1881d38cec5375d3045a7" category="list-text">복잡성: 주문 관리, 부품 추적, 성공적인 업로드 보장은 번거로울 수 있습니다. 업로드를 중단해야 하는 경우 이미 업로드한 모든 부품을 추적하고 제거해야 합니다.</block>
+  <block id="f3983123dcac058e305af36c45c988e8" category="paragraph">Hadoop의 경우 fs.s3a.multipart.size에 256MB 이상의 파트 크기가 권장됩니다. 항상 fs.s3a.mutlipart.threshold 값을 2 x fs.s3a.multipart.size 값으로 설정하십시오. 예를 들어 fs.s3a.multipart.size=256M,fs.s3a.mullipart.threshold는 512M이어야 합니다.</block>
+  <block id="4251dd2508268d84d780950cfa957f88" category="paragraph">대형 데이터 세트에 더 큰 파트 크기를 사용합니다. 특정 사용 사례와 네트워크 상태에 따라 이러한 요소의 균형을 맞추는 부품 크기를 선택하는 것이 중요합니다.</block>
+  <block id="56d98abf32151f1e7a60c6cdad4b995e" category="inline-link">3단계 프로세스</block>
+  <block id="40a26596045288b6e31e0524da1e78d4" category="paragraph">다중 부분 업로드는 입니다<block ref="119a74f2526c1f8ee38f113c37745d3a" category="inline-link-rx"></block>:</block>
+  <block id="e77511b5a47e9ce5242b5e2707d34871" category="list-text">업로드가 시작되면 StorageGRID에서 업로드 ID를 반환합니다.</block>
+  <block id="465c4cf2408ae7723d681a9c8607de37" category="list-text">개체 부분은 upload-id를 사용하여 업로드됩니다.</block>
+  <block id="265f70ced2325f215340985c129b8fff" category="list-text">모든 객체 부분이 업로드되면 는 업로드 ID와 함께 완전한 멀티 파트 업로드 요청을 보냅니다. StorageGRID는 업로드된 부분에서 객체를 생성하며 클라이언트는 객체에 액세스할 수 있습니다.</block>
+  <block id="65638a5ddb2ddbd00963cc5b84f206d1" category="paragraph">전체 다중 파트 업로드 요청이 성공적으로 전송되지 않으면 부품은 StorageGRID에 남아 있고 객체를 생성하지 않습니다. 이 문제는 작업이 중단, 실패 또는 중단될 때 발생합니다. 업로드가 시작된 후 15일이 경과하면 멀티 파트 업로드가 완료되거나 중단되거나 StorageGRID가 이러한 부품을 제거할 때까지 파트가 그리드에 남아 있습니다. 버킷에 여러 개의(수억 ~ 수백만) 진행 중인 멀티 파트 업로드가 있는 경우 Hadoop이 'list-multipart-uploads'를 전송할 때(이 요청은 업로드 ID로 필터링되지 않음) 요청을 완료하는 데 시간이 오래 걸리거나 시간이 초과될 수 있습니다. 적절한 fs.s3a.mutlipart.purge를 true로 설정하여 적절한 fs.s3a.multipart.purge.age 값을 설정할 수 있습니다(예: 5-7일, 기본값 86400, 즉 1일을 사용하지 마십시오). 또는 NetApp 지원 팀에 문의하여 상황을 조사하십시오.</block>
+  <block id="caf1551badab24f35930164061cff3dd" category="paragraph"><block ref="caf1551badab24f35930164061cff3dd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d9703f8bc6fb70abb3d253a5ded96197" category="paragraph">* 5. 메모리의 버퍼 쓰기 데이터 *</block>
+  <block id="36a89ed4836d3b5b5f59193e28776e5c" category="paragraph">성능을 높이기 위해 쓰기 데이터를 S3에 업로드하기 전에 메모리에 버퍼링할 수 있습니다. 이렇게 하면 작은 쓰기 수를 줄이고 효율성을 높일 수 있습니다.</block>
+  <block id="f26f197ffec0d3e726569f182287a9a8" category="paragraph"><block ref="f26f197ffec0d3e726569f182287a9a8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="63d5657772886960693d8740023cf233" category="paragraph">S3 및 HDFS는 서로 다른 방식으로 작동한다는 점을 기억하십시오. S3 리소스를 가장 효율적으로 활용하려면 신중한 튜닝/테스트/실험이 필요합니다.</block>
+  <block id="38a5cc39717b20b4cde7ce17adfaf8c7" category="summary">이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니다.</block>
+  <block id="5d272a32f1e2287537ac7e73dbde5d69" category="doc">NetApp StorageGRID 및 빅데이터 분석</block>
+  <block id="f5787e6402b1cee555a3442483bd6327" category="section-title">NetApp StorageGRID 사용 사례</block>
+  <block id="92f1edc36d1985b5746e924fb88bb19b" category="paragraph">NetApp StorageGRID 오브젝트 스토리지 솔루션은 확장성, 데이터 가용성, 보안 및 고성능을 제공합니다. 모든 규모와 다양한 산업 분야의 조직이 광범위한 사용 사례에 StorageGRID S3를 사용합니다. 몇 가지 일반적인 시나리오를 살펴보겠습니다.</block>
+  <block id="27f32b3f9512c62dc40543d9cc892611" category="paragraph">* 빅 데이터 분석: * StorageGRID S3는 기업에서 Apache Spark, Splunk Smartstore 및 Dremio와 같은 도구를 사용하여 분석을 위해 대량의 정형 및 비정형 데이터를 저장하는 데이터 레이크로 자주 사용됩니다.</block>
+  <block id="e77b3574759aea5c11a8d04312bc2cbe" category="paragraph">* 데이터 계층화: * NetApp 고객은 ONTAP의 FabricPool 기능을 사용하여 고성능 로컬 계층 간에 데이터를 자동으로 StorageGRID로 이동합니다. 계층화하면 콜드 데이터를 저렴한 오브젝트 스토리지에서 즉시 사용 가능한 상태로 유지하면서 고가의 플래시 스토리지를 핫 데이터용으로 확보할 수 있습니다. 따라서 성능과 비용 절감 효과가 극대화됩니다.</block>
+  <block id="4dc7ef59b422ad6beec0dcf560a3fdf9" category="paragraph">* 데이터 백업 및 재해 복구: * 기업에서는 StorageGRID S3를 안정적이고 비용 효율적인 솔루션으로 사용하여 중요한 데이터를 백업하고 재해 발생 시 복구할 수 있습니다.</block>
+  <block id="b05954e05454ab56e0d356cb4ad49d95" category="paragraph">* 응용 프로그램용 데이터 저장: * StorageGRID S3는 응용 프로그램용 스토리지 백엔드로 사용할 수 있으므로 개발자가 파일, 이미지, 비디오 및 기타 유형의 데이터를 쉽게 저장하고 검색할 수 있습니다.</block>
+  <block id="5623c900b98e0e5e17c60c75ded947b1" category="paragraph">* 콘텐츠 전송: * StorageGRID S3를 사용하여 정적 웹 사이트 콘텐츠, 미디어 파일 및 소프트웨어 다운로드를 전 세계 사용자에게 저장하고 제공할 수 있으며, StorageGRID의 지리적 분산 및 글로벌 네임스페이스를 활용하여 빠르고 안정적인 콘텐츠 전송을 수행할 수 있습니다.</block>
+  <block id="60b72d1ecbd87ac726a3dbb733456c59" category="paragraph">* 데이터 계층화: * NetApp 고객은 ONTAP FabricPool 기능을 사용하여 고성능 로컬 계층 간에 데이터를 자동으로 StorageGRID로 이동합니다. 계층화하면 콜드 데이터를 저렴한 오브젝트 스토리지에서 즉시 사용 가능한 상태로 유지하면서 고가의 플래시 스토리지를 핫 데이터용으로 확보할 수 있습니다. 따라서 성능과 비용 절감 효과가 극대화됩니다.</block>
+  <block id="454845c7ca306686c28f96a59487d70c" category="paragraph">* 데이터 아카이브: * StorageGRID는 다양한 스토리지 유형을 제공하고 공용 장기 저비용 스토리지 옵션에 대한 계층화를 지원하며, 규정 준수 또는 기간별 목적으로 보존해야 하는 데이터의 보관 및 장기 보존에 이상적인 솔루션입니다.</block>
+  <block id="a324e6c3bb7d6684738c923e7b52ea98" category="paragraph">* 오브젝트 스토리지 사용 사례 *</block>
+  <block id="9f79f86c9a539a911125a876ef6a3c2e" category="inline-image-macro">StorageGRID 사용 사례 다이어그램, 폭 = 396, 높이 = 394</block>
+  <block id="2ae53f7687415e47352b3c8fdf11602c" category="paragraph"><block ref="2ae53f7687415e47352b3c8fdf11602c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c9e24c78b995a9f99006f7b470383259" category="paragraph">위 중 빅 데이터 분석은 최상위 사용 사례 중 하나이며 사용량이 증가하고 있습니다.</block>
+  <block id="d9adadb4a0063dcb9fae0a43c0073259" category="section-title">데이터 레이크에 StorageGRID를 사용해야 하는 이유</block>
+  <block id="20ee9cfabde8b905c9a64689a84b0921" category="list-text">협업 증가 - 업계 표준 API 액세스를 지원하는 대규모 공유 멀티 사이트 멀티 테넌시</block>
+  <block id="884ee76830efc6a2368841cf8e70b390" category="list-text">운영 비용 절감 - 자동 복구, 자동화된 단일 스케일아웃 아키텍처를 통해 운영 간소화</block>
+  <block id="abdafbcb8273ebb7d3d1776426912eea" category="list-text">확장성 - 기존 Hadoop 및 데이터 웨어하우스 솔루션과 달리 StorageGRID S3 오브젝트 스토리지는 스토리지를 컴퓨팅과 데이터와 분리하므로 기업이 필요에 따라 스토리지 요구사항을 확장할 수 있습니다.</block>
+  <block id="94756ff0a241ceb246fb4e92f9e8b5db" category="list-text">내구성 및 안정성 - StorageGRID는 99.9999999%의 내구성을 제공하여 저장된 데이터가 데이터 손실에 대한 저항성이 높습니다. 또한 고가용성을 제공하여 데이터에 항상 액세스할 수 있도록 보장합니다.</block>
+  <block id="6d5424acc89d68777ded882e67fba989" category="list-text">보안-StorageGRID는 암호화, 액세스 제어 정책, 데이터 라이프사이클 관리, 오브젝트 잠금 및 버전 관리와 같은 다양한 보안 기능을 제공하여 S3 버킷에 저장된 데이터를 보호합니다</block>
+  <block id="9ed95e053e569a8027874c20fc968fa0" category="paragraph">* StorageGRID S3 데이터 레이크 *</block>
+  <block id="16440189dc2ac5b52ea041615f4e3502" category="inline-image-macro">StorageGRID 데이터 레이크 예, width=614, height=345</block>
+  <block id="8c6ce2dc10841da36e2b55063b73a29e" category="paragraph"><block ref="8c6ce2dc10841da36e2b55063b73a29e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bcf6df0d4fc301b73dfb0f84c2b25fca" category="section-title">S3 오브젝트 스토리지에서 가장 잘 작동하는 데이터 웨어하우스 또는 데이터 레이크가 있습니다</block>
+  <block id="f5fb5a608581154f9f31a7efeaf26b22" category="inline-link">아파치 아이스버그: 확실한 가이드</block>
+  <block id="961898fd5ba4fc2d612d1c831953550a" category="paragraph">NetApp는 Hive, Delta Lake 및 Dremio 등 3개의 데이터 웨어하우스/호수 하우스 에코시스템을 통해 StorageGRID의 벤치마크를 수행했습니다.<block ref="ea7970154750f3c7264130a8bd2b3dc5" category="inline-link-rx"></block> 데이터 웨어하우스 및 데이터 레이크 하우스에 대한 간략한 소개와 이 두 아키텍처의 장점 포함</block>
+  <block id="d74100f8d86dca0577d39ba1e04a17a6" category="list-text">벤치마크 도구 - TPC-DS -<block ref="d703b8825e30c09e87a04e77b042a1a8" category="inline-link-rx"></block></block>
+  <block id="d30ec88779257c0b31627ba4c551888a" category="list-text">빅 데이터 에코시스템</block>
+  <block id="3d8fdb479ba6a1b9cecf651f9b7eea26" category="list-text">VM 5개로 구성된 클러스터, 각각 128G RAM 및 24개의 vCPU, 시스템 디스크용 SSD 스토리지</block>
+  <block id="a7bc6add825dafcb28d8468de2244c0e" category="list-text">Hive 3.1.3 포함 Hadoop 3.3.5(이름 노드 1개 + 데이터 노드 4개)</block>
+  <block id="6b3b732f04270b0bc61c4e04a2f39184" category="list-text">Spark 3.0.0(마스터 1명 + 작업자 4명) 및 Hadoop 3.3.5 지원 델타 레이크</block>
+  <block id="6b18ec7d77a4e9e064cbf7907da0f995" category="list-text">Dremio v23(마스터 1개 + 실행자 4개)</block>
+  <block id="670aaecb1a526fbed439dad3ec353a96" category="list-text">오브젝트 스토리지</block>
+  <block id="2d9b029355e87294061ae6f1de033209" category="list-text">NetApp ® StorageGRID ® 11.6(SG6060 + SG1000 로드 밸런서 3개 포함</block>
+  <block id="3e02059b0b44d7c31aea68d26d910c82" category="list-text">오브젝트 보호 - 복사본 2개</block>
+  <block id="3cf72a217876a6502e40c6bc45a93c60" category="list-text">데이터베이스 크기 1000GB</block>
+  <block id="8db25bfcdb041c33cb3750cd355e2821" category="list-text">각 쿼리 테스트에 대해 일관된 결과를 얻기 위해 3개 에코시스템에서 캐시를 모두 사용할 수 없습니다.</block>
+  <block id="4775694e0c94905d9a80366e4fa7f65a" category="paragraph">TPC-DS에는 쿼리 벤치마킹을 위한 99개의 복잡한 SQL 쿼리가 포함되어 있습니다. 전체 시간(분)을 측정하여 99개의 쿼리를 모두 완료했으며 결과를 분석하기 위한 S3 요청의 유형과 수를 세분화하여 더 깊이 있게 조사했습니다. 아래의 첫 번째 표는 99개의 모든 쿼리의 총 기간을 보여 주며 두 번째 표는 각 에코시스템에서 StorageGRID로 전송된 S3 요청의 수와 유형을 요약한 것입니다.</block>
+  <block id="6d250f65ee48829b160dce910ccf0190" category="paragraph">* TPC-DS 쿼리 결과 *</block>
+  <block id="47e3170ffb3d6c316975632968933646" category="cell">에코시스템</block>
+  <block id="c05def664dae0985e5984993db2b69a0" category="cell">하이브</block>
+  <block id="e51fc2a250a74f84b11010c0f9316c46" category="cell">델타 레이크</block>
+  <block id="6f632a1f063dc14df220da8c1d176f38" category="cell">지원합니다</block>
+  <block id="49519cec4f69d00412deaceb05c68eb8" category="cell">NetApp (영어) StorageGRID (영어</block>
+  <block id="ce1dc110e77caccbe12e51dce2d1c9b7" category="cell">드라이브 유형입니다</block>
+  <block id="9c2dc227590d4220750b52b21b0aeb99" category="cell">HDD</block>
+  <block id="5128c40e9b4875ff6b6f9b08e8d0a03f" category="cell">표 형식</block>
+  <block id="ace780da4816e1e457db8c57d60b5d66" category="cell">마루</block>
+  <block id="f49606530a9567c51e160fcce34b8f71" category="cell">마루 1</block>
+  <block id="6267eaec7dcff27c3dc9e28ff41252d0" category="cell">데이터베이스 크기</block>
+  <block id="a0b2fbadd5b3ebfe64b31483a2ac8886" category="cell">1000g</block>
+  <block id="35b5589d5690d7ef32acf311beb9bbea" category="cell">TPCDS 99 쿼리 +
+총 시간(분)</block>
+  <block id="d06520689ef9c6002c5ceab8146281f6" category="cell">1084 - 2도</block>
+  <block id="b53b3a3d6ab90ce0268229151c9bde11" category="cell">55</block>
+  <block id="67c6a1e7ce56d3d6fa748ab6d9af3fd7" category="cell">47</block>
+  <block id="fb9fcf59d7e277fffe7705ce2be3777a" category="paragraph">파케(Parquet)와 아이스버그(Iceberg) 테이블 형식을 모두 테스트한 결과도 이와 유사합니다.</block>
+  <block id="673b0197afb5ff5d157542553d103217" category="paragraph">2. 조회 번호 72를 완료할 수 없습니다.</block>
+  <block id="95f1998726f8cd4be0aff86865fa8eae" category="paragraph">* TPC-DS 쿼리 - S3 요청 분석 *</block>
+  <block id="3e197ca7a19378fad3e5581cbd39fb4b" category="cell">S3 요청</block>
+  <block id="7528035a93ee69cedb1dbddb2f0bfcc8" category="cell">가져오기</block>
+  <block id="8db7bb1512ff25e1db67c5b9a53f897d" category="cell">1,117,184</block>
+  <block id="2569e54b8230d5c2746fa85c61dcf512" category="cell">2,074,610</block>
+  <block id="7cea2b87e7eb0c4d67994a7b9fa4f3d3" category="cell">4,414,227</block>
+  <block id="6f53c4f40f0a0d7fefdb89564ac1c713" category="cell">관찰: +
+모든 제품군 GET</block>
+  <block id="a9d41bf59f53e6160f0b13f571ea418a" category="cell">80% 범위 32MB 객체에서 2KB ~ 2MB, 초당 50 ~ 100회의 요청</block>
+  <block id="e0b8bceb4cded5e4c1e2d73d9331f0f7" category="cell">73% 범위는 32MB 개체에서 100KB 미만으로, 초당 1000 - 1400개의 요청 수입니다</block>
+  <block id="bfe0f96dc7eb9140699f8fdd7568c553" category="cell">90% 1M 바이트 범위는 256MB 객체, 초당 2000-2300개 요청에서 가져옵니다</block>
+  <block id="0f220d208874b104e26e73ec94b0e690" category="cell">개체 나열</block>
+  <block id="bfc2dfc2cb23058c08a7d12b5c3abb19" category="cell">312,053입니다</block>
+  <block id="0e706da47bd945de88f06af5c56e1e6a" category="cell">24,158입니다</block>
+  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
+  <block id="c03e2ac569e5aac15b52493eef30e9e7" category="cell">머리 +
+(존재하지 않는 객체)</block>
+  <block id="b920dc6d7f4f2319e93bdcc850be6166" category="cell">156,027</block>
+  <block id="8e43c25a28a92db67de364324cbdf9dd" category="cell">12,103</block>
+  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192</block>
+  <block id="d241bb72f8484e8c12847a1c342893cc" category="cell">머리 +
+(존재하는 객체)</block>
+  <block id="791138a3078a87a630b0ddcc779f5365" category="cell">982,126</block>
+  <block id="41157fd52202414d46b193aa0dc0e7ed" category="cell">922,732</block>
+  <block id="4a12caac680acef61b9d5542d0bdd153" category="cell">1,845</block>
+  <block id="645d67b4eb5a0d06bf14fe7a682ced76" category="cell">총 요청 수입니다</block>
+  <block id="a56d0d38d9846ac044442ecabae19902" category="cell">2,567,390입니다</block>
+  <block id="6dfffbda5aeba01126df9439ffbc82a3" category="cell">3,033,603입니다</block>
+  <block id="b0f186b9ad3639a900dc289160a9505b" category="cell">4,416,504입니다</block>
+  <block id="15dc52463e414693d28f722fd4d402db" category="paragraph">첫 번째 테이블에서, 우리는 델타 호수와 Dremio가 Hive보다 훨씬 더 빠르다는 것을 볼 수 있습니다. 두 번째 표에서 Hive는 많은 S3 목록 오브젝트 요청을 전송했습니다. 이 요청은 모든 오브젝트 스토리지 플랫폼에서 일반적으로 느리며, 특히 많은 오브젝트가 포함된 버킷을 다룰 경우 매우 느립니다. 따라서 전체 쿼리 기간이 크게 증가합니다. 또 다른 관찰은 Dremio가 Hive에서 초당 50-100개의 요청을 처리하는 데 비해 초당 2,000-2,300개의 요청을 동시에 보낼 수 있다는 것입니다. Hive 및 Hadoop S3A는 표준 파일 시스템을 모방하여 S3 오브젝트 스토리지에 Hive 느림 효과를 제공합니다.</block>
+  <block id="5fd92565468cb3e9de156c317d9d5f07" category="paragraph">Hive 또는 Spark와 함께 Hadoop(HDFS 또는 S3 오브젝트 스토리지)을 사용하려면 Hadoop 및 Hive/Spark와 각 서비스의 설정이 상호 작용하는 방법에 대한 폭넓은 지식이 필요합니다. 이러한 두 서비스의 설정이 1,000개 이상인 경우입니다. 설정은 서로 관련이 있는 경우가 매우 많으며 단독으로 변경할 수 없습니다. 사용할 설정과 값의 최적 조합을 찾기 위해서는 엄청난 시간과 노력이 필요합니다.</block>
+  <block id="8a96077dd21be324029bd1c265c53313" category="paragraph">Dremio는 완벽한 Apache Arrow를 사용하여 쿼리 성능을 획기적으로 향상하는 데이터 레이크 엔진입니다. Apache Arrow는 효율적인 데이터 공유와 빠른 분석을 위해 표준화된 원주 메모리 형식을 제공합니다. Arrow는 데이터 serialization 및 deserialization의 필요성을 제거하여 복잡한 데이터 프로세스와 시스템 간의 성능 및 상호 운용성을 향상시키도록 설계된 언어 독립적 접근 방식을 사용합니다.</block>
+  <block id="dec1fbcbe442f11c3d728feb8041cb00" category="paragraph">Dremio의 성능은 주로 Dremio 클러스터의 컴퓨팅 성능에 의해 좌우됩니다. Dremio는 S3 오브젝트 스토리지 연결에 Hadoop의 S3A 커넥터를 사용하지만 Hadoop은 필요하지 않으며 대부분의 Hadoop의 fs.s3a 설정은 Dremio에서 사용되지 않습니다. 따라서 다양한 Hadoop s3a 설정을 배우고 테스트하는 데 시간을 들이지 않고도 Dremio 성능을 손쉽게 튜닝할 수 있습니다.</block>
+  <block id="71860c77c6745379b0d44304d66b6a13" category="inline-link">페이지</block>
+  <block id="5db9c9da095f8d74e0628dbbdfdfb825" category="paragraph">이러한 벤치마크 결과에서 알 수 있듯이 S3 기반 워크로드에 최적화된 빅데이터 분석 시스템이 주요 성능 요인이라는 결론을 내릴 수 있습니다. Dremio는 쿼리 실행을 최적화하고, 메타데이터를 효율적으로 사용하며, S3 데이터에 대한 원활한 액세스를 제공하므로 S3 스토리지로 작업할 때 Hive에 비해 성능이 향상됩니다. 이를 참조하십시오<block ref="e4ec3c3ef03861ef67845dfb086c7b17" category="inline-link-rx"></block> StorageGRID를 사용하여 Dremio S3 데이터 소스를 구성합니다.</block>
+  <block id="c0c37f88f031a9b491d9a8bbea81dda7" category="paragraph">아래 링크를 방문하여 StorageGRID와 Dremio가 함께 작동하여 현대적이고 효율적인 데이터 레이크 인프라를 제공하는 방법과 NetApp가 Hive+ HDFS에서 Dremio+ StorageGRID로 마이그레이션하여 빅데이터 분석 효율성을 획기적으로 개선한 방법에 대해 자세히 알아보십시오.</block>
+  <block id="79304bd05c48f486a8924e2c45f39311" category="inline-link">NetApp StorageGRID로 빅데이터의 성능을 향상하십시오</block>
+  <block id="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="list-text"><block ref="9f6a1ff945eb33fcb8e19e5c7f4d3562" category="inline-link-rx"></block></block>
+  <block id="5683e5844e7df088ba30c5038415b393" category="inline-link">StorageGRID 및 Dremio를 사용하는 현대적이고 강력하고 효율적인 데이터 레이크 인프라</block>
+  <block id="90db912c71e3eeae0631168476c49b1d" category="list-text"><block ref="90db912c71e3eeae0631168476c49b1d" category="inline-link-rx"></block></block>
+  <block id="1f3f85a45cc94830ad50d8dcc85d553a" category="inline-link">NetApp이 제품 분석을 통해 고객 경험을 재정의하는 방법</block>
+  <block id="7014c893b79b05f09938975b394e0ca5" category="list-text"><block ref="7014c893b79b05f09938975b394e0ca5" category="inline-link-rx"></block></block>
+  <block id="06b48b444551989a8bbf76e3cb86a3d2" category="sidebar">StorageGRID를 사용하여 GitLab을 구성합니다</block>
+  <block id="00f36bd2b4cd1d9e59ff895b5e131be2" category="sidebar">기술 보고서</block>
+  <block id="0ad1cadfe97c5910e1b3ce75c8b0ff1f" category="sidebar">NetApp StorageGRID 및 빅데이터 분석</block>
+  <block id="6407baffaf35e5f51c2e06e83659fcae" category="sidebar">Hadoop S3A 튜닝 모범 사례</block>
+  <block id="34d8c979f20e6e946fc25898c9b703b0" category="sidebar">Hadoop S3A 튜닝</block>
 </blocks>

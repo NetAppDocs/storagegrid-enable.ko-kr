@@ -60,6 +60,14 @@ indexpage:
       url: "/tools-apps-guides/veeam-br.html"
     - title: StorageGRID를 사용하여 Dremio를 구성합니다
       url: "/tools-apps-guides/configure-dremio-storagegrid.html"
+    - title: StorageGRID를 사용하여 GitLab을 구성합니다
+      url: "/tools-apps-guides/integrate-gitlab.html"
+  - title: 기술 보고서
+    links:
+    - title: NetApp StorageGRID 및 빅데이터 분석
+      url: "/technical-reports/datalake-analytics.html"
+    - title: Hadoop S3A 튜닝 모범 사례
+      url: "/technical-reports/s3a-tuning.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다

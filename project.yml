@@ -17,6 +17,7 @@ sidebar:
   - section: product-feature-guides
   - section: tools-apps-guides
   - section: examples
+  - section: technical-reports
   - title: 블로그 게시물
     url: "/blogs.html"
   - title: StorageGRID 설명서
