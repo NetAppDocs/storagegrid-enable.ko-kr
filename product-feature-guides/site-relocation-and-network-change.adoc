@@ -1,0 +1,92 @@
+---
+permalink: product-feature-guides/site-relocation-and-network-change.html 
+sidebar: sidebar 
+keywords: relocation move network change 
+summary: 이 가이드에서는 다중 사이트 그리드에서 StorageGRID 사이트 재배치를 위한 준비 및 절차에 대해 설명합니다. 
+---
+= 그리드 사이트 재배치 및 사이트 전체 네트워크 변경 절차
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 가이드에서는 다중 사이트 그리드에서 StorageGRID 사이트 재배치를 위한 준비 및 절차에 대해 설명합니다. 이 절차를 완전히 이해하고 원활한 프로세스를 보장하고 고객의 중단을 최소화할 수 있도록 미리 계획해야 합니다.
+
+전체 그리드의 그리드 네트워크를 변경해야 하는 경우 을 참조하십시오
+link:https://docs.netapp.com/us-en/storagegrid-118/maintain/changing-nodes-network-configuration.html["그리드의 모든 노드에 대한 IP 주소를 변경합니다"].
+
+
+
+== 사이트 재배치 전 고려 사항
+
+* 사이트 이동을 완료하고 모든 노드를 15일 이내에 온라인으로 전환하여 Cassandra 데이터베이스가 재구축되지 않도록 합니다.
+link:https://docs.netapp.com/us-en/storagegrid-118/maintain/recovering-storage-node-that-has-been-down-more-than-15-days.html["스토리지 노드를 15일 이상 복구합니다"^]
+* 활성 정책의 ILM 규칙이 엄격한 수집 동작을 사용하고 있는 경우, 고객이 사이트 재배치 중에 그리드에 개체를 계속 넣으려는 경우 이를 밸런스 또는 이중 커밋으로 변경하는 것이 좋습니다.
+* 60개 이상의 드라이브가 있는 스토리지 어플라이언스의 경우 디스크 드라이브가 설치된 상태로 쉘프를 이동하지 마십시오.  포장/이동 전에 각 디스크 드라이브에 레이블을 지정하고 스토리지 인클로저에서 분리하십시오.
+* StorageGRID 어플라이언스 변경 그리드 네트워크 VLAN은 관리 네트워크 또는 클라이언트 네트워크를 통해 원격으로 수행할 수 있습니다.  또는 재배치 이전 또는 이후에 변경을 수행하기 위해 현장에 있을 계획입니다.
+* 고객 응용 프로그램이 HEAD를 사용하고 있는지 또는 넣기 전에 존재하지 않는 개체를 가져오는지 확인합니다. 그렇다면 HTTP 500 오류를 방지하기 위해 버킷 일관성을 강력한 사이트로 변경합니다.  확실하지 않은 경우, S3 개요 Grafana Charts * 그리드 매니저 > 지원 > 메트릭 * 에서 '총 완료된 요청' 차트 위에 마우스를 올려 놓습니다.  404 Get Object 또는 404 head object의 개수가 매우 많으면 하나 이상의 응용 프로그램이 head 또는 get nonexistance object를 사용하고 있을 가능성이 높습니다. 카운트가 누적됩니다. 다른 타임라인에 마우스를 갖다 대면 차이를 확인할 수 있습니다.
++
+image:site-relocation/s3-completed-request.png["S3 개요 Grafana 차트 샘플"]
+
+
+
+
+
+=== 사이트 재배치 전 그리드 IP 주소를 변경하는 절차
+
+.단계
+. 새 그리드 네트워크 서브넷을 새 위치에서 사용할 경우
+link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-grid-network.htmll["그리드 네트워크 서브넷 목록에 서브넷을 추가합니다"^]
+. 기본 관리자 노드에 로그인하고 change-IP를 사용하여 그리드 IP를 변경합니다. 변경을 위해 노드를 종료하기 전에 * 단계 * 해야 합니다.
++
+.. 그리드 IP 변경에 대해 2와 1을 차례로 선택합니다
++
+image:site-relocation/ip-change-1.png[""]
+
+.. 5를 선택하여 변경 사항을 표시합니다
++
+image:site-relocation/ip-change-2.png[""]
+
+.. 10을 선택하여 변경 사항을 확인하고 적용합니다.
++
+image:site-relocation/ip-change-3.png[""]
+
+.. 이 단계에서 * stage * 를 선택해야 합니다.
++
+image:site-relocation/ip-change-4.png[""]
+
+.. 위 변경에 기본 관리 노드가 포함되어 있는 경우 * 'a'를 입력하여 운영 관리 노드를 수동으로 다시 시작합니다 *
++
+image:site-relocation/ip-change-5.png[""]
+
+.. 이전 메뉴로 돌아가고 change-IP 인터페이스에서 나가려면 Enter 키를 누릅니다.
++
+image:site-relocation/ip-change-6.png[""]
+
+
+
+. Grid Manager에서 새 복구 패키지를 다운로드합니다. * 그리드 관리자 * > * 유지 관리 * > * 복구 패키지 *
+. StorageGRID 어플라이언스에서 VLAN 변경이 필요한 경우 섹션을 참조하십시오 <<어플라이언스 VLAN 변경>>.
+. 사이트의 모든 노드 및/또는 어플라이언스를 종료하고, 필요한 경우 디스크 드라이브에 레이블을 붙이거나 제거하고, 랙을 해제하고, 포장하고, 이동합니다.
+. 관리자 네트워크 IP 및/또는 클라이언트 VLAN 및 IP 주소를 변경하려는 경우 재배치 후 변경 작업을 수행할 수 있습니다.
+
+
+
+
+=== 어플라이언스 VLAN 변경
+
+아래 절차에서는 StorageGRID 어플라이언스의 관리자 또는 클라이언트 네트워크에 원격으로 액세스하여 원격으로 변경을 수행하는 것으로 가정합니다.
+
+.단계
+. 제품을 종료하기 전에
+link:https://docs.netapp.com/us-en/storagegrid-appliances/commonhardware/placing-appliance-into-maintenance-mode.html["제품을 유지보수 모드로 두십시오"].
+. 브라우저를 사용하여 를 사용하여 StorageGRID 어플라이언스 설치 프로그램 GUI에 액세스합니다 https://<admin-or-client-network-ip>:8443[].  어플라이언스가 유지보수 모드로 부팅된 후 새 그리드 IP가 이미 있으므로 그리드 IP를 사용할 수 없습니다.
+. 그리드 네트워크의 VLAN을 변경합니다.  클라이언트 네트워크를 통해 어플라이언스에 액세스하는 경우 지금은 클라이언트 VLAN을 변경할 수 없으며 이동 후 변경할 수 있습니다.
+. 어플라이언스에 SSH로 연결하고 'shutdoown -h now'를 사용하여 노드를 종료합니다.
+. 어플라이언스가 새 사이트에서 준비되면 를 사용하여 StorageGRID 어플라이언스 설치 프로그램 GUI에 액세스합니다 https://<grid-network-ip>:8443[].  GUI에서 ping/nmap 툴을 사용하여 스토리지가 최적의 상태이고 다른 그리드 노드에 대한 네트워크 연결인지 확인합니다.
+. 클라이언트 네트워크 IP를 변경하려는 경우 이 단계에서 클라이언트 VLAN을 변경할 수 있습니다.  클라이언트 네트워크는 이후 단계에서 change-IP 도구를 사용하여 클라이언트 네트워크 IP를 업데이트할 때까지 준비되지 않습니다.
+. 유지보수 모드를 종료합니다. StorageGRID 어플라이언스 설치 프로그램에서 * 고급 * > * 컨트롤러 재부팅 * 을 선택한 다음 * StorageGRID * 으로 재부팅 * 을 선택합니다.
+. 모든 노드가 가동되고 그리드에 연결 문제가 표시되지 않으면 필요에 따라 change-IP를 사용하여 어플라이언스 관리 네트워크와 클라이언트 네트워크를 업데이트합니다.
+

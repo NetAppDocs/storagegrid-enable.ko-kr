@@ -1528,4 +1528,54 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="0ad1cadfe97c5910e1b3ce75c8b0ff1f" category="sidebar">NetApp StorageGRID 및 빅데이터 분석</block>
   <block id="6407baffaf35e5f51c2e06e83659fcae" category="sidebar">Hadoop S3A 튜닝 모범 사례</block>
   <block id="34d8c979f20e6e946fc25898c9b703b0" category="sidebar">Hadoop S3A 튜닝</block>
+  <block id="23e421cbf9f56a23426fd9d29746a636" category="summary">이 가이드에서는 다중 사이트 그리드에서 StorageGRID 사이트 재배치를 위한 준비 및 절차에 대해 설명합니다.</block>
+  <block id="8295ab4dfd6c34f8b3da70a8bfaaada3" category="doc">그리드 사이트 재배치 및 사이트 전체 네트워크 변경 절차</block>
+  <block id="a7b0b12fd572901946be0ed19cb6a438" category="paragraph">이 가이드에서는 다중 사이트 그리드에서 StorageGRID 사이트 재배치를 위한 준비 및 절차에 대해 설명합니다. 이 절차를 완전히 이해하고 원활한 프로세스를 보장하고 고객의 중단을 최소화할 수 있도록 미리 계획해야 합니다.</block>
+  <block id="731561f650e3a36691bae029b4547c66" category="inline-link-macro">그리드의 모든 노드에 대한 IP 주소를 변경합니다</block>
+  <block id="e16a17e0f04937786448505101cf5703" category="paragraph">전체 그리드의 그리드 네트워크를 변경해야 하는 경우 을 참조하십시오
+<block ref="25fe4ea07c9ed2c1ea3e524430970ba9" category="inline-link-macro-rx"></block>.</block>
+  <block id="d62541926508b7fc98152bdd26f6b28c" category="section-title">사이트 재배치 전 고려 사항</block>
+  <block id="adb2a3f1ce6044cca831a1c3e1fcc38c" category="inline-link-macro">스토리지 노드를 15일 이상 복구합니다</block>
+  <block id="79286dd19701572b9607fd1b47f14c5f" category="list-text">사이트 이동을 완료하고 모든 노드를 15일 이내에 온라인으로 전환하여 Cassandra 데이터베이스가 재구축되지 않도록 합니다.
+<block ref="fb2aa662be1b0eb04ce42e59fa10d995" category="inline-link-macro-rx"></block></block>
+  <block id="d81093eaf5709c0a3ae4db45ea962851" category="list-text">활성 정책의 ILM 규칙이 엄격한 수집 동작을 사용하고 있는 경우, 고객이 사이트 재배치 중에 그리드에 개체를 계속 넣으려는 경우 이를 밸런스 또는 이중 커밋으로 변경하는 것이 좋습니다.</block>
+  <block id="5fcd60bee26dbdd38058786d89d30945" category="list-text">60개 이상의 드라이브가 있는 스토리지 어플라이언스의 경우 디스크 드라이브가 설치된 상태로 쉘프를 이동하지 마십시오.  포장/이동 전에 각 디스크 드라이브에 레이블을 지정하고 스토리지 인클로저에서 분리하십시오.</block>
+  <block id="3bf27243eed945ae028b0d83a672aafd" category="list-text">StorageGRID 어플라이언스 변경 그리드 네트워크 VLAN은 관리 네트워크 또는 클라이언트 네트워크를 통해 원격으로 수행할 수 있습니다.  또는 재배치 이전 또는 이후에 변경을 수행하기 위해 현장에 있을 계획입니다.</block>
+  <block id="fc1ade2120cd035ae884b4c776a06e08" category="list-text">고객 응용 프로그램이 HEAD를 사용하고 있는지 또는 넣기 전에 존재하지 않는 개체를 가져오는지 확인합니다. 그렇다면 HTTP 500 오류를 방지하기 위해 버킷 일관성을 강력한 사이트로 변경합니다.  확실하지 않은 경우, S3 개요 Grafana Charts * 그리드 매니저 &gt; 지원 &gt; 메트릭 * 에서 '총 완료된 요청' 차트 위에 마우스를 올려 놓습니다.  404 Get Object 또는 404 head object의 개수가 매우 많으면 하나 이상의 응용 프로그램이 head 또는 get nonexistance object를 사용하고 있을 가능성이 높습니다. 카운트가 누적됩니다. 다른 타임라인에 마우스를 갖다 대면 차이를 확인할 수 있습니다.</block>
+  <block id="61bce3e94387d562e70e4344c21875a9" category="inline-image-macro">S3 개요 Grafana 차트 샘플</block>
+  <block id="c8d25296b6242f878bcc65b3463a9213" category="paragraph"><block ref="c8d25296b6242f878bcc65b3463a9213" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="91ecbe84c3a3b51ceb6c3c1c46fe828e" category="section-title">사이트 재배치 전 그리드 IP 주소를 변경하는 절차</block>
+  <block id="7ce3d8dcf98150ca295b4e8b4a175d28" category="inline-link-macro">그리드 네트워크 서브넷 목록에 서브넷을 추가합니다</block>
+  <block id="ef79c64bf374a8f7d8f11ddac8bac6ea" category="list-text">새 그리드 네트워크 서브넷을 새 위치에서 사용할 경우
+<block ref="a48adf12485e7e1fabf51f229ceb57fd" category="inline-link-macro-rx"></block></block>
+  <block id="a27c73113b9f8b1c8936231a5c6b72db" category="list-text">기본 관리자 노드에 로그인하고 change-IP를 사용하여 그리드 IP를 변경합니다. 변경을 위해 노드를 종료하기 전에 * 단계 * 해야 합니다.</block>
+  <block id="e8ebed2710314532bd7421c291775f7a" category="list-text">그리드 IP 변경에 대해 2와 1을 차례로 선택합니다</block>
+  <block id="f246621acb182eca202eb998d35a0a71" category="paragraph"><block ref="f246621acb182eca202eb998d35a0a71" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0fc35f100f57d71f3d04d75f8e34db7a" category="list-text">5를 선택하여 변경 사항을 표시합니다</block>
+  <block id="51db02a440736bec001c7d690821ec49" category="paragraph"><block ref="51db02a440736bec001c7d690821ec49" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0db10ef124f48bf74646e51d511e42e7" category="list-text">10을 선택하여 변경 사항을 확인하고 적용합니다.</block>
+  <block id="ecf8b3b84403afdd8f30ff4ca92df4d0" category="paragraph"><block ref="ecf8b3b84403afdd8f30ff4ca92df4d0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b535a2204d1cc298ac5c3b36cc8a9249" category="list-text">이 단계에서 * stage * 를 선택해야 합니다.</block>
+  <block id="a8c78f88b73dcaf8b7082c7d8bab4356" category="paragraph"><block ref="a8c78f88b73dcaf8b7082c7d8bab4356" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23e28a352f23f6051ecbe97b0516b42f" category="list-text">위 변경에 기본 관리 노드가 포함되어 있는 경우 * 'a'를 입력하여 운영 관리 노드를 수동으로 다시 시작합니다 *</block>
+  <block id="6cfd9d702fc475a31c16db4299ee31a0" category="paragraph"><block ref="6cfd9d702fc475a31c16db4299ee31a0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="355ec7ab5ee5e52899a8a48528d82b93" category="list-text">이전 메뉴로 돌아가고 change-IP 인터페이스에서 나가려면 Enter 키를 누릅니다.</block>
+  <block id="34efad53185ba8366fcb774fe4502175" category="paragraph"><block ref="34efad53185ba8366fcb774fe4502175" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6a713acf175fd861bbb563ab540a06fe" category="list-text">Grid Manager에서 새 복구 패키지를 다운로드합니다. * 그리드 관리자 * &gt; * 유지 관리 * &gt; * 복구 패키지 *</block>
+  <block id="96557217b00ac75f863bec84c65347bf" category="list-text">StorageGRID 어플라이언스에서 VLAN 변경이 필요한 경우 섹션을 참조하십시오 <block ref="f1c1d143229526a165bf49ac775d4ecd" category="inline-xref-macro-rx"></block>.</block>
+  <block id="26afb12dd81518887c60c85ae47dab08" category="list-text">사이트의 모든 노드 및/또는 어플라이언스를 종료하고, 필요한 경우 디스크 드라이브에 레이블을 붙이거나 제거하고, 랙을 해제하고, 포장하고, 이동합니다.</block>
+  <block id="850fa0cd526764089644bd18997fcf0b" category="list-text">관리자 네트워크 IP 및/또는 클라이언트 VLAN 및 IP 주소를 변경하려는 경우 재배치 후 변경 작업을 수행할 수 있습니다.</block>
+  <block id="28b10382e67e37853ae45379b731cfaf" category="section-title">어플라이언스 VLAN 변경</block>
+  <block id="a65d2c0e652207280c57973442478f26" category="paragraph">아래 절차에서는 StorageGRID 어플라이언스의 관리자 또는 클라이언트 네트워크에 원격으로 액세스하여 원격으로 변경을 수행하는 것으로 가정합니다.</block>
+  <block id="840a6c754184c6fbce872458dcf35141" category="inline-link-macro">제품을 유지보수 모드로 두십시오</block>
+  <block id="5b8e4de8e50ebe10173b2539d1612010" category="list-text">제품을 종료하기 전에
+<block ref="1d36a7361466de3adde00ce864c41474" category="inline-link-macro-rx"></block>.</block>
+  <block id="24377316ae141b63c8170119bbfe4239" category="list-text">브라우저를 사용하여 를 사용하여 StorageGRID 어플라이언스 설치 프로그램 GUI에 액세스합니다<block ref="41c0f2506f64eaa17788753cf29de6aa" category="inline-link-rx"></block>.  어플라이언스가 유지보수 모드로 부팅된 후 새 그리드 IP가 이미 있으므로 그리드 IP를 사용할 수 없습니다.</block>
+  <block id="fe21d31242c56f4eee91182bd1268a5a" category="list-text">그리드 네트워크의 VLAN을 변경합니다.  클라이언트 네트워크를 통해 어플라이언스에 액세스하는 경우 지금은 클라이언트 VLAN을 변경할 수 없으며 이동 후 변경할 수 있습니다.</block>
+  <block id="293c5807e9e9ab4b268fd617e8e5a56d" category="list-text">어플라이언스에 SSH로 연결하고 'shutdoown -h now'를 사용하여 노드를 종료합니다.</block>
+  <block id="1c33a8d84128bb59ae10a50b662e3a98" category="list-text">어플라이언스가 새 사이트에서 준비되면 를 사용하여 StorageGRID 어플라이언스 설치 프로그램 GUI에 액세스합니다<block ref="fba5b5bfbff166288edb187e140418b2" category="inline-link-rx"></block>.  GUI에서 ping/nmap 툴을 사용하여 스토리지가 최적의 상태이고 다른 그리드 노드에 대한 네트워크 연결인지 확인합니다.</block>
+  <block id="786f3a0a71ff6ad9513f86143e55c1ce" category="list-text">클라이언트 네트워크 IP를 변경하려는 경우 이 단계에서 클라이언트 VLAN을 변경할 수 있습니다.  클라이언트 네트워크는 이후 단계에서 change-IP 도구를 사용하여 클라이언트 네트워크 IP를 업데이트할 때까지 준비되지 않습니다.</block>
+  <block id="fff8d22924e491405ba3026b24555fa6" category="list-text">유지보수 모드를 종료합니다. StorageGRID 어플라이언스 설치 프로그램에서 * 고급 * &gt; * 컨트롤러 재부팅 * 을 선택한 다음 * StorageGRID * 으로 재부팅 * 을 선택합니다.</block>
+  <block id="6668d4dfafe68f86bfe1db4386e9ce7b" category="list-text">모든 노드가 가동되고 그리드에 연결 문제가 표시되지 않으면 필요에 따라 change-IP를 사용하여 어플라이언스 관리 네트워크와 클라이언트 네트워크를 업데이트합니다.</block>
+  <block id="bae75f6502d7126b5a2837bf5628cab3" category="sidebar">사이트 재배치 및 네트워킹 변경 방법</block>
 </blocks>

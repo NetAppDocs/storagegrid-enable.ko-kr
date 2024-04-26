@@ -14,3 +14,5 @@ entries:
   url: "/product-feature-guides/node-clone.html"
 - title: 포트 재매핑 사용 방법
   url: "/product-feature-guides/port-remap.html"
+- title: 사이트 재배치 및 네트워킹 변경 방법
+  url: "/product-feature-guides/site-relocation-and-network-change.html"
