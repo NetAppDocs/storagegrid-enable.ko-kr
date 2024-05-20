@@ -1355,14 +1355,12 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="bcdd4afe5d0cbdf8cc04de0c92ddc7df" category="paragraph">두 가지를 모두 실험하여 귀사의 워크로드 및 요구사항에 가장 적합한 솔루션을 결정하십시오.</block>
   <block id="b2272f16c45a7fc4af509338bc22504e" category="paragraph">요약하면, S3A committers는 S3에 대한 일관적이고, 고성능의 안정적인 출력 약속이라는 근본적인 과제에 대한 솔루션을 제공합니다. 내부 설계로 데이터 무결성을 유지하면서 효율적인 데이터 전송을 보장합니다.</block>
   <block id="81501235b286178b5df292f16c6e8b47" category="inline-image-macro">S3A 옵션 표</block>
-  <block id="749d1c1d8a18506e442bfbbaec54f349" category="paragraph"><block ref="749d1c1d8a18506e442bfbbaec54f349" category="inline-image-macro-rx" type="image"></block></block>
   <block id="dc1717f3744878e6dbb68b8a22974e06" category="paragraph">* 3. 스레드, 연결 풀 크기 및 블록 크기 *</block>
   <block id="b35c467aea8fb0e4ad9d636d48d0b8db" category="list-text">단일 버킷과 상호 작용하는 각 * S3A * 클라이언트에는 업로드 및 복사 작업을 위한 개방형 HTTP 1.1 연결 전용 풀과 스레드가 있습니다.</block>
   <block id="4b7fc1639229d7f089f2e8c85436106e" category="inline-link">이러한 풀 크기를 조정하여 성능과 메모리/스레드 사용량 간의 균형을 맞출 수 있습니다</block>
   <block id="901a6addd359ee8998a8f1e41f45789f" category="list-text"><block ref="801a4dc74c7b120220c9c416fd446c6b" category="inline-link-rx"></block>.</block>
   <block id="10fbe332f21fbd575e849cde38283e2e" category="list-text">S3에 데이터를 업로드하면 블록으로 나뉩니다. 기본 블록 크기는 32MB입니다. fs.s3a.block.size 속성을 설정하여 이 값을 사용자 지정할 수 있습니다.</block>
   <block id="ffa0e6a713cabf752ba8055eaaede5fc" category="list-text">블록 크기가 클수록 업로드 시 다중 파트 관리 오버헤드를 줄여 대용량 데이터 업로드의 성능을 향상시킬 수 있습니다. 대용량 데이터 세트의 권장 값은 256MB 이상입니다.</block>
-  <block id="06227b83b2c17941a4d807e7d9b74710" category="paragraph"><block ref="06227b83b2c17941a4d807e7d9b74710" category="inline-image-macro-rx" type="image"></block></block>
   <block id="f40f5a29dd719649854707ad2ed54faa" category="paragraph">* 4. 멀티 파트 업로드 *</block>
   <block id="289795451e85a0a16d75e7868c7480d0" category="paragraph">s3a committers * 항상 * MPU(멀티 파트 업로드)를 사용하여 데이터를 S3 버킷에 업로드합니다. 작업 실패, 추측에 의한 작업 실행, 커밋 전 작업 중단 등을 허용하기 위해 필요합니다. 다음은 다중 파트 업로드와 관련된 몇 가지 주요 사양입니다.</block>
   <block id="a9da1ffc95aa8035dfd68dae308c2231" category="list-text">최대 개체 크기: 5TiB(테라바이트)</block>
@@ -1384,10 +1382,8 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="465c4cf2408ae7723d681a9c8607de37" category="list-text">개체 부분은 upload-id를 사용하여 업로드됩니다.</block>
   <block id="265f70ced2325f215340985c129b8fff" category="list-text">모든 객체 부분이 업로드되면 는 업로드 ID와 함께 완전한 멀티 파트 업로드 요청을 보냅니다. StorageGRID는 업로드된 부분에서 객체를 생성하며 클라이언트는 객체에 액세스할 수 있습니다.</block>
   <block id="65638a5ddb2ddbd00963cc5b84f206d1" category="paragraph">전체 다중 파트 업로드 요청이 성공적으로 전송되지 않으면 부품은 StorageGRID에 남아 있고 객체를 생성하지 않습니다. 이 문제는 작업이 중단, 실패 또는 중단될 때 발생합니다. 업로드가 시작된 후 15일이 경과하면 멀티 파트 업로드가 완료되거나 중단되거나 StorageGRID가 이러한 부품을 제거할 때까지 파트가 그리드에 남아 있습니다. 버킷에 여러 개의(수억 ~ 수백만) 진행 중인 멀티 파트 업로드가 있는 경우 Hadoop이 'list-multipart-uploads'를 전송할 때(이 요청은 업로드 ID로 필터링되지 않음) 요청을 완료하는 데 시간이 오래 걸리거나 시간이 초과될 수 있습니다. 적절한 fs.s3a.mutlipart.purge를 true로 설정하여 적절한 fs.s3a.multipart.purge.age 값을 설정할 수 있습니다(예: 5-7일, 기본값 86400, 즉 1일을 사용하지 마십시오). 또는 NetApp 지원 팀에 문의하여 상황을 조사하십시오.</block>
-  <block id="caf1551badab24f35930164061cff3dd" category="paragraph"><block ref="caf1551badab24f35930164061cff3dd" category="inline-image-macro-rx" type="image"></block></block>
   <block id="d9703f8bc6fb70abb3d253a5ded96197" category="paragraph">* 5. 메모리의 버퍼 쓰기 데이터 *</block>
   <block id="36a89ed4836d3b5b5f59193e28776e5c" category="paragraph">성능을 높이기 위해 쓰기 데이터를 S3에 업로드하기 전에 메모리에 버퍼링할 수 있습니다. 이렇게 하면 작은 쓰기 수를 줄이고 효율성을 높일 수 있습니다.</block>
-  <block id="f26f197ffec0d3e726569f182287a9a8" category="paragraph"><block ref="f26f197ffec0d3e726569f182287a9a8" category="inline-image-macro-rx" type="image"></block></block>
   <block id="63d5657772886960693d8740023cf233" category="paragraph">S3 및 HDFS는 서로 다른 방식으로 작동한다는 점을 기억하십시오. S3 리소스를 가장 효율적으로 활용하려면 신중한 튜닝/테스트/실험이 필요합니다.</block>
   <block id="38a5cc39717b20b4cde7ce17adfaf8c7" category="summary">이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니다.</block>
   <block id="5d272a32f1e2287537ac7e73dbde5d69" category="doc">NetApp StorageGRID 및 빅데이터 분석</block>
@@ -1402,7 +1398,6 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="454845c7ca306686c28f96a59487d70c" category="paragraph">* 데이터 아카이브: * StorageGRID는 다양한 스토리지 유형을 제공하고 공용 장기 저비용 스토리지 옵션에 대한 계층화를 지원하며, 규정 준수 또는 기간별 목적으로 보존해야 하는 데이터의 보관 및 장기 보존에 이상적인 솔루션입니다.</block>
   <block id="a324e6c3bb7d6684738c923e7b52ea98" category="paragraph">* 오브젝트 스토리지 사용 사례 *</block>
   <block id="9f79f86c9a539a911125a876ef6a3c2e" category="inline-image-macro">StorageGRID 사용 사례 다이어그램, 폭 = 396, 높이 = 394</block>
-  <block id="2ae53f7687415e47352b3c8fdf11602c" category="paragraph"><block ref="2ae53f7687415e47352b3c8fdf11602c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c9e24c78b995a9f99006f7b470383259" category="paragraph">위 중 빅 데이터 분석은 최상위 사용 사례 중 하나이며 사용량이 증가하고 있습니다.</block>
   <block id="d9adadb4a0063dcb9fae0a43c0073259" category="section-title">데이터 레이크에 StorageGRID를 사용해야 하는 이유</block>
   <block id="20ee9cfabde8b905c9a64689a84b0921" category="list-text">협업 증가 - 업계 표준 API 액세스를 지원하는 대규모 공유 멀티 사이트 멀티 테넌시</block>
@@ -1412,7 +1407,6 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="6d5424acc89d68777ded882e67fba989" category="list-text">보안-StorageGRID는 암호화, 액세스 제어 정책, 데이터 라이프사이클 관리, 오브젝트 잠금 및 버전 관리와 같은 다양한 보안 기능을 제공하여 S3 버킷에 저장된 데이터를 보호합니다</block>
   <block id="9ed95e053e569a8027874c20fc968fa0" category="paragraph">* StorageGRID S3 데이터 레이크 *</block>
   <block id="16440189dc2ac5b52ea041615f4e3502" category="inline-image-macro">StorageGRID 데이터 레이크 예, width=614, height=345</block>
-  <block id="8c6ce2dc10841da36e2b55063b73a29e" category="paragraph"><block ref="8c6ce2dc10841da36e2b55063b73a29e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="bcf6df0d4fc301b73dfb0f84c2b25fca" category="section-title">S3 오브젝트 스토리지에서 가장 잘 작동하는 데이터 웨어하우스 또는 데이터 레이크가 있습니다</block>
   <block id="f5fb5a608581154f9f31a7efeaf26b22" category="inline-link">아파치 아이스버그: 확실한 가이드</block>
   <block id="961898fd5ba4fc2d612d1c831953550a" category="paragraph">NetApp는 Hive, Delta Lake 및 Dremio 등 3개의 데이터 웨어하우스/호수 하우스 에코시스템을 통해 StorageGRID의 벤치마크를 수행했습니다.<block ref="ea7970154750f3c7264130a8bd2b3dc5" category="inline-link-rx"></block> 데이터 웨어하우스 및 데이터 레이크 하우스에 대한 간략한 소개와 이 두 아키텍처의 장점 포함</block>
@@ -1578,4 +1572,248 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="80482345acd37742916c858b1bac3347" category="list-text">2022년 5월 26일:<block ref="919c9f44a16e685bcbda321efc4479b1" category="inline-link-rx"></block></block>
   <block id="11bd19e0a7faa7e5cb29e2de6e742e74" category="list-text">2022년 5월 24일:<block ref="efe27e9a7520722932d06c2a314e517b" category="inline-link-rx"></block></block>
   <block id="d915b8cda332d7bea31598a0cc058498" category="list-text">2022년 5월 10일:<block ref="debc4c6191d7e706232e96c2789d3930" category="inline-link-rx"></block></block>
+  <block id="b595975ee2f837da3fb64fe3e27a04a5" category="paragraph"><block ref="b595975ee2f837da3fb64fe3e27a04a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="620a43fd755527066fd648aba6f7db92" category="paragraph"><block ref="620a43fd755527066fd648aba6f7db92" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ba62ab536da4018921d932eab137754d" category="paragraph"><block ref="ba62ab536da4018921d932eab137754d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8ba2b9229934ee6fc64c293ea55c00cf" category="paragraph"><block ref="8ba2b9229934ee6fc64c293ea55c00cf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="51416623000162278c6405b1b5cd833d" category="paragraph"><block ref="51416623000162278c6405b1b5cd833d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2a60f08787dc9ecba98a9ffc064b7ed8" category="paragraph"><block ref="2a60f08787dc9ecba98a9ffc064b7ed8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5a184c0363bb58450e6d7433581fd471" category="summary">이 보고서는 Commvault 및 NetApp이 공동으로 제공하는 데이터 보호 솔루션에 대해 설명합니다.</block>
+  <block id="354a23ac01ef93911cb9256f86e06159" category="doc">TR-4871 - Commvault의 전체 백업 및 복구 및 NetApp StorageGRID</block>
+  <block id="cb2418c01859c7704da751aa5a7d2421" category="section-title">솔루션 개요</block>
+  <block id="80a3f83141a9faa5b2c7cd8fe9d282e0" category="paragraph">CommVault와 NetApp은 파트너 관계를 통해 Commvault의 전체 백업 및 복구 NetApp 기능을 클라우드 스토리지용 NetApp StorageGRID 소프트웨어와 결합하여 공동 데이터 보호 솔루션을 구축했습니다. 많은 조직은 스토리지를 클라우드로 마이그레이션하고, 시스템을 확장하고, 데이터의 장기 보존을 위한 정책을 자동화하려고 합니다. CommVault의 완벽한 백업 및 복구 및 NetApp StorageGRID는 전 세계적으로 빠르게 증가하는 데이터 및 늘어나는 규제에 대한 요구 사항을 충족할 수 있도록 지원하는 사용하기 쉬운 고유한 솔루션을 제공합니다. 클라우드 기반 오브젝트 스토리지는 복원력, 확장 기능, 운영 및 비용 효율성으로 잘 알려져 있으며, 이를 백업 대상으로 자연스럽게 선택할 수 있습니다. CommVault와 NetApp는 2014년에 통합 솔루션을 공동으로 인증했으며 그 이후 두 솔루션 간의 통합을 더욱 강화했습니다. 전 세계 모든 유형의 고객이 Commvault Complete 백업 및 복구 및 StorageGRID 통합 솔루션을 채택했습니다.</block>
+  <block id="03b34745d3c972ba9412e4898f60977d" category="paragraph">Commvault Complete 백업 및 복구 소프트웨어와 클라우드 스토리지를 구축한 경우 두 가지 백업 옵션이 있습니다.</block>
+  <block id="9eb0111fcb9b869313a8890a31fbe9aa" category="list-text">운영 디스크 타겟에 백업하고 클라우드 스토리지에 보조 복사본을 백업합니다.</block>
+  <block id="f2236ba3bffef9cf2f2a7237c4487c29" category="list-text">1차 타겟으로 클라우드 스토리지에 백업</block>
+  <block id="80457ca0c9c707a381ea0dbbf13a97f8" category="paragraph">과거에는 클라우드 또는 오브젝트 스토리지 성능이 운영 백업에 너무 낮은 것으로 간주되었습니다. 기본 디스크 타겟을 사용하면 백업 및 복원 프로세스가 더 빨라졌으며, 클라우드에 보조 복사본을 콜드 백업으로 유지할 수 있었습니다. StorageGRID은 차세대 오브젝트 스토리지를 나타냅니다. StorageGRID는 다른 오브젝트 스토리지 공급업체보다 뛰어난 성능과 높은 처리량뿐만 아니라 성능 및 유연성을 제공할 수 있습니다.</block>
+  <block id="3764fc2dfa1c37293e979fb84f4d57e2" category="paragraph">표 1에는 StorageGRID의 각 백업 옵션의 이점이 나와 있습니다.</block>
+  <block id="b8487d84bdeead48dbf45470a4e20888" category="section-title">표 1) 기본 디스크 백업과 보조 복사본 비교(StorageGRID에 대한 기본 백업 비교)</block>
+  <block id="0677b3ba1c3af4912992b290e34bede8" category="cell">디스크에 대한 기본 백업 및 StorageGRID에 대한 보조 복사</block>
+  <block id="f0545f8a5027b3947229082e2363e36e" category="cell">StorageGRID에 기본 백업</block>
+  <block id="9446a98ad14416153cc4d45ab8b531bf" category="paragraph">성능</block>
+  <block id="bf1e57e2734e41f446afd52e7a01511f" category="paragraph">라이브 마운트 또는 라이브 복구를 사용하는 가장 빠른 복구 시간: 계층 0/계층 1 워크로드에 가장 적합합니다.</block>
+  <block id="fc436ebe83f8a987f689862b5d1e9416" category="paragraph">라이브 마운트 또는 라이브 복구 작업에 사용할 수 없습니다. 스트리밍 복원 작업 및 장기 보존에 적합합니다.</block>
+  <block id="46d93ce059017fe679dc02b4bfab8803" category="paragraph">구축 아키텍처</block>
+  <block id="3efb73a8f0efa8cd24dac18e9fdcb90d" category="paragraph">첫 번째 백업 랜딩 계층으로 All-Flash 또는 회전식 디스크를 사용합니다. StorageGRID는 보조 계층으로 사용됩니다.</block>
+  <block id="6a8ffa7403e393a890a078b05f73a63b" category="paragraph">StorageGRID를 포괄적인 백업 타겟으로 사용하여 구축을 단순화합니다.</block>
+  <block id="95493dca7eed37cfb9bfd6cc90ef1959" category="paragraph">고급 기능(실시간 복원)</block>
+  <block id="eaa4dc5078017a5c5bebf383ab6f5124" category="paragraph">지원</block>
+  <block id="aa7f77e663b832d5b0e544c5511e680c" category="paragraph">지원되지 않습니다</block>
+  <block id="bf8dd94f74c5878ba969abeeef0286d1" category="section-title">대상</block>
+  <block id="749f48d6360a1ae4fb9b6967d682f7ab" category="paragraph">이 문서는 Commvault 및 StorageGRID 백업 및 복구 솔루션을 사용하는 데이터 관리자와 설계자를 위해 작성되었습니다.</block>
+  <block id="8f4c7939e8a42e023939df947aba54f6" category="section-title">솔루션 기술</block>
+  <block id="4e50e1ccf2606dc28761309b196f635e" category="paragraph">테스트를 거친 솔루션은 Commvault 및 NetApp 솔루션을 결합하여 강력한 공동 솔루션을 제공합니다.</block>
+  <block id="8de8885619770caac462899bd9ad1a3c" category="paragraph">CommVault Complete Backup and Recovery 소프트웨어는 처음부터 단일 플랫폼에서 통합된 코드 베이스로 구축된 엔터프라이즈급 통합 데이터 및 정보 관리 솔루션입니다. 모든 기능은 백엔드 기술을 공유하므로 데이터 보호, 관리 및 액세스에 대해 완벽하게 통합된 접근 방식의 탁월한 장점과 이점을 제공합니다. 이 소프트웨어에는 데이터를 보호, 보관, 분석, 복제 및 검색하는 모듈이 포함되어 있습니다. 이 모듈은 서로 원활하게 상호 작용하는 공통 백엔드 서비스와 고급 기능을 공유합니다. 이 솔루션은 기업의 모든 데이터 관리 측면을 해결하는 동시에 무한한 확장성과 데이터 및 정보에 대한 전례 없는 제어를 제공합니다.</block>
+  <block id="d578ff088a7606a2f2f8b20f068b5b62" category="paragraph">Commvault 소프트웨어 플랫폼의 주요 기능은 다음과 같습니다.</block>
+  <block id="a9f9086df1d2d57873ce7ad72a8f3503" category="list-text">가상 및 물리적 서버, NAS 시스템, 클라우드 기반 인프라 및 모바일 장치에서 모든 주요 운영 체제, 애플리케이션 및 데이터베이스를 지원하는 완벽한 데이터 보호 솔루션입니다.</block>
+  <block id="c5eaed381b053e4b3d85d9ab1fb6fa5b" category="list-text">단일 콘솔을 통한 간편한 관리: 기업 전체의 모든 기능과 모든 데이터 및 정보를 보고 관리하고 액세스할 수 있습니다.</block>
+  <block id="434ac5052bf47ffbe2a46a08caeefbe0" category="list-text">데이터 백업 및 아카이빙, 스냅샷 관리, 데이터 복제, e-discovery용 콘텐츠 인덱싱 등 다양한 보호 방법</block>
+  <block id="7317d6c898578da433c127897e9abeac" category="list-text">디스크 및 클라우드 스토리지에 대한 중복 제거 기능을 사용하여 스토리지를 효율적으로 관리</block>
+  <block id="40b8f42feb3b273a69061871959c334b" category="list-text">AFF, FAS, NetApp HCI, E-Series 어레이 및 NetApp SolidFire ® 스케일아웃 스토리지 시스템과 같은 NetApp 스토리지 시스템과의 통합 또한 NetApp Cloud Volumes ONTAP 소프트웨어와 통합하여 NetApp 스토리지 포트폴리오 전반에서 인덱싱된 애플리케이션 인식 NetApp Snapshot ™ 복사본 생성을 자동화합니다.</block>
+  <block id="bac96a2448236465a33577db5bbbfafb" category="list-text">업계 최고의 온프레미스 가상 하이퍼바이저 및 퍼블릭 클라우드 하이퍼스케일러 플랫폼을 지원하는 완벽한 가상 인프라 관리</block>
+  <block id="79b01f0de034ee56053c5a83bbbbc371" category="list-text">고급 보안 기능으로 중요한 데이터에 대한 액세스를 제한하고, 세분화된 관리 기능을 제공하며, Active Directory 사용자에게 SSO(Single Sign-On) 액세스를 제공합니다.</block>
+  <block id="7631df1a16e7c86a241133ce56a5626e" category="list-text">정책 기반 데이터 관리: 물리적 위치가 아닌 비즈니스 요구사항에 따라 데이터를 관리할 수 있도록 지원합니다.</block>
+  <block id="dbd89d5407a94aa887d7f9793148af24" category="list-text">사용자가 데이터를 보호, 검색 및 복구할 수 있는 최첨단 최종 사용자 환경을 제공합니다.</block>
+  <block id="c71c3c5075c3ae71dfa4cd9ad0c8f690" category="list-text">API 기반 자동화를 통해 vRealize Automation 또는 Service Now와 같은 타사 툴을 사용하여 데이터 보호 및 복구 작업을 관리할 수 있습니다.</block>
+  <block id="56cc4502e343e76ad448ffe3a05fc18c" category="paragraph">지원되는 워크로드에 대한 자세한 내용은 를 참조하십시오<block ref="6c465f42cde4c9569daed31dc24f517e" category="inline-link-rx"></block>.</block>
+  <block id="585473463b3cb51e50ec6023b5b51685" category="paragraph">Commvault 클라우드 계층인 NetApp StorageGRID는 엔터프라이즈 하이브리드 클라우드 오브젝트 스토리지 솔루션입니다. 이 제품은 특별 제작된 어플라이언스나 소프트웨어 정의 구축을 통해 여러 사이트에 배포할 수 있습니다. StorageGRID을 사용하면 데이터를 저장 및 보호하는 방법을 결정하는 데이터 관리 정책을 설정할 수 있습니다. StorageGRID는 정책을 개발하고 적용하는 데 필요한 정보를 수집합니다. 또한 성능, 내구성, 가용성, 지리적 위치, 운영 효율성 요구사항을 비롯한 다양한 특성과 요구사항을 지속 가능성, 비용. 데이터는 여러 위치 간에 이동하는 동안 또는 데이터가 노후화되는 시기에 완벽하게 관리되고 보호됩니다.</block>
+  <block id="f99347a4e5e36d0e5ba4bffb0d1598ab" category="paragraph">StorageGRID 지능형 정책 엔진을 활용하면 다음 옵션 중 하나를 선택할 수 있습니다.</block>
+  <block id="ed1c9e59475f7c0dfda1df3a7da27812" category="list-text">삭제 코딩을 사용하여 복원력을 위해 여러 사이트에서 데이터를 백업합니다.</block>
+  <block id="d470af9a0291f968f65b28b830fc86cd" category="list-text">오브젝트를 원격 사이트에 복사하여 WAN 지연 시간 및 비용을 최소화합니다.</block>
+  <block id="7bd9a8aa8ea326b44f2bcde2f3609ff5" category="paragraph">StorageGRID에서 오브젝트를 저장할 때 오브젝트는 위치나 복사본의 수에 상관없이 하나의 오브젝트로 액세스합니다. 이 동작은 재해 복구에 매우 중요합니다. 데이터의 백업 복사본 하나가 손상된 경우에도 StorageGRID에서 데이터를 복원할 수 있기 때문입니다.</block>
+  <block id="118e6fb1b88f8c0f0cfd7dee3bf51a37" category="paragraph">백업 데이터를 기본 스토리지에 보관하는 것은 비용이 많이 들 수 있습니다. NetApp StorageGRID를 사용하면 비활성 백업 데이터를 StorageGRID로 마이그레이션하여 기본 스토리지의 공간을 늘릴 수 있고 StorageGRID의 다양한 기능을 활용할 수 있습니다. 시간이 지나면 백업 데이터의 가치가 변경되고 백업 데이터를 저장하는 비용도 변경됩니다. StorageGRID를 사용하면 운영 스토리지의 비용을 최소화하면서 데이터의 내구성을 높일 수 있습니다.</block>
+  <block id="b82ecf69498cda86864f62d82c7ccb6b" category="section-title">솔루션 설정</block>
+  <block id="a3ad938334ebe31fa6bd5526fdde0c2d" category="paragraph">랩 설정에서 StorageGRID 환경은 4개의 NetApp StorageGRID SG5712 어플라이언스, 1개의 가상 기본 관리 노드 및 1개의 가상 게이트웨이 노드로 구성되었습니다. SG5712 어플라이언스는 엔트리 레벨 옵션으로서 기본 구성입니다. NetApp StorageGRID SG5760 또는 SG6060과 같은 고성능 어플라이언스 옵션을 선택하면 큰 성능 이점을 얻을 수 있습니다. 사이징 지원은 NetApp StorageGRID 솔루션 설계자에게 문의하십시오.</block>
+  <block id="2502d49022714233caf9bb360eed1259" category="paragraph">StorageGRID는 데이터 보호 정책을 위해 통합 라이프사이클 관리(ILM) 정책을 사용하여 데이터를 관리하고 보호합니다. ILM 규칙은 위에서 아래로 정책에서 평가됩니다. 표 2에 나와 있는 ILM 정책을 구현했습니다.</block>
+  <block id="03b71896a803d1674387b9ace5509c97" category="section-title">표 2) StorageGRID ILM 정책</block>
+  <block id="9bae64ff51701a09557836797ee3739f" category="cell">ILM 규칙</block>
+  <block id="619dd4db8171a8f1bf978f44c9cf10c4" category="cell">한정자</block>
+  <block id="80cb0c66c0080d1e4c291f66705ba62d" category="cell">수집 동작</block>
+  <block id="8143290d673d927f4a362b2726e52d06" category="paragraph">삭제 코딩 2+1</block>
+  <block id="61fed6f594f54558c7a9bc0ac4abb7e5" category="paragraph">200KB를 넘는 오브젝트</block>
+  <block id="c6589f5236c0c434d0c63dc5f9a856f2" category="paragraph">균형</block>
+  <block id="a98f005d5c19a50a6134d6a62274c1f8" category="paragraph">2 복사</block>
+  <block id="3e6defd685231cdd12065add41996c89" category="paragraph">모든 개체</block>
+  <block id="dcd8a20c909a5d0bbf6f852d688309cb" category="paragraph">이중 커밋</block>
+  <block id="f2382f08b2b3ae5b16fd3e6a7f6fe40c" category="paragraph">ILM 2 Copy 규칙이 기본 규칙입니다. 이 테스트에서는 삭제 코딩 2+1 규칙이 200KB 이상의 객체에 적용되었습니다. 200KB보다 작은 개체에 기본 규칙이 적용되었습니다. 이러한 방식으로 규칙을 적용하는 것이 StorageGRID 모범 사례입니다.</block>
+  <block id="9fd2a44a56a109ab7ff40317cdd4cc9b" category="inline-link">Commvault 및 NetApp 스케일아웃 데이터 보호</block>
+  <block id="f7d7cdf329bd5cf1893317ad3732d1f7" category="paragraph">이 테스트 환경에 대한 자세한 기술 정보는 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오<block ref="03ce17f8b5e1206a493f3bd56ef5953d" category="inline-link-rx"></block> 기술 보고서:</block>
+  <block id="92672a7a2b909945fbfa9f44f057c7a1" category="section-title">사이징</block>
+  <block id="de6340e74a7b4b37632d447d082a219e" category="paragraph">귀사 환경의 특정 사이징에 대해서는 NetApp 데이터 보호 전문가에게 문의하십시오. NetApp 데이터 보호 전문가는 Commvault Total Backup Storage Calculator 툴을 사용하여 백업 인프라스트럭처 요구 사항을 추정할 수 있습니다. 이 도구를 사용하려면 Commvault Partner Portal에 액세스해야 합니다. 필요한 경우 액세스를 위해 등록합니다.</block>
+  <block id="850723af1b528eaff214961e1477f7f2" category="section-title">CommVault 사이징 입력</block>
+  <block id="e3b0761b4b3dd1b0a93403608c54ca50" category="paragraph">다음 작업을 사용하여 데이터 보호 솔루션의 크기 조정을 위한 검색을 수행할 수 있습니다.</block>
+  <block id="3cf303266a00ea5459dd889344aed185" category="list-text">보호해야 하는 시스템 또는 애플리케이션/데이터베이스 워크로드와 프런트 엔드 용량(테라바이트[TB])을 식별합니다.</block>
+  <block id="a6fc6119f758a2807e997797f666329c" category="list-text">보호해야 하는 VM/파일 워크로드 및 이와 유사한 프런트엔드 용량(TB)을 식별합니다.</block>
+  <block id="45b2ce852d6ed5f33b77406aac08556c" category="list-text">단기 및 장기 보존 요구 사항 파악</block>
+  <block id="62f64531410b8711dc0f7e3749b00000" category="list-text">식별된 데이터 세트/작업 부하에 대한 일별 변경률 확인</block>
+  <block id="e20a5b161f3a78a8aa8b41995cb1056f" category="list-text">향후 12개월, 24개월 및 36개월간 예상되는 데이터 증가율을 식별합니다.</block>
+  <block id="546f4bb0db4eb4c0474451ef4087425b" category="list-text">비즈니스 요구사항에 따라 데이터 보호/복구를 위한 RTO 및 RPO 정의</block>
+  <block id="b9b087f8be7670b2ba95f7b2ee0e66c0" category="paragraph">이 정보를 사용할 수 있게 되면 백업 인프라스트럭처 사이징을 수행하여 필요한 스토리지 용량을 분석할 수 있습니다.</block>
+  <block id="2d782d1c787a750e5ae7cdfbf33e0b65" category="section-title">StorageGRID 사이징 지침</block>
+  <block id="293d59d0c1b3635b7390405d92fee965" category="paragraph">NetApp StorageGRID 사이징을 수행하기 전에 워크로드의 다음 측면을 고려하십시오.</block>
+  <block id="b3e1f4c67ee07a73dcdaff1cf34f2640" category="list-text">사용 가능한 용량</block>
+  <block id="dcd71c3bab40cab965c2424166b5b11d" category="list-text">WORM 모드</block>
+  <block id="af11a561a773e12e2fa9ba93ce506330" category="list-text">평균 개체 크기입니다</block>
+  <block id="fdfceedcfadaa8fc4e641a9271ff7595" category="list-text">성능 요구사항</block>
+  <block id="e1044b693615d4848c50aa5f02be9315" category="list-text">ILM 정책이 적용되었습니다</block>
+  <block id="c6e6b34f0e5e37e48be00e166f7bd2cb" category="paragraph">사용 가능한 용량은 StorageGRID로 계층화한 백업 워크로드의 크기 및 보존 일정에 맞게 조정되어야 합니다.</block>
+  <block id="3e5b0f346efbe49d36a724d923e318ba" category="paragraph">WORM 모드가 활성화되거나 비활성화됩니까? Commvault에서 WORM을 활성화하면 StorageGRID에서 오브젝트 잠금이 구성됩니다. 이렇게 하면 필요한 오브젝트 스토리지 용량이 증가합니다. 필요한 용량은 보존 기간 및 각 백업에서 변경된 객체 수에 따라 달라집니다.</block>
+  <block id="74c32df19b25aa02e414011c18db023d" category="paragraph">평균 개체 크기는 StorageGRID 환경의 성능을 사이징하는 데 도움이 되는 입력 매개 변수입니다. Commvault 워크로드에 사용되는 평균 개체 크기는 백업 유형에 따라 다릅니다.</block>
+  <block id="a0e738d4eef6a816ac737bf34e54a942" category="paragraph">표 3은 백업 유형별 평균 개체 크기를 나열하고 복원 프로세스에서 오브젝트 저장소에서 읽는 항목을 설명합니다.</block>
+  <block id="2333f85cd072d4d90857e142fd494184" category="section-title">표 3) Commvault 워크로드 개체 크기 및 복원 동작</block>
+  <block id="a09aa546b6aa449c6baf91e8d0ebb636" category="cell">백업 유형</block>
+  <block id="f95891c0ab9af9cf4d2eb297027c954d" category="cell">평균 개체 크기</block>
+  <block id="6dfea787ea9494eca4a1491e9a9cd7e7" category="cell">복원 동작</block>
+  <block id="4a5284900affdafea6abfa93ccd8875e" category="paragraph">StorageGRID에서 보조 복사본을 만듭니다</block>
+  <block id="56aefd6942690fe653a60ce8762c3fae" category="paragraph">32MB</block>
+  <block id="69a2ecbb677a732e4f381bca77d41617" category="paragraph">32MB 객체의 전체 읽기</block>
+  <block id="754b17607005a22396d824adf9193697" category="paragraph">백업을 StorageGRID로 전송(중복 제거 사용)</block>
+  <block id="b097e0a29568c51c88fec3b457c732b6" category="paragraph">8MB</block>
+  <block id="8ef6bf4afbc7dfa36d2999b2dde70607" category="paragraph">1MB 랜덤 범위 읽기</block>
+  <block id="243bf10c4e6c1609f52782d457f76156" category="paragraph">백업을 StorageGRID로 전송(중복 제거 사용 안 함)</block>
+  <block id="abfb05e87809fdb217c3f9c8b7970ce2" category="paragraph">또한 전체 백업 및 증분 백업에 대한 성능 요구 사항을 이해하면 StorageGRID 스토리지 노드의 크기를 결정하는 데 도움이 됩니다. StorageGRID ILM(정보 라이프사이클 관리) 정책 데이터 보호 방법은 Commvault 백업을 저장하는 데 필요한 용량을 결정하고 그리드 사이징에 영향을 줍니다.</block>
+  <block id="464eb8c3015571353037cdb21da0f4d1" category="paragraph">StorageGRID ILM 복제는 StorageGRID에서 오브젝트 데이터를 저장하는 데 사용하는 두 가지 메커니즘 중 하나입니다. StorageGRID에서 데이터를 복제하는 ILM 규칙에 개체를 할당하면 시스템은 오브젝트 데이터의 정확한 복사본을 생성하고 이 복사본을 스토리지 노드에 저장합니다.</block>
+  <block id="b6a556e693b6d0301d99a27a637d5a0e" category="paragraph">삭제 코딩은 StorageGRID에서 오브젝트 데이터를 저장하는 데 사용하는 두 번째 방법입니다. StorageGRID에서 삭제 코딩 복사본을 생성하도록 구성된 ILM 규칙에 오브젝트를 할당하면 오브젝트 데이터를 데이터 조각으로 분할합니다. 그런 다음 추가 패리티 조각을 계산하고 각 조각을 서로 다른 스토리지 노드에 저장합니다. 개체에 액세스하면 저장된 조각을 사용하여 다시 조립됩니다. 패리티 조각이 손상되거나 손실된 경우 삭제 코딩 알고리즘을 통해 남은 데이터 및 패리티 조각의 일부를 사용하여 해당 조각을 다시 생성할 수 있습니다.</block>
+  <block id="2cbd7f18ab3e999a21c4dba60191a95b" category="paragraph">이 두 메커니즘에는 다음과 같은 예가 보여 주는 것처럼 서로 다른 양의 스토리지가 필요합니다.</block>
+  <block id="b162424b4a40f919bc77c8a4ada556a5" category="list-text">복제된 복사본 2개를 저장하면 스토리지 오버헤드가 두 배로 증가합니다.</block>
+  <block id="4dcb2b649002340390e73a82e0f53e74" category="list-text">2+1 삭제 코딩 복사본을 저장할 경우 스토리지 오버헤드가 1.5배 증가합니다.</block>
+  <block id="b3ccf50d91fb7c1b2a91a90b2fdcbc11" category="paragraph">테스트 대상인 솔루션의 경우, 단일 사이트에 엔트리 레벨의 StorageGRID 배포를 사용했습니다.</block>
+  <block id="edb52e1c5e94ec07b0da6c55e66a6dc5" category="list-text">관리 노드: VMware 가상 머신(VM)</block>
+  <block id="512766f8f9ea73555dd725677342729b" category="list-text">로드 밸런서: VMware VM</block>
+  <block id="075742127b6818880333cba369626334" category="list-text">스토리지 노드: 4TB 드라이브 장착 시 SG5712 4개</block>
+  <block id="48ce2b888edeb7c90c49b7acb217a0da" category="list-text">기본 관리자 노드 및 게이트웨이 노드: 운영 워크로드 요구 사항이 최소인 VMware VM</block>
+  <block id="01b3d30d9a73f3002456c96c117546a7" category="paragraph">StorageGRID는 또한 타사 로드 밸런서를 지원합니다.</block>
+  <block id="254b8ac10c6e4affc88ed5a3300b91ab" category="paragraph">StorageGRID는 일반적으로 데이터를 복제하는 데이터 보호 정책을 사용하여 노드 및 사이트 수준 장애로부터 데이터를 보호하는 두 개 이상의 사이트에 구축됩니다. 데이터를 StorageGRID에 백업하면 알고리즘을 통해 안정적으로 데이터를 분리 및 재조립하는 삭제 코딩이나 여러 복사본을 사용해 데이터를 보호할 수 있습니다.</block>
+  <block id="adc69293e8fd256b2609664f1e11cb53" category="inline-link">Fusion</block>
+  <block id="f0d97e78bf1c5ff4659d7f868170f3a4" category="paragraph">사이징 툴을 사용할 수 있으며<block ref="8ea841f9b1986a19de18878436c983c7" category="inline-link-rx"></block> 그리드의 크기를 조정합니다.</block>
+  <block id="bc967dc2d57e6eff184a821bf7577a80" category="section-title">확장</block>
+  <block id="900c557ee6849406e1e6f451f65bdde1" category="paragraph">스토리지 노드에 스토리지를 추가하거나, 기존 사이트에 새 그리드 노드를 추가하거나, 새 데이터 센터 사이트를 추가하여 NetApp StorageGRID 시스템을 확장할 수 있습니다. 현재 시스템의 운영을 중단하지 않고도 확장을 수행할 수 있습니다.
+StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드 밸런서와 관리 노드를 실행하는 물리적 어플라이언스에 사용하거나 노드를 추가하기만 하면 성능을 확장할 수 있습니다.</block>
+  <block id="87c6a063dd59ec7afe1b7de60674167f" category="inline-link">StorageGRID 11.8 확장 가이드</block>
+  <block id="178a2b6eb168714f3392d86f31b81107" category="paragraph">StorageGRID 시스템 확장에 대한 자세한 내용은 를 참조하십시오<block ref="ad2f8b162bf757bc05f37ca0091f2d6d" category="inline-link-rx"></block>.</block>
+  <block id="39e0647405a456dbe0f327581e422077" category="section-title">StorageGRID 하드웨어 사양</block>
+  <block id="7ac8ba0d8d9d0dbf967afc44eebecee4" category="paragraph">표 4는 이 테스트에 사용된 NetApp StorageGRID 하드웨어를 설명합니다. 10Gbps 네트워킹을 지원하는 StorageGRID SG5712 어플라이언스는 엔트리 레벨 옵션으로 기본 구성을 나타냅니다. 선택적으로 SG5712를 25Gbps 네트워킹용으로 구성할 수 있습니다.</block>
+  <block id="380be67f84564c575abe95593c0c96c3" category="paragraph">NetApp StorageGRID SG5760, SG6060 또는 All-Flash SGF6112 어플라이언스와 같은 고성능 어플라이언스 옵션을 선택하면 중요한 성능 이점을 제공할 수 있습니다. 사이징 지원은 NetApp StorageGRID 솔루션 설계자에게 문의하십시오.</block>
+  <block id="1c0a4a363a35650f52d2788c8c1e3340" category="section-title">표 4) SG5712 하드웨어 사양</block>
+  <block id="3c02a379965ab0dfcd77b1c484450433" category="cell">하드웨어</block>
+  <block id="694e8d1f2ee056f98ee488bdc4982d73" category="cell">수량</block>
+  <block id="380dbc8d9d2c8a17f6ebb0b2c62d3e85" category="cell">디스크</block>
+  <block id="1d9a663a8048fa4c70d3b7da3290365f" category="cell">가용 용량</block>
+  <block id="eec89088ee408b80387155272b113256" category="cell">네트워크</block>
+  <block id="d2d801f305ba0e6fa6a9b891a48ab761" category="paragraph">StorageGRID SG5712 어플라이언스</block>
+  <block id="a87ff679a2f3e71d9181a67b7542122c" category="paragraph">4</block>
+  <block id="a5983f5b9038e27d7801178f702c8ca0" category="paragraph">48 x 4TB(니어라인 SAS HDD)</block>
+  <block id="7f070e79f8fb5c07df2dcdedad1d7981" category="paragraph">136TB</block>
+  <block id="11e8c7c9ca2479f825be4a5b2207c2e4" category="paragraph">10Gbps</block>
+  <block id="cbf13ee4de3e188484a6f9e54ec774d4" category="section-title">CommVault 및 StorageGRID 소프트웨어 요구 사항</block>
+  <block id="9f06e1bbda93a5691f767c9a6bd5d5cc" category="paragraph">표 5와 6에는 VMware 소프트웨어에 설치된 Commvault 및 NetApp StorageGRID 소프트웨어의 테스트 요구 사항이 나와 있습니다. MediaAgent 데이터 전송 관리자 4개와 CommServe 서버 1개가 설치되었습니다. 이 테스트에서는 VMware 인프라에 10Gbps 네트워킹이 구현되었습니다.</block>
+  <block id="24ab73c686b5112b49ce6f98750612b7" category="section-title">표 5) Commvault 소프트웨어의 총 시스템 요구사항</block>
+  <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">구성 요소</block>
+  <block id="8a5227cc82d14862956938caffc1acf2" category="cell">데이터 저장소</block>
+  <block id="6f6cb72d544962fa333e2e34ce64f719" category="cell">크기</block>
+  <block id="96b0141273eabab320119c467cdcaf17" category="cell">합계</block>
+  <block id="c7f6eda2b5882630770159be5e3c5a0d" category="cell">필요한 총 IOPS입니다</block>
+  <block id="63a1a7c310d221d52fa70fd4b2069f4f" category="paragraph">CommServe 서버</block>
+  <block id="c4ca4238a0b923820dcc509a6f75849b" category="paragraph">1</block>
+  <block id="17bc10091293fdc562a6db69940ee924" category="paragraph">OS</block>
+  <block id="e38c9d3443457efbb3f9e8d08a8b5c5b" category="paragraph">500GB</block>
+  <block id="274b68192b056e268f128ff63bfcd4a4" category="paragraph">해당 없음</block>
+  <block id="9778840a0100cb30c982876741b0b5a2" category="paragraph">SQL</block>
+  <block id="c5ae3175ae0f68be6c3428dbe833be99" category="paragraph">MediaAgent를 선택합니다</block>
+  <block id="c56996cb460ab9ee13fbfb489522cad5" category="paragraph">가상 CPU(vCPU)</block>
+  <block id="c74d97b01eae257e44aa9d5bade97baf" category="paragraph">16</block>
+  <block id="ea5d2f1c4608232e07d3aa3d998e5135" category="paragraph">64</block>
+  <block id="e53619c1fe611a51eeeb8d148ba6e532" category="paragraph">RAM</block>
+  <block id="902b52e9ee55baad95374c0815e0d188" category="paragraph">128GB</block>
+  <block id="10a7cdd970fe135cf4f7bb55c0e3b59f" category="paragraph">512</block>
+  <block id="2dc6494faaf47acd40a479d5e8f22eeb" category="paragraph">2TB</block>
+  <block id="84e2027c504e2b4b983e4b5734ad7d5c" category="paragraph">인덱스 캐시</block>
+  <block id="42cc03da5dd9834d6beb08900e77d96e" category="paragraph">8TB</block>
+  <block id="4c5da6b5ca9d093be38b4da1035de5ca" category="paragraph">200 이상</block>
+  <block id="d02340dc3ba5e6755a60283779457ac6" category="paragraph">DDB입니다</block>
+  <block id="4b68c01a22855e38e3082b749de02ba5" category="paragraph">200-80,000K입니다</block>
+  <block id="fd5ab623109855762f689a3b63d50d9d" category="paragraph">테스트 환경에서는 NetApp E-Series E2812 스토리지 어레이의 VMware에 기본 관리 노드 1개와 가상 게이트웨이 노드 1개가 구축되었습니다. 각 노드는 표 6에 설명된 최소 운영 환경 요구 사항을 가진 별도의 서버에 있었습니다.</block>
+  <block id="edfcb8c8756d94a5053287cc7c5bb985" category="section-title">표 6) StorageGRID 가상 관리자 노드 및 게이트웨이 노드에 대한 요구사항</block>
+  <block id="95363aa90e372ebfaf3970380516572f" category="cell">노드 유형입니다</block>
+  <block id="5d56dbd20d9ee1ab8a722ff12e331953" category="cell">vCPU</block>
+  <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">스토리지</block>
+  <block id="f7aa6dfb52b6b0d539a8be4872a287f8" category="paragraph">게이트웨이 노드</block>
+  <block id="c9f0f895fb98ab9159f51fd0297e236d" category="paragraph">8</block>
+  <block id="bc7bf06ca2631ef1531ed5dc65a24f74" category="paragraph">24GB</block>
+  <block id="2be1f61edb7b7e4217e348e8d68c3bdb" category="paragraph">OS용 100GB LUN</block>
+  <block id="4c80ce09ddde27d3fd5c0bb436bc85b9" category="paragraph">관리자 노드</block>
+  <block id="c6ab7905f828c85832f97995c1de53c9" category="paragraph">관리자 노드 테이블용 200GB LUN</block>
+  <block id="69108e14aa48ab2bba84a59654aed432" category="paragraph">관리자 노드 감사 로그용 200GB LUN</block>
+  <block id="55d6f03ef9d28326ab829ca5d2678109" category="section-title">Commvault Complete 백업 및 복구 및 NetApp StorageGRID를 사용하여 데이터 보호 작업 실행</block>
+  <block id="624726d5ed2d940147c46600099b1b20" category="paragraph">Commvault Complete NetApp 백업 및 복구를 사용하여 NetApp StorageGRID를 구성하기 위해 다음 단계를 수행하여 Commvault 소프트웨어 내에서 StorageGRID를 클라우드 라이브러리로 추가했습니다.</block>
+  <block id="98e8e1a08dff2be7e31ea4273d1252cf" category="section-title">NetApp StorageGRID를 사용하여 Commvault를 구성합니다</block>
+  <block id="3f139c400a23226143fbb4c472b54b04" category="list-text">Commvault Command Center에 로그인합니다. 왼쪽 패널에서 스토리지 &gt; 클라우드 &gt; 추가 를 클릭하여 클라우드 추가 대화 상자를 확인하고 이에 대응하십시오.</block>
+  <block id="b9693cedb91ba2290fa1e958a43307a7" category="inline-image-macro">클라우드 추가</block>
+  <block id="d7b2bbcbec44a75a29e4d684f80fbed1" category="paragraph"><block ref="d7b2bbcbec44a75a29e4d684f80fbed1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e7716d81d180918f49287e4cffec864b" category="list-text">유형으로 NetApp StorageGRID를 선택합니다.</block>
+  <block id="f2328e03c7cb647329406eeecccf4cee" category="list-text">MediaAgent의 경우 클라우드 라이브러리와 연결된 모든 항목을 선택합니다.</block>
+  <block id="8880a4bf1f03731649f1c0440d513f95" category="list-text">서버 호스트의 경우 StorageGRID 끝점의 IP 주소 또는 호스트 이름과 포트 번호를 입력합니다.</block>
+  <block id="6a0eaeb7d5862ce617029226cd1ddb73" category="inline-link">로드 밸런서 엔드포인트(포트)를 구성하는 방법</block>
+  <block id="a3636f86ff974c19fd6fff205c8e5614" category="paragraph">의 StorageGRID 설명서에 나와 있는 단계를 따릅니다<block ref="1100cc5690fec9e9d1b69376de24b8a1" category="inline-link-rx"></block>. 자체 서명된 인증서가 있는 HTTPS 포트와 StorageGRID 끝점의 IP 주소 또는 도메인 이름이 있는지 확인합니다.</block>
+  <block id="03797fee0986db2f87c5cac8fcdb1dde" category="list-text">중복 제거를 사용하려면 이 옵션을 설정하고 중복 제거 데이터베이스 위치에 대한 경로를 제공합니다.</block>
+  <block id="7557bd62e953fb4d48f07977151ea94f" category="list-text">저장 을 클릭합니다.</block>
+  <block id="43f16fcba150904a7bc15439308479cb" category="section-title">NetApp StorageGRID를 기본 타겟으로 사용하여 백업 계획을 생성합니다</block>
+  <block id="ce43cd7410027d345f9c6f5c79d39d2d" category="list-text">왼쪽 패널에서 관리 &gt; 계획을 선택하여 서버 백업 계획 생성 대화 상자를 보고 이에 응답합니다.</block>
+  <block id="8280fcbd09b67e4a2a2180030f18ee89" category="inline-image-macro">서버 백업 계획을 만듭니다</block>
+  <block id="e6e155a2825afd1e66e915eba6056af0" category="paragraph"><block ref="e6e155a2825afd1e66e915eba6056af0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="35cef3079f40303a520fe4fb98509a28" category="list-text">계획 이름을 입력합니다.</block>
+  <block id="ed9638b797083e4574c1bda37d24d0fc" category="list-text">이전에 생성한 StorageGRID S3(Simple Storage Service) 스토리지 백업 대상을 선택합니다.</block>
+  <block id="cc10fccab84b1a6fe5a3b014f2ac16fe" category="list-text">원하는 백업 보존 기간 및 복구 지점 목표(RPO)를 입력합니다.</block>
+  <block id="317c3634f6ad30cd0bc9e98a4725d400" category="section-title">Commvault 소프트웨어 및 StorageGRID를 사용하여 워크로드를 보호하기 위한 백업 작업을 시작합니다</block>
+  <block id="ba57deab107afb6c3808fe3a667bb7b5" category="paragraph">Commvault Complete Backup and Recovery에서 StorageGRID로의 백업 작업을 시작하려면 다음 단계를 수행하십시오.</block>
+  <block id="1e6c34e7c31e91ec0533fdb6b4825478" category="list-text">Commvault Command Center에서 보호 &gt; 가상화 로 이동합니다.</block>
+  <block id="33a281881beebd42edbba1170de6ebdb" category="list-text">VMware vCenter Server 하이퍼바이저를 추가합니다.</block>
+  <block id="0582da82b14c1d127296cc0e0c1e593f" category="list-text">방금 추가한 하이퍼바이저를 클릭합니다.</block>
+  <block id="12d1eaf919942bd27fafed65a4eaa44b" category="list-text">Add VM group(VM 그룹 추가) 을 클릭하여 보호할 vCenter 환경을 볼 수 있도록 Add VM Group(VM 그룹 추가) 대화 상자에 응답합니다.</block>
+  <block id="4316988282aed94dacaa8b4b66bec00b" category="inline-image-macro">VM 그룹을 추가합니다</block>
+  <block id="5db14a33d51cc3d07064c129a11e4dfb" category="paragraph"><block ref="5db14a33d51cc3d07064c129a11e4dfb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="61febfa4c91db0399b8837e0c209881e" category="list-text">데이터 저장소, VM 또는 VM 컬렉션을 선택하고 이름을 입력합니다.</block>
+  <block id="b55f90f1dad898510ca7b78db85ef1b4" category="list-text">이전 작업에서 생성한 백업 계획을 선택합니다.</block>
+  <block id="58785b3df6de95af5db042098848d79c" category="list-text">Save를 클릭하여 생성한 VM 그룹을 확인합니다.</block>
+  <block id="2ea49c4e99265736f831cc64151e93cb" category="list-text">VM group 창의 오른쪽 위 모서리에서 Backup:</block>
+  <block id="1c964f034a0012b392a4cf6b87ac0fba" category="inline-image-macro">VM 그룹</block>
+  <block id="b8409b035475aa7ff8ff45771ca8c6f1" category="paragraph"><block ref="b8409b035475aa7ff8ff45771ca8c6f1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f5e3c2bce0112505e3bfead83355284d" category="list-text">백업 레벨로 Full을 선택하고, 백업이 완료되면 e-메일을 요청한 후 OK를 클릭하여 백업 작업을 시작합니다.</block>
+  <block id="eee4c34c5b08e040c0e736a8e298f721" category="inline-image-macro">백업 레벨</block>
+  <block id="6cc8cde2c84a6c1a21e31318d689c48b" category="paragraph"><block ref="6cc8cde2c84a6c1a21e31318d689c48b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f180b371d83592db209e4e7f07bd7f96" category="list-text">작업 요약 페이지로 이동하여 작업 메트릭을 확인합니다.</block>
+  <block id="bc2966582cc91a73dfce86d847e8e569" category="inline-image-macro">작업 요약</block>
+  <block id="ce8f9b25ff69c679a10481c883fed679" category="paragraph"><block ref="ce8f9b25ff69c679a10481c883fed679" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23571a6157715a68dbc83017094ddb4f" category="section-title">기준 성능 테스트</block>
+  <block id="6e861ca3d49a3946d380c959a4a035f6" category="paragraph">표 7은 기본 성능 테스트의 결과를 보여줍니다. 보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오<block ref="03ce17f8b5e1206a493f3bd56ef5953d" category="inline-link-rx"></block> 기술 보고서:</block>
+  <block id="225de55f95e8814ef869602a34589cd7" category="paragraph">테스트는 VM 100개와 VM 1000개로 수행되었으며, 둘 다 Windows와 CentOS VM의 50/50혼합 구성에서 수행되었습니다.</block>
+  <block id="229f4b7ae2ae04662d95b14f93a7ebe0" category="section-title">표 7) 기본 성능 테스트</block>
+  <block id="2a78ed76450c3cb42320882b3e055b31" category="cell">작동</block>
+  <block id="7e1474aa3c4832c1061cf4839e5d5d40" category="cell">백업 속도</block>
+  <block id="d9cb8f643ee1e5634cee0a2f4dc3dcde" category="cell">복원 속도</block>
+  <block id="770d588cad23e4bf00734e4271f614fd" category="paragraph">보조 복사</block>
+  <block id="1bd5cb95562494b849b4e43073e86dd0" category="paragraph">2TB/시간</block>
+  <block id="6e18c63ab6e3f65e0cacdc25607a044b" category="paragraph">1.27TB/시간</block>
+  <block id="cd8362e2e8655ccb1cee59cfbe698457" category="paragraph">오브젝트와 주고받는 직접 연결(중복제거 켜짐)</block>
+  <block id="e8d76835d2ff06b926aad0a1a3abc063" category="paragraph">2.2TB/시간</block>
+  <block id="4cd450a475fe3ee9b59eb120652eeaa9" category="paragraph">1.22TB/시간</block>
+  <block id="6c24655e80561dbbf463d7c411594029" category="paragraph">시간 종료 성능을 테스트하기 위해 250만 개의 오브젝트를 삭제했습니다. 그림 2 및 3에서 볼 수 있듯이 삭제 실행은 3시간 이내에 완료되었으며 80TB 이상의 공간을 확보했습니다. 삭제 실행이 오전 10시 30분에 시작되었습니다.</block>
+  <block id="4c1a9a798859a7662d448a099c8f19c2" category="section-title">그림 1) 250만(80TB) 오브젝트를 3시간 이내에 삭제</block>
+  <block id="05e3d90010c26e3ef8176b0d49eabdb3" category="inline-image-macro">시간이 지남에 따른 개체</block>
+  <block id="c09d8cd9b39a4736f34838dd7cf3f7a5" category="paragraph"><block ref="c09d8cd9b39a4736f34838dd7cf3f7a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="18967e6af4f60b163c3348f6c5e180f0" category="section-title">그림 2) 3시간 이내에 80TB 스토리지 확보</block>
+  <block id="6d2b9f3277e042907d537d8a6101be35" category="inline-image-macro">스토리지가 시간이 지남에 따라 변화합니다</block>
+  <block id="4fc5dae0e8a159f3d86289050bbd7311" category="paragraph"><block ref="4fc5dae0e8a159f3d86289050bbd7311" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a0b40e1fd7ca1cc5d222d54ea1d246cc" category="section-title">버킷 일관성 수준 권장</block>
+  <block id="8230e2a5dfbb7d3dc9d7837f464a94f4" category="paragraph">NetApp StorageGRID를 사용하면 최종 사용자가 S3(Simple Storage Service) 버킷의 오브젝트에 대해 수행하는 작업에 대한 일관성 수준을 선택할 수 있습니다.</block>
+  <block id="eb668bdb2b4d4ac34c6ad7523c133230" category="paragraph">CommVault MediaAgent는 Commvault 환경의 Data Mover입니다. 대부분의 경우 MediaAgent는 운영 StorageGRID 사이트에 로컬로 기록하도록 구성됩니다. 따라서 로컬 운영 사이트 내에서 높은 수준의 정합성 보장 수준을 사용하는 것이 좋습니다. StorageGRID에서 생성된 Commvault 버킷의 일관성 수준을 설정할 때 다음 지침을 사용합니다.</block>
+  <block id="3ceaa99fe3628c0d4ddb470789b9212d" category="list-text">CommVault 11.0.0 이전 버전 - 서비스 팩 16.* 11.0.0 이전 버전에서 Commvault는 복원 및 정리 프로세스의 일부로 존재하지 않는 개체에 대해 S3 헤드 및 GET 작업을 수행합니다. 버킷 일관성 수준을 강력한 사이트로 설정하여 Commvault로 StorageGRID 백업을 위한 최적의 일관성 수준을 달성합니다.</block>
+  <block id="9a76294cf4d43d5686590bb6c98a280b" category="list-text">CommVault 버전 11.0.0 - 서비스 팩 16 이상.* 버전 11.0.0 - 서비스 팩 16 이상에서는 존재하지 않는 개체에 대해 수행되는 S3 헤드 및 GET 작업의 수가 최소화됩니다. Commvault 및 StorageGRID 환경에서 높은 일관성 수준을 보장하기 위해 기본 버킷 정합성 보장 수준을 새 쓰기 후 읽기 로 설정합니다.</block>
+  <block id="3887d417240a72ab69f6d0301efd3b2b" category="section-title">추가 정보를 찾을 수 있는 위치</block>
+  <block id="b69ce771bb450c54c2a29e08595a1621" category="list-text">StorageGRID 11.8 설명서 센터+
+<block ref="47ea1c2d0f136bec8b3e66c2121bf70f" category="inline-link-rx"></block></block>
+  <block id="a1b241b7e61d12e641e864fa7e3c7a8e" category="list-text">NetApp 제품 설명서 +
+<block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
+  <block id="748e9574a05efa0e0738de58c2ff670b" category="list-text">Commvault 설명서 +
+<block ref="27eb3a3d6ca60f8dbf05e2df1f7e4644" category="inline-link-rx"></block></block>
 </blocks>

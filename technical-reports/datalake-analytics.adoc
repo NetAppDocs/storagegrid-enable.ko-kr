@@ -5,7 +5,10 @@ keywords: data lake, on-premises, analytics, storagegrid, object
 summary: 이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니다. 
 ---
 = NetApp StorageGRID 및 빅데이터 분석
+:hardbreaks:
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 
@@ -30,7 +33,7 @@ NetApp StorageGRID 오브젝트 스토리지 솔루션은 확장성, 데이터 �
 
 * 오브젝트 스토리지 사용 사례 *
 
-image:../media/datalake-analytics/image1.png["StorageGRID 사용 사례 다이어그램, 폭 = 396, 높이 = 394"]
+image:datalake-analytics/image1.png["StorageGRID 사용 사례 다이어그램, 폭 = 396, 높이 = 394"]
 
 위 중 빅 데이터 분석은 최상위 사용 사례 중 하나이며 사용량이 증가하고 있습니다.
 
@@ -47,7 +50,7 @@ image:../media/datalake-analytics/image1.png["StorageGRID 사용 사례 다이�
 
 * StorageGRID S3 데이터 레이크 *
 
-image:../media/datalake-analytics/image2.png["StorageGRID 데이터 레이크 예, width=614, height=345"]
+image:datalake-analytics/image2.png["StorageGRID 데이터 레이크 예, width=614, height=345"]
 
 
 

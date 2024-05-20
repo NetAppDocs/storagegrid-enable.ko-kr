@@ -70,6 +70,8 @@ indexpage:
       url: "/technical-reports/datalake-analytics.html"
     - title: Hadoop S3A 튜닝 모범 사례
       url: "/technical-reports/s3a-tuning.html"
+    - title: TR-4871 - Commvault의 전체 백업 및 복구 및 NetApp StorageGRID
+      url: "/technical-reports/tr-4871-commvault.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다
