@@ -926,7 +926,6 @@
   <block id="639a958d74ef218710689b55aa4ef73e" category="list-text">SG5660 또는 SG5760 어플라이언스에서 SG6060 어플라이언스로 이동하는 경우 SG5x60은 60개의 대용량 드라이브를 지원하며 SG6060은 58만 지원합니다.</block>
   <block id="4d1c46cee1bdcec65653b2e2163398e0" category="list-text">노드 클론 프로세스를 수행하려면 클론 생성 프로세스 동안 소스 노드가 그리드에 대해 오프라인 상태여야 합니다. 이 시간 동안 추가 노드가 오프라인이 되면 클라이언트 서비스에 영향을 줄 수 있습니다.</block>
   <block id="83d1a0f23bb258b2a270a1d6f7ff51d7" category="list-text">스토리지 노드는 15일 동안만 오프라인 상태가 될 수 있습니다. 복제 프로세스 추정치가 15일에 가깝거나 15일을 초과할 경우 확장 및 서비스 해제 절차를 사용하십시오.</block>
-  <block id="efde8725bd1e96e2479c137c19099fae" category="list-text">확장 쉘프가 있는 SG6060의 경우, 전체 클론 기간을 가져오려면 기본 어플라이언스 시간의 시간에 올바른 쉘프 드라이브 크기에 대한 시간을 추가해야 합니다.</block>
   <block id="fec00ca7ab315b679cc642c66a770bd8" category="section-title">노드 클론 성능 추정치</block>
   <block id="517e3359377bb6a7ea9488482299838f" category="paragraph">다음 표에는 노드 클론 기간에 대해 계산된 추정치가 나와 있습니다. 조건이 다양하므로 * BOLD * 의 항목은 노드 다운에 대해 15일 제한을 초과할 위험이 있습니다.</block>
   <block id="39ab52e8aaafa95380d3f56ccd8095d9" category="section-title">DDP8</block>
@@ -946,15 +945,12 @@
   <block id="6c32f983ee38ad5089298aa659cd011c" category="paragraph">4일</block>
   <block id="a5dffc518be58d2936a993ee100d71b6" category="paragraph">4.5일</block>
   <block id="e5d3435cf14793a49310fa8d85bcc4a1" category="paragraph">25GB</block>
-  <block id="885e215d2d15d2ac1b34e5b8d416f86a" category="section-title">SG5712 -&gt; 임의</block>
-  <block id="97fce1ba98948ee51fbf31978af80696" category="section-title">SG5660 -&gt; SG5760</block>
   <block id="9958432b6417f293cb0d15128b08e42f" category="paragraph">3일</block>
   <block id="366adabd6f1babc8138db3063adaf869" category="paragraph">6일</block>
   <block id="374616a0b786e9bffadc7f28e68d6c59" category="paragraph">7일</block>
   <block id="51ab732b98b519b5e54ce60864cc8d69" category="paragraph">8.5일</block>
   <block id="b00a84012a03b35beb30466d8baa4a1c" category="paragraph">11.5일</block>
   <block id="194ae66ddb8567ab63da3b82c925fa03" category="paragraph">* 13일 *</block>
-  <block id="85c75ace300325f8e407a841eb055d37" category="section-title">SG5660 -&gt; SG6060</block>
   <block id="61cab577ce1bed82e1b5d7caacb7456b" category="paragraph">2.5일</block>
   <block id="bf30897fe2ce34b7e9f89291e20d9eae" category="paragraph">5.5일</block>
   <block id="e5fd76b3288061d2c2638ccc41688416" category="paragraph">6.5일</block>
@@ -963,11 +959,8 @@
   <block id="e727fed489e8b7eecf1901196ec3ede9" category="paragraph">2일</block>
   <block id="6383598717ae8ac458dc988dff77c800" category="paragraph">5일</block>
   <block id="79e241fd6b320cbb41d67b028ec6f1c0" category="paragraph">8일</block>
-  <block id="c6a6ab48074fa03db6df437c1f27b415" category="section-title">SG5760 -&gt; SG5760</block>
-  <block id="4c0768167e7e249808ed4bd4ad28b2ed" category="section-title">SG5760 -&gt; SG6060</block>
   <block id="2a8a1b5738432b51afcd4dcbbbfe1434" category="paragraph">1.5일</block>
   <block id="9e6b8df1cd23e71938af979057e5144a" category="paragraph">3.5일</block>
-  <block id="bf0581629b559d1033e12e37f31bb0d7" category="section-title">SG6060 -&gt; SG6060</block>
   <block id="7da42b5478786d91e64cb31ec52e2511" category="paragraph">9.5일</block>
   <block id="d2bfdb3de60e1c2f154e5f9fa5a1dfc1" category="section-title">DDP16을 참조하십시오</block>
   <block id="00471150fc4d84adcd57392d7a47a3cb" category="paragraph">3.5일</block>
@@ -976,7 +969,6 @@
   <block id="383aea8468a529b339b755e27b1d4668" category="paragraph">7.5일</block>
   <block id="9ff416b798a88ec4bfb30f4f045aada5" category="paragraph">11일</block>
   <block id="ed01ec12331788a408398b059da47a39" category="paragraph">10.5일</block>
-  <block id="ec3751d915801591991ca3553c2fa5a7" category="section-title">확장 쉘프(소스 어플라이언스의 각 쉘프에 대해 SG6060 위에 추가)</block>
   <block id="fc1e2d26b4330f83ecfffe3439410229" category="summary">다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.</block>
   <block id="3f2327c90ede247dca9387ef500bf746" category="doc">버킷 및 그룹(IAM) 정책의 예</block>
   <block id="640ca9533a2fd150e7d3ed390e2aae66" category="section-title">그룹 정책(IAM)</block>
@@ -1134,7 +1126,6 @@
   <block id="a4bd669931c15a4828a4c38a495d7ff3" category="section-title">StorageGRID 구성</block>
   <block id="b85a187b18cf0ecaff36c27f7e5e7500" category="paragraph">최신 핫픽스가 포함된 NetApp StorageGRID 11.6 또는 11.7은 Veeam 구축에 권장되는 버전입니다. StorageGRID 11.6.0.11 및 11.7.0.4에 많은 최적화 기능이 도입되어 Veeam 워크로드에 유용합니다. 항상 최신 상태를 유지하고 StorageGRID 시스템에 최신 핫픽스를 적용하는 것이 좋습니다.</block>
   <block id="8215067184a09c074108be8e3fbbe725" category="section-title">로드 밸런서 및 S3 엔드포인트 구성</block>
-  <block id="923dc06db89bcd66cca887f28c0733c5" category="paragraph">Veeam을 사용하면 HTTPS를 통해서만 엔드포인트를 연결해야 합니다. 암호화되지 않은 연결은 Veeam에서 지원되지 않습니다. SSL 인증서는 자체 서명된 인증서, 신뢰할 수 있는 개인 인증 기관 또는 신뢰할 수 있는 공용 인증 기관일 수 있습니다. S3 저장소에 대한 지속적인 액세스를 보장하려면 HA 구성에서 로드 밸런서를 2개 이상 사용하는 것이 좋습니다. 로드 밸런서는 모든 관리 노드 및 게이트웨이 노드에 있는 StorageGRID에서 제공하는 통합 로드 밸런서 서비스이거나 F5, Kemp, Hafroxy, Loadbalanacer.org 등과 같은 타사 솔루션일 수 있습니다 StorageGRID 로드 밸런서를 사용하면 Veeam 워크로드의 우선순위를 지정할 수 있는 트래픽 분류자(QoS 규칙)를 설정하거나, Veeam을 StorageGRID 시스템에서 우선순위가 높은 워크로드에 영향을 미치지 않도록 제한할 수 있습니다.</block>
   <block id="84ace9fb8e132c96d1dfcd31447efedc" category="section-title">S3 버킷</block>
   <block id="55876228853abf632dec9346a4f372ec" category="inline-link">문서화</block>
   <block id="69e163f50758f77f10618e8e4b89f0cb" category="paragraph">StorageGRID는 안전한 멀티 테넌트 스토리지 시스템입니다. Veeam 워크로드를 위한 전용 테넌트를 생성하는 것이 좋습니다. 필요에 따라 스토리지 할당량을 할당할 수 있습니다. 최선의 방법으로 "자체 ID 소스 사용"을 활성화합니다. 적절한 암호를 사용하여 테넌트 루트 관리 사용자를 보호합니다. Veeam Backup 12는 S3 버킷의 경우 강력한 일관성이 필요합니다. StorageGRID은 버킷 수준에서 구성된 다양한 정합성 보장 옵션을 제공합니다. Veeam이 여러 위치의 데이터에 액세스할 수 있는 멀티 사이트 배포의 경우 "강력한 글로벌"을 선택하십시오. Veeam 백업 및 복원을 단일 사이트에서만 수행할 경우 일관성 수준을 "강력한 사이트"로 설정해야 합니다. 버킷 일관성 수준에 대한 자세한 내용은 을 참조하십시오<block ref="782397d2a33ccd7da9c1580a84d10f9d" category="inline-link-rx"></block>. Veeam 불변성 백업을 위해 StorageGRID를 사용하려면 S3 오브젝트 잠금을 글로벌로 사용하도록 설정하고 버킷 생성 중에 버킷에 구성해야 합니다.</block>
@@ -1816,4 +1807,13 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
 <block ref="fa4af55c3fdbce23e96d2cf73261fa5b" category="inline-link-rx"></block></block>
   <block id="748e9574a05efa0e0738de58c2ff670b" category="list-text">Commvault 설명서 +
 <block ref="27eb3a3d6ca60f8dbf05e2df1f7e4644" category="inline-link-rx"></block></block>
+  <block id="c4d7e990537b5cabb7c53ef27e8240d3" category="paragraph">Veeam을 사용하면 HTTPS를 통해서만 엔드포인트를 연결해야 합니다. 암호화되지 않은 연결은 Veeam에서 지원되지 않습니다. SSL 인증서는 자체 서명된 인증서, 신뢰할 수 있는 개인 인증 기관 또는 신뢰할 수 있는 공용 인증 기관일 수 있습니다. S3 저장소에 대한 지속적인 액세스를 보장하려면 HA 구성에서 로드 밸런서를 2개 이상 사용하는 것이 좋습니다. 로드 밸런서는 모든 관리 노드 및 게이트웨이 노드에 있는 StorageGRID에서 제공하는 통합 로드 밸런서 서비스이거나 F5, Kemp, Hafroxy, Loadbalancer.org 등과 같은 타사 솔루션일 수 있습니다 StorageGRID 로드 밸런서를 사용하면 Veeam 워크로드의 우선순위를 지정할 수 있는 트래픽 분류자(QoS 규칙)를 설정하거나, Veeam을 StorageGRID 시스템에서 우선순위가 높은 워크로드에 영향을 미치지 않도록 제한할 수 있습니다.</block>
+  <block id="2adef84f9348cc9769b8c3e1982c3cb1" category="list-text">확장 쉘프가 포함된 SG6060 또는 SG6160의 경우, 전체 클론 기간을 얻기 위해 올바른 쉘프 드라이브 크기에 대한 시간을 기본 어플라이언스 시간의 시간과 추가해야 합니다.</block>
+  <block id="77ffe904133c5c2e3ab960ef54b7be2d" category="section-title">SG5712/SG5812 -&gt; 모두</block>
+  <block id="2060afee4c8201b859d447131ee1434a" category="section-title">SG5660 -&gt; SG5760/SG5860</block>
+  <block id="85b9faf406d03aaecca5e119294ceb1a" category="section-title">SG5660 -&gt; SG6060/SG6160</block>
+  <block id="7d9a95e91e60865aaa29da1eb0f75121" category="section-title">SG5760/SG5860 -&gt; SG5760/SG5860</block>
+  <block id="ab7ccd4f66da0de459e420e05417e0dd" category="section-title">SG5760/SG5860 -&gt; SG6060/SG6160</block>
+  <block id="25b15e92a1710d10f6bca458e130baaa" category="section-title">SG6060/SG6160 -&gt; SG6060/SG6160</block>
+  <block id="6219d1d3d5ac2385dfb8d391122edd3e" category="section-title">확장 쉘프(소스 어플라이언스의 각 쉘프마다 SG6060/SG6160 위에 추가)</block>
 </blocks>
