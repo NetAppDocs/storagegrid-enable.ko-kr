@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/load-balancer/index.html 
+keywords: object storage, load balancer 
+summary: StorageGRID 같은 오브젝트 스토리지 시스템에서 타사 및 글로벌 로드 밸런서의 역할에 대해 알아보십시오. 
+---
+= StorageGRID과 함께 타사 로드 밸런서를 사용하십시오
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+StorageGRID 같은 오브젝트 스토리지 시스템에서 타사 및 글로벌 로드 밸런서의 역할에 대해 알아보십시오.
+
+타사 로드 밸런서와 함께 NetApp ® StorageGRID ® 를 구현하기 위한 일반 지침입니다.
+
+오브젝트 스토리지는 클라우드 스토리지라는 용어와 동의하며, 클라우드 스토리지를 활용하는 애플리케이션은 URL을 통해 해당 스토리지를 처리합니다. 단순한 URL 뒤단에 있는 StorageGRID는 단일 사이트 또는 지리적으로 분산된 사이트에서 용량, 성능 및 내구성을 확장할 수 있습니다. 이러한 단순성을 가능하게 하는 구성 요소는 로드 밸런서입니다.
+
+이 문서의 목적은 StorageGRID 고객에게 로드 밸런서 옵션에 대해 설명하고 타사 로드 밸런서 구성에 대한 일반적인 지침을 제공하는 것입니다.
+
+
+
+== 로드 밸런서 기본 사항
+
+로드 밸런서는 StorageGRID와 같은 엔터프라이즈급 오브젝트 스토리지 시스템의 필수 구성 요소입니다. StorageGRID는 여러 스토리지 노드로 구성되며, 각 스토리지 노드는 특정 StorageGRID 인스턴스에 대해 전체 S3(Simple Storage Service) 이름 공간을 제공할 수 있습니다. 로드 밸런서는 StorageGRID 노드를 배치할 수 있는 고가용성 엔드포인트를 생성합니다. StorageGRID는 자체 로드 밸런서를 제공한다는 점에서 S3 호환 오브젝트 스토리지 시스템 간에는 고유하지만 F5, Citrix NetScaler, HA Proxy, NGINX 등과 같은 타사 또는 범용 로드 밸런서도 지원합니다.
+
+다음 그림에서는 예제 URL/FQDN(정규화된 도메인 이름) “s3.company.com” 사용합니다. 로드 밸런서는 DNS를 통해 FQDN으로 확인되는 가상 IP(VIP)를 생성한 다음, 애플리케이션의 요청을 StorageGRID 노드 풀로 보냅니다. 로드 밸런서는 각 노드에서 상태 점검을 수행하고 정상 노드에 대한 연결만 설정합니다.
+
+image:load-balancer-local-traffic-manager-load-balancer.png["로컬 트래픽 관리자 로드 밸런서"]
+
+이 그림에는 StorageGRID가 제공하는 로드 밸런서가 나와 있지만 타사 로드 밸런서의 개념은 같습니다. 애플리케이션은 로드 밸런서의 VIP를 사용하여 HTTP 세션을 설정하고 트래픽이 로드 밸런서를 통해 스토리지 노드로 전달됩니다. 기본적으로 애플리케이션에서 로드 밸런서까지, 로드 밸런서에서 스토리지 노드까지 모든 트래픽은 HTTPS를 통해 암호화됩니다. HTTP는 지원되는 옵션입니다.
+
+
+
+=== 로컬 및 글로벌 로드 밸런서
+
+로드 밸런서에는 두 가지 유형이 있습니다.
+
+* * 로컬 트래픽 관리자(LTM) *. 단일 사이트의 노드 풀에 연결을 분산합니다.
+* * 글로벌 서비스 로드 밸런서(GSLB) *. 여러 사이트에 연결을 분산하여 LTM 로드 밸런서를 효과적으로 로드 밸런싱합니다. GSLB는 지능형 DNS 서버라고 생각하면 됩니다. 클라이언트가 StorageGRID 엔드포인트 URL을 요청하면 GSLB는 가용성 또는 기타 요인(예: 애플리케이션의 지연 시간을 줄일 수 있는 사이트)을 기반으로 LTM의 VIP로 이를 확인합니다. LTM은 항상 필요하지만 StorageGRID 사이트의 수와 애플리케이션 요구 사항에 따라 GSLB는 선택 사항입니다.
+
+
+
+
+=== StorageGRID 게이트웨이 노드 로드 밸런서 대 타사 로드 밸런서
+
+StorageGRID는 S3 호환 오브젝트 스토리지 공급업체에서는 특별 제작된 어플라이언스, VM 또는 컨테이너로 제공되는 네이티브 로드 밸런서를 제공한다는 점에서 차별화됩니다. StorageGRID에서 제공하는 로드 밸런서를 게이트웨이 노드라고도 합니다.
+
+F5, Citrix 등과 같은 로드 밸런서를 아직 소유하고 있지 않은 고객의 경우 타사 로드 밸런서를 구현하는 것이 매우 복잡할 수 있습니다. StorageGRID 로드 밸런서는 로드 밸런서 운영을 크게 단순화합니다.
+
+게이트웨이 노드는 고가용성 및 고성능 로드 밸런서입니다. 고객은 게이트웨이 노드, 타사 로드 밸런서 또는 둘 다를 동일한 그리드에 구현할 수 있습니다. 게이트웨이 노드는 GSLB와 로컬 트래픽 관리자입니다.
+
+StorageGRID 로드 밸런서는 다음과 같은 이점을 제공합니다.
+
+* * 단순성 *. 리소스 풀 자동 구성, 상태 점검, 패치 적용 및 유지 관리 기능이 모두 StorageGRID에서 관리됩니다.
+* * 성능 *. StorageGRID 로드 밸런서는 StorageGRID 전용이므로 대역폭을 위해 다른 애플리케이션과 경쟁하지 않습니다.
+* * 비용 *. 추가 비용 없이 가상 머신(VM) 및 컨테이너 버전이 제공됩니다.
+* * 트래픽 분류 *. 고급 트래픽 분류 기능을 사용하면 워크로드 분석과 함께 StorageGRID 관련 QoS 규칙을 사용할 수 있습니다.
+* * 미래의 StorageGRID 전용 기능 *. StorageGRID는 향후 릴리스에 걸쳐 로드 밸런서에 혁신적인 기능을 지속적으로 최적화하고 추가할 예정입니다.
+
+
+StorageGRID 게이트웨이 노드 배포에 대한 자세한 내용은 를 참조하십시오 https://docs.netapp.com/us-en/storagegrid-117/["StorageGRID 설명서"^].
+
+
+
+== 추가 정보를 찾을 수 있는 위치
+
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* NetApp StorageGRID 문서 센터 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID 지원 https://docs.netapp.com/us-en/storagegrid-enable/[]
+* StorageGRID F5 로드 밸런서 설계 고려 사항 https://www.netapp.com/blog/storagegrid-f5-load-balancer-design-considerations/[]
+* Loadbalancer.org—Load NetApp StorageGRID 밸런싱 https://www.loadbalancer.org/applications/load-balancing-netapp-storagegrid/[]
+* Kemp - 로드 밸런싱 NetApp StorageGRID https://support.kemptechnologies.com/hc/en-us/articles/360045186451-NetApp-StorageGRID[]
+

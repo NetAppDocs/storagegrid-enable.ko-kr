@@ -1,0 +1,61 @@
+---
+permalink: technical-reports/monitor/access-metrics-curl.html 
+sidebar: sidebar 
+keywords: access metrics, curl, storagegrid 
+summary: 효율적인 데이터 검색을 위해 NetApp StorageGRID에서 curl 및 인증 토큰을 사용하여 CLI를 통해 메트릭에 액세스하는 방법을 알아보십시오. 
+---
+= StorageGRID에서 curl을 사용하여 메트릭에 액세스할 수 있습니다
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+curl을 사용하여 CLI를 통해 메트릭에 액세스하는 방법을 알아보십시오.
+
+이 작업을 수행하려면 먼저 인증 토큰을 얻어야 합니다. 토큰을 요청하려면 다음 단계를 따르십시오.
+
+.단계
+. GMI에서 도움말 [API Documentation] 메뉴를 선택합니다.
+. 인증까지 아래로 스크롤하여 승인에 대한 작업을 찾습니다. 다음 스크린샷은 POST 메서드의 매개 변수를 보여 줍니다.
++
+image:monitor-post-method.png["모니터-포스트-방법"]
+
+. 시험해보기 를 클릭하고 GMI 사용자 이름과 암호로 본문을 편집합니다.
+. 실행 을 클릭합니다.
+. curl 섹션에 제공된 curl 명령을 복사하여 터미널 창에 붙여 넣습니다. 명령은 다음과 같습니다.
++
+[listing]
+----
+curl -X POST "https:// <Primary_Admin_IP>/api/v3/authorize" -H "accept: application/json" -H "Content-Type: application/json" -H "X-Csrf-Token: dc30b080e1ca9bc05ddb81104381d8c8" -d "{ \"username\": \"MyUsername\", \"password\": \"MyPassword\", \"cookie\": true, \"csrfToken\": false}" -k
+----
++
+
+NOTE: GMI 암호에 특수 문자가 포함된 경우 특수 문자를 이스케이프 처리하려면 \ 를 사용해야 합니다. 예를 들어, replace! 포함\!
+
+. 앞의 curl 명령을 실행하면 다음 예제와 같은 인증 토큰이 출력에 제공됩니다.
++
+[listing]
+----
+{"responseTime":"2020-06-03T00:12:17.031Z","status":"success","apiVersion":"3.2","data":"8a1e528d-18a7-4283-9a5e-b2e6d731e0b2"}
+----
++
+이제 인증 토큰 문자열을 사용하여 curl을 통해 메트릭에 액세스할 수 있습니다. 메트릭 액세스 프로세스는 섹션의 단계와 유사합니다 link:advanced-monitor-storagegrid.html#export-metrics-through-the-api["StorageGRID의 고급 모니터링 기능"]. 그러나 데모 목적으로 메트릭 범주에서 Get/grid/metric-labels/{label}/ 값을 선택한 예를 보여 줍니다.
+
+. 예를 들어, 앞의 인증 토큰을 사용하여 다음 curl 명령을 실행하면 StorageGRID의 사이트 이름이 나열됩니다.
++
+[listing]
+----
+curl -X GET "https://10.193.92.230/api/v3/grid/metric-labels/site_name/values" -H "accept: application/json" -H "Authorization: Bearer 8a1e528d-18a7-4283-9a5e-b2e6d731e0b2"
+----
++
+curl 명령은 다음 출력을 생성합니다.
+
++
+[listing]
+----
+{"responseTime":"2020-06-03T00:17:00.844Z","status":"success","apiVersion":"3.2","data":["us-east-fuse","us-west-fuse"]}
+----
+

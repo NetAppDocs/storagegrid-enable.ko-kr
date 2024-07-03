@@ -1,0 +1,73 @@
+---
+permalink: technical-reports/veritas/configure-storagegrid-site-failover.html 
+sidebar: sidebar 
+keywords: site failover, configure, storagegrid 
+summary: 재해 복구 시나리오에서 StorageGRID 사이트 장애 조치를 구성하는 방법에 대해 알아보십시오. 
+---
+= 재해 복구를 위한 StorageGRID 사이트 장애 조치 구성
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+재해 복구 시나리오에서 StorageGRID 사이트 장애 조치를 구성하는 방법에 대해 알아보십시오.
+
+StorageGRID 아키텍처 구축이 멀티사이트인 것이 일반적입니다. 사이트는 DR을 위한 액티브-액티브 또는 액티브-패시브일 수 있습니다. DR 시나리오에서 Veritas Enterprise Vault가 운영 스토리지(StorageGRID)에 대한 연결을 유지하고 사이트 장애 시에도 데이터를 계속 수집 및 검색할 수 있는지 확인합니다. 이 섹션에서는 2개 사이트, 액티브-패시브 구축을 위한 고급 구성 지침을 제공합니다. 이러한 지침에 대한 자세한 내용은 link:https://docs.netapp.com/us-en/storagegrid-118/["StorageGRID 설명서"] 페이지를 참조하거나 StorageGRID 전문가에게 문의하십시오.
+
+
+
+== Veritas Enterprise Vault를 사용하여 StorageGRID를 구성하기 위한 사전 요구 사항
+
+StorageGRID 사이트 페일오버를 구성하기 전에 다음과 같은 사전 사항을 확인하십시오.
+
+* 사이트 1과 사이트 2개와 같은 두 개의 StorageGRID 배포가 있습니다.
+* 각 사이트에서 로드 밸런싱을 위해 로드 밸런서 서비스 또는 게이트웨이 노드를 실행하는 관리자 노드가 생성되었습니다.
+* StorageGRID 로드 밸런서 끝점이 생성되었습니다.
+
+
+
+
+== StorageGRID 사이트 페일오버 구성
+
+StorageGRID 사이트 장애 조치를 구성하려면 다음 단계를 완료하십시오.
+
+.단계
+. 사이트 장애 시 StorageGRID에 대한 연결을 보장하려면 고가용성(HA) 그룹을 구성합니다. StorageGRID 그리드 관리자 인터페이스(GMI)에서 구성, 고가용성 그룹 및 + 생성을 클릭합니다.
++
+image:third-party-create-high-availability-group.png["타사 생성-고가용성-그룹"]
+
+. 필요한 정보를 입력합니다. Select Interfaces를 클릭하고 site1과 site2의 네트워크 인터페이스를 모두 포함합니다. 여기서 site1(운영 사이트)이 기본 마스터입니다. 동일한 서브넷 내에서 가상 IP 주소를 할당합니다. 저장 을 클릭합니다.
++
+image:third-party-edit-high-availability-group.png["타사 편집 고가용성 그룹"]
+
+. 이 가상 IP(VIP) 주소는 Veritas Enterprise Vault의 파티션 구성 중에 사용되는 S3 호스트 이름과 연결되어야 합니다. VIP 주소는 트래픽을 사이트1로 해결하고, 사이트1에 장애가 발생하면 VIP 주소는 트래픽을 사이트2로 투명하게 다시 라우팅합니다.
+. 데이터가 site1과 site2에 모두 복제되었는지 확인합니다. 이렇게 하면 site1이 실패해도 site2에서 개체 데이터를 계속 사용할 수 있습니다. 이 작업은 먼저 스토리지 풀을 구성하여 수행합니다.
++
+StorageGRID GMI에서 ILM, 스토리지 풀, + 생성을 차례로 클릭합니다. 마법사를 따라 site1에 대해 하나씩, site2에 대해 두 개의 스토리지 풀을 생성합니다.
+
++
+스토리지 풀은 오브젝트 배치를 정의하는 데 사용되는 노드의 논리적 그룹입니다
+
++
+image:third-party-storage-pool-details-site-1.png["타사 -storage-pool-details-site-1"]
+
++
+image:third-party-storage-pool-details-site-2.png["타사 - 스토리지 - 풀 - 세부 정보 - 사이트 - 2"]
+
+. StorageGRID GMI에서 ILM, 규칙을 클릭한 다음 + 만들기를 클릭합니다. 마법사에 따라 수집 동작이 Balanced인 사이트당 저장할 복제본 하나를 지정하는 ILM 규칙을 생성합니다.
++
+image:third-party-storage-pool-details-site-3.png["타사 스토리지-풀-세부 정보-사이트-3"]
+
+. ILM 규칙을 ILM 정책에 추가하고 정책을 활성화합니다.
+
+
+이렇게 구성하면 다음과 같은 결과가 나타납니다.
+
+* site1이 운영 엔드포인트이고 site2가 보조 엔드포인트입니다. site1에 장애가 발생하면 VIP가 site2로 페일오버됩니다.
+* 아카이빙된 데이터가 Veritas Enterprise Vault에서 전송되면 StorageGRID는 복제본 한 개가 사이트1에 저장되고 다른 DR 복제본이 사이트2에 저장되도록 보장합니다. site1에 장애가 발생하면 Enterprise Vault는 사이트2에서 계속 수집 및 검색합니다.
+
+
+
+NOTE: 이 두 구성은 모두 Veritas Enterprise Vault에 영향을 미치지 않습니다. S3 끝점, 버킷 이름, 액세스 키 등은 동일합니다. Veritas Enterprise Vault 파티션에서 S3 연결 설정을 재구성할 필요가 없습니다.

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/ransomware-protection/index.html 
+keywords: ransomware attacks, storagegrid, best practices 
+summary: StorageGRID 보안 모범 사례로 랜섬웨어 공격과 데이터를 보호하는 방법에 대해 알아보십시오. 
+---
+= 랜섬웨어로부터 StorageGRID S3 오브젝트 보호
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+StorageGRID 보안 모범 사례로 랜섬웨어 공격과 데이터를 보호하는 방법에 대해 알아보십시오.
+
+랜섬웨어 공격이 증가하고 있습니다. 이 문서에서는 StorageGRID에서 개체 데이터를 보호하는 방법에 대한 몇 가지 권장 사항을 제공합니다.
+
+오늘날의 랜섬웨어는 데이터 센터에 있어서 항상 존재하는 위험입니다. 랜섬웨어는 데이터를 암호화하여 사용하는 사용자 및 애플리케이션이 사용할 수 없도록 설계되었습니다. 보안은 강화된 네트워킹과 견고한 사용자 보안 관행의 일반적인 방어부터 시작하며, 데이터 액세스 보안 관행에 따라야 합니다.
+
+랜섬웨어는 오늘날 가장 큰 보안 위협 중 하나입니다. NetApp StorageGRID 팀은 이러한 위협에 대비하기 위해 고객과 협력하고 있습니다. 개체 잠금 및 버전 관리를 사용하면 원치 않는 변경을 방지하고 악의적인 공격으로부터 복구할 수 있습니다. 데이터 보안은 오브젝트 스토리지가 데이터 센터의 한 부분에 불과합니다.
+
+
+
+== StorageGRID 모범 사례
+
+StorageGRID의 경우 보안 모범 사례에는 관리 및 개체 액세스를 위해 서명된 인증서와 함께 HTTPS를 사용하는 것이 포함되어야 합니다. 애플리케이션 및 개인에 대한 전용 사용자 계정을 생성하고 애플리케이션 액세스 또는 사용자 데이터 액세스에 테넌트 루트 계정을 사용하지 마십시오. 즉, 최소 권한 원칙을 따릅니다. IAM(Identity and Access Management) 정책이 정의된 보안 그룹을 사용하여 사용자 권한을 관리하고 응용 프로그램 및 사용자에 고유한 계정에 액세스합니다. 적절한 조치를 취하는 동안에도 데이터를 보호해야 합니다. S3(Simple Storage Service)의 경우 오브젝트를 암호화하도록 수정하면 원래 오브젝트를 덮어쓰면 수행됩니다.
+
+
+
+== 방어방법
+
+S3 API의 기본 랜섬웨어 보호 메커니즘은 오브젝트 잠금을 구현하는 것입니다. 모든 애플리케이션이 오브젝트 잠금과 호환되지 않으므로 이 보고서에서 설명하는 오브젝트를 보호하기 위한 다른 두 가지 옵션, 즉 버전 관리가 활성화된 다른 버킷으로의 복제 및 IAM 정책을 통한 버전 관리가 있습니다.
+
+
+
+== 추가 정보를 찾을 수 있는 위치
+
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* NetApp StorageGRID 문서 센터 https://docs.netapp.com/us-en/storagegrid-118/[]
+* NetApp StorageGRID 지원 https://docs.netapp.com/us-en/storagegrid-enable/[]
+* StorageGRID 문서 리소스 페이지 https://www.netapp.com/data-storage/storagegrid/documentation/[]
+* NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
+

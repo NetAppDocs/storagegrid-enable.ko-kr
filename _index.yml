@@ -66,12 +66,22 @@ indexpage:
       url: "/tools-apps-guides/integrate-gitlab.html"
   - title: 기술 보고서
     links:
-    - title: NetApp StorageGRID 및 빅데이터 분석
-      url: "/technical-reports/datalake-analytics.html"
-    - title: Hadoop S3A 튜닝 모범 사례
-      url: "/technical-reports/s3a-tuning.html"
-    - title: TR-4871 - Commvault의 전체 백업 및 복구 및 NetApp StorageGRID
-      url: "/technical-reports/tr-4871-commvault.html"
+    - title: 'TR-4993: NetApp StorageGRID 및 빅데이터 분석'
+      url: "/technical-reports/technical-reports/datalake-analytics.html"
+    - title: 'TR-4994: Hadoop S3A 튜닝 모범 사례'
+      url: "/technical-reports/technical-reports/s3a-tuning.html"
+    - title: 'TR-4871: Commvault의 전체 백업 및 복구 및 NetApp StorageGRID'
+      url: "/technical-reports/technical-reports/tr-4871-commvault.html"
+    - title: 'TR-4645: 보안 기능'
+      url: "/technical-reports/data-security/index.html"
+    - title: 'TR-4921: 랜섬웨어 방어'
+      url: "/technical-reports/ransomware-protection/index.html"
+    - title: 'TR-4765: StorageGRID 모니터링'
+      url: "/technical-reports/monitor/index.html"
+    - title: 'TR-4882: StorageGRID 베어 메탈 그리드를 설치합니다'
+      url: "/technical-reports/bare-metal/index.html"
+    - title: 'TR-4907: Veritas Enterprise Vault로 StorageGRID를 구성합니다'
+      url: "/technical-reports/veritas/index.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다

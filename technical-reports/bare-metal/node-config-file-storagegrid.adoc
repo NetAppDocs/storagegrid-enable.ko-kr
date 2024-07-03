@@ -1,0 +1,181 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal/node-config-file-storagegrid.html 
+keywords: node config, storagegrid 
+summary: StorageGRID용 노드 구성 파일을 준비하는 방법을 이해합니다. 
+---
+= StorageGRID에 대한 노드 구성 파일을 준비합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+StorageGRID용 노드 구성 파일을 준비하는 방법에 대해 알아봅니다.
+
+상위 레벨에서 노드 구성 프로세스에는 다음 단계가 포함됩니다.
+
+.단계
+.  `/etc/storagegrid/nodes`모든 호스트에 디렉토리를 생성합니다.
++
+[listing]
+----
+sudo [root@host1 ~]# mkdir -p /etc/storagegrid/nodes
+----
+. 컨테이너/노드 유형 레이아웃과 일치하도록 물리적 호스트별로 필요한 파일을 생성합니다. 이 예에서는 각 호스트 시스템에서 물리적 호스트당 두 개의 파일을 생성했습니다.
++
+
+NOTE: 파일 이름은 설치를 위한 실제 노드 이름을 정의합니다. 예를 들어, 은 `dc1-adm1.conf` 이라는 노드가 `dc1-adm1`됩니다.
+
++
+-- 호스트1:
+`dc1-adm1.conf`
+`dc1-sn1.conf`
+
++
+-- 호스트2:
+`dc1-gw1.conf`
+`dc1-sn2.conf`
+
++
+-- 호스트3:
+`dc1-gw2.conf`
+`dc1-sn3.conf`
+
+
+
+
+
+== 노드 구성 파일 준비
+
+다음 예제에서는 `/dev/disk/by-path` 형식을 사용합니다. 다음 명령을 실행하여 올바른 경로를 확인할 수 있습니다.
+
+[listing]
+----
+[root@host1 ~]# lsblk
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda 8:0 0 90G 0 disk
+├─sda1 8:1 0 1G 0 part /boot
+└─sda2 8:2 0 89G 0 part
+├─rhel-root 253:0 0 50G 0 lvm /
+├─rhel-swap 253:1 0 9G 0 lvm
+└─rhel-home 253:2 0 30G 0 lvm /home
+sdb 8:16 0 200G 0 disk /var/lib/docker
+sdc 8:32 0 90G 0 disk
+sdd 8:48 0 200G 0 disk
+sde 8:64 0 200G 0 disk
+sdf 8:80 0 4T 0 disk
+sdg 8:96 0 4T 0 disk
+sdh 8:112 0 4T 0 disk
+sdi 8:128 0 90G 0 disk
+sr0 11:0 1 1024M 0 rom
+----
+및 이러한 명령은 다음과 같습니다.
+
+[listing]
+----
+[root@host1 ~]# ls -l /dev/disk/by-path/
+total 0
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:02:01.0-ata-1.0 -> ../../sr0
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0 -> ../../sda
+lrwxrwxrwx 1 root root 10 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0-part1 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:0:0-part2 -> ../../sda2
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:1:0 -> ../../sdb
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:2:0 -> ../../sdc
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:3:0 -> ../../sdd
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:4:0 -> ../../sde
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:5:0 -> ../../sdf
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:6:0 -> ../../sdg
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:8:0 -> ../../sdh
+lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:9:0 -> ../../sdi
+----
+
+
+== 기본 관리자 노드의 예
+
+파일 이름 예:
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-adm1.conf
+----
+파일 내용의 예:
+
+
+NOTE: 디스크 경로는 아래 예를 따르거나 스타일 이름을 사용할 수 `/dev/mapper/alias` 있습니다. 같은 블록 장치 이름은 재부팅 시 변경되어 그리드에 큰 손상을 줄 수 있으므로 사용하지 `/dev/sdb` 마십시오.
+
+[listing]
+----
+NODE_TYPE = VM_Admin_Node
+ADMIN_ROLE = Primary
+MAXIMUM_RAM = 24g
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0
+BLOCK_DEVICE_AUDIT_LOGS = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:3:0
+BLOCK_DEVICE_TABLES = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:4:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.43
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+CLIENT_NETWORK_CONFIG = STATIC
+CLIENT_NETWORK_IP = 10.193.205.43
+CLIENT_NETWORK_MASK = 255.255.255.0
+CLIENT_NETWORK_GATEWAY = 10.193.205.1
+----
+
+
+== 스토리지 노드의 예
+
+파일 이름 예:
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-sn1.conf
+----
+파일 내용의 예:
+
+[listing]
+----
+NODE_TYPE = VM_Storage_Node
+MAXIMUM_RAM = 24g
+ADMIN_IP = 10.193.174.43
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:9:0
+BLOCK_DEVICE_RANGEDB_00 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:5:0
+BLOCK_DEVICE_RANGEDB_01 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:6:0
+BLOCK_DEVICE_RANGEDB_02 = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:8:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.44
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+----
+
+
+== 게이트웨이 노드의 예
+
+파일 이름 예:
+
+[listing]
+----
+/etc/storagegrid/nodes/dc1-gw1.conf
+----
+파일 내용의 예:
+
+[listing]
+----
+NODE_TYPE = VM_API_Gateway
+MAXIMUM_RAM = 24g
+ADMIN_IP = 10.193.204.43
+BLOCK_DEVICE_VAR_LOCAL = /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0
+GRID_NETWORK_TARGET = ens192
+CLIENT_NETWORK_TARGET = ens224
+GRID_NETWORK_IP = 10.193.204.47
+GRID_NETWORK_MASK = 255.255.255.0
+GRID_NETWORK_GATEWAY = 10.193.204.1
+CLIENT_NETWORK_IP = 10.193.205.47
+CLIENT_NETWORK_MASK = 255.255.255.0
+CLIENT_NETWORK_GATEWAY = 10.193.205.1
+----

@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault/s3-consistency-levels.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가지 사용 사례를 살펴보십시오. 
+---
+= 버킷 일관성 수준 권장 사항
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../../media/
+
+
+[role="lead"]
+NetApp StorageGRID를 사용하면 최종 사용자가 S3(Simple Storage Service) 버킷의 오브젝트에 대해 수행하는 작업에 대한 일관성 수준을 선택할 수 있습니다.
+
+CommVault MediaAgent는 Commvault 환경의 Data Mover입니다. 대부분의 경우 MediaAgent는 운영 StorageGRID 사이트에 로컬로 기록하도록 구성됩니다. 따라서 로컬 운영 사이트 내에서 높은 수준의 정합성 보장 수준을 사용하는 것이 좋습니다. StorageGRID에서 생성된 Commvault 버킷의 일관성 수준을 설정할 때 다음 지침을 사용합니다.
+
+[NOTE]
+====
+Commvault 버전이 11.0.0 - 서비스 팩 16 이전 버전인 경우 Commvault를 최신 버전으로 업그레이드하는 것을 고려해 보십시오. 옵션이 아닌 경우 사용 중인 버전에 대한 지침을 따르십시오.
+
+====
+* CommVault 11.0.0 이전 버전 - 서비스 팩 16.* 11.0.0 이전 버전에서 Commvault는 복원 및 정리 프로세스의 일부로 존재하지 않는 개체에 대해 S3 헤드 및 GET 작업을 수행합니다. 버킷 일관성 수준을 강력한 사이트로 설정하여 Commvault로 StorageGRID 백업을 위한 최적의 일관성 수준을 달성합니다.
+* CommVault 버전 11.0.0 - 서비스 팩 16 이상.* 버전 11.0.0 - 서비스 팩 16 이상에서는 존재하지 않는 개체에 대해 수행되는 S3 헤드 및 GET 작업의 수가 최소화됩니다. Commvault 및 StorageGRID 환경에서 높은 일관성 수준을 보장하기 위해 기본 버킷 정합성 보장 수준을 새 쓰기 후 읽기 로 설정합니다.
+

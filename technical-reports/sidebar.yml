@@ -2,9 +2,137 @@
 section: technical-reports
 title: 기술 보고서
 entries:
-- title: NetApp StorageGRID 및 빅데이터 분석
+- title: StorageGRID 기술 보고서 소개
+  url: "/technical-reports/index.html"
+- title: 'TR-4993: NetApp StorageGRID와 빅데이터 분석'
   url: "/technical-reports/datalake-analytics.html"
-- title: Hadoop S3A 튜닝
+- title: 'TR-4994: Hadoop S3A 튜닝'
   url: "/technical-reports/s3a-tuning.html"
-- title: TR-4871 - Commvault의 전체 백업 및 복구 및 NetApp StorageGRID
-  url: "/technical-reports/tr-4871-commvault.html"
+- title: 'TR-4871: Commvault로 백업 및 복구용으로 StorageGRID를 구성합니다'
+  pdf-filename: StorageGRID 백업 및 복구 - Commvault를 사용하여 데이터 저장 및 복구
+  entries:
+  - title: StorageGRID 및 Commvault를 사용하여 데이터를 백업하고 복구합니다
+    url: "/technical-reports/commvault/index.html"
+  - title: 테스트된 솔루션 개요
+    url: "/technical-reports/commvault/solution-overview.html"
+  - title: StorageGRID 사이징 가이드
+    url: "/technical-reports/commvault/sizing.html"
+  - title: 데이터 보호 작업을 실행합니다
+    url: "/technical-reports/commvault/data-protection-jobs.html"
+  - title: 기준 성능 테스트를 검토합니다
+    url: "/commvault/baseline-performance-tests.html"
+  - title: 버킷 일관성 수준 권장 사항
+    url: "/technical-reports/commvault/s3-consistency-levels.html"
+- title: 'TR-4626: 로드 밸런서'
+  pdf-filename: StorageGRID 로드 밸런서 - 타사 및 글로벌 로드 밸런서
+  entries:
+  - title: StorageGRID과 함께 타사 로드 밸런서를 사용하십시오
+    url: "/technical-reports/load-balancer/index.html"
+  - title: StorageGRID에서 HTTPS용 SSL 인증서를 구현하는 방법에 대해 알아봅니다
+    url: "/technical-reports/load-balancer/ssl-certificates-storagegrid.html"
+  - title: StorageGRID에서 신뢰할 수 있는 타사 로드 밸런서를 구성합니다
+    url: "/technical-reports/load-balancer/third-party-load-balancer-configuration.html"
+  - title: 로컬 트래픽 매니저 로드 밸런서에 대해 알아보십시오
+    url: "/technical-reports/load-balancer/local-traffic-manager-load-balancer.html"
+  - title: StorageGRID 구성의 몇 가지 사용 사례에 대해 알아보십시오
+    url: "/technical-reports/load-balancer/example-configuration-storagegrid.html"
+  - title: StorageGRID에서 SSL 연결을 검증합니다
+    url: "/technical-reports/load-balancer/validate-ssl-connection-storagegrid.html"
+  - title: StorageGRID의 글로벌 로드 밸런싱 요구 사항을 이해합니다
+    url: "/technical-reports/load-balancer/global-load-balancing-design.html"
+- title: 'TR-4645: 보안 기능'
+  pdf-filename: StorageGRID 11.7의 보안 기능 - 오브젝트 저장소에서 데이터와 메타데이터 보호
+  entries:
+  - title: 오브젝트 저장소에서 StorageGRID 데이터와 메타데이터의 보안 유지
+    url: "/technical-reports/data-security/index.html"
+  - title: 데이터 액세스 보안 기능
+    url: "/technical-reports/data-security/data-access-security.html"
+  - title: 오브젝트 및 메타데이터 보안
+    url: "/technical-reports/data-security/object-metadata-security.html"
+  - title: 관리 보안 기능
+    url: "/technical-reports/data-security/administration-security.html"
+  - title: 플랫폼 보안 기능
+    url: "/technical-reports/data-security/platform-security.html"
+  - title: 클라우드 통합
+    url: "/technical-reports/data-security/cloud-integration-storagegrid.html"
+- title: 'TR-4921: 랜섬웨어 방어'
+  pdf-filename: StorageGRID를 통한 랜섬웨어 방어 - S3 오브젝트 보호
+  entries:
+  - title: 랜섬웨어로부터 StorageGRID S3 오브젝트 보호
+    url: "/technical-reports/ransomware-protection/index.html"
+  - title: 오브젝트 잠금을 사용한 랜섬웨어 방어
+    url: "/technical-reports/ransomware-protection/understand-object-lock-storagegrid.html"
+  - title: 버전 관리와 함께 복제된 버킷을 사용하는 랜섬웨어 방어
+    url: "/technical-reports/ransomware-protection/replicate-bucket-versioning-storagegrid.html"
+  - title: 보호 IAM 정책을 통한 버전 관리를 사용한 랜섬웨어 방어
+    url: "/technical-reports/ransomware-protection/versioning-protective-iam-policy-storagegrid.html"
+- title: 'TR-4765: StorageGRID 모니터링'
+  pdf-filename: 외부 응용 프로그램을 사용하여 StorageGRID를 모니터링합니다
+  entries:
+  - title: StorageGRID 모니터링 소개
+    url: "/technical-reports/monitor/index.html"
+  - title: GMI 대시보드를 사용하여 StorageGRID를 모니터링합니다
+    url: "/technical-reports/monitor/getting-started.html"
+  - title: 경고를 사용하여 StorageGRID 모니터링
+    url: "/technical-reports/monitor/alerts-monitoring.html"
+  - title: StorageGRID의 고급 모니터링 기능
+    url: "/technical-reports/monitor/advanced-monitor-storagegrid.html"
+  - title: StorageGRID에서 curl을 사용하여 메트릭에 액세스할 수 있습니다
+    url: "/technical-reports/monitor/access-metrics-curl.html"
+  - title: StorageGRID에서 Grafana를 사용하여 메트릭 보기
+    url: "/technical-reports/monitor/grafana-dashboard.html"
+  - title: StorageGRID에서 트래픽 분류 정책을 사용합니다
+    url: "/technical-reports/monitor/traffic-classification-policies.html"
+  - title: 감사 로그를 사용하여 StorageGRID를 모니터링합니다
+    url: "/technical-reports/monitor/audit-log-monitoring.html"
+  - title: Splunk용 StorageGRID 앱을 사용하십시오
+    url: "/technical-reports/monitor/storagegrid-app-splunk.html"
+- title: 'TR-4882: StorageGRID 베어 메탈 그리드를 설치합니다'
+  pdf-filename: 베어 메탈 호스트에 StorageGRID를 설치합니다
+  entries:
+  - title: StorageGRID 설치 소개
+    url: "/technical-reports/bare-metal/index.html"
+  - title: StorageGRID를 설치하기 위한 사전 요구 사항
+    url: "/technical-reports/bare-metal/prerequisites-install-storagegrid.html"
+  - title: StorageGRID용 Docker를 설치합니다
+    url: "/technical-reports/bare-metal/install-docker-storagegrid.html"
+  - title: StorageGRID에 대한 노드 구성 파일을 준비합니다
+    url: "/technical-reports/bare-metal/node-config-file-storagegrid.html"
+  - title: StorageGRID 종속성 및 패키지를 설치합니다
+    url: "/technical-reports/bare-metal/install-storagegrid-dependencies.html"
+  - title: StorageGRID 구성 파일의 유효성을 검사합니다
+    url: "/technical-reports/bare-metal/validate-storagegrid-config-files.html"
+  - title: StorageGRID 호스트 서비스를 시작합니다
+    url: "/technical-reports/bare-metal/start-storagegrid-host-service.html"
+  - title: StorageGRID에서 그리드 관리자를 구성합니다
+    url: "/technical-reports/bare-metal/configure-grid-manager-storagegrid.html"
+  - title: StorageGRID 라이센스 세부 정보를 추가합니다
+    url: "/technical-reports/bare-metal/storagegrid-license.html"
+  - title: StorageGRID에 사이트를 추가합니다
+    url: "/technical-reports/bare-metal/add-sites-storagegrid.html"
+  - title: StorageGRID에 대한 그리드 네트워크 서브넷을 지정합니다
+    url: "/technical-reports/bare-metal/grid-network-subnets-storagegrid.html"
+  - title: StorageGRID에 대한 그리드 노드를 승인합니다
+    url: "/technical-reports/bare-metal/approve-grid-nodes-storagegrid.html"
+  - title: StorageGRID에 대한 NTP 서버 세부 정보를 지정합니다
+    url: "/technical-reports/bare-metal/ntp-server-storagegrid.html"
+  - title: StorageGRID에 대한 DNS 서버 세부 정보를 지정합니다
+    url: "/technical-reports/bare-metal/dns-server-storagegrid.html"
+  - title: StorageGRID에 대한 시스템 암호를 지정합니다
+    url: "/technical-reports/bare-metal/system-passwords-storagegrid.html"
+  - title: 구성을 검토하고 StorageGRID 설치를 완료합니다
+    url: "/technical-reports/bare-metal/review-config-complete-storagegrid-install.html"
+  - title: StorageGRID에서 베어 메탈 노드를 업그레이드합니다
+    url: "/technical-reports/bare-metal/upgrading-bare-metal-nodes-storagegrid.html"
+- title: 'TR-4907: Veritas Enterprise Vault로 StorageGRID를 구성합니다'
+  pdf-filename: StorageGRID 재해 복구 – Veritas Enterprise Vault를 사용하여 사이트 장애 조치를 위해 StorageGRID
+    구성
+  entries:
+  - title: 사이트 페일오버를 위한 StorageGRID 구성 소개
+    url: "/technical-reports/veritas/index.html"
+  - title: StorageGRID 및 Veritas Enterprise Vault를 구성합니다
+    url: "/technical-reports/veritas/configure-storagegrid-enterprise-vault.html"
+  - title: WORM 스토리지를 위해 StorageGRID를 구성합니다
+    url: "/technical-reports/veritas/configure-storagegrid-s3-object-lock.html"
+  - title: 재해 복구를 위한 StorageGRID 구성
+    url: "/technical-reports/veritas/configure-storagegrid-site-failover.html"
