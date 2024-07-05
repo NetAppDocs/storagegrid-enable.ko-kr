@@ -118,3 +118,25 @@ summary: StorageGRID 11.8에서 검증된 타사 솔루션
 * 품질
 * 벨라시아
 
+
+
+
+== StorageGRID에서 지원되는 주요 관리자
+
+이러한 솔루션은 테스트를 거쳤습니다.
+
+* Entrust KeyControl 10.2
+* Hashicorp 볼트 1.15.0
+* Thales CipherTrust Manager 2.0 을 참조하십시오
+* Thales CipherTrust 관리자 2.1
+* Thales CipherTrust 관리자 2.2
+* Thales CipherTrust Manager 2.3
+* Thales CipherTrust 관리자 2.4
+* Thales CipherTrust Manager 2.8
+* Thales CipherTrust 관리자 2.9
+* Thales CipherTrust 관리자 2.10
+* Thales CipherTrust 관리자 2.11
+* Thales CipherTrust 관리자 2.12
+* Thales CipherTrust 관리자 2.13
+* Thales CipherTrust 관리자 2.14
+
