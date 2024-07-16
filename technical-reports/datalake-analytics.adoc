@@ -144,7 +144,7 @@ Dremio의 성능은 주로 Dremio 클러스터의 컴퓨팅 성능에 의해 좌
 
 아래 링크를 방문하여 StorageGRID와 Dremio가 함께 작동하여 현대적이고 효율적인 데이터 레이크 인프라를 제공하는 방법과 NetApp가 Hive+ HDFS에서 Dremio+ StorageGRID로 마이그레이션하여 빅데이터 분석 효율성을 획기적으로 개선한 방법에 대해 자세히 알아보십시오.
 
-* https://www.netapp.tv/details/31426?mcid=02148179640195118863901007338453703701["NetApp StorageGRID로 빅데이터의 성능을 향상하십시오"]
-* https://www.netapp.com/media/80932-SB-4236-StorageGRID-Dremio.pdf["StorageGRID 및 Dremio를 사용하는 현대적이고 강력하고 효율적인 데이터 레이크 인프라"]
-* https://youtu.be/Y57Gyj4De2I?si=nwVG5ohCj93TggKS["NetApp이 제품 분석을 통해 고객 경험을 재정의하는 방법"]
+* https://media.netapp.com/video-detail/de55c7b1-eb5e-5b70-8790-1241039209e2/boost-performance-for-your-big-data-with-netapp-storagegrid-1600-1["NetApp StorageGRID로 빅데이터의 성능을 향상하십시오"^]
+* https://www.netapp.com/media/80932-SB-4236-StorageGRID-Dremio.pdf["StorageGRID 및 Dremio를 사용하는 현대적이고 강력하고 효율적인 데이터 레이크 인프라"^]
+* https://youtu.be/Y57Gyj4De2I?si=nwVG5ohCj93TggKS["NetApp이 제품 분석을 통해 고객 경험을 재정의하는 방법"^]
 
