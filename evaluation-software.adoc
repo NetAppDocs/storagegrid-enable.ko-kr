@@ -1,0 +1,57 @@
+---
+permalink: evaluation-software.html 
+sidebar: sidebar 
+keywords: eval, StorageGRID, S3, software, download 
+summary: 잠재 고객을 위한 StorageGRID 평가 소프트웨어에 액세스하는 단계 
+---
+= StorageGRID 평가판 소프트웨어에 액세스하는 단계
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 지침은 NetApp과 협력하는 NetApp 세일즈, 파트너 및 잠재 고객을 위한 것입니다.
+
+
+
+== 계정을 등록하십시오
+
+. 회사 이메일을 사용하여 에 계정을 https://mysupport.netapp.com/site/user/registration["NetApp Support 사이트"] 등록합니다.
++
+.. 이미 계정이 있는 경우 다음 단계를 진행합니다.
+
+
+. 생성된 계정으로 로그인합니다.
+. 비기술적 지원 케이스를 생성하여 액세스 수준을 "잠재 고객"으로 높입니다. 이렇게 하려면 "https://mysupport.netapp.com/site/help?relevanturl=%2Fuser%2Fregistration["문제를 보고하십시오"]웹 사이트의 바닥글에서 " 링크를 클릭하십시오.
+. 피드백 범주로 "등록 문제"를 선택합니다.
+. 설명 섹션에 "StorageGRID 평가판 소프트웨어를 다운로드할 수 있는 권한을 잠재 고객에게 받고 싶습니다."라고 적습니다.
++
+.. 잠재 고객 액세스 요청을 제안한 NetApp 내부 담당자의 이름을 언급하십시오.
+
+
+
+
+
+
+== StorageGRID를 다운로드합니다
+
+. 지원 케이스를 검토 및 승인하면 NetApp 지원 팀에서 이메일을 통해 귀하의 계정에 잠재 고객 액세스 권한이 부여되었음을 알려드립니다.
+. 를 https://mysupport.netapp.com/site/downloads/evaluation/storagegrid["StorageGRID 평가판 소프트웨어"]다운로드하십시오.
+
+
+[NOTE]
+====
+평가판 라이센스 파일은 zip 파일 내에 있습니다. 일단 압축이 풀리면 StorageGRID-Webscale-<version>\vSphere\NLF000000.txt 입니다.
+
+====
+[NOTE]
+====
+소프트웨어 다운로드는 법적 요구 사항을 준수하기 위한 무역 규정 준수 조치와 관련된 프로세스입니다. 규정 준수를 보장하기 위해 사용자는 액세스 권한을 얻기 전에 계정을 생성하고 지원 케이스를 개설해야 합니다. 이 프로세스를 통해 잠재 고객에게 필요한 즉시 운영 가능한 소프트웨어를 제공하는 동시에 적절한 제어 및 문서화를 유지할 수 있습니다.
+
+StorageGRID는 오픈 소스 또는 대체 버전이 아닌 "프로덕션 준비" 버전을 제공합니다. 잠재 고객이 프로덕션 라이센스로 업그레이드하지 않는 한 * 지원은 제공되지 않습니다 *.
+
+위 단계에 문제가 있는 경우 StorageGRID.Feedback@netapp.com 으로 문의하십시오.
+
+====

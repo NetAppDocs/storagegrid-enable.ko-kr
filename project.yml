@@ -13,11 +13,15 @@ sidebar:
   entries:
   - title: StorageGRID를 활성화하는 방법
     url: "/index.html"
+  - title: StorageGRID를 사용해 보십시오
+    url: "/evaluation-software.html"
   - section: third-party
   - section: product-feature-guides
   - section: tools-apps-guides
   - section: examples
   - section: technical-reports
+  - title: StorageGRID를 사용해 보십시오
+    url: "/evaluation-software.html"
   - title: 블로그 게시물
     url: "/blogs.html"
   - title: StorageGRID 설명서
