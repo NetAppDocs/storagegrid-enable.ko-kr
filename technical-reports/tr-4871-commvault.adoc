@@ -140,7 +140,7 @@ StorageGRID는 데이터 보호 정책을 위해 통합 라이프사이클 관�
 |===
 ILM 2 Copy 규칙이 기본 규칙입니다. 이 테스트에서는 삭제 코딩 2+1 규칙이 200KB 이상의 객체에 적용되었습니다. 200KB보다 작은 개체에 기본 규칙이 적용되었습니다. 이러한 방식으로 규칙을 적용하는 것이 StorageGRID 모범 사례입니다.
 
-이 테스트 환경에 대한 자세한 기술 정보는 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/us/media/tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"] 기술 보고서:
+이 테스트 환경에 대한 자세한 기술 정보는 기술 보고서의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/pdf.html?item=/media/19372-tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"^] .
 
 
 
@@ -511,7 +511,7 @@ image:commvault/job-summary.png["작업 요약"]
 
 === 기준 성능 테스트
 
-표 7은 기본 성능 테스트의 결과를 보여줍니다. 보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/us/media/tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"] 기술 보고서:
+표 7은 기본 성능 테스트의 결과를 보여줍니다. 보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 기술 보고서의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/pdf.html?item=/media/19372-tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"^] .
 
 테스트는 VM 100개와 VM 1000개로 수행되었으며, 둘 다 Windows와 CentOS VM의 50/50혼합 구성에서 수행되었습니다.
 

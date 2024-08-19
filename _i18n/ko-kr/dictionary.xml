@@ -1768,7 +1768,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="bc2966582cc91a73dfce86d847e8e569" category="inline-image-macro">작업 요약</block>
   <block id="ce8f9b25ff69c679a10481c883fed679" category="paragraph"><block ref="ce8f9b25ff69c679a10481c883fed679" category="inline-image-macro-rx" type="image"></block></block>
   <block id="23571a6157715a68dbc83017094ddb4f" category="section-title">기준 성능 테스트</block>
-  <block id="6e861ca3d49a3946d380c959a4a035f6" category="paragraph">표 7은 기본 성능 테스트의 결과를 보여줍니다. 보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오<block ref="03ce17f8b5e1206a493f3bd56ef5953d" category="inline-link-rx"></block> 기술 보고서:</block>
   <block id="225de55f95e8814ef869602a34589cd7" category="paragraph">테스트는 VM 100개와 VM 1000개로 수행되었으며, 둘 다 Windows와 CentOS VM의 50/50혼합 구성에서 수행되었습니다.</block>
   <block id="229f4b7ae2ae04662d95b14f93a7ebe0" category="section-title">표 7) 기본 성능 테스트</block>
   <block id="2a78ed76450c3cb42320882b3e055b31" category="cell">작동</block>
@@ -2928,4 +2927,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="c4adfd76b7112414ec7a702816418613" category="paragraph">StorageGRID는 오픈 소스 또는 대체 버전이 아닌 "프로덕션 준비" 버전을 제공합니다. 잠재 고객이 프로덕션 라이센스로 업그레이드하지 않는 한 * 지원은 제공되지 않습니다 *.</block>
   <block id="f20e94f5bb986812208034209609d5f1" category="paragraph">위 단계에 문제가 있는 경우 StorageGRID.Feedback@netapp.com 으로 문의하십시오.</block>
   <block id="2988dc07d3c7f2675b337739e6a81ff7" category="sidebar">StorageGRID를 사용해 보십시오</block>
+  <block id="af628eae5a4bda33fe7f98b90dfd07ad" category="paragraph">이 테스트 환경에 대한 자세한 기술 정보는 기술 보고서의 솔루션 설계 및 모범 사례 섹션을 참조하십시오<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> .</block>
+  <block id="d448077c68c161f782d3bf423a865381" category="paragraph">표 7은 기본 성능 테스트의 결과를 보여줍니다. 보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 기술 보고서의 솔루션 설계 및 모범 사례 섹션을 참조하십시오<block ref="42208ea06469332a89cb87f688663202" category="inline-link-rx"></block> .</block>
 </blocks>
