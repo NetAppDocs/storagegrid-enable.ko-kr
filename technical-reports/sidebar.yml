@@ -20,7 +20,7 @@ entries:
   - title: 데이터 보호 작업을 실행합니다
     url: "/technical-reports/commvault/data-protection-jobs.html"
   - title: 기준 성능 테스트를 검토합니다
-    url: "/commvault/baseline-performance-tests.html"
+    url: "/technical-reports/commvault/baseline-performance-tests.html"
   - title: 버킷 일관성 수준 권장 사항
     url: "/technical-reports/commvault/s3-consistency-levels.html"
 - title: 'TR-4626: 로드 밸런서'

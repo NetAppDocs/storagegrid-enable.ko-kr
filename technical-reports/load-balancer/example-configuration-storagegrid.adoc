@@ -32,7 +32,7 @@ F5 BIG-IP 로컬 트래픽 관리자 상태 점검 모니터를 구성하려면 
 .. Send String(문자열 보내기) 필드에 \r\n을 `OPTIONS / HTTP/1.1\r\n\r\n.` 입력하십시오. BIG-IP 소프트웨어의 버전이 다르면 0개, 1개 또는 2개의 시퀀스 세트가 필요합니다. 자세한 내용은 을 https://support.f5.com/csp/article/K10655[]참조하십시오.
 .. 수신 문자열 필드에 다음을 입력합니다 `HTTP/1.1 200 OK`.
 +
-image:load-balancer-monitor-configuration-page.png["모니터 구성 페이지"]
+image:load-balancer/load-balancer-monitor-configuration-page.png["모니터 구성 페이지"]
 
 
 
@@ -56,9 +56,9 @@ HTTPS-ECV 상태 점검 모니터를 사용하여 옵션 요청 및 수신을 �
 
 자세한 내용은 Citrix 설명서를 참조하십시오 https://docs.citrix.com/en-us/citrix-adc/current-release/load-balancing/load-balancing-builtin-monitors/monitor-ssl-services.html#sample-configuration-for-https-ecv-health-check-monitor["HTTP-ECV 상태 점검 모니터의 샘플 구성"^].
 
-image:load-balancer-citrix-netscaler-configuration-page.png["Citrix NetScaler Monitor 구성 페이지"]
+image:load-balancer/load-balancer-citrix-netscaler-configuration-page.png["Citrix NetScaler Monitor 구성 페이지"]
 
-image:load-balancer-configure-monitor.png["Configure-monitor.png"]
+image:load-balancer/load-balancer-configure-monitor.png["Configure-monitor.png"]
 
 
 

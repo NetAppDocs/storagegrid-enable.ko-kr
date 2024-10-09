@@ -28,7 +28,7 @@ StorageGRID 라이센스 정보를 지정하려면 다음 단계를 완료합니
 NOTE: StorageGRID 설치 아카이브에는 제품에 대한 지원 권한이 없는 무료 라이센스가 포함되어 있습니다. 설치 후 지원을 제공하는 라이센스로 업데이트할 수 있습니다.
 
 +
-image:bare-metal-update-license.png["완전 업데이트 라이센스"]
+image:bare-metal/bare-metal-update-license.png["완전 업데이트 라이센스"]
 
 . 다음 을 클릭합니다.
 

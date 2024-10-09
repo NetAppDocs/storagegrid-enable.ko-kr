@@ -16,7 +16,7 @@ StorageGRID 그리드 관리 인터페이스(GMI) 대시보드를 통해 Storage
 
 GMI 대시보드를 사용하여 그리드의 각 핵심 구성 요소를 검사합니다.
 
-image:monitor-storagegrid-gmi-dashboard.png["monitoring-laff-gmi-대시보드"]
+image:monitor/monitor-storagegrid-gmi-dashboard.png["monitoring-laff-gmi-대시보드"]
 
 
 

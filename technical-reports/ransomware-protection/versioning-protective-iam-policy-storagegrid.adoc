@@ -20,7 +20,7 @@ summary: 버킷에서 버전 관리를 활성화하고 StorageGRID의 사용자 
 
 StorageGRID 11.7에는 이 솔루션을 더 쉽게 구현할 수 있도록 새로운 S3 그룹 정책 옵션 "랜섬웨어 완화"가 도입되었습니다. 테넌트에서 사용자 그룹을 생성할 때 그룹 권한을 선택하면 이 새로운 옵션 정책을 볼 수 있습니다.
 
-image:ransomware-protection-create-group.png["랜섬웨어 방지-생성-그룹"]
+image:ransomware/ransomware-protection-create-group.png["랜섬웨어 방지-생성-그룹"]
 
 다음은 명시적으로 허용되는 대부분의 사용 가능한 작업과 필요한 최소 거부 작업이 포함된 그룹 정책의 내용입니다.
 

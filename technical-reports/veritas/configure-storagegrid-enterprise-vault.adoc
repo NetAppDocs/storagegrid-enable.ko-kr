@@ -49,46 +49,46 @@ Veritas Enterprise Vault를 사용하여 StorageGRID를 구성하려면 다음 �
 .단계
 . Enterprise Vault 관리 콘솔을 시작합니다.
 +
-image:third-party-enterprise-vault.png["미디어/타사 - 엔터프라이즈 소산"]
+image:veritas/veritas-enterprise-vault.png["미디어/Veritas/Veritas - 엔터프라이즈 소산"]
 
 . 적절한 볼트 저장소에 새 볼트 저장소 파티션을 작성합니다. 볼트 저장소 그룹 폴더를 확장한 다음 적절한 볼트 저장소를 확장합니다. 파티션 을 마우스 오른쪽 단추로 클릭하고 메뉴: 새로 만들기 [파티션] 를 선택합니다.
 +
-image:third-party-enterprise-vault-2.png["미디어/타사-엔터프라이즈-볼트-2"]
+image:veritas/veritas-enterprise-vault-2.png["미디어/Veritas/Veritas-엔터프라이즈-볼트-2"]
 
 . 새 파티션 생성 마법사를 따릅니다. 스토리지 유형 드롭다운 메뉴에서 NetApp StorageGRID (S3) 를 선택합니다. 다음 을 클릭합니다.
 +
-image:third-party-new-partition.png["타사 - 새 - 파티션"]
+image:veritas/veritas-new-partition.png["Veritas/Veritas - 신규 - 파티션"]
 
 . S3 오브젝트 잠금을 사용하여 WORM 모드로 데이터 저장 옵션을 선택하지 않은 상태로 둡니다. 다음 을 클릭합니다.
 +
-image:third-party-new-partition-2.png["타사 - 새 - 파티션 - 2"]
+image:veritas/veritas-new-partition-2.png["Veritas/Veritas - 신규 - 파티션 - 2"]
 
 . 연결 설정 페이지에서 다음 정보를 제공합니다.
 +
 ** 액세스 키 ID입니다
 ** 비밀 액세스 키
 ** 서비스 호스트 이름: StorageGRID(예: \https://<hostname>:<LBE_port>)에 구성된 로드 밸런서 엔드포인트(LBE) 포트를 포함해야 합니다.
-** 버킷 이름: 미리 생성된 타겟 버킷의 이름입니다. VERITAS Enterprise Vault는 버킷을 생성하지 않습니다.
+** 버킷 이름: 사전 생성된 타겟 버킷의 이름입니다. Veritas Enterprise Vault는 버킷을 생성하지 않습니다.
 ** 버킷 영역: `us-east-1` 이(가) 기본값입니다.
 +
-image:third-party-new-partition-3.png["타사 - 신규 - 파티션 - 3"]
+image:veritas/veritas-new-partition-3.png["Veritas/Veritas - 신규 - 파티션 - 3"]
 
 
 
 . StorageGRID 버킷에 대한 연결을 확인하려면 테스트 를 클릭합니다. 연결 테스트가 성공했는지 확인합니다. 확인을 클릭한 후 다음을 클릭합니다.
 +
-image:third-party-new-partition-4.png["타사 - 신규 - 파티션 - 4"]
+image:veritas/veritas-new-partition-4.png["Veritas/Veritas - 신규 - 파티션 - 4"]
 
 . StorageGRID는 S3 복제 매개 변수를 지원하지 않습니다. 오브젝트를 보호하기 위해 StorageGRID은 ILM(정보 라이프사이클 관리) 규칙을 사용하여 여러 복사본 또는 삭제 코딩 등 데이터 보호 체계를 지정합니다. When Archived Files exist on the Storage 옵션을 선택하고 Next를 클릭합니다.
 +
-image:third-party-new-partition-5.png["타사 - 새 - 파티션 - 5"]
+image:veritas/veritas-new-partition-5.png["Veritas/Veritas - 신규 - 파티션 - 5"]
 
 . 요약 페이지에서 정보를 확인하고 마침 을 클릭합니다.
 +
-image:third-party-new-partition-6.png["타사 - 신규 - 파티션 - 6"]
+image:veritas/veritas-new-partition-6.png["Veritas/Veritas - 신규 - 파티션 - 6"]
 
 . 새 볼트 저장소 파티션이 생성되면 StorageGRID를 기본 저장소로 사용하여 Enterprise Vault에서 데이터를 보관, 복원 및 검색할 수 있습니다.
 +
-image:third-party-new-partition-7.png["타사 - 신규 - 파티션 - 7"]
+image:veritas/veritas-new-partition-7.png["Veritas/Veritas - 신규 - 파티션 - 7"]
 
 

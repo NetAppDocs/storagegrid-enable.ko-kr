@@ -172,7 +172,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 
 다음 그림과 같이 이들 서버는 호스트당 2개의 Docker 컨테이너를 호스팅합니다. RAM은 컨테이너당 24GB, 호스트 OS 자체에 16GB를 제공하여 계산합니다.
 
-image:bare-metal-layout-for-three-hosts.png["호스트 3개에 대한 레이아웃 예"]
+image:bare-metal/bare-metal-layout-for-three-hosts.png["호스트 3개에 대한 레이아웃 예"]
 
 물리적 호스트(또는 VM)당 필요한 총 RAM은 24 x 2 + 16 = 64GB입니다. 다음 표에는 호스트 1, 2 및 3에 필요한 디스크 스토리지가 나와 있습니다.
 

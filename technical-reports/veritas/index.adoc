@@ -22,7 +22,7 @@ Veritas Enterprise Vault에서 StorageGRID를 재해 복구를 위한 운영 스
 
 StorageGRID는 Veritas Enterprise Vault를 위한 사내 S3 호환 클라우드 백업 타겟을 제공합니다. 다음 그림에서는 Veritas Enterprise Vault 및 StorageGRID 아키텍처를 보여 줍니다.
 
-image:third-party-veritas-enterprise-vault-and-storagegrid-architecture.png["타사 - Veritas - 엔터프라이즈 - 소산 및 StorageGrid - 아키텍처"]
+image:veritas/veritas-enterprise-vault-and-storagegrid-architecture.png["Vertias/Veritas - Veritas - 엔터프라이즈 볼트 및 StorageGRID 아키텍처"]
 
 
 

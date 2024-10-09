@@ -22,7 +22,7 @@ StorageGRID CloudMirror는 StorageGRID의 구성 요소로, 버킷의 오브젝�
 .단계
 . CloudMirror를 구성하려면 S3 대상에 대한 플랫폼 서비스 엔드포인트를 생성합니다.
 +
-image:ransomware-protection-create-endpoint.png["랜섬웨어 방지 - 엔드포인트 생성"]
+image:ransomware/ransomware-protection-create-endpoint.png["랜섬웨어 방지 - 엔드포인트 생성"]
 
 . 소스 버킷에서 구성된 엔드포인트를 사용하도록 복제를 구성합니다.
 +
@@ -42,10 +42,10 @@ image:ransomware-protection-create-endpoint.png["랜섬웨어 방지 - 엔드포
 ----
 . 스토리지 배치 및 버전 스토리지 기간 관리를 관리하는 ILM 규칙을 생성합니다. 이 예에서는 저장할 객체의 최신 버전이 아닌 버전이 구성되어 있습니다.
 +
-image:ransomware-protection-create-ilm-rule.png["랜섬웨어 방지-생성-ILM-규칙"]
+image:ransomware/ransomware-protection-create-ilm-rule.png["랜섬웨어 방지-생성-ILM-규칙"]
 
 +
-image:ransomware-protection-create-ilm-rule-step-2.png["랜섬웨어 방지-생성-ILM-규칙-2단계"]
+image:ransomware/ransomware-protection-create-ilm-rule-step-2.png["랜섬웨어 방지-생성-ILM-규칙-2단계"]
 
 +
 30일 동안 사이트 1에 2개의 복사본이 있습니다. 또한 소스 버킷 스토리지 기간과 일치하도록 ILM 규칙에서 수집 시간을 참조 시간으로 사용하는 것을 기반으로 오브젝트의 현재 버전에 대한 규칙을 구성합니다. 오브젝트 버전에 대한 스토리지 배치는 삭제 코딩 또는 복제할 수 있습니다.

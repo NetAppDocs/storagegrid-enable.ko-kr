@@ -37,6 +37,7 @@ summary: StorageGRID 11.8에서 검증된 타사 솔루션
 * DefendX
 * 디스크 오버 데이터
 * 드리미오
+* Elasticsearch 스냅샷(동결된 계층 포함)
 * eMAM
 * Fujifilm 개체 아카이브
 * GitHub 엔터프라이즈 서버
@@ -67,6 +68,7 @@ summary: StorageGRID 11.8에서 검증된 타사 솔루션
 * 스노우플레이크
 * Spectra Logic On-Premise Glacier의 약어입니다
 * Splunk 스마트스토어
+* 별 모양
 * 간편한 보관
 * 트리노
 * Varnish Enterprise 6.0.4

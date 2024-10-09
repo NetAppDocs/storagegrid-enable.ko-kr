@@ -34,7 +34,7 @@ Veeam의 오브젝트 워크로드에는 작은 오브젝트의 여러 동시 �
 
 === 권장 버전
 
-Veeam Backup & Replication 12 시스템에 최신 핫픽스를 적용하는 것이 좋습니다. 현재는 최소한 Veeam 패치 P20230718을 설치할 것을 권장합니다.
+Veeam Backup & Replication 12 또는 12.1 시스템에 최신 핫픽스를 적용하는 것이 좋습니다. 현재는 최소한 Veeam 12 패치 P20230718을 설치할 것을 권장합니다.
 
 
 
@@ -85,7 +85,7 @@ Veeam 백업 작업은 신중하게 고려해야 하는 다양한 블록 크기 
 
 === 권장 버전
 
-최신 핫픽스가 포함된 NetApp StorageGRID 11.6 또는 11.7은 Veeam 구축에 권장되는 버전입니다. StorageGRID 11.6.0.11 및 11.7.0.4에 많은 최적화 기능이 도입되어 Veeam 워크로드에 유용합니다. 항상 최신 상태를 유지하고 StorageGRID 시스템에 최신 핫픽스를 적용하는 것이 좋습니다.
+최신 핫픽스가 포함된 NetApp StorageGRID 11.7 또는 11.8은 Veeam 구축에 권장되는 버전입니다. 항상 최신 상태를 유지하고 StorageGRID 시스템에 최신 핫픽스를 적용하는 것이 좋습니다.
 
 
 
@@ -186,7 +186,7 @@ image:veeam-bp/tc_2.png["트래픽 분류 정책 메트릭"]
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
-* link:https://docs.netapp.com/us-en/storagegrid-117/["NetApp StorageGRID 11.7 제품 문서"^]
+* link:https://docs.netapp.com/us-en/storagegrid-118/["NetApp StorageGRID 11.8 제품 문서"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^]
 
 

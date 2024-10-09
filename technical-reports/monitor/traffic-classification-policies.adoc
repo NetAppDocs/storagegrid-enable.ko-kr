@@ -25,20 +25,20 @@ StorageGRID에서 네트워크 트래픽을 관리하고 최적화하기 위해 
 . 정책의 이름과 설명을 입력합니다.
 . 일치하는 규칙을 만듭니다.
 +
-image:monitor-matching-rule.png["모니터 일치 규칙"]
+image:monitor/monitor-matching-rule.png["모니터 일치 규칙"]
 
 . 제한을 설정합니다(선택 사항).
 +
-image:monitor-limit.png["모니터 - 제한"]
+image:monitor/monitor-limit.png["모니터 - 제한"]
 
 . 정책을 저장합니다
 +
-image:monitor-traffic-policy.png["monitor-traffic-policy 를 참조하십시오"]
+image:monitor/monitor-traffic-policy.png["monitor-traffic-policy 를 참조하십시오"]
 
 +
 트래픽 분류 정책과 관련된 메트릭을 보려면 정책을 선택하고 메트릭을 클릭합니다. 부하 분산 요청 트래픽 및 평균 요청 기간 등의 정보를 표시하는 Grafana 대시보드가 생성됩니다.
 
 +
-image:monitor-dashboard-showing-metrics.png["monitor-dashboard-show-metrics를 참조하십시오"]
+image:monitor/monitor-dashboard-showing-metrics.png["monitor-dashboard-show-metrics를 참조하십시오"]
 
 

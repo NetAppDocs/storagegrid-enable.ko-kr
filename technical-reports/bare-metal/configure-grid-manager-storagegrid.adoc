@@ -64,4 +64,4 @@ https://primary_admin_node_ip:8443
 . StorageGRID 시스템 설치 를 클릭합니다. StorageGRID 그리드를 구성하는 데 사용되는 페이지가 표시됩니다.
 
 
-image:bare-metal-configure-storagegrid-grid.png["베어 메탈 구성 StorageGRID-그리드"]
+image:bare-metal/bare-metal-configure-storagegrid-grid.png["베어 메탈 구성 StorageGRID-그리드"]

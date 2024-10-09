@@ -1,0 +1,126 @@
+---
+permalink: product-feature-guides/ontap-migrate/preparing-sg.html 
+sidebar: sidebar 
+keywords: S3, ONTAP S3, ONTAP, StorageGRID, migration 
+summary: ONTAP S3에서 StorageGRID로 마이그레이션하십시오. 
+---
+= ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../../media/
+
+
+[role="lead"]
+ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+
+
+
+== StorageGRID 준비 중
+
+이 데모의 구성을 계속하면 테넌트, 사용자, 보안 그룹, 그룹 정책 및 버킷을 생성합니다.
+
+
+
+==== 테넌트를 만듭니다
+
+"Tenants" 탭으로 이동하고 "Create" 버튼을 클릭합니다
+
+image:ontap-migrate/sg-tenant-create-01.png["테넌트 추가 버튼"]
+
+테넌트 이름을 제공하는 테넌트에 대한 세부 정보를 입력하고 클라이언트 유형으로 S3를 선택하면 할당량이 필요하지 않습니다. 플랫폼 서비스를 선택하거나 S3 선택을 허용하지 않아도 됩니다. 원하는 경우 고유한 ID 소스를 사용하도록 선택할 수 있습니다. 루트 암호를 설정하고 마침 단추를 클릭합니다.
+
+테넌트 세부 정보를 보려면 테넌트 이름을 클릭합니다. * 나중에 테넌트 ID가 필요하므로 이를 복사하십시오. *. 로그인 버튼을 클릭합니다. 그러면 테넌트 포털 로그인이 나타납니다. 나중에 사용할 수 있도록 URL을 저장합니다.
+
+image:ontap-migrate/sg-tenant-select.png["Tenant를 선택합니다"]
+
+그러면 테넌트 포털 로그인이 나타납니다. 나중에 사용할 수 있도록 URL을 저장하고 루트 사용자 자격 증명을 입력합니다.
+
+image:ontap-migrate/sg-tenant-login.png["테넌트 로그인"]
+
+
+
+==== 사용자를 생성합니다
+
+사용자 탭으로 이동하여 새 사용자를 생성합니다.
+
+image:ontap-migrate/sg-user-create-01.png["사용자로 이동합니다"]
+
+image:ontap-migrate/sg-user-create-02.png["새 사용자를 생성합니다"]
+
+이제 새 사용자가 생성되었으므로 사용자 이름을 클릭하여 사용자 세부 정보를 엽니다.
+
+나중에 사용할 URL에서 사용자 ID를 복사합니다.
+
+image:ontap-migrate/sg-user-id.png["새 ID를 복사합니다"]
+
+S3 키를 생성하려면 사용자 이름을 클릭합니다.
+
+image:ontap-migrate/sg-user-keys-create-01.png["S3 키를 생성합니다"]
+
+"액세스 키" 탭을 선택하고 "키 만들기" 버튼을 클릭합니다. 만료 시간을 설정할 필요가 없습니다. 창이 닫히면 다시 검색할 수 없으므로 S3 키를 다운로드합니다.
+
+image:ontap-migrate/sg-user-keys-create-02.png["키를 다운로드합니다"]
+
+
+
+==== 보안 그룹을 만듭니다
+
+이제 그룹 페이지로 이동하여 새 그룹을 만듭니다.
+
+image:ontap-migrate/sg-group-create.png["새 그룹을 만듭니다"]
+
+그룹 권한을 읽기 전용으로 설정합니다. S3 사용 권한이 아닌 테넌트 UI 사용 권한입니다.
+
+image:ontap-migrate/sg-group-permissions.png["그룹 권한을 설정합니다"]
+
+S3 권한은 그룹 정책(IAM 정책)을 통해 제어됩니다. 그룹 정책을 사용자 정의로 설정하고 상자에 json 정책을 붙여 넣습니다. 이 정책을 통해 이 그룹의 사용자는 테넌트의 버킷을 나열하고 버킷에서 "bucket"이라는 이름의 S3 작업 또는 "bucket"이라는 이름의 하위 폴더를 수행할 수 있습니다.
+
+[source, json]
+----
+{
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListAllMyBuckets",
+        "Resource": "arn:aws:s3:::*"
+      },
+      {
+         "Effect": "Allow",
+        "Action": "s3:*",
+        "Resource": ["arn:aws:s3:::bucket","arn:aws:s3:::bucket/*"]
+      }
+    ]
+}
+----
+image:ontap-migrate/sg-group-policy.png["그룹 정책을 정의합니다"]
+
+마지막으로 사용자를 그룹에 추가하고 완료합니다.
+
+image:ontap-migrate/sg-group-add-user.png["그룹에 사용자를 추가합니다"]
+
+
+
+==== 버킷 2개를 만듭니다
+
+Bucket 탭으로 이동하고 Create Bucket(버킷 생성) 버튼을 클릭합니다.
+
+image:ontap-migrate/sg-create-buckets.png["Bucket 생성 페이지"]
+
+버킷 이름 및 지역을 정의합니다.
+
+image:ontap-migrate/sg-create-bucket1-01.png["Bucket 생성 페이지"]
+
+이 첫 번째 버킷에서 버전 관리를 활성화합니다.
+
+image:ontap-migrate/sg-bucket1-vers.png["버전 관리를 설정합니다"]
+
+이제 버전 관리를 사용하지 않고 두 번째 버킷을 만듭니다.
+
+image:ontap-migrate/sg-create-bucket2.png["두 번째 버킷을 만듭니다"]
+
+이 두 번째 버킷에서 버전 관리를 활성화하지 마십시오.
+
+image:ontap-migrate/sg-create-bucket2-nver.png["버전 관리를 설정하지 않습니다"]
+
+라파엘 게데스, 아론 클라인

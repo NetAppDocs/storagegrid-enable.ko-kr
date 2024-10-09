@@ -21,7 +21,7 @@ summary: 그리드 구성 정보를 검증하고 StorageGRID 설치 프로세스
 .단계
 . 요약 페이지를 봅니다.
 +
-image:bare-metal-summary-page.png["베어 메탈 요약 페이지입니다"]
+image:bare-metal/bare-metal-summary-page.png["베어 메탈 요약 페이지입니다"]
 
 . 모든 그리드 구성 정보가 올바른지 확인합니다. 뒤로 돌아가 오류를 수정하려면 요약 페이지의 수정 링크를 사용합니다.
 . 설치 를 클릭합니다.
@@ -42,13 +42,13 @@ CAUTION: 복구 패키지 파일은 StorageGRID 시스템에서 데이터를 가
 
 . I have successfully download and Verified the Recovery Package File 옵션을 선택하고 Next를 클릭합니다.
 +
-image:bare-metal-download-recovery-package.png["Bare Metal-download-recovery-package 를 참조하십시오"]
+image:bare-metal/bare-metal-download-recovery-package.png["Bare Metal-download-recovery-package 를 참조하십시오"]
 
 +
 설치가 여전히 진행 중인 경우 설치 상태 페이지가 열립니다. 이 페이지에는 각 그리드 노드의 설치 진행률이 표시됩니다.
 
 +
-image:bare-metal-installation-status.png["베어 메탈 설치 상태입니다"]
+image:bare-metal/bare-metal-installation-status.png["베어 메탈 설치 상태입니다"]
 
 +
 모든 그리드 노드의 전체 단계에 도달하면 그리드 관리자의 로그인 페이지가 열립니다.

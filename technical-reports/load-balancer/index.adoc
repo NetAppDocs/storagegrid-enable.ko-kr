@@ -30,7 +30,7 @@ StorageGRID 같은 오브젝트 스토리지 시스템에서 타사 및 글로�
 
 다음 그림에서는 예제 URL/FQDN(정규화된 도메인 이름) “s3.company.com” 사용합니다. 로드 밸런서는 DNS를 통해 FQDN으로 확인되는 가상 IP(VIP)를 생성한 다음, 애플리케이션의 요청을 StorageGRID 노드 풀로 보냅니다. 로드 밸런서는 각 노드에서 상태 점검을 수행하고 정상 노드에 대한 연결만 설정합니다.
 
-image:load-balancer-local-traffic-manager-load-balancer.png["로컬 트래픽 관리자 로드 밸런서"]
+image:load-balancer/load-balancer-local-traffic-manager-load-balancer.png["로컬 트래픽 관리자 로드 밸런서"]
 
 이 그림에는 StorageGRID가 제공하는 로드 밸런서가 나와 있지만 타사 로드 밸런서의 개념은 같습니다. 애플리케이션은 로드 밸런서의 VIP를 사용하여 HTTP 세션을 설정하고 트래픽이 로드 밸런서를 통해 스토리지 노드로 전달됩니다. 기본적으로 애플리케이션에서 로드 밸런서까지, 로드 밸런서에서 스토리지 노드까지 모든 트래픽은 HTTPS를 통해 암호화됩니다. HTTP는 지원되는 옵션입니다.
 
