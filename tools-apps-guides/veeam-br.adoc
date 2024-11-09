@@ -186,7 +186,7 @@ image:veeam-bp/tc_2.png["트래픽 분류 정책 메트릭"]
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
-* link:https://docs.netapp.com/us-en/storagegrid-118/["NetApp StorageGRID 11.8 제품 문서"^]
+* link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9 제품 문서"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^]
 
 

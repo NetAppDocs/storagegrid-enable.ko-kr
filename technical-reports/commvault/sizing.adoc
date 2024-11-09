@@ -122,6 +122,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
 
 [NOTE]
 ====
-StorageGRID 시스템 확장에 대한 자세한 내용은 를 참조하십시오 https://docs.netapp.com/us-en/storagegrid-118/landing-expand/index.html["StorageGRID 11.8 확장 가이드"].
+StorageGRID 시스템 확장에 대한 자세한 내용은 를 https://docs.netapp.com/us-en/storagegrid-119/landing-expand/index.html["StorageGRID 11.9 확장 가이드"]참조하십시오.
 
 ====

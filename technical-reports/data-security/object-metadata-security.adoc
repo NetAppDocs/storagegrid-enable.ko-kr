@@ -32,7 +32,7 @@ StorageGRID는 AES 128 및 AES 256 기반의 서버측 오브젝트 암호화를
 
 
 | FIPS(Federal Information Processing Standard) 140-2 준수 암호화 디스크  a| 
-SG5712, SG5760, SG6060 및 SGF6024 StorageGRID 어플라이언스는 FIPS 140-2 준수 암호화 디스크의 옵션을 제공합니다. 선택적으로 외부 KMIP 서버를 통해 디스크의 암호화 키를 관리할 수 있습니다.
+SG5812, SG5860, SG6160 및 SGF6024 StorageGRID 어플라이언스는 FIPS 140-2 준수 암호화 디스크의 옵션을 제공합니다. 선택적으로 외부 KMIP 서버를 통해 디스크의 암호화 키를 관리할 수 있습니다.
 | 시스템 데이터, 메타데이터 및 오브젝트의 안전한 스토리지 지원 또한 StorageGRID 소프트웨어 기반 오브젝트 암호화를 제공하여 오브젝트의 저장 및 전송을 보호합니다. | SEC 규정 17a-4(f) CTFC 1.31(c) -(d)(FINRA) 규칙 4511(c) 
 
 

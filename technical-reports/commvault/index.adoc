@@ -107,8 +107,7 @@ StorageGRID를 포괄적인 백업 타겟으로 사용하여 구축을 단순화
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
-* StorageGRID 11.8 설명서 센터+
-https://docs.netapp.com/us-en/storagegrid-118/[]
+* StorageGRID 11.9 설명서 센터+ https://docs.netapp.com/us-en/storagegrid-119/[]
 * NetApp 제품 설명서 +
 https://docs.netapp.com[]
 * Commvault 설명서 +
