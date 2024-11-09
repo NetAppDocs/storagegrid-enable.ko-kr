@@ -1,5 +1,5 @@
 ---
-permalink: third-party/118-3rd-party-list.html 
+permalink: third-party/119-3rd-party-list.html 
 sidebar: sidebar 
 keywords: 11.9, third-party applications, storagegrid, ISV 
 summary: StorageGRID 11.9에서 검증된 타사 솔루션 
