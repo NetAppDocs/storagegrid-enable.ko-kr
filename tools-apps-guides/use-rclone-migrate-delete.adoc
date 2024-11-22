@@ -12,6 +12,8 @@ summary: rclone은 S3 작업을 위한 무료 명령줄 도구 및 클라이언�
 
 
 [role="lead"]
+지그프리드 헤프와 아론 클라인 작사
+
 rclone은 S3 작업을 위한 무료 명령줄 도구 및 클라이언트입니다. rclone을 사용하여 StorageGRID에서 오브젝트 데이터를 마이그레이션, 복사, 삭제할 수 있습니다. rclone에는 아래 예와 같이 "퍼지" 기능을 사용하여 비어 있지 않은 경우에도 버킷을 삭제할 수 있는 기능이 포함되어 있습니다.
 
 
@@ -456,5 +458,3 @@ rclone ls sgdemo: test01
  2023/04/14 09:40:51 Failed to ls: directory not found
 ====
 
-
-지그프리드 헤프와 아론 클라인 작사

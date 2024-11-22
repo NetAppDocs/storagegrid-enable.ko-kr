@@ -12,6 +12,8 @@ summary: 이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업
 
 
 [role="lead"]
+올리버 헨셀과 아론 클라인 작사
+
 이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업 및 복제를 중점적으로 다룹니다. 이 문서는 Linux 시스템에 익숙하고 Veeam 백업 및 복제와 함께 NetApp StorageGRID 시스템의 유지 관리 또는 구축을 담당하는 스토리지 및 네트워크 관리자를 위해 작성되었습니다.
 
 
@@ -189,5 +191,3 @@ image:veeam-bp/tc_2.png["트래픽 분류 정책 메트릭"]
 * link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9 제품 문서"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^]
 
-
-올리버 헨셀과 아론 클라인 작사

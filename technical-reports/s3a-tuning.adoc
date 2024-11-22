@@ -12,6 +12,8 @@ summary: 이 보고서에서는 StorageGRID용 S3A를 튜닝하는 방법에 대
 
 
 [role="lead"]
+안젤라 청 _ 에 의해
+
 Hadoop S3A 커넥터는 Hadoop 기반 애플리케이션과 S3 오브젝트 스토리지 간의 원활한 상호 작용을 지원합니다. S3 오브젝트 스토리지로 작업할 때 성능을 최적화하려면 Hadoop S3A Connector를 튜닝해야 합니다. 세부 조정을 시작하기에 앞서, Hadoop과 그 구성 요소에 대한 기본적인 이해를 갖췄습니다.
 
 

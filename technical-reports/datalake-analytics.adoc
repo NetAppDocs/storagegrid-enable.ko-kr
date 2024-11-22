@@ -11,6 +11,9 @@ summary: 이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니�
 :imagesdir: ../media/
 
 
+[role="lead"]
+안젤라 청 _ 에 의해
+
 
 
 == NetApp StorageGRID 사용 사례

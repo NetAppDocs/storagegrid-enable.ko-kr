@@ -12,6 +12,8 @@ summary: Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지�
 
 
 [role="lead"]
+_ 아론 클라인 _
+
 Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WORM 모델을 제공합니다. StorageGRID의 객체 잠금 구현은 규제 요구사항을 충족하고, 객체 보존에 대한 법적 보류 및 규정 준수 모드를 지원하고, 기본 버킷 보존 정책을 지원하는 데 도움이 되는 코호트 평가입니다.
 
 이 가이드에서는 S3 오브젝트 잠금 API를 보여 줍니다.
@@ -221,5 +223,3 @@ aws s3api delete-object  --bucket <bucket> --key <file> --version-id "<VersionId
 An error occurred (AccessDenied) when calling the DeleteObject operation: Access Denied
 ----
 
-
-_ 아론 클라인 _

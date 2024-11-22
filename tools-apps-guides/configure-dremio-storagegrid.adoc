@@ -12,6 +12,8 @@ summary: StorageGRID를 사용하여 Dremio 데이터 소스를 구성합니다
 
 
 [role="lead"]
+안젤라 청 _ 에 의해
+
 Dremio는 클라우드 기반 또는 온프레미스 오브젝트 스토리지를 비롯한 다양한 데이터 소스를 지원합니다.  StorageGRID를 오브젝트 스토리지 데이터 소스로 사용하도록 Dremio를 구성할 수 있습니다.
 
 
@@ -88,5 +90,3 @@ image:dremio/dremio-add-source-advanced.png["새 소스 - 고급 옵션"]
 image:dremio/dremio-source-added.png["새 데이터 원본이 추가되었습니다"]
 
 
-
-안젤라 청 _ 에 의해

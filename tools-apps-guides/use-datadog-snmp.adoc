@@ -12,6 +12,8 @@ summary: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 Datadog HQ를 
 
 
 [role="lead"]
+_ 아론 클라인 _
+
 StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다.
 
 
@@ -122,5 +124,3 @@ network_devices:
 StorageGRID 시스템의 SNMP 에이전트는 구성 탭, 모니터링 열 아래에 있습니다. SNMP를 활성화하고 원하는 정보를 입력합니다. 트랩을 구성하려면 "트랩 대상"을 선택하고 트랩 구성을 포함하는 데이터 독그 에이전트 호스트의 대상을 생성합니다.
 
 image:datadog/sg_snmp_conf.png["StorageGRID SNMP 구성"]
-
-_ 아론 클라인 _

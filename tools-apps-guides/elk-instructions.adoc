@@ -12,7 +12,9 @@ summary: 'StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog �
 
 
 [role="lead"]
-StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 구성하여 StorageGRID 로그 메시지를 수집하고 분석할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 샘플 elk 구성과 이 구성을 사용하여 실패한 S3 요청을 식별하고 해결하는 방법을 보려면 를 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["ELK 비디오를 사용한 StorageGRID 로그 분석"^] 참조하십시오. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.
+안젤라 청 _ 에 의해
+
+StorageGRID syslog 포워드 기능을 사용하면 StorageGRID 로그 메시지를 수집하고 분석하도록 외부 syslog 서버를 구성할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 샘플 elk 구성과 이 구성을 사용하여 실패한 S3 요청을 식별하고 해결하는 방법을 보려면 를 https://media.netapp.com/video-detail/3d090a61-23d7-5ad7-9746-4cebbb7452fb/storagegrid-log-analysis-using-elk-stack["ELK 비디오를 사용한 StorageGRID 로그 분석"^] 참조하십시오. StorageGRID 11.9에서는 부하 분산 장치 엔드포인트 액세스 로그를 외부 syslog 서버로 내보낼 수 있습니다. 이 새로운 기능에 대해 자세히 알아보려면 여기를 https://youtu.be/hnnT0QqLSgA?si=tDMPc4bdbqumYzFz["YouTube 동영상"^] 참조하십시오. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.
 
 
 
@@ -28,6 +30,7 @@ StorageGRID 11.6 syslog 전달 기능을 사용하면 외부 syslog 서버를 �
 
 * link:../media/elk-config/elk7-sample.zip["Logstash 7.x 샘플 파일 패키지를 다운로드합니다"] + * MD5 체크섬 * 148c23d0021d9a4b4a6c0287464deab + * SHA256 체크섬 * f51ec9e2e3f842d5a7861566ba561bbbb4373038b4e7b3b3b3d522adf2d6
 * link:../media/elk-config/elk8-sample.zip["Logstash 8.x 샘플 파일 패키지를 다운로드합니다"] + * MD5 체크섬 * e11bae3a662f87c310ef363d0fe06835+ * SHA256 체크섬 * 5c670755742cfdf5a723a596ba087e0153a65baef3934afdb682f61cd278d
+* link:../media/elk-config/elk8-sample-for-sg119.zip["StorageGRID 11.9용 Logstash 8.x 샘플 파일 패키지를 다운로드합니다"] + * MD5 체크섬 * 41272857c4a54600f95995f6ed74800d + * SHA256 체크섬 * 67048e8661052719990851e1ad960d4902fe537a6e135e8600177188da677c9
 
 
 
@@ -108,7 +111,7 @@ ELK <version> -query-chart-sample.ndjson을 가져옵니다. + 충돌을 해결�
 image:elk-config/kibana-import-conflict.png["키바나 갈등"]
 
 +
-다음 Kibana 객체를 가져옵니다. + * 쿼리 * + * 감사-메시지 -s3rq -orlm + * bycast 로그 S3 관련 메시지 + * 로그 수준 경고 이상 + * 실패한 보안 이벤트 + * 차트 * + * bycast.log 기반 S3 요청 수 + * HTTP 상태 코드 + * 유형별 감사 메시지 분석 + * 평균 S3 응답 위 차트를 사용하는 시간 + * 대시보드 * + * S3 요청 대시보드
+다음 Kibana 객체를 가져왔습니다. + * Query * + * audit-msg-s3rq-orlm + * bycast log S3 관련 메시지 + * LogLevel 경고 이상 + * 보안 이벤트 실패 + * nginx-GW 액세스 로그(elk8-sample-for-sg119.zip에서만 사용 가능) + * S3 * audit * * 요청 기반 HTTP 상태 * * * * * bycast.log * 요청 기반 HTTP 요청 시
 
 
 
@@ -126,5 +129,3 @@ image:elk-config/kibana-import-conflict.png["키바나 갈등"]
 * https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana 가이드 – 문서 탐색"]
 * https://docs.netapp.com/us-en/storagegrid-116/audit/index.html["StorageGRID 감사 로그 메시지 참조"]
 
-
-안젤라 청 _ 에 의해

@@ -12,6 +12,8 @@ summary: StorageGRID와 S3 API를 사용하면 유휴 데이터를 다양한 방
 
 
 [role="lead"]
+_ 아론 클라인 _
+
 StorageGRID와 S3 API를 사용하면 유휴 데이터를 다양한 방법으로 암호화할 수 있습니다. 자세한 내용은 을 참조하십시오 https://docs.netapp.com/us-en/storagegrid-116/admin/reviewing-storagegrid-encryption-methods.html["StorageGRID 암호화 방법을 검토합니다"^].
 
 이 가이드에서는 S3 API 암호화 방법을 보여 줍니다.
@@ -186,5 +188,3 @@ aws s3api head-object --bucket <bucket> --key <file> --endpoint-url https://s3.e
 aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https://s3.example.com
 ----
 
-
-_ 아론 클라인 _
