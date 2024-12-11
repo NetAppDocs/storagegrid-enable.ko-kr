@@ -1368,7 +1368,6 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="4dc7ef59b422ad6beec0dcf560a3fdf9" category="paragraph">* 데이터 백업 및 재해 복구: * 기업에서는 StorageGRID S3를 안정적이고 비용 효율적인 솔루션으로 사용하여 중요한 데이터를 백업하고 재해 발생 시 복구할 수 있습니다.</block>
   <block id="b05954e05454ab56e0d356cb4ad49d95" category="paragraph">* 응용 프로그램용 데이터 저장: * StorageGRID S3는 응용 프로그램용 스토리지 백엔드로 사용할 수 있으므로 개발자가 파일, 이미지, 비디오 및 기타 유형의 데이터를 쉽게 저장하고 검색할 수 있습니다.</block>
   <block id="5623c900b98e0e5e17c60c75ded947b1" category="paragraph">* 콘텐츠 전송: * StorageGRID S3를 사용하여 정적 웹 사이트 콘텐츠, 미디어 파일 및 소프트웨어 다운로드를 전 세계 사용자에게 저장하고 제공할 수 있으며, StorageGRID의 지리적 분산 및 글로벌 네임스페이스를 활용하여 빠르고 안정적인 콘텐츠 전송을 수행할 수 있습니다.</block>
-  <block id="60b72d1ecbd87ac726a3dbb733456c59" category="paragraph">* 데이터 계층화: * NetApp 고객은 ONTAP FabricPool 기능을 사용하여 고성능 로컬 계층 간에 데이터를 자동으로 StorageGRID로 이동합니다. 계층화하면 콜드 데이터를 저렴한 오브젝트 스토리지에서 즉시 사용 가능한 상태로 유지하면서 고가의 플래시 스토리지를 핫 데이터용으로 확보할 수 있습니다. 따라서 성능과 비용 절감 효과가 극대화됩니다.</block>
   <block id="454845c7ca306686c28f96a59487d70c" category="paragraph">* 데이터 아카이브: * StorageGRID는 다양한 스토리지 유형을 제공하고 공용 장기 저비용 스토리지 옵션에 대한 계층화를 지원하며, 규정 준수 또는 기간별 목적으로 보존해야 하는 데이터의 보관 및 장기 보존에 이상적인 솔루션입니다.</block>
   <block id="a324e6c3bb7d6684738c923e7b52ea98" category="paragraph">* 오브젝트 스토리지 사용 사례 *</block>
   <block id="9f79f86c9a539a911125a876ef6a3c2e" category="inline-image-macro">StorageGRID 사용 사례 다이어그램, 폭 = 396, 높이 = 394</block>
@@ -3011,7 +3010,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="077385462ac0cf8f7fe1ddb0b3983c42" category="cell">TPCDS 99 쿼리 + 총 시간(캐시 사용 안 함)</block>
   <block id="34173cb38f07f89ddbebc2ac9128303f" category="cell">30</block>
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="cell">22</block>
-  <block id="95df7e4eb2568a2c428c70b695f7cac2" category="cell">TPCDS 99 쿼리 + 총 시간(캐시 사용)</block>
   <block id="d81fdeb5a429e85d04118048e4b3485d" category="cell">21.5입니다</block>
   <block id="b7ae258c3f8653133aa9c0c448f67516" category="cell">가져오기(캐시 사용 안 함)</block>
   <block id="3bb0dd7ec24af388f7e49723482fb553" category="cell">2,154,747</block>
@@ -3167,4 +3165,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="a3f1428e66932d96ff43f4bf4a938e38" category="inline-link-macro">StorageGRID 11.9용 Logstash 8.x 샘플 파일 패키지를 다운로드합니다</block>
   <block id="92648c644fef59d092d8ebc7df369fd8" category="list-text"><block ref="69ef6b23b33f55d10cdea70d6bd19e3d" category="inline-link-macro-rx"></block> + * MD5 체크섬 * 41272857c4a54600f95995f6ed74800d + * SHA256 체크섬 * 67048e8661052719990851e1ad960d4902fe537a6e135e8600177188da677c9</block>
   <block id="52f70839644ed308c4da8e45cf815a31" category="paragraph">다음 Kibana 객체를 가져왔습니다. + * Query * + * audit-msg-s3rq-orlm + * bycast log S3 관련 메시지 + * LogLevel 경고 이상 + * 보안 이벤트 실패 + * nginx-GW 액세스 로그(elk8-sample-for-sg119.zip에서만 사용 가능) + * S3 * audit * * 요청 기반 HTTP 상태 * * * * * bycast.log * 요청 기반 HTTP 요청 시</block>
+  <block id="975915e0dc64af72667a293b87be5f66" category="cell">TPCDS 99 쿼리 + 총 2분(캐시 사용)</block>
+  <block id="a447f0aa56d54d66cf89976cc810a113" category="paragraph">Trino/Starburst 성능은 컴퓨팅 리소스에 의해 병목 현상이 발생했습니다. 클러스터에 RAM을 추가하면 총 쿼리 시간이 줄어듭니다.</block>
 </blocks>
