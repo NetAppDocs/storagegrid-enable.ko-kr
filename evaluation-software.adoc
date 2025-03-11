@@ -8,7 +8,7 @@ summary: 잠재 고객을 위한 StorageGRID 평가 소프트웨어에 액세스
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]

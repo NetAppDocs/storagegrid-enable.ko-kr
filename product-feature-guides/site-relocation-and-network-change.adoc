@@ -43,27 +43,27 @@ link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-g
 +
 .. 그리드 IP 변경에 대해 2와 1을 차례로 선택합니다
 +
-image:site-relocation/ip-change-1.png[""]
+image:site-relocation/ip-change-1.png["Change-IP 편집"]
 
 .. 5를 선택하여 변경 사항을 표시합니다
 +
-image:site-relocation/ip-change-2.png[""]
+image:site-relocation/ip-change-2.png["검증"]
 
 .. 10을 선택하여 변경 사항을 확인하고 적용합니다.
 +
-image:site-relocation/ip-change-3.png[""]
+image:site-relocation/ip-change-3.png["스테이지 변경"]
 
 .. 이 단계에서 * stage * 를 선택해야 합니다.
 +
-image:site-relocation/ip-change-4.png[""]
+image:site-relocation/ip-change-4.png["admin을 수동으로 다시 시작합니다"]
 
 .. 위 변경에 기본 관리 노드가 포함되어 있는 경우 * 'a'를 입력하여 운영 관리 노드를 수동으로 다시 시작합니다 *
 +
-image:site-relocation/ip-change-5.png[""]
+image:site-relocation/ip-change-5.png["이전 메뉴"]
 
 .. 이전 메뉴로 돌아가고 change-IP 인터페이스에서 나가려면 Enter 키를 누릅니다.
 +
-image:site-relocation/ip-change-6.png[""]
+image:site-relocation/ip-change-6.png["계속 진행"]
 
 
 
