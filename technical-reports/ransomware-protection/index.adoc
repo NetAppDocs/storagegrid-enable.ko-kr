@@ -42,6 +42,5 @@ S3 API의 기본 랜섬웨어 보호 메커니즘은 오브젝트 잠금을 구�
 
 * NetApp StorageGRID 문서 센터 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID 지원 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID 문서 리소스 페이지 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
 

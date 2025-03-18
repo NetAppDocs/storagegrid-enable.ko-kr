@@ -41,7 +41,6 @@ NetApp StorageGRID를 성공적으로 모니터링하려면 StorageGRID 시스�
 
 * NetApp StorageGRID 문서 센터 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID 지원 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID 문서 리소스 페이지 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
 * Splunk를 위한 NetApp StorageGRID 앱 https://splunkbase.splunk.com/app/3898/#/details[]
 

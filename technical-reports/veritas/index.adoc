@@ -32,6 +32,5 @@ image:veritas/veritas-enterprise-vault-and-storagegrid-architecture.png["Vertias
 
 * NetApp StorageGRID 문서 센터 https://docs.netapp.com/us-en/storagegrid-118/[]
 * NetApp StorageGRID 지원 https://docs.netapp.com/us-en/storagegrid-enable/[]
-* StorageGRID 문서 리소스 페이지 https://www.netapp.com/data-storage/storagegrid/documentation/[]
 * NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
 
