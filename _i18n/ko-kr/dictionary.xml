@@ -1850,7 +1850,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="e3581082ba2aa18febff247afdaf6344" category="paragraph">본 TR에서 설명한 정보에 대해 자세히 알아보려면 다음 문서 리소스를 검토하십시오.</block>
   <block id="d794ca6edf18a97bedb2ad1af37d0c71" category="list-text">NetApp StorageGRID 문서 센터 <block ref="47ea1c2d0f136bec8b3e66c2121bf70f" category="inline-link-rx"></block></block>
   <block id="f26db73036faf2fd4369e53f7b67c6e7" category="list-text">NetApp StorageGRID 지원 <block ref="4d58579ecd86e7d907ec63f13f2199dd" category="inline-link-rx"></block></block>
-  <block id="a3fd6da95928caff4c3eee3c06fd7ad8" category="list-text">StorageGRID 문서 리소스 페이지 <block ref="68d4d5362a15088f2ac3fa494c971af5" category="inline-link-rx"></block></block>
   <block id="8b8bc5296c7be638754abb2f408d2099" category="list-text">NetApp 제품 설명서 <block ref="3cd8b5fe5ca94a9fdb5caaf96875ef7e" category="inline-link-rx"></block></block>
   <block id="fb0cb3928e42fcd12b5e4d384c0b36e1" category="summary">StorageGRID용 Docker를 설치하는 방법을 알아보십시오.</block>
   <block id="4794aa13334c3a67cb956b8bb0b717cc" category="doc">StorageGRID용 Docker를 설치합니다</block>
@@ -2739,12 +2738,9 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="d45294caa04dc2a59a6a9779ecb261e1" category="section-title">계정을 등록하십시오</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link">NetApp Support 사이트</block>
   <block id="6b2e1d4820e2c64094628af51b07c4ae" category="list-text">회사 이메일을 사용하여 에 계정을<block ref="a49f41675f7c48eedf0647a0a62c5043" category="inline-link-rx"></block> 등록합니다.</block>
-  <block id="c3864a0d9e7266b854aa1d673036710a" category="list-text">이미 계정이 있는 경우 다음 단계를 진행합니다.</block>
-  <block id="0fedb2e26434d49a94f9450ce477c3cc" category="list-text">생성된 계정으로 로그인합니다.</block>
   <block id="0c6d9ab23098fd3e876c216fe1ca7ffc" category="inline-link">문제를 보고하십시오</block>
   <block id="8751d140672b36b77b265c8fe793befc" category="list-text">비기술적 지원 케이스를 생성하여 액세스 수준을 "잠재 고객"으로 높입니다. 이렇게 하려면 <block ref="94c9ec214c60b057a12eaba547e0acae" category="inline-link-rx"></block>웹 사이트의 바닥글에서 " 링크를 클릭하십시오.</block>
   <block id="940ab06ee98cba17f3c21dea0e603eb5" category="list-text">피드백 범주로 "등록 문제"를 선택합니다.</block>
-  <block id="c1d4a23af565c411cff6271ce577104f" category="list-text">설명 섹션에 "StorageGRID 평가판 소프트웨어를 다운로드할 수 있는 권한을 잠재 고객에게 받고 싶습니다."라고 적습니다.</block>
   <block id="ea7ab0148c9999f65837f6a1483f42ee" category="list-text">잠재 고객 액세스 요청을 제안한 NetApp 내부 담당자의 이름을 언급하십시오.</block>
   <block id="ed721060d54c51e35da28db6ea8337ef" category="section-title">StorageGRID를 다운로드합니다</block>
   <block id="aed8ceb0f85821c90dc49c2c3bf1e494" category="list-text">지원 케이스를 검토 및 승인하면 NetApp 지원 팀에서 이메일을 통해 귀하의 계정에 잠재 고객 액세스 권한이 부여되었음을 알려드립니다.</block>
@@ -3172,4 +3168,7 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="c913303f392ffc643f7240b180602652" category="cell">1464</block>
   <block id="6cd2cdb0fa97e6793df3667997292b8a" category="cell">3,702</block>
   <block id="93ee6d81759b8ae556ed02d6b52a3447" category="cell">1,992,553</block>
+  <block id="45d98cb0c4dacd6be68da4095e1fa5f2" category="list-text">새로 생성된 계정으로 로그인하지 않았는지 확인합니다.</block>
+  <block id="37ff5d731eafce0bad2c1bdfb0ed1f55" category="list-text">이미 계정이 있는 경우 로그인되어 있지 않은지 확인하고 다음 단계를 진행합니다.</block>
+  <block id="21c24fa624a44fa1b3fc1c27be1061d5" category="list-text">설명 섹션에 "내 계정 이메일 주소는 _ 귀하의 - 이메일 - 주소 _ 입니다. 잠재 고객이 StorageGRID 평가판 소프트웨어를 다운로드할 수 있도록 액세스하려고 합니다."</block>
 </blocks>
