@@ -2,6 +2,8 @@
 section: product-feature-guides
 title: 제품 기능 가이드
 entries:
+- title: StorageGRID로 제로 RPO 실현
+  url: "/product-feature-guides/achieve-zero-rpo.html"
 - title: AWS 또는 Google Cloud용 클라우드 스토리지 풀을 생성합니다
   url: "/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html"
 - title: Azure Blob 스토리지용 Cloud Storage Pool 생성

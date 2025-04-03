@@ -34,6 +34,8 @@ indexpage:
       url: "/third-party/112-3rd-party-list.html"
   - title: 제품 기능 가이드
     links:
+    - title: StorageGRID로 제로 RPO 실현
+      url: "/product-feature-guides/achieve-zero-rpo.html"
     - title: AWS 또는 Google용 Cloud Storage Pool을 생성합니다
       url: "/product-feature-guides/create-cloud-storage-pool-aws-google-cloud.html"
     - title: Azure Blob 스토리지용 Cloud Storage Pool 생성
