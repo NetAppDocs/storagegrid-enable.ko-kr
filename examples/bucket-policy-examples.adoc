@@ -2,7 +2,7 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.' 
+summary: 다음은 StorageGRID S3의 정책 및 사용 권한의 예입니다. 
 ---
 = 버킷 및 그룹(IAM) 정책의 예
 :hardbreaks:
@@ -12,8 +12,183 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
 
 
 [role="lead"]
-다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
+다음은 StorageGRID S3의 정책 및 사용 권한의 예입니다.
 
+
+
+== 정책의 구조
+
+StorageGRID에서 그룹 정책은 AWS 사용자(IAM) S3 서비스 정책과 동일합니다.
+
+그룹 정책은 StorageGRID에서 필요합니다. S3 액세스 키가 있지만 사용자 그룹에 할당되지 않았거나 일부 사용 권한을 부여하는 정책이 없는 그룹에 할당되어 있는 사용자는 데이터에 액세스할 수 없습니다.
+
+버킷 및 그룹 정책은 대부분의 동일한 요소를 공유합니다. 정책은 json 형식으로 구축되며 를 사용하여 생성할 수 있습니다 https://awspolicygen.s3.amazonaws.com/policygen.html["AWS 정책 생성기"]
+
+모든 정책은 영향, 작업 및 리소스를 정의합니다. 버킷 정책도 주체를 정의합니다.
+
+효과 * 는 요청을 허용 또는 거부합니다. Principal * 은 권한을 부여하거나 거부한 계정/사용자입니다. 와일드카드 "++ *++" 또는 버킷이 상주하는 테넌트 내의 로컬 또는 페더레이션 사용자 또는 그룹이나 그리드의 다른 테넌트로 정의할 수 있습니다. 사용자 또는 그룹은 이름 또는 ID 문자열로 식별할 수 있습니다. 작업 * 은 사용자에게 부여되거나 거부되는 S3 작업 집합입니다.
+
+
+NOTE: 사용자가 S3 작업을 수행하려면 S3:ListBucket 작업이 허용됩니다.
+
+리소스 * 는 작업을 수행할 수 있는 권한을 부여하거나 거부한 주체인 버킷 또는 버킷입니다. 선택적으로 정책 작업이 유효한 경우 * 조건 * 이 있을 수 있습니다.
+
+JSON polict의 형식은 다음과 같습니다.
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Sid": "Custom name for this permission",
+      "Effect": "Allow or Deny",
+      "Principal": {
+        "AWS": "arn:aws:iam::Tenant_ID:federated-group/Group_Name",
+        "AWS": "arn:aws:iam::Tenant_ID:group/Group_Name",
+        "AWS": "arn:aws:iam::Tenant_ID::federated-user/User_Name",
+        "AWS": "User_Name"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:Other_Action"
+      ],
+      "Resource": [
+        "arn:aws:s3:::Example_Bucket",
+        "arn:aws:s3:::Example_Bucket/*"
+      ],
+    }
+  ]
+}
+----
+
+
+== AWS 정책 생성기 사용
+
+AWS 정책 생성기는 json 코드를 올바른 형식과 구현하려는 정보로 가져오는 데 도움이 되는 유용한 도구입니다.
+
+StorageGRID 그룹 정책에 대한 권한을 생성하려면 * 정책 유형에 대한 IAM 정책을 선택하십시오. * 원하는 효과에 대한 버튼을 선택합니다 - 허용 또는 거부. 권한 거부로 정책을 시작한 다음 작업 드롭다운에서 권한 허용 * 을 추가하는 것이 좋습니다. 이 권한에 포함할 S3 작업 중 많은 수의 상자 또는 "모든 작업" 상자 옆에 있는 상자를 클릭합니다. * 아마존 리소스 이름(ARN) 상자에 버킷 경로를 입력합니다. 버킷 이름 앞에 "arn:AWS:S3:::::"를 추가합니다. ex. "Arn:AWS:S3:::exampleBucket"
+
+image:policy/group-generic.png["그룹 정책을 생성합니다"]
+
+버킷 정책에 대한 권한을 생성하려면 * 정책 유형에 대해 S3 버킷 정책을 선택합니다. * 원하는 효과에 대한 버튼을 선택합니다 - 허용 또는 거부. 거부 권한으로 정책을 시작한 다음 허용 권한 * 을 Principal의 사용자 또는 그룹 정보에 추가하는 것이 좋습니다. * 작업 드롭다운에서 이 권한에 포함할 S3 작업 중 많은 항목 옆에 있는 상자를 클릭하거나 "모든 작업" 상자를 클릭합니다. * 아마존 리소스 이름(ARN) 상자에 버킷 경로를 입력합니다. 버킷 이름 앞에 "arn:AWS:S3:::::"를 추가합니다. ex. "Arn:AWS:S3:::exampleBucket"
+
+image:policy/bucket-generic.png["버킷 정책을 생성합니다"]
+
+예를 들어, 모든 사용자가 버킷의 모든 오브젝트에 대해 GetObject 작업을 수행할 수 있도록 버킷 정책을 생성하려는 경우 지정된 계정의 "Marketing" 그룹에 속한 사용자만 전체 액세스 권한을 허용합니다.
+
+* 정책 유형으로 S3 Bucket Policy 를 선택합니다.
+* 효과 허용 을 선택합니다
+* 마케팅 그룹 정보 - arn:AWS:IAM::95390887230002558202:Federated-group/Marketing을 입력합니다
+* "모든 작업" 상자를 클릭합니다.
+* 버킷 정보 -arn:AWS:S3::exampleBucket, arn:AWS:S3:::exampleBucket/ * 를 입력합니다
+
+
+image:policy/example-bucket1.png["정책에서 첫 번째 권한을 생성합니다"]
+
+* "문 추가" 버튼을 클릭합니다
+
+
+image:policy/permission1.png["입력한 정책의 첫 번째 사용 권한입니다"]
+
+* 효과 허용 을 선택합니다
+* 모든 사람에 대해 별표 ++ * + 를 입력합니다
+* GetObject 및 ListBucket 작업 옆에 있는 상자를 클릭합니다."
+
+
+image:policy/getobject.png["GetObject 를 선택합니다"] image:policy/listbucket.png["ListBucket 을 선택합니다"]
+
+* 버킷 정보 -arn:AWS:S3::exampleBucket, arn:AWS:S3:::exampleBucket/ * 를 입력합니다
+
+
+image:policy/example-bucket2.png["정책에서 두 번째 권한을 생성합니다"]
+
+* "문 추가" 버튼을 클릭합니다
+
+
+image:policy/permission3.png["정책의 두 번째 권한"]
+
+* "정책 생성" 버튼을 클릭하면 생성된 정책과 함께 팝업 창이 나타납니다.
+
+
+image:policy/example-output.png["최종 출력"]
+
+* 다음과 같은 전체 json 텍스트를 복사합니다.
+
+
+[source, json]
+----
+{
+  "Id": "Policy1744399292233",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1744399152830",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::95390887230002558202:federated-group/Marketing"
+        ]
+      }
+    },
+    {
+      "Sid": "Stmt1744399280838",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": "*"
+    }
+  ]
+}
+----
+이 json은 있는 그대로 사용할 수도 있고 "Statement" 줄 위의 ID 및 버전 줄을 제거할 수도 있으며 각 권한에 대해 보다 의미 있는 제목을 사용하여 SID를 사용자 지정할 수도 있고 이러한 항목을 제거할 수도 있습니다.
+
+예를 들면 다음과 같습니다.
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Sid": "MarketingAllowFull",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::95390887230002558202:federated-group/Marketing"
+        ]
+      }
+    },
+    {
+      "Sid": "EveryoneReadOnly",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::examplebucket",
+        "arn:aws:s3:::examplebucket/*"
+      ],
+      "Principal": "*"
+    }
+  ]
+}
+----
 
 
 == 그룹 정책(IAM)
@@ -26,6 +201,7 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
 
 [source, json]
 ----
+{
 "Statement": [
     {
       "Sid": "AllowListBucketOfASpecificUserPrefix",
@@ -133,6 +309,14 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
     ]
 }
 ----
+
+
+== 버킷 정책
+
+
+
+=== 버킷에서 버전 지정된 객체의 사용자 삭제를 제한합니다
+
 이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다
 
 [source, json]
@@ -178,29 +362,29 @@ summary: '다음은 버킷 정책 및 그룹 정책(IAM 정책)의 예입니다.
             "Sid": "Deny non user1",
             "Effect": "Deny",
             "NotPrincipal": {
-                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
             },
             "Action": [
                 "s3:*"
             ],
             "Resource": [
-                "urn:sgws:s3:::bucket1",
-                "urn:sgws:s3:::bucket1/*"
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
             ]
         },
         {
             "Sid": "Allow user1 read access to bucket bucket1",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "urn:sgws:identity::34921514133002833665:user/user1"
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
             },
             "Action": [
                 "s3:GetObject",
                 "s3:ListBucket"
             ],
             "Resource": [
-                "urn:sgws:s3:::bucket1",
-                "urn:sgws:s3:::bucket1/*"
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
             ]
         }
     ]
