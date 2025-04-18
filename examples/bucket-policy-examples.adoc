@@ -26,10 +26,61 @@ StorageGRID에서 그룹 정책은 AWS 사용자(IAM) S3 서비스 정책과 동
 
 모든 정책은 영향, 작업 및 리소스를 정의합니다. 버킷 정책도 주체를 정의합니다.
 
-효과 * 는 요청을 허용 또는 거부합니다. Principal * 은 권한을 부여하거나 거부한 계정/사용자입니다. 와일드카드 "++ *++" 또는 버킷이 상주하는 테넌트 내의 로컬 또는 페더레이션 사용자 또는 그룹이나 그리드의 다른 테넌트로 정의할 수 있습니다. 사용자 또는 그룹은 이름 또는 ID 문자열로 식별할 수 있습니다. 작업 * 은 사용자에게 부여되거나 거부되는 S3 작업 집합입니다.
+효과 * 는 요청을 허용 또는 거부합니다.
+
+Principal *
+
+* 버킷 정책에만 적용됩니다.
+* 보안 주체는 권한을 부여하거나 거부하고 있는 계정/사용자입니다.
+* 다음과 같이 정의할 수 있습니다.
++
+** 와일드카드 "++ * ++"
++
+[listing]
+----
+"Principal":"*"
+----
++
+[listing]
+----
+"Principal":{"AWS":"*"}
+----
+** 테넌트의 모든 사용자에 대한 테넌트 ID(AWS 계정과 동일)
++
+[listing]
+----
+"Principal": { "AWS": "27233906934684427525" }
+----
+** 사용자(버킷이 상주하는 테넌트 내에서 로컬 또는 페더레이션됨 또는 그리드의 다른 테넌트)
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::76233906934699427431:user/tenant1user1" }
+----
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::27233906934684427525:federated-user/tenant2user1" }
+----
+** 그룹(버킷이 상주하는 테넌트 내에서 로컬 또는 페더레이션된 그룹 또는 그리드의 다른 테넌트)
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::76233906934699427431:group/DevOps"  }
+----
++
+[listing]
+----
+"Principal": { "AWS": "arn:aws:iam::27233906934684427525:federated-group/Managers"  }
+----
 
 
-NOTE: 사용자가 S3 작업을 수행하려면 S3:ListBucket 작업이 허용됩니다.
+
+
+작업 * 은 사용자에게 부여되거나 거부되는 S3 작업 집합입니다.
+
+
+NOTE: 그룹 정책의 경우 사용자가 S3 작업을 수행하려면 S3:ListBucket 작업이 허용됩니다.
 
 리소스 * 는 작업을 수행할 수 있는 권한을 부여하거나 거부한 주체인 버킷 또는 버킷입니다. 선택적으로 정책 작업이 유효한 경우 * 조건 * 이 있을 수 있습니다.
 
@@ -43,10 +94,13 @@ JSON 정책 형식은 다음과 같습니다.
       "Sid": "Custom name for this permission",
       "Effect": "Allow or Deny",
       "Principal": {
-        "AWS": "arn:aws:iam::Tenant_ID:federated-group/Group_Name",
-        "AWS": "arn:aws:iam::Tenant_ID:group/Group_Name",
-        "AWS": "arn:aws:iam::Tenant_ID::federated-user/User_Name",
-        "AWS": "User_Name"
+        "AWS": [
+          "arn:aws:iam::tenant_ID::user/User_Name",
+          "arn:aws:iam::tenant_ID::federated-user/User_Name",
+          "arn:aws:iam::tenant_ID:group/Group_Name",
+          "arn:aws:iam::tenant_ID:federated-group/Group_Name",
+          "tenant_ID"
+        ]
       },
       "Action": [
         "s3:ListBucket",
@@ -311,87 +365,6 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
-== 버킷 정책
-
-
-
-=== 버킷에서 버전 지정된 객체의 사용자 삭제를 제한합니다
-
-이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다
-
-[source, json]
-----
-{
-  "Statement": [
-    {
-      "Action": [
-        "s3:DeleteObjectVersion"
-      ],
-      "Effect": "Deny",
-      "Resource": "arn:aws:s3:::verdeny/*",
-      "Principal": {
-        "AWS": [
-          "56622399308951294926"
-        ]
-      }
-    },
-    {
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": "arn:aws:s3:::verdeny/*",
-      "Principal": {
-        "AWS": [
-          "56622399308951294926"
-        ]
-      }
-    }
-  ]
-}
-----
-
-
-=== 읽기 전용 액세스 권한이 있는 단일 사용자로 버킷을 제한합니다
-
-이 정책을 사용하면 단일 사용자가 버킷에 대한 읽기 전용 액세스를 가질 수 있고 다른 모든 사용자에 대한 액세스를 명시적으로 부인할 수 있습니다. 정책 맨 위에 있는 Deny 문을 그룹화하는 것은 보다 빠른 평가를 위한 좋은 방법입니다.
-
-[source, json]
-----
-{
-    "Statement": [
-        {
-            "Sid": "Deny non user1",
-            "Effect": "Deny",
-            "NotPrincipal": {
-                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
-            },
-            "Action": [
-                "s3:*"
-            ],
-            "Resource": [
-                "arn:aws:s3:::bucket1",
-                "arn:aws:s3:::bucket1/*"
-            ]
-        },
-        {
-            "Sid": "Allow user1 read access to bucket bucket1",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
-            },
-            "Action": [
-                "s3:GetObject",
-                "s3:ListBucket"
-            ],
-            "Resource": [
-                "arn:aws:s3:::bucket1",
-                "arn:aws:s3:::bucket1/*"
-            ]
-        }
-    ]
-}
-----
-
-
 === 그룹을 읽기 전용 권한으로 단일 하위 디렉토리(접두사)로 제한합니다
 
 이 정책을 사용하면 그룹의 구성원이 버킷 내의 하위 디렉터리(접두사)에 읽기 전용 액세스 권한을 가질 수 있습니다. 버킷 이름은 "study"이고 하위 디렉토리는 "study01"입니다.
@@ -459,5 +432,135 @@ image:policy/example-output.png["최종 출력"]
             ]
         }
     ]
+}
+----
+
+
+== 버킷 정책
+
+
+
+=== 읽기 전용 액세스 권한이 있는 단일 사용자로 버킷을 제한합니다
+
+이 정책을 사용하면 단일 사용자가 버킷에 대한 읽기 전용 액세스를 가질 수 있고 다른 모든 사용자에 대한 액세스를 명시적으로 부인할 수 있습니다. 정책 맨 위에 있는 Deny 문을 그룹화하는 것은 보다 빠른 평가를 위한 좋은 방법입니다.
+
+[source, json]
+----
+{
+    "Statement": [
+        {
+            "Sid": "Deny non user1",
+            "Effect": "Deny",
+            "NotPrincipal": {
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
+            ]
+        },
+        {
+            "Sid": "Allow user1 read access to bucket bucket1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::34921514133002833665:user/user1"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket1",
+                "arn:aws:s3:::bucket1/*"
+            ]
+        }
+    ]
+}
+----
+
+
+=== 읽기 전용 액세스 권한이 있는 소수의 사용자로 버킷을 제한합니다.
+
+[source, json]
+----
+{
+    "Statement": [
+      {
+        "Sid": "Deny all S3 actions to employees 002-005",
+        "Effect": "deny",
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam::46521514133002703882:user/employee-002",
+            "arn:aws:iam::46521514133002703882:user/employee-003",
+            "arn:aws:iam::46521514133002703882:user/employee-004",
+            "arn:aws:iam::46521514133002703882:user/employee-005"
+          ]
+        },
+        "Action": "*",
+        "Resource": [
+          "arn:aws:s3:::databucket1",
+          "arn:aws:s3:::databucket1/*"
+        ]
+      },
+      {
+        "Sid": "Allow read-only access for employees 002-005",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam::46521514133002703882:user/employee-002",
+            "arn:aws:iam::46521514133002703882:user/employee-003",
+            "arn:aws:iam::46521514133002703882:user/employee-004",
+            "arn:aws:iam::46521514133002703882:user/employee-005"
+          ]
+        },
+        "Action": [
+          "s3:GetObject",
+          "s3:GetObjectTagging",
+          "s3:GetObjectVersion"
+        ],
+        "Resource": [
+          "arn:aws:s3:::databucket1",
+          "arn:aws:s3:::databucket1/*"
+        ]
+      }
+    ]
+}
+----
+
+
+=== 버킷에서 버전 지정된 객체의 사용자 삭제를 제한합니다
+
+이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다
+
+[source, json]
+----
+{
+  "Statement": [
+    {
+      "Action": [
+        "s3:DeleteObjectVersion"
+      ],
+      "Effect": "Deny",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    },
+    {
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::verdeny/*",
+      "Principal": {
+        "AWS": [
+          "56622399308951294926"
+        ]
+      }
+    }
+  ]
 }
 ----
