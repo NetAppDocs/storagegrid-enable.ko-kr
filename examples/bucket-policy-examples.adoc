@@ -2,9 +2,9 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: 다음은 StorageGRID S3의 정책 및 사용 권한의 예입니다. 
+summary: StorageGRID의 정책 및 사용 권한. 
 ---
-= 버킷 및 그룹(IAM) 정책의 예
+= StorageGRID의 정책 및 사용 권한
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
