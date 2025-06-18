@@ -2,7 +2,7 @@
 permalink: examples/bucket-policy-examples.html 
 sidebar: sidebar 
 keywords: iam, bucket policy, group policy, policy 
-summary: StorageGRID의 정책 및 사용 권한. 
+summary: StorageGRID의 정책 및 권한. 
 ---
 = StorageGRID의 정책 및 사용 권한
 :hardbreaks:

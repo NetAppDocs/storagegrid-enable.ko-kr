@@ -8,3 +8,5 @@ entries:
   url: "/examples/test-demonstrate-S3-object-lock.html"
 - title: 버킷 및 그룹 정책 예
   url: "/examples/bucket-policy-examples.html"
+- title: 버킷 수명 주기 정책 예
+  url: "/examples/bucket-lifecycle-examples.html"

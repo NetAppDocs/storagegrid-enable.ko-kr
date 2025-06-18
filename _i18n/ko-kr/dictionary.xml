@@ -3172,11 +3172,8 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="ea76d032379d2a88d28b72edd9e36564" category="paragraph">이 기술 보고서는 사이트 장애 발생 시 RPO(복구 시점 목표)를 0으로 설정하기 위한 StorageGRID 복제 전략을 구현하는 포괄적인 가이드를 제공합니다. 이 문서에서는 다중 사이트 동기식 복제 및 다중 그리드 비동기식 복제를 비롯한 StorageGRID의 다양한 구축 옵션에 대해 자세히 설명합니다. 또한 StorageGRID의 ILM(정보 수명 주기 관리) 정책을 구성하여 여러 위치에서 데이터 내구성 및 가용성을 보장하는 방법에 대해 설명합니다. 또한 중단 없는 클라이언트 운영을 유지하기 위한 성능 고려 사항, 장애 시나리오 및 복구 프로세스에 대해서도 설명합니다. 이 문서의 목표는 완전한 사이트 장애 발생 시에도 동기식 및 비동기식 복제 기술을 모두 활용하여 데이터에 액세스하고 일관성을 유지할 수 있도록 하는 정보를 제공하는 것입니다.</block>
   <block id="606eab719053286d71dc6722565f39cc" category="section-title">StorageGRID 개요</block>
   <block id="c72cc4a7cc108f0e65b3b2234a5451f6" category="paragraph">NetApp StorageGRID는 업계 표준 Amazon S3(Amazon Simple Storage Service) API를 지원하는 오브젝트 기반 스토리지 시스템입니다.</block>
-  <block id="cbec9834e0bafd7c4eeaff92edea7bb1" category="paragraph">StorageGRID는 정보 라이프사이클 관리 정책(ILM)에 따라 다양한 서비스 수준의 단일 네임스페이스를 여러 위치에서 제공합니다. 이러한 라이프사이클 정책을 사용하면 라이프사이클 전체에서 데이터 위치를 최적화할 수 있습니다.</block>
-  <block id="92befe296d180941710b2c41a0009334" category="paragraph">StorageGRID은 로컬 및 지리적으로 분산된 솔루션에서 구성 가능한 내구성과 데이터 가용성을 지원합니다. 데이터가 온프레미스에 있든 퍼블릭 클라우드에 있든 상관없이 통합 하이브리드 클라우드 워크플로를 통해 Amazon SNS(Simple Notification Service), Google Cloud, Microsoft Azure Blob, Amazon S3 Glacier, Elasticsearch와 같은 클라우드 서비스를 활용할 수 있습니다.</block>
   <block id="bbcde1e5e5d61a464205617230c533f9" category="section-title">StorageGRID 확장</block>
   <block id="755c616499e794de29a6192f733ef343" category="paragraph">StorageGRID는 단 3개의 스토리지 노드로 구축할 수 있으며 단일 그리드는 최대 200개 노드까지 확장할 수 있습니다. 단일 그리드를 단일 사이트로 구축하거나 16개 사이트로 확장할 수 있습니다. 최소 그리드는 단일 사이트에 있는 관리자 노드와 3개의 스토리지 노드로 구성됩니다. 관리 노드에는 메트릭 및 로깅을 위한 중앙 지점인 관리 인터페이스가 포함되어 있으며 StorageGRID 구성 요소의 구성을 유지 관리합니다. 관리자 노드에는 S3 API 액세스를 위한 통합 로드 밸런서도 포함되어 있습니다. StorageGRID는 소프트웨어 전용, VMware 가상 머신 어플라이언스 또는 특별 제작된 어플라이언스로 구축할 수 있습니다.</block>
-  <block id="32bb7324701636fba01565d26f666f9a" category="paragraph">StorageGRID 노드는 개체 수를 최대화하는 메타데이터 전용 노드, 개체 공간을 최대화하는 오브젝트 스토리지 전용 노드 또는 개체 수와 개체 공간을 모두 추가하는 결합된 메타데이터와 개체 스토리지 노드로 구축할 수 있습니다. 각 스토리지 노드는 오브젝트 스토리지에 대해 수 페타바이트에 달하는 용량으로 확장할 수 있으며, 수백 페타바이트의 단일 네임 스페이스를 구축할 수 있습니다. StorageGRID는 게이트웨이 노드라는 S3 API 작업을 위한 통합 로드 밸런서도 제공합니다.</block>
   <block id="dd4a2f5270f8e48315da197dfb50c549" category="inline-image-macro">StorageGRID 구축 옵션</block>
   <block id="85bd86baa435866d317d93d290b94825" category="paragraph"><block ref="85bd86baa435866d317d93d290b94825" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0d98907e79de1d22666f11bfb3d2db3f" category="paragraph">StorageGRID는 사이트 토폴로지에 배치된 노드 모음으로 구성됩니다. StorageGRID의 사이트는 고유한 물리적 위치일 수도 있고 그리드의 다른 사이트와 논리적 구성으로서 공유 물리적 위치에 상주할 수도 있습니다. StorageGRID 사이트는 여러 물리적 위치에 걸쳐 있을 수 없습니다. 사이트는 공유 LAN 인프라를 나타냅니다.</block>
@@ -3193,7 +3190,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="fe6177858a7ffc8599a9d9a1a4ea2f1f" category="list-text">개체 메타데이터는 개체를 설명하는 정보입니다.</block>
   <block id="5744c4629d3afd78a5fdd52800e97f1c" category="paragraph">StorageGRID는 오브젝트 메타데이터를 사용하여 그리드 전체의 모든 오브젝트의 위치를 추적하고 각 오브젝트의 라이프사이클 관리를 제공합니다.</block>
   <block id="63079dc7d4ba0f0950865fd53b883a11" category="paragraph">오브젝트 메타데이터에는 다음과 같은 정보가 포함됩니다.</block>
-  <block id="3d426a291fd747acbb0b7f735c152ca2" category="list-text">각 오브젝트의 고유 ID(UUID), 오브젝트 이름, S3 버킷의 이름, 테넌트 계정 이름 또는 ID, 오브젝트의 논리적 크기, 오브젝트를 처음 생성한 날짜와 시간, 오브젝트를 마지막으로 수정한 날짜와 시간이 포함된 시스템 메타데이터</block>
   <block id="e5a918f437a7af27afdce3def49278bc" category="list-text">각 오브젝트 복제본 또는 삭제 코딩 조각의 현재 스토리지 위치입니다.</block>
   <block id="91b08644ef3e50381478d7f42ab32f1d" category="list-text">객체와 연결된 모든 사용자 메타데이터 키 값 쌍입니다.</block>
   <block id="23f54b9b547ce8f5c783a1d802cf64a9" category="list-text">S3 오브젝트의 경우 오브젝트와 연결된 모든 오브젝트 태그 키-값 쌍입니다</block>
@@ -3368,8 +3364,62 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="1fb97d2f8d3ea337eb88de35459a8dfa" category="paragraph">작업 * 은 사용자에게 부여되거나 거부되는 S3 작업 집합입니다.</block>
   <block id="c4b3b18f1ab46adb439794c3e45b0a5a" category="admonition">그룹 정책의 경우 사용자가 S3 작업을 수행하려면 S3:ListBucket 작업이 허용됩니다.</block>
   <block id="21e1d6809aa3d238b83ad7b2536121ce" category="section-title">읽기 전용 액세스 권한이 있는 소수의 사용자로 버킷을 제한합니다.</block>
-  <block id="bbecdd1fb824778996b46ad8016ff963" category="summary">StorageGRID의 정책 및 사용 권한.</block>
   <block id="0e2086a4669036b8a4cdc547c6b73dcf" category="doc">StorageGRID의 정책 및 사용 권한</block>
   <block id="71c2cd8c732de893ca91cb987baa1b5c" category="paragraph">모든 정책은 영향, 작업 및 리소스를 정의합니다. 버킷 정책도 주체를 정의합니다.</block>
   <block id="4acae57d3119f0b81d2bfd14c9585f13" category="sidebar">StorageGRID 솔루션 및 리소스</block>
+  <block id="4e7c8010ebf23d4fb2423e144be51038" category="summary">StorageGRID의 버킷 수명 주기.</block>
+  <block id="58160f35095d353b329570226a65de25" category="doc">StorageGRID의 버킷 수명 주기</block>
+  <block id="4aacbdad7d81cd4fe0ad188b4e33394a" category="paragraph">S3 라이프사이클 구성을 생성하여 StorageGRID 시스템에서 특정 오브젝트 삭제 시기를 제어할 수 있습니다.</block>
+  <block id="1dae0e04caca31248eebeab84347dae4" category="section-title">라이프사이클 구성이란 무엇입니까?</block>
+  <block id="7237dbaae1efaf45679f5983bf89ecdb" category="paragraph">라이프사이클 구성은 특정 S3 버킷의 오브젝트에 적용되는 규칙 세트입니다. 각 규칙은 영향을 받는 개체와 해당 개체가 만료되는 시기(특정 날짜 또는 특정 일 수 이후)를 지정합니다.</block>
+  <block id="81808f9beff227e55b8eac9c911f81c1" category="paragraph">각 오브젝트는 S3 버킷 라이프사이클 또는 ILM 정책의 보존 설정을 따릅니다. S3 버킷 라이프사이클이 구성되면 라이프사이클 만료 작업이 버킷 라이프사이클 필터와 일치하는 오브젝트에 대한 ILM 정책을 재정의합니다. 버킷 수명 주기 필터와 일치하지 않는 객체는 ILM 정책의 보존 설정을 사용합니다. 객체가 버킷 수명 주기 필터와 일치하고 만료 작업이 명시적으로 지정되지 않은 경우 ILM 정책의 보존 설정이 사용되지 않으며 객체 버전이 영구적으로 보존됩니다.</block>
+  <block id="5abb5a8b4a6970cbd435389007814791" category="paragraph">따라서 ILM 규칙의 배치 지침이 개체에 계속 적용되더라도 그리드에서 개체를 제거할 수 있습니다. 또는 객체에 대한 ILM 배치 지침이 만료된 후에도 객체가 그리드에 유지될 수 있습니다.</block>
+  <block id="f8ddf9feb35885470b54cc7bc6b0c913" category="paragraph">StorageGRID는 수명 주기 구성에서 최대 1,000개의 수명 주기 규칙을 지원합니다. 각 규칙에는 다음 XML 요소가 포함될 수 있습니다.</block>
+  <block id="6778b95944fe51e4a619971577ef5ee9" category="list-text">만료: 지정된 날짜에 도달하거나 지정된 일 수에 도달할 때 개체를 인제스트할 때로부터 개체를 삭제합니다.</block>
+  <block id="78f9560991f2641b0e0f5ce11d361273" category="list-text">NoncurrentVersionExpiration: 지정된 일 수에 도달할 때 개체가 비전류가 되었을 때부터 개체를 삭제합니다.</block>
+  <block id="0422ebe572a6bb9b7e6d689e7fd6f1b7" category="list-text">필터(접두사, 태그)</block>
+  <block id="1486479bc9924fe7efe63a3ddacb2a7b" category="list-text">상태 *ID</block>
+  <block id="663ef94c78c892b73cc57c0ecf2b8bc6" category="paragraph">StorageGRID는 다음 버킷 작업을 사용하여 라이프사이클 구성을 관리합니다.</block>
+  <block id="3a176974b22a72a5a81d4903f38c355d" category="list-text">DeleteBucketLifecycle</block>
+  <block id="2f3274ee98c595939f0a90e3b51f7c0d" category="list-text">GetBuckLifecycleConfiguration 을 참조하십시오</block>
+  <block id="f8a8897d1208664862c2552a11f250ca" category="list-text">PutBucketLifecycleConfiguration을 참조하십시오</block>
+  <block id="da9d09dc4302766fe82a494820ea3018" category="section-title">수명 주기 정책의 구조</block>
+  <block id="058711a626ab33171f020d2148a6ad18" category="paragraph">라이프사이클 구성을 만드는 첫 번째 단계에서는 하나 이상의 규칙이 포함된 JSON 파일을 만듭니다. 예를 들어 이 JSON 파일에는 다음과 같은 세 가지 규칙이 포함되어 있습니다.</block>
+  <block id="9d3ce84a95c8d372e271b55abdeaf06d" category="list-text">*규칙 1*은 category1/ 접두사와 일치하고 key2 값이 tag2인 객체에만 적용됩니다. Expiration 매개변수는 필터와 일치하는 객체가 2020년 8월 22일 자정에 만료되도록 지정합니다.</block>
+  <block id="791076664e2f3e1afea280f5a504f6dc" category="list-text">*규칙 2*는 category2/ 접두사와 일치하는 객체에만 적용됩니다. 만료 매개변수는 필터와 일치하는 객체가 수집된 후 100일 후에 만료되도록 지정합니다.</block>
+  <block id="f2c02934edec79173be5544f20f8e6ca" category="admonition">일 수를 지정하는 규칙은 오브젝트가 수집된 시점을 기준으로 합니다. 현재 날짜가 수집 날짜와 일 수를 더한 값을 초과하면 라이프사이클 구성이 적용되는 즉시 일부 객체가 버킷에서 제거될 수 있습니다.</block>
+  <block id="bf1abd41ac064b250b1363071b9a7195" category="list-text">*규칙 3*은 category3/ 접두사와 일치하는 객체에만 적용됩니다. 만료 매개변수는 일치하는 객체의 모든 비현재 버전이 비현재 버전으로 전환된 후 50일 후에 만료되도록 지정합니다.</block>
+  <block id="896cd69eb75c862798f9e986f848f272" category="section-title">버킷에 라이프사이클 구성을 적용합니다</block>
+  <block id="991d6fd19e6b04aaab79f243f7231985" category="paragraph">문서 수정 상태 구성 파일을 만든 후 PutBucketLifecycleConfiguration 요청을 실행하여 버킷에 적용합니다.</block>
+  <block id="7d231c64201330534bbc01fac1411591" category="paragraph">이 요청은 예제 파일의 수명주기 구성을 이름이 인 버킷의 객체에<block ref="323221a74abb3997f4141e6d754bf8dd" prefix=" " category="inline-code"></block> 적용합니다.</block>
+  <block id="ae6b965207cbb3195f9f18ff9567dac2" category="paragraph">수명 주기 구성이 버킷에 성공적으로 적용되었는지 확인하려면 GetBucketLifecycleConfiguration 요청을 실행합니다. 예를 들면 다음과 같습니다.</block>
+  <block id="f0a61bf28629288e5dd914027e78d330" category="section-title">표준(버전 없음) 버킷에 대한 예시 수명 주기 정책</block>
+  <block id="9c839c4462147cd1a9a164b161c6df71" category="section-title">90일 후에 개체 삭제</block>
+  <block id="1c1edea5b5fb7017df6735caddb036c9" category="paragraph">사용 사례: 이 정책은 임시 파일, 로그 또는 중간 처리 데이터와 같이 제한된 기간 동안만 관련성이 있는 데이터를 관리하는 데 적합합니다. 이점: 저장 비용을 절감하고 버킷을 깔끔하게 유지할 수 있습니다.</block>
+  <block id="a4a5cea738d6da6085c0db896d047001" category="section-title">버전이 지정된 버킷에 대한 수명 주기 정책 예</block>
+  <block id="5808fc2734abb0c3a63ccb7a2efcb814" category="section-title">10일 후 비현재 버전 삭제</block>
+  <block id="87fe92caedf00fb0d3b95bb0a8947552" category="paragraph">사용 사례: 이 정책은 시간이 지남에 따라 누적되어 상당한 공간을 차지할 수 있는 최신 버전이 아닌 객체의 저장소를 관리하는 데 도움이 됩니다. 이점: 최신 버전만 보관하여 저장소 사용량을 최적화합니다.</block>
+  <block id="01cd1b232ce05d49443051b40a2458d2" category="section-title">5개의 비현재 버전을 유지하세요</block>
+  <block id="f48f877559a5ab472b0c8399aa53ae43" category="paragraph">사례: 복구 또는 감사 목적으로 제한된 수의 이전 버전을 보관하려는 경우에 유용합니다. 이점: 충분한 기록 및 복구 지점을 보장하기 위해 충분한 수의 최신이 아닌 버전을 보관합니다.</block>
+  <block id="b36f0366fc8b2a644db0d58b9aec47e6" category="section-title">다른 버전이 없는 경우 삭제 마커를 제거합니다.</block>
+  <block id="5a07e328951f2e2665da45b3c8611e70" category="paragraph">사용 사례: 이 정책은 시간이 지남에 따라 누적될 수 있는 모든 비현재 버전을 제거한 후 남은 삭제 마커를 관리하는 데 도움이 됩니다. 이점: 불필요한 잡동사니를 줄입니다.</block>
+  <block id="e5c835f7c182458dbaf697d1620793b4" category="section-title">현재 버전은 30일 후에 삭제하고, 현재가 아닌 버전은 60일 후에 삭제하고, 다른 버전이 없으면 현재 버전 삭제로 생성된 삭제 마커를 제거합니다.</block>
+  <block id="d9b7c27b725dffa7cd5976689726fef1" category="paragraph">사용 사례: 삭제 마커를 포함하여 현재 버전과 이전 버전에 대한 완전한 수명 주기를 제공합니다. 이점: 스토리지 비용을 절감하고 충분한 복구 지점과 기록을 유지하면서 버킷을 깔끔하게 유지합니다.</block>
+  <block id="c9aa9a5dfb2480b364bb5845348ff940" category="section-title">다른 버전이 없고 5일 동안 존재했던 삭제 마커를 제거하고, "accounts_ prefix"가 있는 개체의 경우 4개의 비현재 버전과 최소 30일 분의 기록을 유지하고, 다른 모든 개체 버전의 경우 2개의 버전과 최소 10일 분의 기록을 유지합니다.</block>
+  <block id="2c4d4631c1767753478366b0115cd168" category="paragraph">사용 사례: 삭제 마커를 포함하여 현재 버전과 이전 버전의 전체 수명 주기를 관리하기 위해 다른 객체와 함께 특정 객체에 대한 고유한 규칙을 제공합니다. 이점: 스토리지 비용을 절감하고 버킷을 깔끔하게 유지하는 동시에 다양한 클라이언트 요구 사항을 충족할 수 있는 충분한 복구 지점과 기록을 유지합니다.</block>
+  <block id="c662e9fbc7c08f1bf374548d49a19c49" category="list-text">정기적으로 수명 주기 정책을 검토하고 업데이트하고 이를 ILM 및 데이터 관리 목표에 맞춰 조정합니다.</block>
+  <block id="cc89ccf651eef2154a659615eba6bdf0" category="list-text">의도한 대로 작동하는지 확인하기 위해 정책을 광범위하게 적용하기 전에 비생산 환경이나 버킷에서 테스트합니다.</block>
+  <block id="1472c6bd5c48d6572cc5d6c6830a71cb" category="list-text">논리 구조가 복잡해질 수 있으므로 규칙에 대한 설명적 ID를 사용하여 더 직관적으로 만드십시오.</block>
+  <block id="9883679d6984fbcf5d5e1eb8a9841a7a" category="list-text">버킷 수명 주기 정책이 저장소 사용량과 성능에 미치는 영향을 모니터링하여 필요한 조정을 실시합니다.</block>
+  <block id="f69309997a74d84dd39f53923232f102" category="summary">StorageGRID의 정책 및 권한.</block>
+  <block id="61e1800dd7d03bc7509039ca51abaa94" category="paragraph">StorageGRID는 정보 라이프사이클 관리 정책(ILM)에 따라 다양한 서비스 수준의 단일 네임스페이스를 여러 위치에서 제공합니다. 이러한 수명 주기 정책을 사용하면 수명 주기 전반에 걸쳐 데이터가 저장되는 위치를 최적화할 수 있습니다.</block>
+  <block id="ee46b302eeb000f796002cd99f7fccca" category="paragraph">StorageGRID은 로컬 및 지리적으로 분산된 솔루션에서 구성 가능한 내구성과 데이터 가용성을 지원합니다. 데이터가 온프레미스에 있든 퍼블릭 클라우드에 있든, 통합 하이브리드 클라우드 워크플로를 통해 기업은 Amazon Simple Notification Service(Amazon SNS), Google Cloud, Microsoft Azure Blob, Amazon S3 Glacier, Elasticsearch 등의 클라우드 서비스를 활용할 수 있습니다.</block>
+  <block id="639932e1f3f1e48c7c66a3c0d26d7c95" category="paragraph">StorageGRID 노드는 다음과 같이 배포될 수 있습니다.</block>
+  <block id="2ef98a36e008b10819c92b90ab9fb134" category="list-text">객체 수를 최대화하는 메타데이터 전용 노드</block>
+  <block id="314be57ec0bf12b0f7b8fad48b9e7d0d" category="list-text">객체 공간을 극대화하는 객체 스토리지 전용 노드</block>
+  <block id="b67abdd7987281e93fb88e16a9dede52" category="list-text">객체 수와 객체 공간을 모두 추가하는 결합된 메타데이터 및 객체 스토리지 노드</block>
+  <block id="c861ea75c2d08cb58cd0e94b6f5cb1d3" category="paragraph">각 스토리지 노드는 오브젝트 스토리지에 대해 수 페타바이트에 달하는 용량으로 확장할 수 있으며, 수백 페타바이트의 단일 네임 스페이스를 구축할 수 있습니다. StorageGRID는 게이트웨이 노드라는 S3 API 작업을 위한 통합 로드 밸런서도 제공합니다.</block>
+  <block id="aae45e5681608077797f9b54c9787cc9" category="list-text">각 개체의 고유 ID, 개체 이름, S3 버킷 이름, 테넌트 계정 이름 또는 ID, 개체의 논리적 크기, 개체가 처음 생성된 날짜 및 시간, 개체가 마지막으로 수정된 날짜 및 시간을 포함한 시스템 메타데이터입니다.</block>
+  <block id="cab3529168145fa0611750088f6b9294" category="sidebar">버킷 수명 주기 정책 예</block>
+  <block id="e506f81bec685a8d4212a723ed5e9d67" category="sidebar">버킷 수명 주기 정책 예</block>
 </blocks>
