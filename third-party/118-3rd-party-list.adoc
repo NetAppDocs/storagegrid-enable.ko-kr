@@ -42,7 +42,7 @@ summary: StorageGRID 11.8에서 검증된 타사 솔루션
 * Fujifilm 개체 아카이브
 * GitHub 엔터프라이즈 서버
 * IBM Filenet
-* IBM Spectrum Protect Plus
+* IBM 스토리지 프로텍트
 * 인터카
 * 고마프라이즈
 * Microsoft SQL Server 빅 데이터 클러스터
@@ -89,6 +89,7 @@ summary: StorageGRID 11.8에서 검증된 타사 솔루션
 
 * CommVault 11 기능 릴리스 26
 * IBM Filenet
+* IBM 스토리지 프로텍트
 * OpenText Documentum 21.4
 * Rubrik으로 이동합니다
 * Veeam 12

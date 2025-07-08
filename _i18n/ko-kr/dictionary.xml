@@ -3422,4 +3422,5 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="aae45e5681608077797f9b54c9787cc9" category="list-text">각 개체의 고유 ID, 개체 이름, S3 버킷 이름, 테넌트 계정 이름 또는 ID, 개체의 논리적 크기, 개체가 처음 생성된 날짜 및 시간, 개체가 마지막으로 수정된 날짜 및 시간을 포함한 시스템 메타데이터입니다.</block>
   <block id="cab3529168145fa0611750088f6b9294" category="sidebar">버킷 수명 주기 정책 예</block>
   <block id="e506f81bec685a8d4212a723ed5e9d67" category="sidebar">버킷 수명 주기 정책 예</block>
+  <block id="0be6d03a29c17471b0414e9b31482b15" category="list-text">IBM 스토리지 프로텍트</block>
 </blocks>
