@@ -1,0 +1,64 @@
+---
+permalink: technical-reports/veritas-configure-storagegrid-s3-object-lock.html 
+sidebar: sidebar 
+keywords: object lock, s3, configure, storagegrid 
+summary: S3 오브젝트 잠금을 사용하여 WORM 스토리지에 StorageGRID를 구성하는 방법에 대해 알아보십시오. 
+---
+= WORM 스토리지에 대한 StorageGRID S3 오브젝트 잠금을 구성합니다
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+S3 오브젝트 잠금을 사용하여 WORM 스토리지에 StorageGRID를 구성하는 방법에 대해 알아보십시오.
+
+
+
+== WORM 스토리지를 위해 StorageGRID를 구성하기 위한 사전 요구 사항
+
+WORM 스토리지의 경우 StorageGRID은 S3 오브젝트 잠금을 사용하여 규정 준수를 위해 오브젝트를 유지합니다. 이를 위해서는 S3 오브젝트 잠금 기본 버킷 보존이 도입된 StorageGRID 11.6 이상이 필요합니다. Enterprise Vault에는 버전 14.2.2 이상이 필요합니다.
+
+
+
+== StorageGRID S3 오브젝트 잠금 기본 버킷 보존을 구성합니다
+
+StorageGRID S3 오브젝트 잠금 기본 버킷 보존을 구성하려면 다음 단계를 완료하십시오.
+
+.단계
+. StorageGRID 테넌트 관리자에서 버킷을 생성하고 계속을 클릭합니다
++
+image:veritas/veritas-create-bucket.png["vertias/veritas-create-bucket.png 을 참조하십시오"]
+
+. Enable S3 Object Lock 옵션을 선택하고 Create Bucket 을 클릭합니다.
++
+image:veritas/veritas-create-bucket-2.png["vertias/veritas-create-bucket-2.png 을 참조하십시오"]
+
+. 버킷을 생성한 후 버킷을 선택하여 버킷 옵션을 봅니다. S3 오브젝트 잠금 드롭다운 옵션을 확장합니다.
++
+image:veritas/veritas-overview.png["vertias/veritas-overview.png 을 참조하십시오"]
+
+. 기본 보존에서 사용을 선택하고 기본 보존 기간을 1일로 설정합니다. 변경 내용 저장 을 클릭합니다.
++
+image:veritas/veritas-s3-object-lock.png["Vertias/Veritas-S3-오브젝트 잠금"]
+
++
+이제 Enterprise Vault에서 WORM 데이터를 저장할 준비가 되었습니다.
+
+
+
+
+
+== Enterprise Vault 설정
+
+Enterprise Vault를 구성하려면 다음 단계를 완료하십시오.
+
+.단계
+. 섹션에서 1-3단계를 반복하되 link:configure-storagegrid-s3-object-lock.html#configure-storagegrid-s3-object-lock-default-bucket-retention["기본 구성"] 이번에는 S3 오브젝트 잠금을 사용하여 WORM 모드에 데이터 저장 옵션을 선택합니다. 다음 을 클릭합니다.
++
+image:veritas/veritas-new-partition-8.png["Vertias/Veritas - 신규 - 파티션 - 8"]
+
+. S3 Bucket 연결 설정을 입력할 때 S3 오브젝트 잠금 기본 보존이 활성화된 S3 버킷 이름을 입력해야 합니다.
+. 연결을 테스트하여 설정을 확인합니다.
+

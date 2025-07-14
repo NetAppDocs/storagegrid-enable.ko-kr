@@ -22,12 +22,12 @@ entries:
   pdf-filename: 오브젝트 기반 스토리지를 ONTAP S3에서 StorageGRID로 마이그레이션
   entries:
   - title: ONTAP S3에서 StorageGRID로 마이그레이션하십시오
-    url: "/product-feature-guides/ontap-migrate/index.html"
+    url: "/product-feature-guides/ontap-migrate-index.html"
   - title: ONTAP 준비 중
-    url: "/product-feature-guides/ontap-migrate/preparing-ontap.html"
+    url: "/product-feature-guides/ontap-migrate-preparing-ontap.html"
   - title: StorageGRID 준비 중
-    url: "/product-feature-guides/ontap-migrate/preparing-sg.html"
+    url: "/product-feature-guides/ontap-migrate-preparing-sg.html"
   - title: 버킷을 채우고 복제합니다
-    url: "/product-feature-guides/ontap-migrate/populate-replicate.html"
+    url: "/product-feature-guides/ontap-migrate-populate-replicate.html"
   - title: 사용자와 키를 마이그레이션한 다음 컷오버합니다
-    url: "/product-feature-guides/ontap-migrate/migrate-cutover.html"
+    url: "/product-feature-guides/ontap-migrate-cutover.html"

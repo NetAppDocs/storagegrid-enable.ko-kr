@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault-baseline-performance-tests.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가지 사용 사례를 살펴보십시오. 
+---
+= 기준 성능 테스트를 검토합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+보조 복사 작업에서 4개의 Commvault MediaAgent가 NetApp AFF A300 시스템에 데이터를 백업하고 NetApp StorageGRID에 보조 복사본이 생성되었습니다. 테스트 설정 환경에 대한 자세한 내용은 기술 보고서의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/us/media/tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"] .
+
+테스트는 VM 100개와 VM 1000개로 수행되었으며, 둘 다 Windows와 CentOS VM의 50/50혼합 구성에서 수행되었습니다. 다음 표에는 기본 성능 테스트의 결과가 나와 있습니다.
+
+[cols="1a,1a,1a"]
+|===
+| 작동 | 백업 속도 | 복원 속도 
+
+
+ a| 
+보조 복사
+ a| 
+2TB/시간
+ a| 
+1.27TB/시간
+
+
+
+ a| 
+오브젝트와 주고받는 직접 연결(중복제거 켜짐)
+ a| 
+2.2TB/시간
+ a| 
+1.22TB/시간
+
+|===
+시간 종료 성능을 테스트하기 위해 250만 개의 오브젝트를 삭제했습니다. 그림 2 및 3에서 볼 수 있듯이 삭제 실행은 3시간 이내에 완료되었으며 80TB 이상의 공간을 확보했습니다. 삭제 실행이 오전 10시 30분에 시작되었습니다.
+
+.그림 1: 250만 개(80TB) 개체를 3시간 이내에 삭제
+image:commvault/obj-time.png["시간이 지남에 따른 개체"]
+
+.그림 2: 3시간 이내에 80TB의 스토리지 용량 확보
+image:commvault/storage-time.png["스토리지가 시간이 지남에 따라 변화합니다"]

@@ -51,7 +51,7 @@ indexpage:
     - title: 사이트 재배치 및 네트워킹 변경 방법
       url: "/product-feature-guides/site-relocation-and-network-change.html"
     - title: 오브젝트 기반 스토리지를 ONTAP S3에서 StorageGRID로 마이그레이션
-      url: "/product-feature-guides/ontap-migrate/index.html"
+      url: "/product-feature-guides/ontap-migrate-index.html"
   - title: 툴 및 애플리케이션 가이드
     links:
     - title: Cloudera Hadoop S3A 커넥터를 사용하십시오
@@ -81,17 +81,19 @@ indexpage:
     - title: 'TR-4994: Hadoop S3A 튜닝 모범 사례'
       url: "/technical-reports/s3a-tuning.html"
     - title: 'TR-4871: Commvault의 전체 백업 및 복구 및 NetApp StorageGRID'
-      url: "/technical-reports/tr-4871-commvault.html"
+      url: "/technical-reports/commvault-index.html"
+    - title: 'TR-4626: 로드 밸런서'
+      url: "/technical-reports/load-balancer-index.html"
     - title: 'TR-4645: 보안 기능'
-      url: "/technical-reports/data-security/index.html"
+      url: "/technical-reports/data-security-index.html"
     - title: 'TR-4921: 랜섬웨어 방어'
-      url: "/technical-reports/ransomware-protection/index.html"
+      url: "/technical-reports/ransomware-protection-index.html"
     - title: 'TR-4765: StorageGRID 모니터링'
-      url: "/technical-reports/monitor/index.html"
+      url: "/technical-reports/monitor-index.html"
     - title: 'TR-4882: StorageGRID 베어 메탈 그리드를 설치합니다'
-      url: "/technical-reports/bare-metal/index.html"
+      url: "/technical-reports/bare-metal-index.html"
     - title: 'TR-4907: Veritas Enterprise Vault로 StorageGRID를 구성합니다'
-      url: "/technical-reports/veritas/index.html"
+      url: "/technical-reports/veritas-index.html"
   - title: 절차 및 API 예
     links:
     - title: S3 암호화를 테스트하고 시연합니다

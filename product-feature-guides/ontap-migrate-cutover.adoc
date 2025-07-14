@@ -1,0 +1,61 @@
+---
+permalink: product-feature-guides/ontap-migrate-cutover.html 
+sidebar: sidebar 
+keywords: S3, ONTAP S3, ONTAP, StorageGRID, migration 
+summary: ONTAP S3에서 StorageGRID로 마이그레이션하십시오. 
+---
+= ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+
+
+
+== S3 키를 마이그레이션합니다
+
+마이그레이션의 경우 대부분의 경우 대상 측에서 새 자격 증명을 생성하지 않고 사용자의 자격 증명을 마이그레이션합니다. StorageGRID는 사용자에게 S3 키를 가져올 수 있도록 API를 제공합니다.
+
+테넌트 관리자 UI가 아닌 StorageGRID 관리 UI에 로그인하면 API 문서 swagger 페이지가 열립니다.
+
+image:ontap-migrate/sg-api-swagger-link.png["API 문서를 엽니다"]
+
+"accounts" 섹션을 확장하고 "POST/grid/account-enable-s3-key-import"를 선택한 후 "try it out" 버튼을 클릭한 다음 실행 버튼을 클릭합니다.
+
+image:ontap-migrate/sg-import-enable.png["S3 키 가져오기를 활성화합니다"]
+
+이제 "accounts" 아래에서 아래로 스크롤하여 "POST/grid/accounts/{id}/users/{user_id}/s3-access-keys"로 이동합니다.
+
+여기서 이전에 수집한 테넌트 ID와 사용자 계정 ID를 입력합니다. json 상자에 ONTAP 사용자의 필드와 키를 입력합니다. 키의 만료를 설정하거나 ","Expires":123456789"를 제거하고 실행을 클릭합니다.
+
+image:ontap-migrate/sg-import-key.png["S3 키를 가져옵니다"]
+
+모든 사용자 키 가져오기를 완료하면 "accounts" "POST/grid/account-disable-s3-key-import"에서 키 가져오기 기능을 비활성화해야 합니다.
+
+image:ontap-migrate/sg-import-disable.png["S3 키 가져오기를 비활성화합니다"]
+
+테넌트 관리자 UI에서 사용자 계정을 보면 새 키가 추가된 것을 볼 수 있습니다.
+
+image:ontap-migrate/sg-user-keys.png["사용자 키"]
+
+
+
+=== 마지막 컷오버입니다
+
+ONTAP에서 StorageGRID로 영구 복제하는 버킷이 의도라면 여기서 끝낼 수 있습니다. ONTAP S3에서 StorageGRID로 마이그레이션하는 경우에는 데이터를 중단하고 컷오버할 때입니다.
+
+ONTAP 시스템 관리자 내에서 S3 그룹을 편집하고 "ReadOnlyAccess"로 설정합니다. 이렇게 하면 사용자가 더 이상 ONTAP S3 버킷에 쓰지 못하게 됩니다.
+
+image:ontap-migrate/ontap-edit-group.png["ONTAP 그룹을 읽기 전용으로 설정합니다"]
+
+이제 ONTAP 클러스터에서 StorageGRID 엔드포인트를 가리키도록 DNS를 구성하면 됩니다. 끝점 인증서가 올바른지 확인하고 가상 호스팅 스타일 요청이 필요한 경우 StorageGRID에 끝점 도메인 이름을 추가합니다
+
+image:ontap-migrate/sg-endpoint-domain.png["ONTAP 그룹을 읽기 전용으로 설정합니다"]
+
+클라이언트가 TTL이 만료될 때까지 기다리거나 DNS를 플러시하여 새 시스템으로 확인하면 모든 것이 제대로 작동하는지 테스트할 수 있습니다. 가져온 키가 아니라 StorageGRID 데이터 액세스를 테스트하는 데 사용한 초기 임시 S3 키를 정리하고, SnapMirror 관계를 제거하고, ONTAP 데이터를 제거하기만 하면 됩니다.
+
+라파엘 게데스, 아론 클라인

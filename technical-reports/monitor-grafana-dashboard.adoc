@@ -1,0 +1,32 @@
+---
+permalink: technical-reports/monitor-grafana-dashboard.html 
+sidebar: sidebar 
+keywords: grafana dashboard, storagegrid 
+summary: 모니터링 및 문제 해결을 위해 미리 구성된 대시보드에 액세스하는 것을 비롯하여 NetApp StorageGRID에서 메트릭 시각화를 위해 Grafana를 사용하는 방법을 알아보십시오. 
+---
+= StorageGRID에서 Grafana 대시보드를 사용하여 메트릭을 봅니다
+:hardbreaks:
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Grafana 인터페이스를 사용하여 StorageGRID 데이터를 시각화하고 모니터링하는 방법에 대해 알아보십시오.
+
+Grafana는 메트릭 시각화를 위한 오픈 소스 소프트웨어입니다. 기본적으로 NetApp은 StorageGRID 시스템에 관한 유용하고 강력한 정보를 제공하는 사전 구성된 대시보드를 보유하고 있습니다.
+
+이러한 사전 구성된 대시보드는 모니터링뿐만 아니라 문제 해결에도 유용합니다. 일부 제품은 기술 지원 부서에서 사용할 수 있습니다. 예를 들어 스토리지 노드의 메트릭을 보려면 다음 단계를 수행합니다.
+
+.단계
+. GMI에서 Support [Metrics](지원 [메트릭]) 메뉴를 선택합니다.
+. Grafana 섹션에서 Node 대시보드를 선택합니다.
++
+image:monitor/monitor-node-dashboard.png["모니터 노드 대시보드"]
+
+. Grafana에서 메트릭을 보려는 노드로 호스트를 설정합니다. 이 경우 스토리지 노드가 선택됩니다. 다음 스크린샷 캡처보다 더 많은 정보가 제공됩니다.
++
+image:monitor/monitor-grafana-metrics.png["모니터링 - Grafana - 메트릭"]
+
+

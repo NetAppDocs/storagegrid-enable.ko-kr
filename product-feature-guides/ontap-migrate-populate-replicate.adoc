@@ -1,0 +1,112 @@
+---
+permalink: product-feature-guides/ontap-migrate-populate-replicate.html 
+sidebar: sidebar 
+keywords: S3, ONTAP S3, ONTAP, StorageGRID, migration 
+summary: ONTAP S3에서 StorageGRID로 마이그레이션하십시오. 
+---
+= ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 마이그레이션하여 엔터프라이즈급 S3를 지원합니다
+
+
+
+== 소스 버킷을 채웁니다
+
+소스 ONTAP 버킷에 일부 오브젝트를 배치하도록 한다. 이 데모에서는 S3Browser를 사용할 예정이지만 편안한 도구를 사용할 수 있습니다.
+
+위에서 생성한 ONTAP 사용자 S3 키를 사용하여 S3Browser를 ONTAP 시스템에 연결하도록 구성합니다.
+
+image:ontap-migrate/ontap-s3browser-conf.png["S3Browser-config 를 참조하십시오"]
+
+이제 일부 파일을 버전 관리가 활성화된 버킷에 업로드할 수 있습니다.
+
+image:ontap-migrate/ontap-s3browser-upload-01.png["업로드를 클릭합니다"]
+
+image:ontap-migrate/ontap-s3browser-upload-02.png["업로드할 파일을 선택합니다"]
+
+image:ontap-migrate/ontap-s3browser-upload-03.png["파일이 업로드되었습니다"]
+
+이제 버킷에 몇 가지 오브젝트 버전을 만들어 보겠습니다.
+
+파일을 삭제합니다.
+
+image:ontap-migrate/ontap-s3browser-delete.png["파일을 삭제합니다"]
+
+버킷에 이미 있는 파일을 업로드하여 파일 자체를 복사하고 새 버전을 만듭니다.
+
+image:ontap-migrate/ontap-s3browser-overwrite.png["이미 있는 파일을 업로드합니다"]
+
+S3Browser에서는 방금 만든 개체의 버전을 볼 수 있습니다.
+
+image:ontap-migrate/ontap-s3browser-versions.png["버전 보기"]
+
+
+
+=== 복제 관계를 설정합니다
+
+ONTAP에서 StorageGRID로 데이터 전송을 시작합니다.
+
+ONTAP 시스템 관리자에서 "보호/개요"로 이동합니다. 아래로 스크롤하여 "클라우드 개체 저장소"를 찾은 다음 "추가" 버튼을 클릭하고 "StorageGRID"를 선택합니다.
+
+image:ontap-migrate/ontap-protection-add-01.png["ONTAP 보호"]
+
+이름, URL 스타일을 제공하여 StorageGRID 정보를 입력합니다(이 데모에서는 Path-styl URL 사용). 객체 저장소 범위를 "스토리지 VM"으로 설정합니다.
+
+image:ontap-migrate/ontap-protection-configure-01.png["StorageGRID 정보를 입력합니다"]
+
+SSL을 사용하는 경우 부하 분산 엔드포인트 포트를 설정하고 여기에 StorageGRID 엔드포인트 인증서를 복사합니다. 그렇지 않으면 SSL 상자의 선택을 취소하고 여기에 HTTP 엔드포인트 포트를 입력합니다.
+
+위의 StorageGRID 구성에서 대상에 대해 StorageGRID 사용자 S3 키 및 버킷 이름을 입력합니다.
+
+image:ontap-migrate/ontap-protection-configure-02.png["StorageGRID 정보를 입력합니다"]
+
+이제 대상 대상이 구성되었으므로 대상에 대한 정책 설정을 구성할 수 있습니다. "로컬 정책 설정"을 확장하고 "연속"을 선택합니다.
+
+image:ontap-migrate/ontap-local-setting.png["로컬 정책 설정"]
+
+연속 정책을 편집하고 "복구 시점 목표"를 "1시간"에서 "3초"로 변경합니다.
+
+image:ontap-migrate/ontap-local-edit-01.png["로컬 정책 설정을 편집합니다"]
+
+이제 버킷을 복제하도록 SnapMirror를 구성할 수 있습니다.
+
+[]
+====
+SnapMirror create-source-path sv_demo:/bucket/bucket-destination-path sgws_demo:/objstore-policy Continuous
+
+====
+image:ontap-migrate/ontap-snapmirror-create.png["SnapMirror 관계 생성"]
+
+이제 버킷이 보호 중인 버킷 목록에 클라우드 기호를 표시합니다.
+
+image:ontap-migrate/ontap-bucket-protected.png["버킷이 클라우드 대상으로 보호됩니다"]
+
+버킷을 선택하고 "SnapMirror (ONTAP 또는 Cloud)" 탭으로 이동하면 SnapMirror Repaitionship 상태가 표시됩니다.
+
+image:ontap-migrate/ontap-snapmirror-status.png["SnapMirror 관계를 확인합니다"]
+
+
+
+=== 복제 세부 정보입니다
+
+이제 ONTAP에서 StorageGRID로 성공적으로 복제 버킷이 생겼습니다. 그렇다면 실제로 복제되는 것은 무엇일까요? 우리의 소스와 대상은 모두 버전이 지정된 버킷입니다. 이전 버전도 대상으로 복제됩니까? S3Browser로 StorageGRID 버킷을 보면 기존 버전이 복제되지 않았고 삭제된 객체가 존재하지 않으며 해당 객체에 대한 삭제 마커도 없는 것을 알 수 있습니다. 복제된 오브젝트는 StorageGRID 버킷에 1개의 버전만 있습니다.
+
+image:ontap-migrate/sg-s3browser-initial.png["초기 동기화 후 StorageGRID 버킷의 S3browser 보기입니다"]
+
+ONTAP 버킷에서 이전에 사용한 것과 동일한 오브젝트에 새 버전을 추가하고 복제 방법을 보자.
+
+image:ontap-migrate/ontap-s3browser-new-rep.png["새 버전이 업로드된 후 ONTAP 버킷의 S3browser 보기입니다"]
+
+StorageGRID 측면을 보면, 이 버킷에도 새 버전이 생성되었지만 SnapMirror 관계 이전 버전에서 초기 버전이 누락되어 있는 것을 알 수 있습니다.
+
+image:ontap-migrate/sg-s3browser-rep-ver.png["새 버전이 업로드된 후 ONTAP 버킷의 S3browser 보기입니다"]
+
+이는 ONTAP SnapMirror S3 프로세스가 개체의 현재 버전만 복제하기 때문입니다. 그래서 StorageGRID 측에 버전 버킷을 만들어 목적지로 만들었습니다. 이렇게 하면 StorageGRID에서 개체의 버전 기록을 유지할 수 있습니다.
+
+라파엘 게데스, 아론 클라인

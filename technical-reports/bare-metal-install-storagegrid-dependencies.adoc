@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-install-storagegrid-dependencies.html 
+keywords: install dependencies, storagegrid 
+summary: StorageGRID 종속성 및 패키지를 설치하는 방법에 대해 알아봅니다. 
+---
+= StorageGRID 종속성 및 패키지를 설치합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 종속성 및 패키지를 설치하는 방법에 대해 알아봅니다.
+
+StorageGRID 종속성 및 패키지를 설치하려면 다음 명령을 실행합니다.
+
+[listing]
+----
+[root@host1 rpms]# yum install -y python-netaddr
+[root@host1 rpms]# rpm -ivh StorageGRID-Webscale-Images-*.rpm
+[root@host1 rpms]# rpm -ivh StorageGRID-Webscale-Service-*.rpm
+----

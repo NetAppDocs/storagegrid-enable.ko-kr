@@ -1,0 +1,222 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/commvault-solution-overview.html 
+keywords: Backup, on-premises, commvault, storagegrid, object, S3, WORM 
+summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가지 사용 사례를 살펴보십시오. 
+---
+= 테스트된 솔루션 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+테스트를 거친 솔루션은 Commvault 및 NetApp 솔루션을 결합하여 강력한 공동 솔루션을 제공합니다.
+
+
+
+== 솔루션 설정
+
+랩 설정에서 StorageGRID 환경은 4개의 NetApp StorageGRID SG5712 어플라이언스, 1개의 가상 기본 관리 노드 및 1개의 가상 게이트웨이 노드로 구성되었습니다. SG5712 어플라이언스는 엔트리 레벨 옵션으로서 기본 구성입니다. NetApp StorageGRID SG5760 또는 SG6060과 같은 고성능 어플라이언스 옵션을 선택하면 큰 성능 이점을 얻을 수 있습니다. 사이징 지원은 NetApp StorageGRID 솔루션 설계자에게 문의하십시오.
+
+StorageGRID는 데이터 보호 정책을 위해 통합 라이프사이클 관리(ILM) 정책을 사용하여 데이터를 관리하고 보호합니다. ILM 규칙은 위에서 아래로 정책에서 평가됩니다. 다음 표에 나와 있는 ILM 정책을 구현했습니다.
+
+[cols="1a,1a,1a"]
+|===
+| ILM 규칙 | 한정자 | 수집 동작 
+
+
+ a| 
+삭제 코딩 2+1
+ a| 
+200KB를 넘는 오브젝트
+ a| 
+균형
+
+
+
+ a| 
+2 복사
+ a| 
+모든 개체
+ a| 
+이중 커밋
+
+|===
+ILM 2 Copy 규칙이 기본 규칙입니다. 이 테스트에서는 삭제 코딩 2+1 규칙이 200KB 이상의 객체에 적용되었습니다. 200KB보다 작은 개체에 기본 규칙이 적용되었습니다. 이러한 방식으로 규칙을 적용하는 것이 StorageGRID 모범 사례입니다.
+
+이 테스트 환경에 대한 자세한 기술 정보는 의 솔루션 설계 및 모범 사례 섹션을 참조하십시오 https://www.netapp.com/us/media/tr-4831.pdf["Commvault 및 NetApp 스케일아웃 데이터 보호"] 기술 보고서:
+
+
+
+== StorageGRID 하드웨어 사양
+
+다음 표에서는 이 테스트에 사용된 NetApp StorageGRID 하드웨어를 설명합니다. 10Gbps 네트워킹을 지원하는 StorageGRID SG5712 어플라이언스는 엔트리 레벨 옵션으로 기본 구성을 나타냅니다. 선택적으로 SG5712를 25Gbps 네트워킹용으로 구성할 수 있습니다.
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 하드웨어 | 수량 | 디스크 | 가용 용량 | 네트워크 
+
+
+ a| 
+StorageGRID SG5712 어플라이언스
+ a| 
+4
+ a| 
+48 x 4TB(니어라인 SAS HDD)
+ a| 
+136TB
+ a| 
+10Gbps
+
+|===
+NetApp StorageGRID SG5760, SG6060 또는 All-Flash SGF6112 어플라이언스와 같은 고성능 어플라이언스 옵션을 선택하면 중요한 성능 이점을 제공할 수 있습니다. 사이징 지원은 NetApp StorageGRID 솔루션 설계자에게 문의하십시오.
+
+
+
+== Commvault 및 StorageGRID 소프트웨어 요구사항
+
+다음 표에는 테스트를 위해 VMware 소프트웨어에 설치된 Commvault 및 NetApp StorageGRID 소프트웨어에 대한 소프트웨어 요구 사항이 나와 있습니다. MediaAgent 데이터 전송 관리자 4개와 CommServe 서버 1개가 설치되었습니다. 이 테스트에서는 VMware 인프라에 10Gbps 네트워킹이 구현되었습니다. 다음 표를 참조하십시오
+
+다음 표에는 Commvault 소프트웨어의 전체 시스템 요구사항이 나와 있습니다.
+
+[cols="1a,1a,1a,1a,1a,1a"]
+|===
+| 구성 요소 | 수량 | 데이터 저장소 | 크기 | 합계 | 필요한 총 IOPS입니다 
+
+
+ a| 
+CommServe 서버
+ a| 
+1
+ a| 
+OS
+ a| 
+500GB
+ a| 
+500GB
+ a| 
+해당 없음
+
+
+
+ a| 
+ a| 
+ a| 
+SQL
+ a| 
+500GB
+ a| 
+500GB
+ a| 
+해당 없음
+
+
+
+ a| 
+MediaAgent를 선택합니다
+ a| 
+4
+ a| 
+가상 CPU(vCPU)
+ a| 
+16
+ a| 
+64
+ a| 
+해당 없음
+
+
+
+ a| 
+ a| 
+ a| 
+RAM
+ a| 
+128GB
+ a| 
+512
+ a| 
+해당 없음
+
+
+
+ a| 
+ a| 
+ a| 
+OS
+ a| 
+500GB
+ a| 
+2TB
+ a| 
+해당 없음
+
+
+
+ a| 
+ a| 
+ a| 
+인덱스 캐시
+ a| 
+2TB
+ a| 
+8TB
+ a| 
+200 이상
+
+
+
+ a| 
+ a| 
+ a| 
+DDB입니다
+ a| 
+2TB
+ a| 
+8TB
+ a| 
+200-80,000K입니다
+
+|===
+테스트 환경에서는 NetApp E-Series E2812 스토리지 어레이의 VMware에 기본 관리 노드 1개와 가상 게이트웨이 노드 1개가 구축되었습니다. 각 노드는 다음 표에 설명된 최소 운영 환경 요구 사항을 갖춘 별도의 서버에 있었습니다.
+
+다음 표에는 StorageGRID 가상 관리자 노드 및 게이트웨이 노드에 대한 요구 사항이 나와 있습니다.
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 노드 유형입니다 | 수량 | vCPU | RAM | 스토리지 
+
+
+ a| 
+게이트웨이 노드
+ a| 
+1
+ a| 
+8
+ a| 
+24GB
+ a| 
+OS용 100GB LUN
+
+
+
+ a| 
+관리자 노드
+ a| 
+1
+ a| 
+8
+ a| 
+24GB
+ a| 
+OS용 100GB LUN
+
+관리자 노드 테이블용 200GB LUN
+
+관리자 노드 감사 로그용 200GB LUN
+
+|===

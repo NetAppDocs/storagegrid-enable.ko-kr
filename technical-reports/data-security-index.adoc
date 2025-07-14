@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/data-security-index.html 
+keywords: security features, storagegrid 
+summary: StorageGRID 오브젝트 스토리지 솔루션의 핵심 보안 기능에 대해 알아보십시오. 
+---
+= 오브젝트 저장소에서 StorageGRID 데이터와 메타데이터의 보안 유지
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 오브젝트 스토리지 솔루션의 핵심 보안 기능에 대해 알아보십시오.
+
+데이터 액세스, 개체 및 메타데이터, 관리 액세스, 플랫폼 보안을 다루는 NetApp ® StorageGRID ® 의 다양한 보안 기능에 대한 개요입니다. StorageGRID 11.9과 함께 릴리즈된 최신 기능을 포함하도록 업데이트되었습니다.
+
+보안은 NetApp StorageGRID 오브젝트 스토리지 솔루션의 핵심 부분입니다. 오브젝트 스토리지에 적합한 다양한 유형의 다양한 콘텐츠 데이터 또한 본질적으로 민감하고 규정 및 규정 준수를 충족해야 하기 때문에 보안은 특히 중요합니다. StorageGRID의 기능이 계속해서 발전함에 따라 소프트웨어는 조직의 보안 입지를 보호하고 조직이 업계 모범 사례를 준수하도록 지원하는 데 매우 중요한 여러 보안 기능을 사용할 수 있습니다.
+
+이 문서에서는 StorageGRID 11.9의 다양한 보안 기능에 대해 다음과 같은 다섯 가지 범주로 나뉩니다.
+
+* 데이터 액세스 보안 기능
+* 오브젝트 및 메타데이터 보안 기능
+* 관리 보안 기능
+* 플랫폼 보안 기능
+* 클라우드 통합
+
+
+이 문서는 보안 데이터시트로 작성되었으며 기본적으로 구성되지 않은 내에서 열거된 보안 기능을 지원하도록 시스템을 구성하는 방법에 대해서는 자세히 설명하지 않습니다. 는 https://docs.netapp.com/us-en/storagegrid-118/harden/index.html["StorageGRID 강화 가이드 를 참조하십시오"^] 공식 페이지에서 사용할 수 https://docs.netapp.com/us-en/storagegrid-118/["StorageGRID 설명서"^] 있습니다.
+
+이 보고서에 설명된 기능 외에도 StorageGRID는 를 https://www.netapp.com/us/legal/vulnerability-response.aspx["NetApp 제품 보안 취약성 대응 및 알림 정책"^]따릅니다. 보고된 취약성은 제품 보안 사고 대응 프로세스에 따라 확인 및 대응됩니다.
+
+NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토리지 사용 사례를 위한 고급 보안 기능을 제공합니다.
+
+
+
+== 추가 정보를 찾을 수 있는 위치
+
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* NetApp StorageGRID: SEC 17a-4(f), FINRA 4511(c) 및 CFTC 1.31(c)-(d) 준수 평가 https://www.netapp.com/media/9041-ar-cohasset-netapp-storagegrid-sec-assessment.pdf[]
+* StorageGRID 11.9 설명서 페이지 https://docs.netapp.com/us-en/storagegrid-119/[]
+* NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
+
+
+
+
+== 용어 및 약어
+
+이 섹션에서는 문서에 사용된 용어에 대한 정의를 제공합니다.
+
+[cols="40,60"]
+|===
+| 용어 또는 약어 | 정의 
+
+
+| S3를 참조하십시오 | 간단한 스토리지 서비스. 
+
+
+| 클라이언트 | 데이터 액세스를 위한 S3 프로토콜 또는 관리를 위한 HTTP 프로토콜을 통해 StorageGRID와 인터페이스할 수 있는 애플리케이션. 
+
+
+| 테넌트 관리자 | StorageGRID 테넌트 계정의 관리자입니다 
+
+
+| 테넌트 사용자입니다 | StorageGRID 테넌트 계정 내의 사용자입니다 
+
+
+| TLS | 전송 계층 보안 
+
+
+| ILM을 참조하십시오 | 정보 수명 주기 관리 
+
+
+| LAN을 선택합니다 | LAN(Local Area Network)을 선택합니다 
+
+
+| 그리드 관리자 | StorageGRID 시스템의 관리자입니다 
+
+
+| 그리드 | StorageGRID 시스템 
+
+
+| 버킷 | S3에 저장된 오브젝트의 컨테이너입니다 
+
+
+| LDAP를 지원합니다 | Lightweight Directory Access Protocol의 약어입니다 
+
+
+| 초 | 증권거래위원회; 교환원, 중개인 또는 딜러를 규제합니다 
+
+
+| FINRA/핀라 | 금융 업계 규제 당국. SEC Rule 17a-4(f)의 형식 및 미디어 요구 사항을 준수합니다. 
+
+
+| CFTC의 약어입니다 | 상품 선물 거래 위원회; 상품 선물 거래를 규제합니다 
+
+
+| NIST | 미국 표준 기술 연구소 
+|===

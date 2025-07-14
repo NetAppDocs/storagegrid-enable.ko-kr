@@ -1,0 +1,499 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/bare-metal-prerequisites-install-storagegrid.html 
+keywords: prerequisites, install storagegrid 
+summary: StorageGRID을 구축하기 위한 컴퓨팅, 스토리지, 네트워크, Docker 및 노드 요구사항에 대해 알아보십시오. 
+---
+= StorageGRID를 설치하기 위한 사전 요구 사항
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID을 구축하기 위한 컴퓨팅, 스토리지, 네트워크, Docker 및 노드 요구사항에 대해 알아보십시오.
+
+
+
+== 컴퓨팅 요구사항
+
+아래 표에는 각 StorageGRID 노드 유형에 대해 지원되는 최소 리소스 요구사항이 나와 있습니다. StorageGRID 노드에 필요한 최소 리소스입니다.
+
+[cols="30,35,35"]
+|===
+| 노드 유형입니다 | CPU 코어 | RAM 
+
+
+| 관리자 | 8 | 24GB 
+
+
+| 스토리지 | 8 | 24GB 
+
+
+| 게이트웨이 | 8 | 24GB 
+|===
+또한 각 물리적 Docker 호스트가 제대로 작동하려면 최소 16GB의 RAM을 할당해야 합니다. 따라서 예를 들어, 표에 설명된 서비스 중 두 개를 물리적 Docker 호스트 하나에서 함께 호스팅하려면 다음 계산을 수행합니다.
+
+24+24+16=64GB RAM 및 8+8=16코어
+
+최신 서버가 이러한 요구 사항을 초과하기 때문에 6개의 서비스(StorageGRID 컨테이너)를 3개의 물리적 서버에 결합합니다.
+
+
+
+== 네트워킹 요구 사항
+
+StorageGRID 트래픽의 3가지 유형은 다음과 같습니다.
+
+* * 그리드 트래픽 (필수). * 그리드의 모든 노드 사이를 이동하는 내부 StorageGRID 트래픽입니다.
+* * Admin traffic (선택 사항). * 시스템 관리 및 유지 보수에 사용되는 트래픽입니다.
+* * 클라이언트 트래픽(선택 사항). * S3 및 Swift 클라이언트의 모든 오브젝트 스토리지 요청을 포함하여 외부 클라이언트 애플리케이션과 그리드 간에 이동하는 트래픽입니다.
+
+
+StorageGRID 시스템에서 사용할 네트워크를 최대 3개까지 구성할 수 있습니다. 각 네트워크 유형은 겹치지 않는 별도의 서브넷에 있어야 합니다. 모든 노드가 동일한 서브넷에 있는 경우에는 게이트웨이 주소가 필요하지 않습니다.
+
+이 평가를 위해 그리드 및 클라이언트 트래픽이 포함된 두 개의 네트워크에 배포됩니다. 나중에 관리자 네트워크를 추가하여 추가 기능을 제공할 수 있습니다.
+
+모든 호스트의 인터페이스에 네트워크를 일관되게 매핑하는 것이 매우 중요합니다. 예를 들어, 각 노드에 ens192 및 ens224라는 두 개의 인터페이스가 있는 경우 모든 호스트의 동일한 네트워크 또는 VLAN에 모두 매핑되어야 합니다. 이 설치에서는 루프백이 컨테이너 내부의 if1이므로 설치 프로그램이 Docker 컨테이너에 eth0@if2 및 eth2@if3으로 매핑하므로 일관된 모델이 매우 중요합니다.
+
+
+
+=== Docker 네트워킹에 대한 참고 사항
+
+StorageGRID는 일부 Docker 컨테이너 구현과 다른 방식으로 네트워킹을 사용합니다. Docker(또는 Kubernetes 또는 Swarm) 제공 네트워킹을 사용하지 않습니다. 대신 StorageGRID는 실제로 컨테이너를 -net=none으로 생성하므로 Docker가 컨테이너를 네트워크에 연결하는 데 아무런 작업도 수행하지 않습니다. StorageGRID 서비스에 의해 컨테이너가 생성된 후 노드 구성 파일에 정의된 인터페이스에서 새 macvlan 디바이스가 생성됩니다. 이 장치는 새 MAC 주소를 가지며 물리적 인터페이스에서 패킷을 수신할 수 있는 별도의 네트워크 장치 역할을 합니다. 그런 다음 macvlan 디바이스가 컨테이너 네임스페이스로 이동되고 컨테이너 내부의 eth0, eth1 또는 eth2 중 하나로 이름이 변경됩니다. 이 시점에서 네트워크 장치가 더 이상 호스트 OS에 표시되지 않습니다. 이 예에서 그리드 네트워크 디바이스는 Docker 컨테이너 내부의 eth0이고 클라이언트 네트워크는 eth2입니다. 관리자 네트워크가 있는 경우 디바이스는 컨테이너에 eth1이 됩니다.
+
+
+NOTE: 컨테이너 네트워크 장치의 새 MAC 주소는 일부 네트워크 및 가상 환경에서 무차별 모드를 활성화해야 할 수 있습니다. 이 모드를 사용하면 물리적 장치가 알려진 물리적 MAC 주소와 다른 MAC 주소에 대한 패킷을 수신 및 전송할 수 있습니다. +++ VMware vSphere에서 실행되는 경우 RHEL을 실행할 때 StorageGRID 트래픽을 처리할 포트 그룹에서 무차별 모드, MAC 주소 변경 및 위조 전송을 수락해야 합니다. Ubuntu 또는 Debian은 대부분의 상황에서 이러한 변경 없이 작동합니다. ++++
+
+
+
+== 구축하는 것이었습니다
+
+각 노드에는 다음 표에 나와 있는 크기의 SAN 기반 또는 로컬 디스크 디바이스가 필요합니다.
+
+
+NOTE: 표의 숫자는 전체 그리드 또는 각 물리적 호스트에 대한 숫자가 아니라 각 StorageGRID 서비스 유형에 대한 것입니다. 구축 선택 사항에 따라 이 문서의 뒷부분에 나오는 에서 각 물리적 호스트의 수를 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"]계산합니다. ++++ 별표로 표시된 경로 또는 파일 시스템은 설치 관리자에 의해 StorageGRID 컨테이너 자체에 만들어집니다. 관리자가 수동으로 구성하거나 파일 시스템을 생성할 필요는 없지만 이러한 요구 사항을 충족하기 위해서는 호스트에 블록 디바이스가 필요합니다. 즉, 블록 디바이스는 명령을 사용하여 나타나지만 `lsblk` 호스트 OS 내에서 포맷하거나 마운트되지는 않습니다. ++++
+
+[cols="15,20,15,15,15,20"]
+|===
+| 노드 유형입니다 | LUN 사용 목적 | LUN 수입니다 | LUN의 최소 크기입니다 | 수동 파일 시스템이 필요합니다 | 제안된 노드 구성 항목입니다 
+
+
+| 모두 | 관리자 노드 시스템 공간
+`/var/local` (SSD가 여기에 유용함) | 관리자 노드당 1개 | 90GB | 아니요 | `BLOCK_DEVICE_VAR_LOCAL = /dev/mapper/ADM-VAR-LOCAL` 
+
+
+| 모든 노드 | 에서 Docker 스토리지 풀
+`/var/lib/docker for container pool` | 각 호스트(물리적 또는 VM)에 1개 | 컨테이너당 100GB | 예 – etx4 | NA – 호스트 파일 시스템으로 포맷 및 마운트(컨테이너에 매핑되지 않음) 
+
+
+| 관리자 | 관리자 노드 감사 로그(관리자 컨테이너의 시스템 데이터)
+`/var/local/audit/export` | 관리자 노드당 1개 | 200GB | 아니요 | `BLOCK_DEVICE_AUDIT_LOGS =/dev/mapper/ADM-OS` 
+
+
+| 관리자 | 관리자 노드 테이블(관리자 컨테이너의 시스템 데이터)
+`/var/local/mysql_ibdata` | 관리자 노드당 1개 | 200GB | 아니요 | `BLOCK_DEVICE_TABLES = /dev/mapper/ADM-MySQL` 
+
+
+| 스토리지 노드 | 오브젝트 스토리지(블록 장치)  `/var/local/rangedb0` (SSD가 여기에 유용함)  `/var/local/rangedb1`  `/var/local/rangedb2` | 각 저장소 컨테이너마다 3개 | 4000GB | 아니요 | `BLOCK_DEVICE_RANGEDB_000 = /dev/mapper/SN-Db00
+BLOCK_DEVICE_RANGEDB_001 = /dev/mapper/SN-Db01
+BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02` 
+|===
+이 예에서는 컨테이너 유형별로 다음 표에 나와 있는 디스크 크기가 필요합니다. 물리적 호스트별 요구 사항은 이 문서의 뒷부분에 설명되어 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"]있습니다.
+
+
+
+== 컨테이너 유형별 디스크 크기입니다
+
+
+
+=== 관리 컨테이너
+
+[cols="50,50"]
+|===
+| 이름 | 크기(GiB) 
+
+
+| Docker-Store 를 참조하십시오 | 100(컨테이너당) 
+
+
+| ADM-OS입니다 | 90 
+
+
+| ADM - 감사 | 200 
+
+
+| ADM - MySQL입니다 | 200 
+|===
+
+
+=== 스토리지 컨테이너
+
+[cols="50,50"]
+|===
+| 이름 | 크기(GiB) 
+
+
+| Docker-Store 를 참조하십시오 | 100(컨테이너당) 
+
+
+| SN-OS입니다 | 90 
+
+
+| Rangedb-0 | 4096 
+
+
+| 범위-1 | 4096 
+
+
+| 범위 b-2 | 4096 
+|===
+
+
+=== 게이트웨이 컨테이너
+
+[cols="50,50"]
+|===
+| 이름 | 크기(GiB) 
+
+
+| Docker-Store 를 참조하십시오 | 100(컨테이너당) 
+
+
+| /var/local 을 선택합니다 | 90 
+|===
+
+
+== 물리적 호스트 레이아웃 및 요구 사항
+
+위 표에 나와 있는 컴퓨팅 및 네트워크 요구 사항을 결합하면 16코어, 64GB RAM 및 2개의 네트워크 인터페이스를 갖춘 물리적 서버(또는 가상) 3대를 설치하는 데 필요한 기본 하드웨어 세트를 확보할 수 있습니다. 더 높은 처리량을 원할 경우 그리드 또는 클라이언트 네트워크에서 두 개 이상의 인터페이스를 연결하고 노드 구성 파일에서 bond0.520과 같은 VLAN 태그가 지정된 인터페이스를 사용할 수 있습니다. 작업 부하가 더 강할 경우 호스트와 컨테이너 모두에 더 많은 메모리가 더 적합합니다.
+
+다음 그림과 같이 이들 서버는 호스트당 2개의 Docker 컨테이너를 호스팅합니다. RAM은 컨테이너당 24GB, 호스트 OS 자체에 16GB를 제공하여 계산합니다.
+
+image:bare-metal/bare-metal-layout-for-three-hosts.png["호스트 3개에 대한 레이아웃 예"]
+
+물리적 호스트(또는 VM)당 필요한 총 RAM은 24 x 2 + 16 = 64GB입니다. 다음 표에는 호스트 1, 2 및 3에 필요한 디스크 스토리지가 나와 있습니다.
+
+[cols="50,50"]
+|===
+| 호스트 1 | 크기(GiB) 
+
+
+ a| 
+* Docker 스토어 *
+
+
+
+| `/var/lib/docker` (파일 시스템) | 200(100 x 2) 
+
+
+ a| 
+* 관리 컨테이너 *
+
+
+
+| `BLOCK_DEVICE_VAR_LOCAL` | 90 
+
+
+| `BLOCK_DEVICE_AUDIT_LOGS` | 200 
+
+
+| `BLOCK_DEVICE_TABLES` | 200 
+
+
+ a| 
+* 보관 컨테이너 *
+
+
+
+| SN-
+`/var/local` OS(장치) | 90 
+
+
+| Rangedb-0(장치) | 4096 
+
+
+| Rangedb-1(장치) | 4096 
+
+
+| Rangedb-2(장치) | 4096 
+|===
+[cols="50,50"]
+|===
+| 호스트 2 | 크기(GiB) 
+
+
+ a| 
+* Docker 스토어 *
+
+
+
+| `/var/lib/docker` (공유) | 200(100 x 2) 
+
+
+ a| 
+* 게이트웨이 컨테이너 *
+
+
+
+| GW-OS입니다 *`/var/local` | 100 
+
+
+ a| 
+* 보관 컨테이너 *
+
+
+
+| *`/var/local` | 100 
+
+
+| Rangedb-0 | 4096 
+
+
+| 범위-1 | 4096 
+
+
+| 범위 b-2 | 4096 
+|===
+[cols="50,50"]
+|===
+| 호스트 3 | 크기(GiB) 
+
+
+ a| 
+* Docker 스토어 *
+
+
+
+| `/var/lib/docker` (공유) | 200(100 x 2) 
+
+
+ a| 
+* 게이트웨이 컨테이너 *
+
+
+
+| *`/var/local` | 100 
+
+
+ a| 
+* 보관 컨테이너 *
+
+
+
+| *`/var/local` | 100 
+
+
+| Rangedb-0 | 4096 
+
+
+| 범위-1 | 4096 
+
+
+| 범위 b-2 | 4096 
+|===
+Docker 저장소는 /var/local(컨테이너당)당 100GB x 2개의 컨테이너 = 200GB를 허용하여 계산되었습니다.
+
+
+
+== 노드 준비
+
+StorageGRID의 초기 설치를 준비하려면 먼저 RHEL 버전 9.2를 설치하고 SSH를 활성화하십시오. 모범 사례에 따라 네트워크 인터페이스, NTP(Network Time Protocol), DNS 및 호스트 이름을 설정합니다. 그리드 네트워크에는 적어도 하나의 활성화된 네트워크 인터페이스가 필요하고 클라이언트 네트워크에는 다른 인터페이스가 필요합니다. VLAN 태그가 지정된 인터페이스를 사용하는 경우 아래 예에 따라 구성하십시오. 그렇지 않으면 단순한 표준 네트워크 인터페이스 구성으로 충분합니다.
+
+그리드 네트워크 인터페이스에서 VLAN 태그를 사용해야 하는 경우 구성에 다음 형식의 두 파일이 있어야 합니다 `/etc/sysconfig/network-scripts/` .
+
+[listing]
+----
+# cat /etc/sysconfig/network-scripts/ifcfg-enp67s0
+# This is the parent physical device
+TYPE=Ethernet
+BOOTPROTO=none
+DEVICE=enp67s0
+ONBOOT=yes
+# cat /etc/sysconfig/network-scripts/ifcfg-enp67s0.520
+# The actual device that will be used by the storage node file
+DEVICE=enp67s0.520
+BOOTPROTO=none
+NAME=enp67s0.520
+IPADDR=10.10.200.31
+PREFIX=24
+VLAN=yes
+ONBOOT=yes
+----
+이 예에서는 그리드 네트워크의 물리적 네트워크 장치가 enp67s0이라고 가정합니다. Bond0과 같은 연결된 장치일 수도 있습니다. 본딩을 사용하든 표준 네트워크 인터페이스를 사용하든 네트워크 포트에 기본 VLAN이 없거나 기본 VLAN이 그리드 네트워크와 연결되어 있지 않은 경우 노드 구성 파일에서 VLAN 태그가 지정된 인터페이스를 사용해야 합니다. StorageGRID 컨테이너 자체는 이더넷 프레임의 태그를 해제하지 않으므로 상위 OS에서 처리해야 합니다.
+
+
+
+== iSCSI를 사용한 저장소 설정(옵션
+
+iSCSI 스토리지를 사용하지 않는 경우 host1, host2 및 host3에 요구 사항을 충족하기에 충분한 크기의 블록 디바이스가 포함되어 있는지 확인해야 합니다. host1, host2 및 host3 스토리지 요구 사항은 을 link:prerequisites-install-storagegrid.html#disk-sizes-per-container-type["컨테이너 유형별 디스크 크기입니다"] 참조하십시오.
+
+iSCSI를 사용하여 스토리지를 설정하려면 다음 단계를 완료하십시오.
+
+.단계
+. NetApp E-Series 또는 NetApp ONTAP ® 데이터 관리 소프트웨어와 같은 외부 iSCSI 스토리지를 사용하는 경우 다음 패키지를 설치합니다.
++
+[listing]
+----
+sudo yum install iscsi-initiator-utils
+sudo yum install device-mapper-multipath
+----
+. 각 호스트에서 이니시에이터 ID를 찾습니다.
++
+[listing]
+----
+# cat /etc/iscsi/initiatorname.iscsi
+InitiatorName=iqn.2006-04.com.example.node1
+----
+. 2단계의 이니시에이터 이름을 사용하여 스토리지 디바이스의 LUN(표에 표시된 숫자 및 크기 link:prerequisites-install-storagegrid.html#storage-requirements["구축하는 것이었습니다"] )을 각 스토리지 노드에 매핑합니다.
+. 을 사용하여 새로 생성된 LUN을 `iscsiadm` 검색하고 로그인합니다.
++
+[listing]
+----
+# iscsiadm -m discovery -t st -p target-ip-address
+# iscsiadm -m node -T iqn.2006-04.com.example:3260 -l
+Logging in to [iface: default, target: iqn.2006-04.com.example:3260, portal: 10.64.24.179,3260] (multiple)
+Login to [iface: default, target: iqn.2006-04.com.example:3260, portal: 10.64.24.179,3260] successful.
+----
++
+
+NOTE: 자세한 내용은 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/osm-create-iscsi-initiator["iSCSI 초기자 생성"^] Red Hat 고객 포털 을 참조하십시오.
+
+. 다중 경로 디바이스 및 관련 LUN WWID를 표시하려면 다음 명령을 실행합니다.
++
+[listing]
+----
+# multipath -ll
+----
++
+다중 경로 장치와 함께 iSCSI를 사용하지 않는 경우 장치 변경 및 재부팅이 동일하게 유지되는 고유한 경로 이름으로 장치를 마운트하기만 하면 됩니다.
+
++
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0
+----
++
+
+TIP: 장비 이름만 사용하면 `/dev/sdx` 나중에 장비를 제거하거나 추가할 경우 문제가 발생할 수 있습니다. ++++ 다중 경로 장치를 사용하는 경우 `/etc/multipath.conf` 다음과 같이 별칭을 사용하도록 파일을 수정합니다. ++++
+
++
+
+NOTE: 이러한 장치는 레이아웃에 따라 일부 노드에 있을 수도 있고 없을 수도 있습니다.
+
++
+[listing]
+----
+multipaths {
+multipath {
+wwid 36d039ea00005f06a000003c45fa8f3dc
+alias Docker-Store
+}
+multipath {
+wwid 36d039ea00006891b000004025fa8f597
+alias Adm-Audit
+}
+multipath {
+wwid 36d039ea00005f06a000003c65fa8f3f0
+alias Adm-MySQL
+}
+multipath {
+wwid 36d039ea00006891b000004015fa8f58c
+alias Adm-OS
+}
+multipath {
+wwid 36d039ea00005f06a000003c55fa8f3e4
+alias SN-OS
+}
+multipath {
+wwid 36d039ea00006891b000004035fa8f5a2
+alias SN-Db00
+}
+multipath {
+wwid 36d039ea00005f06a000003c75fa8f3fc
+alias SN-Db01
+}
+multipath {
+    wwid 36d039ea00006891b000004045fa8f5af
+alias SN-Db02
+}
+multipath {
+wwid 36d039ea00005f06a000003c85fa8f40a
+alias GW-OS
+}
+}
+----
+
+
+호스트 OS에 Docker를 설치하기 전에 LUN 또는 디스크 백업을 포맷하고 마운트합니다. `/var/lib/docker` 다른 LUN은 노드 구성 파일에 정의되어 있으며, StorageGRID 컨테이너에서 직접 사용됩니다. 즉, 호스트 OS에 표시되지 않고 컨테이너 자체에 나타나며 해당 파일 시스템은 설치 관리자가 처리합니다.
+
+iSCSI 지원 LUN을 사용하는 경우 fstab 파일에 다음 줄과 유사한 내용을 배치합니다. 참고로, 다른 LUN은 호스트 OS에 마운트할 필요가 없지만 사용 가능한 블록 디바이스로 표시되어야 합니다.
+
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0 /var/lib/docker ext4 defaults 0 0
+----
+
+
+== Docker 설치를 준비하는 중입니다
+
+Docker 설치를 준비하려면 다음 단계를 완료하십시오.
+
+.단계
+. 세 호스트 모두에서 Docker 스토리지 볼륨에 파일 시스템을 생성합니다.
++
+[listing]
+----
+# sudo mkfs.ext4 /dev/sd?
+----
++
+다중 경로와 함께 iSCSI 장치를 사용하는 경우 를 `/dev/mapper/Docker-Store`사용합니다.
+
+. Docker 스토리지 볼륨 마운트 지점을 생성합니다.
++
+[listing]
+----
+# sudo mkdir -p /var/lib/docker
+----
+. docker-storage-volume-device에 대한 유사한 항목을 에 추가합니다 `/etc/fstab`.
++
+[listing]
+----
+/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:1:0 /var/lib/docker ext4 defaults 0 0
+----
++
+다음 `_netdev` 옵션은 iSCSI 장치를 사용하는 경우에만 권장됩니다. 로컬 블록 디바이스를 사용하는 경우에는 `_netdev` 필요하지 않으며 `defaults` 사용하는 것이 좋습니다.
+
++
+[listing]
+----
+/dev/mapper/Docker-Store /var/lib/docker ext4 _netdev 0 0
+----
+. 새 파일 시스템을 마운트하고 디스크 사용량을 확인합니다.
++
+[listing]
+----
+# sudo mount /var/lib/docker
+[root@host1]# df -h | grep docker
+/dev/sdb 200G 33M 200G 1% /var/lib/docker
+----
+. 스왑을 끄고 성능상의 이유로 사용하지 않도록 설정합니다.
++
+[listing]
+----
+$ sudo swapoff --all
+----
+. 설정을 유지하려면 /etc/fstab에서 다음과 같은 스왑 항목을 모두 제거하십시오.
++
+[listing]
+----
+/dev/mapper/rhel-swap swap defaults 0 0
+----
++
+
+NOTE: 스왑을 완전히 사용하지 않도록 설정하면 성능이 크게 저하될 수 있습니다.
+
+. 노드의 테스트 재부팅을 수행하여 `/var/lib/docker` 볼륨이 지속적이고 모든 디스크 디바이스가 반환되는지 확인합니다.
+
