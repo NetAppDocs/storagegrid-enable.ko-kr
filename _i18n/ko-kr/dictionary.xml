@@ -3382,4 +3382,39 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="0be6d03a29c17471b0414e9b31482b15" category="list-text">IBM 스토리지 프로텍트</block>
   <block id="0987bb97934aa3a8ea668bd0c91ce52d" category="sidebar">StorageGRID 의 보안 기능 - 객체 저장소의 데이터 및 메타데이터 보안</block>
   <block id="243c98f4ed7a2d56d634e9cc955fda88" category="sidebar">StorageGRID 재해 복구 - Veritas Enterprise Vault를 사용하여 사이트 장애 조치를 위한 StorageGRID 구성</block>
+  <block id="b12c5a1ea2cfdcd9e96af62ad1fff2c7" category="summary">StorageGRID 개체 스토리지를 사용하기 위해 Elasticsearch 스냅샷 저장소를 만드는 방법에 대한 지침입니다.</block>
+  <block id="4f466fb92f96dcdf64e32b3a68249a6a" category="doc">Elasticsearch 스냅샷 저장소 구성</block>
+  <block id="19c69b64ad875941da2ed25675b966b5" category="paragraph">Elasticsearch는 스냅샷 저장소에 AWS S3 호환 개체 스토리지를 사용하는 것을 지원합니다.  이 문서에서는 StorageGRID 백엔드 개체 스토리지로 사용하여 Elasticsearch S3 스냅샷 저장소를 만드는 방법에 대한 단계별 지침을 제공합니다.</block>
+  <block id="593e0b72d2a3823ab9f1704dbeeea1c8" category="list-text">StorageGRID 11.8 이상</block>
+  <block id="51065ec24ee246c3860e0580defca4c6" category="list-text">Elasticsearch 8.x 이상</block>
+  <block id="3212d51fa371e3cef1d789ecfe0afca6" category="paragraph">독자는 StorageGRID 와 Elasticsearch의 용어와 운영에 익숙합니다.</block>
+  <block id="85c3fd6ac4074bb1ab06b16868d0c009" category="list-text">Elasticsearch 스냅샷 저장소에 사용할 StorageGRID 버킷을 만듭니다.  버킷 버전 관리를 활성화해야 합니다.  저장소당 버킷 하나를 사용하세요.  여러 저장소나 Elasticsearch 클러스터에서 버킷을 공유하지 마세요.</block>
+  <block id="8ed3f9dd5d7290bd016b83485c0170a1" category="list-text">Elasticsearch 키스토어에 StorageGRID 테넌트 액세스 키와 비밀 키를 추가합니다.  Elasticsearch 마스터 노드에 로그인하고 다음으로 이동합니다.<block ref="1b2b598aea8f192d3794b0c30af92997" prefix=" " category="inline-code"></block> 디렉토리 및 사용<block ref="0bf694e981bb45a58aed7488327af4f3" prefix=" " category="inline-code"></block> 액세스 키와 비밀 키를 추가합니다.</block>
+  <block id="5fd300737b7909532dc522634d75def5" category="paragraph">샘플 명령:</block>
+  <block id="08a6dcd3a697d0604f6f4b47807f6ca0" category="paragraph">키를 표시하려면 'elasticsearch-keystore show &lt;키 이름&gt;' 명령을 사용하세요.</block>
+  <block id="6806cdb70b916f3b6bb474b9328b08ca" category="list-text">다중 노드 Elasticsearch 클러스터의 경우 각 노드에서 2단계를 반복하거나 Elasticsearch 설명서를 참조하세요.</block>
+  <block id="621e717bf791d95428a170667a596197" category="list-text">Kibana 웹 GUI에서 Dev Tools 콘솔 페이지로 이동하여 다음을 사용합니다.<block ref="f6703ca746887e8ad69c184ef80e8ded" prefix=" " category="inline-code"></block> 각 노드에 변경 사항을 적용하는 API입니다.</block>
+  <block id="9b6e1b5bf3e12eb4e808e1b9701528f4" category="inline-image-macro">reload_secure_settings 샘플 스크린샷</block>
+  <block id="c94eb203f327e8a870bff84bf0051606" category="paragraph"><block ref="c94eb203f327e8a870bff84bf0051606" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="59b63a4c7f8e78be87c3100ed37b264a" category="list-text">사용하세요<block ref="14122a9963d2d5fd106baa062ba587b4" prefix=" " category="inline-code"></block> 새로운 스냅샷 저장소를 만드는 API입니다.</block>
+  <block id="98679aa6d08189789aa0c65c691db370" category="paragraph">이 예에서 저장소 이름은 다음과 같습니다.<block ref="be9022aec77b31961957096c13c23219" prefix=" " category="inline-code"></block> 그리고 버퍼 크기는 S3 멀티파트 업로드 파트 크기에 해당합니다.</block>
+  <block id="3c823bd21419d345a9d7d4276488edfb" category="paragraph">기본 프로토콜은 HTTPS입니다.  StorageGRID S3 엔드포인트와 함께 HTTP를 사용하려면 다음을 추가하세요.<block ref="356f3d9b207a577071350c04e64206cb" prefix=" " category="inline-code"></block> 설정으로.</block>
+  <block id="e09538d2ae213ccd0a221584775b5ca5" category="paragraph">1단계에서 만든 버킷 이름과 2단계에서 구성한 클라이언트 이름을 사용하세요.</block>
+  <block id="4faca7afc4d2b0538a33d3192d453ad1" category="inline-image-macro">Elasticsearch API 샘플 스크린샷</block>
+  <block id="175e963c73089d05b73e4053f63b0a3a" category="paragraph"><block ref="175e963c73089d05b73e4053f63b0a3a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="09585352abb495a58301939509e2b605" category="list-text">Kibana 웹 GUI에서 스택 관리 &gt; 스냅샷 및 복원 페이지로 이동하여 저장소 탭을 선택합니다.</block>
+  <block id="73f00594e61a1e09208a849e16bedd7d" category="paragraph">저장소 이름을 클릭하면 세부 정보를 보거나 Elasticsearch 노드당 초당 최대 스냅샷 바이트(기본값 40MB/초)와 같은 일부 설정을 수정할 수 있습니다.</block>
+  <block id="fc2619b84c9b3173bc9c93dafbf91e8d" category="paragraph">이 페이지에 표시되지 않는 설정의 경우 다음을 사용하세요.<block ref="14122a9963d2d5fd106baa062ba587b4" prefix=" " category="inline-code"></block> Dev Tools 콘솔의 API를 사용하여 변경 사항을 적용합니다.</block>
+  <block id="565feae94d4b22672a12be27e4f99c63" category="inline-image-macro">스냅샷 저장소 샘플 스크린샷</block>
+  <block id="aac419a72b01b501d95dbe3debe250f2" category="paragraph"><block ref="aac419a72b01b501d95dbe3debe250f2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8d7340f8e7c758cdf4fd4e3455548757" category="list-text">스냅샷 버킷에서 최신 버전이 아닌 객체를 관리하기 위해 버킷 수명 주기 정책을 설정합니다.  예를 들어, 90일 후에 최신이 아닌 버전을 제거합니다.</block>
+  <block id="5fe1a3050ef9538f4f00d7bf6e4d66b1" category="list-text">Elastic에서는 스냅샷을 저장하기 전에 클라이언트가 AWS S3가 아닌 스토리지를 검증하도록 요구합니다.</block>
+  <block id="56f4d43e66895a25e9c1e43ca43d69cc" category="paragraph">Elastic 지침에 따라 설정을 검증하세요.</block>
+  <block id="0734208a8b40c0aab9c1218baedefbf1" category="paragraph"><block ref="0734208a8b40c0aab9c1218baedefbf1" category="inline-link-rx"></block></block>
+  <block id="1743c3ed2b99313c86b17e91ff8ae63b" category="list-text">검증 후 Elasticsearch 가이드에 따라 매일 밤 스냅샷을 저장하기 위한 정책을 생성합니다.</block>
+  <block id="1d605538b3de6fc7352ff1756867d1b9" category="inline-link">Elasticsearch S3 저장소</block>
+  <block id="755c869a02438bc9363beeea0e91da57" category="list-text"><block ref="755c869a02438bc9363beeea0e91da57" category="inline-link-rx"></block></block>
+  <block id="e226403172953bd7e5c34989260a72a8" category="inline-link">S3 버전이 지정된 객체가 삭제되는 방식</block>
+  <block id="e35c2c56a508398c870b7b6e9e717abf" category="list-text"><block ref="e35c2c56a508398c870b7b6e9e717abf" category="inline-link-rx"></block></block>
+  <block id="29b6d470059c168ae42b0d8923792ea7" category="sidebar">Elasticsearch 스냅샷 저장소 생성 지침</block>
 </blocks>

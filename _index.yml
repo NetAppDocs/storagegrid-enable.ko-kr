@@ -62,6 +62,8 @@ indexpage:
       url: "/tools-apps-guides/use-S3cmd-test-demonstrate-S3-access.html"
     - title: 로그 분석에는 Elasticsearch, Logstash 및 Kibana를 사용합니다
       url: "/tools-apps-guides/elk-instructions.html"
+    - title: Elasticsearch 스냅샷 저장소 생성 지침
+      url: "/tools-apps-guides/elasticsearch-snapshot-configuration.html"
     - title: Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
       url: "/tools-apps-guides/federate-prometheus.html"
     - title: StorageGRID SNMP 메트릭 및 트랩을 수집하도록 데이터 독을 구성합니다
