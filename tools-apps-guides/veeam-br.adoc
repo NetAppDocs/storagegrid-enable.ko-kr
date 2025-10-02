@@ -1,7 +1,7 @@
 ---
 permalink: tools-apps-guides/veeam-br.html 
 sidebar: sidebar 
-keywords: veeam,backup,veeam12,veeam11, 
+keywords: veeam,backup,veeam13,veeam12,veeam11 
 summary: 이 가이드에서는 NetApp StorageGRID 구성과 일부 Veeam 백업 및 복제를 중점적으로 다룹니다. 이 문서는 Linux 시스템에 익숙하고 Veeam 백업 및 복제와 함께 NetApp StorageGRID 시스템의 유지 관리 또는 구축을 담당하는 스토리지 및 네트워크 관리자를 위해 작성되었습니다. 
 ---
 = Veeam 백업 및 복제를 사용한 구축에 대한 StorageGRID 모범 사례
@@ -26,7 +26,7 @@ Veeam과 NetApp StorageGRID는 전 세계적으로 빠르게 증가하는 데이
 
 Veeam의 오브젝트 워크로드에는 작은 오브젝트의 여러 동시 배치, 삭제 및 목록 작업이 생성됩니다. 불변성을 설정하면 보존 및 목록 버전을 설정하기 위한 요청 수가 개체 저장소에 추가됩니다. 백업 작업의 프로세스에는 일일 변경 사항에 대한 객체 쓰기가 포함되며 새 쓰기가 완료된 후 작업은 백업의 보존 정책에 따라 모든 객체를 삭제합니다. 백업 작업의 스케줄링은 거의 항상 중복됩니다. 이렇게 겹치면 객체 저장소의 50/50 PUT/DELETE 워크로드로 구성된 백업 윈도우의 상당 부분이 발생합니다. Veeam에서 작업 슬롯 설정을 사용하여 동시 작업 수를 조정하면 백업 작업 블록 크기를 늘리고 다중 개체 삭제 요청의 객체 수를 줄여 객체 크기를 늘릴 수 있습니다. 또한 작업을 완료할 최대 기간을 선택하면 성능 및 비용에 맞게 솔루션을 최적화할 수 있습니다.
 
-에 대한 제품 설명서를 읽어야 합니다 https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^] 및 https://docs.netapp.com/us-en/storagegrid-117/["StorageGRID"^] 시작하기 전에. Veeam을 사용하면 StorageGRID 솔루션을 사이징하기 전에 사용해야 할 Veeam 인프라 및 용량 요구사항의 크기를 이해할 수 있습니다. 의 Veeam Ready 프로그램 웹 사이트에서 Veeam-NetApp의 검증된 구성을 항상 확인하십시오 https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&page=1["Veeam Ready Object, Object Immutability 및 Repository를 사용할 수 있습니다"^].
+제품 설명서를 꼭 읽어보세요. https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^] 그리고 https://docs.netapp.com/us-en/storagegrid/["StorageGRID"^] 시작하기 전에.  Veeam은 StorageGRID 솔루션의 크기를 조정하기 전에 사용해야 하는 Veeam 인프라 크기와 용량 요구 사항을 파악하는 데 도움이 되는 계산기를 제공합니다.  Veeam Ready Program 웹사이트에서 Veeam- NetApp 검증 구성을 항상 확인하세요. https://www.veeam.com/alliance-partner-technical-programs.html?alliancePartner=netapp1&page=1["Veeam Ready Object, Object Immutability 및 Repository를 사용할 수 있습니다"^] .
 
 
 
@@ -87,7 +87,7 @@ Veeam 백업 작업은 신중하게 고려해야 하는 다양한 블록 크기 
 
 === 권장 버전
 
-최신 핫픽스가 포함된 NetApp StorageGRID 11.7 또는 11.8은 Veeam 구축에 권장되는 버전입니다. 항상 최신 상태를 유지하고 StorageGRID 시스템에 최신 핫픽스를 적용하는 것이 좋습니다.
+Veeam 배포에는 최신 핫픽스가 적용된 NetApp StorageGRID 11.9 또는 12.0 버전이 권장됩니다.  StorageGRID 시스템에는 항상 최신 핫픽스를 적용하고 최신 상태를 유지하는 것이 좋습니다.
 
 
 
@@ -99,13 +99,64 @@ Veeam을 사용하면 HTTPS를 통해서만 엔드포인트를 연결해야 합�
 
 === S3 버킷
 
-StorageGRID는 안전한 멀티 테넌트 스토리지 시스템입니다. Veeam 워크로드를 위한 전용 테넌트를 생성하는 것이 좋습니다. 필요에 따라 스토리지 할당량을 할당할 수 있습니다. 최선의 방법으로 "자체 ID 소스 사용"을 활성화합니다. 적절한 암호를 사용하여 테넌트 루트 관리 사용자를 보호합니다. Veeam Backup 12는 S3 버킷의 경우 강력한 일관성이 필요합니다. StorageGRID은 버킷 수준에서 구성된 다양한 정합성 보장 옵션을 제공합니다. Veeam이 여러 위치의 데이터에 액세스할 수 있는 멀티 사이트 배포의 경우 "강력한 글로벌"을 선택하십시오. Veeam 백업 및 복원을 단일 사이트에서만 수행할 경우 일관성 수준을 "강력한 사이트"로 설정해야 합니다. 버킷 일관성 수준에 대한 자세한 내용은 을 참조하십시오 https://docs.netapp.com/us-en/storagegrid-117/s3/consistency-controls.html["문서화"]. Veeam 불변성 백업을 위해 StorageGRID를 사용하려면 S3 오브젝트 잠금을 글로벌로 사용하도록 설정하고 버킷 생성 중에 버킷에 구성해야 합니다.
+StorageGRID 는 안전한 멀티 테넌트 스토리지 시스템입니다.  Veeam 워크로드에 대한 전용 테넌트를 만드는 것이 좋습니다.  저장 용량 할당량은 선택적으로 할당할 수 있습니다.  모범 사례로 "자체 ID 소스 사용"을 활성화하세요.  적절한 비밀번호로 테넌트 루트 관리 사용자를 보호합니다.  Veeam Backup 12는 S3 버킷에 대해 강력한 일관성을 요구합니다.  StorageGRID 버킷 수준에서 구성된 다양한 일관성 옵션을 제공합니다.  Veeam이 여러 위치에서 데이터에 액세스하는 다중 사이트 배포의 경우 "strong-global"을 선택합니다.  Veeam 백업 및 복원이 단일 사이트에서만 발생하는 경우 일관성 수준을 "strong-site"로 설정해야 합니다.  버킷 일관성 수준에 대한 자세한 내용은 다음을 검토하십시오. https://docs.netapp.com/us-en/storagegrid/s3/consistency-controls.html["문서화"] .  Veeam 불변성 백업에 StorageGRID 사용하려면 버킷 생성 중에 S3 개체 잠금을 전역적으로 활성화하고 버킷에서 구성해야 합니다.
 
 
 
 === 라이프사이클 관리
 
 StorageGRID는 StorageGRID 노드와 사이트에서 오브젝트 레벨의 보호를 위해 복제 및 삭제 코딩을 지원합니다. 삭제 코딩에는 최소 200kB 오브젝트 크기가 필요합니다. Veeam의 1MB에 대한 기본 블록 크기는 Veeam의 스토리지 효율성 후 종종 이 200kB 권장 최소 크기보다 작을 수 있는 오브젝트 크기를 생성합니다. 솔루션의 성능을 위해 사이트 간 연결이 지연 시간을 추가하거나 StorageGRID 시스템의 대역폭을 제한하지 않는 한 여러 사이트에 걸쳐 있는 삭제 코딩 프로필을 사용하지 않는 것이 좋습니다. 다중 사이트 StorageGRID 시스템에서는 각 사이트에 단일 복제본을 저장하도록 ILM 규칙을 구성할 수 있습니다. 내구성을 최대화하기 위해 각 사이트에 삭제 코딩 복사본을 저장하도록 규칙을 구성할 수 있습니다. 이 워크로드를 위해 Veeam Backup 서버에 로컬에 2개의 복제본을 사용하는 것이 가장 좋습니다.
+
+
+
+=== 성능 삭제
+
+Veeam은 백업 삭제 프로세스의 삭제 요청 속도 조정 및 스케줄링을 제공합니다.  삭제 성능을 더욱 조정하려면 동기 삭제를 비활성화하고 ILM 스캐너가 개체의 최종 삭제를 관리하도록 할 수 있습니다.
+
+*동기 삭제 비활성화 단계*
+
+. StorageGRID 그리드 관리자를 엽니다.
+. 오른쪽 상단 모서리에서 물음표를 선택한 다음 API 문서를 선택하세요.
+. 오른쪽 상단 모서리에서 Private API 문서 페이지 링크를 클릭하세요.
+. ilm-advanced를 확장합니다.
+. GET ilm-advanced를 선택하세요.
+. '시도해보기'를 선택한 다음 '실행'을 선택합니다.
+. 응답 결과를 확인하세요.
++
+.. 값이 null이면 기본 ilm-advanced 값이 사용 중임을 의미합니다.
+.. 값이 null이 아닌 경우 사용자 정의 ILM 고급 값이 사용 중임을 의미합니다.  "data" : 이후의 모든 출력을 { 에서 시작하여 마지막에서 두 번째 }까지 복사합니다.
++
+... 텍스트 편집기에 저장하세요.
++
+응답 예시:
+
++
+image:veeam-bp/get_ilm_adv_before.png["ILM-Advanced 출력 가져오기"]
+
+
+
+
+
+. PUT ilm-advanced를 선택합니다.
+. API 본문 편집을 시작하려면 '시도해보기'를 선택하세요.
++
+.. 기본적으로 API 본문에는 기본값이 포함되며 이전에 구성된 사용자 정의 값은 포함되지 않습니다.  이것이 5~7단계를 실행하는 것이 매우 중요한 이유입니다.
+
+
+. 5~7단계에서 기본값이 아닌 값이 발견되면 API 본문을 7단계에서 저장된 출력으로 바꿉니다. .  그렇지 않은 경우 5-7단계에서 값이 null인 경우 API 본문을 그대로 둡니다.
+. API 본문 상자에서 다음 매개변수를 조정하세요.
++
+.. 동기 값을 false로 설정합니다.
++
+API 본문 텍스트 예:
+
++
+image:veeam-bp/put_ilm_adv.png["PUT ILM-고급 입력"]
+
+
+
+. 완료되면 실행을 선택하세요
+
 
 
 
@@ -188,6 +239,6 @@ image:veeam-bp/tc_2.png["트래픽 분류 정책 메트릭"]
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
-* link:https://docs.netapp.com/us-en/storagegrid-119/["NetApp StorageGRID 11.9 제품 문서"^]
+* link:https://docs.netapp.com/us-en/storagegrid/["NetApp StorageGRID 제품 설명서"^]
 * link:https://www.veeam.com/documentation-guides-datasheets.html?productId=8&version=product%3A8%2F221["Veeam 백업 및 복제"^]
 

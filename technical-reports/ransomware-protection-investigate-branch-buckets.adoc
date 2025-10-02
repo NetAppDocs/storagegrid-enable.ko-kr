@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: technical-reports/ransomware-protection-investigate-branch-buckets.html 
+keywords: object lock, storagegrid 
+summary: 랜섬웨어 공격을 조사하고 해결하는 데 브랜치 버킷을 어떻게 사용할 수 있는지 알아보세요. 
+---
+= 랜섬웨어 조사 및 해결
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 사용하여 랜섬웨어 공격이 발생한 후 버킷을 조사하고 해결하는 방법을 알아보세요.
+
+StorageGRID 12.0에서는 랜섬웨어 방어를 위한 버전 관리의 유용성을 확장하기 위해 새로운 브랜치 버킷 기능이 추가되었습니다.  분기 버킷은 버킷에 있는 객체에 대한 액세스를 특정 시점에 존재했던 그대로 제공하며, 해당 객체가 버킷에 계속 존재하는 경우에 한합니다.  버전 관리가 활성화된 기본 버킷에 대해서만 브랜치 버킷을 생성할 수 있습니다.
+
+즉, 랜섬웨어 공격이 발생했다고 의심되는 경우 초기 공격 시간 이전에 존재했던 모든 개체와 버전을 포함하는 읽기/쓰기 또는 읽기 전용 분기 버킷을 만들 수 있습니다.  이 분기 버킷을 사용하면 기본 버킷 내용과 비교하여 어떤 객체가 변경되었는지, 그리고 변경 사항이 공격의 일부인지 여부를 파악할 수 있습니다.  공격을 조사하는 동안 클린 브랜치를 사용하여 클라이언트 작업을 계속하기 위해 브랜치 버킷을 사용할 수도 있습니다.
+
+
+
+== 지점 버킷 만들기
+
+* 기본 버킷 세부 정보 페이지와 지점 탭으로 이동하여 지점 버킷을 만듭니다.
+
+
+image:ransomware/ransomware-protection-branch-create.png["랜섬웨어 보호 브랜치 생성"]
+
+* 지점 버킷 만들기 버튼을 클릭하면 기본 버킷과 연관된 지역의 세부 정보가 미리 입력된 팝업이 열립니다.
+* 시간 전에 브랜치 버킷 이름을 제공하고, 어떤 유형의 브랜치 버킷을 생성할지 선택합니다.
+
+
+image:ransomware/ransomware-protection-branch-define.png["랜섬웨어 보호 브랜치 정의"]

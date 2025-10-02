@@ -28,6 +28,8 @@ entries:
   entries:
   - title: StorageGRID과 함께 타사 로드 밸런서를 사용하십시오
     url: "/technical-reports/load-balancer-index.html"
+  - title: StorageGRID 로드 밸런서의 역할에 대해 알아보세요
+    url: "/technical-reports/load-balancer-storagegrid.html"
   - title: StorageGRID에서 HTTPS용 SSL 인증서를 구현하는 방법에 대해 알아봅니다
     url: "/technical-reports/load-balancer-ssl-certificates-storagegrid.html"
   - title: StorageGRID에서 신뢰할 수 있는 타사 로드 밸런서를 구성합니다
@@ -66,6 +68,8 @@ entries:
     url: "/technical-reports/ransomware-protection-replicate-bucket-versioning-storagegrid.html"
   - title: 보호 IAM 정책을 통한 버전 관리를 사용한 랜섬웨어 방어
     url: "/technical-reports/ransomware-protection-versioning-protective-iam-policy-storagegrid.html"
+  - title: 브랜치 버킷을 활용한 랜섬웨어 방어 조사
+    url: "/technical-reports/ransomware-protection-investigate-branch-buckets.html"
 - title: 'TR-4765: StorageGRID 모니터링'
   pdf-filename: 외부 응용 프로그램을 사용하여 StorageGRID를 모니터링합니다
   entries:

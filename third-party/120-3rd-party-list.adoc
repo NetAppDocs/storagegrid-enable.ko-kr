@@ -2,9 +2,9 @@
 permalink: third-party/119-3rd-party-list.html 
 sidebar: sidebar 
 keywords: 11.9, third-party applications, storagegrid, ISV 
-summary: StorageGRID 11.9에서 검증된 타사 솔루션 
+summary: StorageGRID 12.0에 대해 검증된 타사 솔루션 
 ---
-= StorageGRID 11.9은 타사 솔루션으로 검증되었습니다
+= StorageGRID 12.0 검증된 타사 솔루션
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -12,7 +12,7 @@ summary: StorageGRID 11.9에서 검증된 타사 솔루션
 
 
 [role="lead"]
-다음 타사 솔루션은 StorageGRID 11.9과 함께 사용할 수 있도록 검증되었습니다. + 찾으려는 솔루션이 목록에 없는 경우 NetApp 고객 담당자에게 문의하십시오.
+다음 타사 솔루션은 StorageGRID 12.0과 함께 사용하기 위해 검증되었습니다.  + 찾고 있는 솔루션이 목록에 없는 경우 NetApp 계정 담당자에게 문의하세요.
 
 
 
@@ -131,20 +131,6 @@ summary: StorageGRID 11.9에서 검증된 타사 솔루션
 
 * Entrust 암호화 보안 플랫폼 v10.4.5
 * Entrust KeyControl 10.2
-* Hashicorp 볼트 1.15.0
-* Thales CipherTrust Manager 2.0 을 참조하십시오
-* Thales CipherTrust 관리자 2.1
-* Thales CipherTrust 관리자 2.2
-* Thales CipherTrust Manager 2.3
-* Thales CipherTrust 관리자 2.4
-* Thales CipherTrust Manager 2.8
-* Thales CipherTrust 관리자 2.9
-* Thales CipherTrust 관리자 2.10
-* Thales CipherTrust 관리자 2.11
-* Thales CipherTrust 관리자 2.12
-* Thales CipherTrust 관리자 2.13
-* Thales CipherTrust 관리자 2.14
-* Thales CipherTrust Manager 2.15
-* Thales CipherTrust Manager 2.16
+* 하시코프 볼트 1.20.2
 * Thales CipherTrust Manager 2.20
 

@@ -14,8 +14,6 @@ entries:
   url: "/product-feature-guides/storagegrid-search-integration-service.html"
 - title: 노드 클론 고려 사항 및 성능
   url: "/product-feature-guides/node-clone.html"
-- title: 포트 재매핑 사용 방법
-  url: "/product-feature-guides/port-remap.html"
 - title: 사이트 재배치 및 네트워킹 변경 방법
   url: "/product-feature-guides/site-relocation-and-network-change.html"
 - title: 오브젝트 기반 스토리지를 ONTAP S3에서 StorageGRID로 마이그레이션

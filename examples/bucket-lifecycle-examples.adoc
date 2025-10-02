@@ -223,13 +223,15 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
   "Rules": [
     {
       "ID": "Delete current version",
+      "Filter": {},
       "Status": "Enabled",
       "Expiration": {
         "Days": 30
-      },
+      }
     },
     {
       "ID": "noncurrent version retention",
+      "Filter": {},
       "Status": "Enabled",
       "NoncurrentVersionExpiration": {
         "NoncurrentDays": 60
@@ -237,6 +239,7 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
     },
     {
       "ID": "Markers",
+      "Filter": {},
       "Status": "Enabled",
       "Expiration": {
         "ExpiredObjectDeleteMarker": true
@@ -247,7 +250,7 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 ----
 
 
-=== 다른 버전이 없고 5일 동안 존재했던 삭제 마커를 제거하고, "accounts_ prefix"가 있는 개체의 경우 4개의 비현재 버전과 최소 30일 분의 기록을 유지하고, 다른 모든 개체 버전의 경우 2개의 버전과 최소 10일 분의 기록을 유지합니다.
+=== 다른 버전이 없는 삭제 마커를 제거하고, "accounts_ prefix"가 있는 개체의 경우 4개의 비현재 버전과 최소 30일 분의 기록을 유지하고, 다른 모든 개체 버전의 경우 2개의 버전과 최소 10일 분의 기록을 유지합니다.
 
 사용 사례: 삭제 마커를 포함하여 현재 버전과 이전 버전의 전체 수명 주기를 관리하기 위해 다른 객체와 함께 특정 객체에 대한 고유한 규칙을 제공합니다. 이점: 스토리지 비용을 절감하고 버킷을 깔끔하게 유지하는 동시에 다양한 클라이언트 요구 사항을 충족할 수 있는 충분한 복구 지점과 기록을 유지합니다.
 
@@ -257,25 +260,24 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
   "Rules": [
     {
       "ID": "Markers",
+      "Filter": {},
       "Status": "Enabled",
       "Expiration": {
-        "Days": 5,
         "ExpiredObjectDeleteMarker": true
-      },
+      }
     },
     {
       "ID": "accounts version retention",
+      "Filter": {"Prefix":"account_"},
       "Status": "Enabled",
       "NoncurrentVersionExpiration": {
         "NewerNoncurrentVersions": 4,
         "NoncurrentDays": 30
-      },
-      "Filter": {
-          "Prefix":"account_"
       }
     },
     {
       "ID": "noncurrent version retention",
+      "Filter": {},
       "Status": "Enabled",
       "NoncurrentVersionExpiration": {
         "NewerNoncurrentVersions": 2,
