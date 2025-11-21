@@ -381,15 +381,10 @@
   <block id="d55a0f29052225dac98466ee9b92f4a1" category="doc">NetApp StorageGRID 문서</block>
   <block id="22c5de521c44ad2015e5ce711b46bebf" category="paragraph">각 NetApp StorageGRID 릴리스에 대한 전체 설명서는 여기에서 확인할 수 있습니다.</block>
   <block id="dc2c61abf0171b5abd61211f37552e18" category="inline-link">StorageGRID 11.6</block>
-  <block id="1f24789c68b06d446e0ebee3e2b81c66" category="list-text"><block ref="1f24789c68b06d446e0ebee3e2b81c66" category="inline-link-rx"></block></block>
   <block id="c7bb2251d54b13e3891aea37cdb54cd1" category="inline-link">StorageGRID 11.5</block>
-  <block id="1a433578de1b07641fbd7e4fa310d058" category="list-text"><block ref="1a433578de1b07641fbd7e4fa310d058" category="inline-link-rx"></block></block>
   <block id="32e750dc43168f85f193ec7b20f6e5c4" category="inline-link">StorageGRID 11.4</block>
-  <block id="ab11b93693987b00bd58948f5b72c34a" category="list-text"><block ref="ab11b93693987b00bd58948f5b72c34a" category="inline-link-rx"></block></block>
   <block id="37ef4cafeb8ccc9607db85cd3fab57f8" category="inline-link">StorageGRID 11.3</block>
-  <block id="c18e44cb0cb6bc2f462d1e006c443b06" category="list-text"><block ref="c18e44cb0cb6bc2f462d1e006c443b06" category="inline-link-rx"></block></block>
   <block id="13947b810d54d07e62ef2873b8620fe7" category="inline-link">StorageGRID 11.2</block>
-  <block id="fa96f2375d9c1354445489d7c5ab86dc" category="list-text"><block ref="fa96f2375d9c1354445489d7c5ab86dc" category="inline-link-rx"></block></block>
   <block id="7c9bea5c137c35be356406479a949aef" category="summary">Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WORM 모델을 제공합니다. StorageGRID의 객체 잠금 구현은 규제 요구사항을 충족하고, 객체 보존에 대한 법적 보류 및 규정 준수 모드를 지원하고, 기본 버킷 보존 정책을 지원하는 데 도움이 되는 코호트 평가입니다.</block>
   <block id="33978f74a8897c3da7935e1ac3118552" category="doc">StorageGRID에서 S3 오브젝트 잠금을 테스트하고 시연합니다</block>
   <block id="1d1d2f802d9cc6b6eb57739286faf4b3" category="paragraph">Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WORM 모델을 제공합니다. StorageGRID의 객체 잠금 구현은 규제 요구사항을 충족하고, 객체 보존에 대한 법적 보류 및 규정 준수 모드를 지원하고, 기본 버킷 보존 정책을 지원하는 데 도움이 되는 코호트 평가입니다.</block>
@@ -1080,8 +1075,6 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
   <block id="9283e244bcd98f1bdd350c1b4f2da148" category="inline-link">StorageGRID 어플라이언스</block>
   <block id="eff26b146dbf07b93a3af4954ea77c6d" category="list-text"><block ref="eff26b146dbf07b93a3af4954ea77c6d" category="inline-link-rx"></block></block>
   <block id="0c116dd1f4daf14c460a0c77a9e0e674" category="inline-link">StorageGRID 11.8</block>
-  <block id="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="list-text"><block ref="6a9dbde708e64ed0ece8a4d0b0dc1d32" category="inline-link-rx"></block></block>
-  <block id="fca3b43498fce810dfcc0f52e38e42a6" category="list-text"><block ref="fca3b43498fce810dfcc0f52e38e42a6" category="inline-link-rx"></block></block>
   <block id="e9868d7697657696cac82d1e0b5159e2" category="paragraph">_ 아론 클라인 _</block>
   <block id="f1b702f1ec8f237dcd7b5c954b6d27b8" category="paragraph">안젤라 청 _ 에 의해</block>
   <block id="3ffee984625220881b57c95936a54d55" category="paragraph">지그프리드 헤프와 아론 클라인 작사</block>
@@ -2945,7 +2938,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="1fd1f9584361048bdbc61a65caa8c999" category="paragraph">* 12일 *</block>
   <block id="973aefb7cd4fa1181692b6c7dab8336d" category="paragraph">* 12.5일 *</block>
   <block id="19c95a26acdda408cd23f4a3d3816d3a" category="paragraph">* 17일 *</block>
-  <block id="83f15d0c42eec3db2e4b64cc94344c40" category="list-text"><block ref="83f15d0c42eec3db2e4b64cc94344c40" category="inline-link-rx"></block></block>
   <block id="79f8aaf5f753858807e5b593351a00c9" category="paragraph">이 가이드는 아마존 OpenSearch 서비스 또는 온-프레미스 Elasticsearch를 사용하여 NetApp StorageGRID 검색 통합 서비스를 구성하는 방법에 대한 자세한 지침을 제공합니다.</block>
   <block id="1ec648377638e043bfb89eccc1053188" category="inline-link">YouTube 동영상</block>
   <block id="a5e3fa36313df10d074a9fd1034514d3" category="paragraph">StorageGRID syslog 포워드 기능을 사용하면 StorageGRID 로그 메시지를 수집하고 분석하도록 외부 syslog 서버를 구성할 수 있습니다. 엘크(Elasticsearch, Logstash, Kibana)는 가장 인기 있는 로그 분석 솔루션 중 하나가 되었습니다. 샘플 elk 구성과 이 구성을 사용하여 실패한 S3 요청을 식별하고 해결하는 방법을 보려면 를<block ref="a42387db058ee8ea3a8dcc51c8812963" category="inline-link-rx"></block> 참조하십시오. StorageGRID 11.9에서는 부하 분산 장치 엔드포인트 액세스 로그를 외부 syslog 서버로 내보낼 수 있습니다. 이 새로운 기능에 대해 자세히 알아보려면 여기를<block ref="76980d5900b8bc5b66d872ad50141cf3" category="inline-link-rx"></block> 참조하십시오. 이 문서에서는 Logstash 구성, Kibana 쿼리, 차트 및 대시보드의 예제 파일을 제공하여 StorageGRID 로그 관리 및 분석을 빠르게 시작할 수 있도록 합니다.</block>
@@ -2988,7 +2980,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="21c24fa624a44fa1b3fc1c27be1061d5" category="list-text">설명 섹션에 "내 계정 이메일 주소는 _ 귀하의 - 이메일 - 주소 _ 입니다. 잠재 고객이 StorageGRID 평가판 소프트웨어를 다운로드할 수 있도록 액세스하려고 합니다."</block>
   <block id="39d3f037c74b725c5adc98d16fbec2f8" category="summary">이 기술 보고서에서는 사이트 장애 발생 시 RPO(복구 시점 목표)를 0으로 설정하기 위한 StorageGRID 복제 전략의 구현을 간략하게 설명합니다.</block>
   <block id="810a30cfe50c0f270cee71b650ceffd6" category="doc">StorageGRID로 제로 RPO 달성 - 멀티 사이트 복제에 대한 포괄적인 가이드</block>
-  <block id="ea76d032379d2a88d28b72edd9e36564" category="paragraph">이 기술 보고서는 사이트 장애 발생 시 RPO(복구 시점 목표)를 0으로 설정하기 위한 StorageGRID 복제 전략을 구현하는 포괄적인 가이드를 제공합니다. 이 문서에서는 다중 사이트 동기식 복제 및 다중 그리드 비동기식 복제를 비롯한 StorageGRID의 다양한 구축 옵션에 대해 자세히 설명합니다. 또한 StorageGRID의 ILM(정보 수명 주기 관리) 정책을 구성하여 여러 위치에서 데이터 내구성 및 가용성을 보장하는 방법에 대해 설명합니다. 또한 중단 없는 클라이언트 운영을 유지하기 위한 성능 고려 사항, 장애 시나리오 및 복구 프로세스에 대해서도 설명합니다. 이 문서의 목표는 완전한 사이트 장애 발생 시에도 동기식 및 비동기식 복제 기술을 모두 활용하여 데이터에 액세스하고 일관성을 유지할 수 있도록 하는 정보를 제공하는 것입니다.</block>
   <block id="606eab719053286d71dc6722565f39cc" category="section-title">StorageGRID 개요</block>
   <block id="c72cc4a7cc108f0e65b3b2234a5451f6" category="paragraph">NetApp StorageGRID는 업계 표준 Amazon S3(Amazon Simple Storage Service) API를 지원하는 오브젝트 기반 스토리지 시스템입니다.</block>
   <block id="bbcde1e5e5d61a464205617230c533f9" category="section-title">StorageGRID 확장</block>
@@ -3003,14 +2994,11 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="9b5561f349b0418797ca7104c00c80b4" category="section-title">오브젝트 데이터 및 메타데이터</block>
   <block id="fb56e39711fbf97f3cff481cefe05b4f" category="paragraph">오브젝트 스토리지의 경우, 스토리지 단위는 파일 또는 블록이 아닌 오브젝트입니다. 파일 시스템 또는 블록 스토리지의 트리와 같은 계층구조와 달리 오브젝트 스토리지는 데이터를 구조화되지 않은 단순 레이아웃으로 구성합니다. 오브젝트 스토리지는 데이터의 물리적 위치를 해당 데이터를 저장하고 검색하는 데 사용되는 메서드에서 분리합니다.</block>
   <block id="0f2657877abfd62c76270fc9fefa04e5" category="paragraph">오브젝트 기반 스토리지 시스템의 각 오브젝트에는 오브젝트 데이터와 오브젝트 메타데이터의 두 부분이 있습니다.</block>
-  <block id="3e02806edf9cf9fe11e3ce2756d6b716" category="list-text">개체 데이터는 사진, 동영상 또는 의료 기록과 같은 실제 기본 데이터를 나타냅니다.</block>
   <block id="fe6177858a7ffc8599a9d9a1a4ea2f1f" category="list-text">개체 메타데이터는 개체를 설명하는 정보입니다.</block>
   <block id="5744c4629d3afd78a5fdd52800e97f1c" category="paragraph">StorageGRID는 오브젝트 메타데이터를 사용하여 그리드 전체의 모든 오브젝트의 위치를 추적하고 각 오브젝트의 라이프사이클 관리를 제공합니다.</block>
   <block id="63079dc7d4ba0f0950865fd53b883a11" category="paragraph">오브젝트 메타데이터에는 다음과 같은 정보가 포함됩니다.</block>
-  <block id="e5a918f437a7af27afdce3def49278bc" category="list-text">각 오브젝트 복제본 또는 삭제 코딩 조각의 현재 스토리지 위치입니다.</block>
   <block id="91b08644ef3e50381478d7f42ab32f1d" category="list-text">객체와 연결된 모든 사용자 메타데이터 키 값 쌍입니다.</block>
   <block id="23f54b9b547ce8f5c783a1d802cf64a9" category="list-text">S3 오브젝트의 경우 오브젝트와 연결된 모든 오브젝트 태그 키-값 쌍입니다</block>
-  <block id="3dbdb43407d55e92a14a85f1d6388c70" category="list-text">분할된 오브젝트 및 다중 파트 오브젝트의 경우 세그먼트 식별자 및 데이터 크기가 사용됩니다.</block>
   <block id="e6ae6f0a4a18ef27ea21dbe9449108a4" category="inline-link">오브젝트 메타데이터 스토리지 관리</block>
   <block id="a60b56c4fc355f3dd23a1f66e3cc0b5f" category="paragraph">개체 메타데이터는 사용자 지정이 가능하며 확장이 가능하므로 응용 프로그램에서 유연하게 사용할 수 있습니다. StorageGRID에서 오브젝트 메타데이터를 저장하는 방법과 위치에 대한 자세한 내용은 를 참조하십시오<block ref="7d35d2baf4d39208e4f52175d4b30104" category="inline-link-rx"></block>.</block>
   <block id="2fd9637c3fe0d3bb7ddefe22d29b5161" category="paragraph">StorageGRID의 ILM(정보 라이프사이클 관리) 시스템은 StorageGRID 시스템의 모든 오브젝트 데이터에 대한 배치, 기간 및 수집 동작을 조정하는 데 사용됩니다. ILM 규칙은 StorageGRID에서 오브젝트의 복제본을 사용하거나 노드 및 사이트 간에 오브젝트를 삭제 코딩하여 시간에 따라 저장하는 방식을 결정합니다. 이 ILM 시스템은 그리드 내의 객체 데이터 일관성을 담당합니다.</block>
@@ -3022,23 +3010,17 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="7f96c68c60ab5bbabacca964ae3b8ed1" category="paragraph">기본 일관성은 그리드 전체에서 정의됩니다. 사용자는 언제든지 버킷 수준에서 일관성을 변경할 수 있습니다.</block>
   <block id="201f092d3f717ae191dd3f1a8fbfe160" category="paragraph">StorageGRID에서 사용할 수 있는 버킷 일관성 옵션은 다음과 같습니다.</block>
   <block id="34d51dd8353a96472efa22d6a61f77ac" category="list-text">* 모두 *: 최고 수준의 일관성을 제공합니다. 그리드의 모든 노드가 즉시 데이터를 수신하면 요청이 실패합니다.</block>
-  <block id="23cf7178bab8a1e4584c67dbdc4d19df" category="list-text">* 강력한 글로벌 *: 모든 사이트에서 모든 클라이언트 요청에 대해 쓰기 후 읽기 일관성을 보장합니다.</block>
   <block id="9b2e1b371e348127ef43740bbc2f852d" category="list-text">* 강력한 사이트 *: 사이트 내의 모든 클라이언트 요청에 대해 쓰기 후 읽기 일관성을 보장합니다.</block>
   <block id="75d41ce194701530c0861e0d0a3cd8f5" category="list-text">* Read-after-new-write * (기본값): 새 개체에 대해 읽기-쓰기 후 일관성을 제공하고 개체 업데이트에 대한 최종 일관성을 제공합니다. 고가용성 및 데이터 보호 보장 제공 대부분의 경우에 권장됩니다.</block>
   <block id="c0a48852ac050900e86f2edb977893ac" category="list-text">* 사용 가능 *: 새 객체 및 객체 업데이트 모두에 대한 최종 일관성을 제공합니다. S3 버킷의 경우 필요한 경우에만 사용하십시오(예: 거의 읽지 않는 로그 값이 포함된 버킷의 경우 또는 존재하지 않는 키의 헤드 또는 GET 작업의 경우). S3 FabricPool 버킷은 지원되지 않습니다.</block>
   <block id="2656a89324be33e667f0895f0c93e2fb" category="section-title">오브젝트 데이터 정합성</block>
   <block id="1f49fb5ccaeb19371716c5dcf6ebba64" category="paragraph">사이트 내부 및 사이트 간에 메타데이터가 자동으로 복제되지만, 오브젝트 데이터 스토리지를 배치할 결정은 사용자의 몫입니다. 오브젝트 데이터는 사이트 내부 및 사이트 간 복제본에 저장되거나, 사이트 내부 또는 사이트 간 삭제 코딩되거나, 복제 및 삭제 코딩 스토리지 스키마의 조합에 저장될 수 있습니다. ILM 규칙은 모든 오브젝트에 적용되거나 특정 오브젝트, 버킷 또는 테넌트에만 적용되도록 필터링될 수 있습니다. ILM 규칙은 객체의 저장 방식, 복제본 및/또는 삭제 코딩 방식, 해당 위치에 객체가 저장되는 기간, 복제본 또는 삭제 코딩 체계 수가 변경되거나 위치가 시간에 따라 변경될 경우 정의합니다.</block>
   <block id="6f3609d6439df769d705e58886d0a612" category="paragraph">각 ILM 규칙은 오브젝트 보호를 위한 세 가지 수집 동작 중 하나인 이중 커밋, 균등 또는 엄격 으로 구성됩니다.</block>
-  <block id="936750596dd5725d654d59c663df965a" category="paragraph">Dual Commit 옵션은 그리드의 다른 두 스토리지 노드에서 즉시 두 개의 복제본을 만들고 클라이언트에 요청을 반환합니다. 노드 선택은 요청의 사이트 내에서 시도되지만 경우에 따라 다른 사이트의 노드를 사용할 수 있습니다. ILM 규칙에 따라 평가되고 배치될 ILM 대기열에 개체가 추가됩니다.</block>
-  <block id="1ab2be0a3696e2c2b0b8bd09470e4fd1" category="paragraph">균형 조정 옵션은 ILM 정책을 기준으로 개체를 즉시 평가하고 클라이언트에 요청이 성공적으로 반환되기 전에 개체를 동기적으로 배치합니다. 운영 중단이나 배치 요구 사항을 충족하기에 부적절한 스토리지로 인해 ILM 규칙을 즉시 충족할 수 없는 경우 이중 커밋이 대신 사용됩니다. 문제가 해결되면 ILM은 정의된 규칙에 따라 개체를 자동으로 배치합니다.</block>
-  <block id="2215555fc86a611cd3e2dd4bc4066aff" category="paragraph">Strict 옵션은 ILM 정책을 기준으로 개체를 즉시 평가하고 클라이언트에 요청이 성공적으로 반환되기 전에 개체를 동기식으로 배치합니다. 운영 중단이나 배치 요구 사항을 충족하기에 스토리지 부족으로 인해 ILM 규칙을 즉시 충족할 수 없는 경우 요청이 실패하고 클라이언트가 다시 시도해야 합니다.</block>
   <block id="1c72ef556b5fc669fadc14ae383d37cf" category="section-title">로드 밸런싱</block>
   <block id="babc08c413a52242b7d338a9958eddf7" category="paragraph">StorageGRID는 통합 게이트웨이 노드, 외부 타사 로드 밸런서, DNS 라운드 로빈 또는 스토리지 노드에 대한 직접 클라이언트 액세스를 통해 배포할 수 있습니다. 한 사이트에 여러 게이트웨이 노드를 구축하고 고가용성 그룹으로 구성하여 게이트웨이 노드가 중단될 경우 자동 페일오버 및 장애 복구를 제공할 수 있습니다. 솔루션에 로드 밸런싱 방법을 결합하여 솔루션의 모든 사이트에 대한 단일 액세스 지점을 제공할 수 있습니다.</block>
-  <block id="0c1ba34ce07cdb4dcf9dfb6117dce295" category="paragraph">게이트웨이 노드는 기본적으로 게이트웨이 노드가 있는 사이트의 스토리지 노드 간 로드 밸런싱을 수행합니다. 게이트웨이 노드가 여러 사이트의 노드를 사용하여 부하를 분산하도록 StorageGRID를 구성할 수 있습니다. 이렇게 구성하면 클라이언트 요청에 대한 응답 지연 시간에 이러한 사이트 간의 지연 시간이 추가됩니다. 이는 클라이언트가 총 지연 시간을 허용할 경우에만 구성해야 합니다.</block>
   <block id="434ca8d9b2383ed26fb519f93dc2bb36" category="paragraph">오브젝트 스토리지 시스템에서 RPO(복구 시점 목표)를 0으로 달성하려면 장애 발생 시 다음 사항이 중요합니다.</block>
   <block id="e01ab96fbda93c5ece52f522eb9e97ee" category="list-text">메타데이터와 개체 콘텐츠 모두 동기화되며 정합성이 보장되는 것으로 간주됩니다</block>
   <block id="855d870be57ab487bc6c3c7dd6177ade" category="list-text">오류가 발생해도 개체 콘텐츠에 액세스할 수 있습니다.</block>
-  <block id="3144181f53a9b5a1f7faaa68687ce053" category="paragraph">스토리지 시스템의 오브젝트는 라이프사이클 동안 데이터의 저장 방법과 위치를 결정하는 ILM(정보 라이프사이클 관리) 규칙에 따라 저장됩니다. 동기식 복제의 경우 Strict 실행 또는 Balanced 실행 중 하나를 고려할 수 있습니다.</block>
   <block id="ba76eb24bf3904a1670b5bea1f9b483c" category="list-text">이러한 ILM 규칙을 엄격하게 실행해야 제로 RPO에 대해 엄격한 실행이 필요합니다. 왜냐하면 지연 또는 폴백 없이 정의된 위치에 오브젝트를 배치하고 데이터 가용성과 일관성을 유지할 수 있기 때문입니다.</block>
   <block id="d30ec037efde149da7fc42696aac2a3a" category="list-text">StorageGRID의 ILM 밸런스 수집 동작은 고가용성과 복구 성능 간의 균형을 유지하여 사이트 장애 시에도 사용자가 데이터를 계속 수집할 수 있도록 합니다.</block>
   <block id="3e1fd95f52676bdecea3672d3961028d" category="inline-link">StorageGRID 로드 밸런서 기술 보고서</block>
@@ -3049,16 +3031,12 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="b0ce1d579493e334271a3fd059b9fee8" category="list-text">그리드 내 복제에는 동기식 및 비동기식 복제가 포함되며, ILM 수집 동작 및 메타데이터 정합성 제어를 사용하여 구성 가능합니다.</block>
   <block id="1011324ed3564a620bc5485d84c2022b" category="list-text">그리드 간 복제는 비동기식만 가능합니다.</block>
   <block id="3eb3b2b49a459eec5258a23b3937ec50" category="section-title">단일 그리드 다중 사이트 배포</block>
-  <block id="18b742c71481166d728314dedbf8266d" category="paragraph">2개 사이트 StorageGRID 솔루션에는 모든 객체에 대해 최소 2개의 복제본 또는 3개의 EC 청크와 모든 메타데이터에 대한 복제본 6개가 있습니다. 장애 복구 시 중단 시 업데이트가 복구된 사이트/노드에 자동으로 동기화됩니다. 2개 사이트만 있는 경우 전체 사이트 손실을 넘어서는 장애 시나리오에서 제로 RPO를 달성할 가능성이 없습니다.</block>
   <block id="ea45bf8dbcdbd39284bd9bf6e419d8c1" category="inline-image-macro">2개 사이트 StorageGRID 시스템</block>
   <block id="3d6a8c14b8eb946f5a4a31a10e28d011" category="paragraph"><block ref="3d6a8c14b8eb946f5a4a31a10e28d011" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f510bd2ad54651fe5fdf2ba313fa7e94" category="paragraph">3개 이상의 사이트로 구성된 StorageGRID 솔루션에는 모든 객체에 대해 3개 이상의 복제본 또는 3개의 EC 청크와 모든 메타데이터에 대한 복제본 9개가 있습니다. 장애 복구 시 중단 시 업데이트가 복구된 사이트/노드에 자동으로 동기화됩니다. 3개 이상의 사이트에서 제로 RPO를 달성할 수 있습니다.</block>
   <block id="5fe817ef605904371e41e6113fe6648d" category="inline-image-macro">3개 사이트 StorageGRID 시스템</block>
   <block id="9a4f522f8b89c72d7c30c89d4a032d91" category="paragraph"><block ref="9a4f522f8b89c72d7c30c89d4a032d91" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a7037a59646209bbbc4c7d0db625f106" category="paragraph">다중 사이트 장애 시나리오</block>
   <block id="e139a585510a502bbf1841cf589f5086" category="cell">실패</block>
-  <block id="afd872554f9681235471a2c5883b0d6c" category="cell">2-사이트 결과</block>
-  <block id="58dff619f0bd9804be1692a0d0966f7e" category="cell">3개 이상의 사이트 결과</block>
   <block id="64b99653800cfbabb38664b747ab2e15" category="cell">단일 노드 드라이브에 장애</block>
   <block id="55e72c5da46cbe937d4e50af7f3af3fb" category="cell">각 어플라이언스는 여러 디스크 그룹을 사용하며 중단이나 데이터 손실 없이 그룹당 최소 1개의 드라이브를 유지할 수 있습니다.</block>
   <block id="dd83dd9b74267310c6c462ca4b20837d" category="cell">단일 사이트에 단일 노드 장애 발생</block>
@@ -3069,25 +3047,15 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="869217d84c1d082654dddf1286388adf" category="cell">작업은 다른 모든 사이트로 전송되며 중단 없이 데이터 손실이 없습니다.</block>
   <block id="23d194cbaea547a93ca3ed3bf8ff8c2d" category="cell">여러 사이트에서 단일 노드 장애 발생</block>
   <block id="982425d0b8d4c79df7b4e61bc8f0908c" category="paragraph">다음과 같은 경우 중단 또는 데이터 손실 없음:</block>
-  <block id="ec173baf3623010a67af1cb0befd6e44" category="list-text">그리드에 하나 이상의 복제본이 있습니다</block>
   <block id="9636cc5c20fef7cd2a97760c5bfb72e5" category="list-text">그리드에 충분한 EC 청크가 있습니다</block>
   <block id="5fafe5331ccf1a9f240018258ab857f4" category="paragraph">작업이 중단되고 다음과 같은 경우 데이터 손실 위험이 있습니다.</block>
-  <block id="8508c1de63d092545ea7ac8b64f188a3" category="list-text">복제본이 없습니다</block>
   <block id="d8d38aa1b3bfeb8de5a355a0e159518b" category="list-text">EC 척이 부족합니다</block>
   <block id="002796052352c300893e7cea45483eee" category="list-text">개체를 검색할 EC 척이 부족합니다</block>
   <block id="197a78fa8f3bc319da86384db97d8b45" category="cell">단일 사이트 장애</block>
-  <block id="6502d7867cfa9f73685c72f1ab1a97f3" category="cell">클라이언트 작업은 장애가 해결되거나 버킷 정합성이 강력한 사이트 또는 하위 사이트로 내려가 작업이 성공하지만 데이터가 손실되지 않을 때까지 중단됩니다.</block>
   <block id="6dd78db15f76edcd689c5f34b1a044ac" category="cell">단일 사이트 및 단일 노드 장애</block>
-  <block id="4ae6253dd23ad200eac56c1ae66c57ce" category="cell">장애가 해결될 때까지 클라이언트 작업이 중단되거나 버킷 정합성이 새 쓰기 후 읽기 이하로 낮아져 작업이 성공하고 데이터가 손실될 수 있습니다.</block>
   <block id="d7daa36acb9042a724041fb6a618e414" category="cell">단일 사이트 + 나머지 각 사이트의 노드 1개</block>
-  <block id="606a4088cd9679be9ab9565a53f94f98" category="cell">메타데이터 복제 쿼럼을 충족할 수 없고 데이터가 손실될 수 있는 경우 작업이 중단됩니다.</block>
   <block id="f11f682e7973cb21186b5b560ca1ae7e" category="cell">다중 사이트 장애</block>
-  <block id="fce0d087275e60042477aa5199ce1011" category="cell">하나 이상의 사이트를 완전히 복구할 수 없는 경우 운영 사이트가 손실되지 않습니다.</block>
-  <block id="4a80a85cf7dcccd203aa17cad8b32f61" category="cell">메타데이터 복제 쿼럼을 충족할 수 없는 경우 작업이 중단됩니다. 최소 1개 이상의 사이트가 남아 있는 한 데이터 손실이 없습니다.</block>
   <block id="a2fc7edce2b8d377a5db40f745cd186e" category="cell">사이트의 네트워크 격리</block>
-  <block id="6ce70a008903356746c99f083916cf62" category="cell">클라이언트 작업은 장애가 해결되거나 버킷 정합성이 강력한 사이트 또는 하위 사이트로 내려가 작업이 성공할 수 있지만 데이터 손실은 발생하지 않을 때까지 중단됩니다</block>
-  <block id="a832d31461ba76ddc892c57841a52f92" category="paragraph">격리된 사이트의 작업은 중단되지만 데이터는 손실되지 않습니다</block>
-  <block id="7e285c7404a1098df2068ce3cd5b70db" category="paragraph">나머지 사이트에서 작업을 중단하거나 데이터가 손실되지 않습니다</block>
   <block id="15fd08e71edb235c1f3886027abe22b0" category="section-title">다중 사이트 다중 그리드 배포</block>
   <block id="96045b1c0304cef753cc8d0ef8b0f5d4" category="paragraph">이 솔루션은 두 지역으로 균등하게 분할된 4개의 위치를 사용합니다. 영역 1은 그리드 1의 스토리지 사이트 2개를 영역의 기본 그리드로 포함하고 그리드 2의 메타데이터 사이트를 포함합니다. 영역 2는 그리드 2의 스토리지 사이트 2개를 영역의 기본 그리드로 포함하고 그리드 1의 메타데이터 사이트를 포함합니다. 각 영역에서 동일한 위치에 다른 영역 그리드의 메타데이터 전용 사이트와 해당 영역의 기본 그리드의 스토리지 사이트가 포함될 수 있습니다. 메타데이터만 세 번째 사이트로 사용하면 메타데이터에 필요한 일관성을 제공할 수 있고 해당 위치에 있는 객체의 저장소를 복제할 수 없습니다.</block>
   <block id="54c747b99263ca48f4db2b58d9d3ecee" category="inline-image-macro">4개 사이트 멀티 그리드 솔루션</block>
@@ -3221,7 +3189,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="f69309997a74d84dd39f53923232f102" category="summary">StorageGRID의 정책 및 권한.</block>
   <block id="61e1800dd7d03bc7509039ca51abaa94" category="paragraph">StorageGRID는 정보 라이프사이클 관리 정책(ILM)에 따라 다양한 서비스 수준의 단일 네임스페이스를 여러 위치에서 제공합니다. 이러한 수명 주기 정책을 사용하면 수명 주기 전반에 걸쳐 데이터가 저장되는 위치를 최적화할 수 있습니다.</block>
   <block id="ee46b302eeb000f796002cd99f7fccca" category="paragraph">StorageGRID은 로컬 및 지리적으로 분산된 솔루션에서 구성 가능한 내구성과 데이터 가용성을 지원합니다. 데이터가 온프레미스에 있든 퍼블릭 클라우드에 있든, 통합 하이브리드 클라우드 워크플로를 통해 기업은 Amazon Simple Notification Service(Amazon SNS), Google Cloud, Microsoft Azure Blob, Amazon S3 Glacier, Elasticsearch 등의 클라우드 서비스를 활용할 수 있습니다.</block>
-  <block id="639932e1f3f1e48c7c66a3c0d26d7c95" category="paragraph">StorageGRID 노드는 다음과 같이 배포될 수 있습니다.</block>
   <block id="2ef98a36e008b10819c92b90ab9fb134" category="list-text">객체 수를 최대화하는 메타데이터 전용 노드</block>
   <block id="314be57ec0bf12b0f7b8fad48b9e7d0d" category="list-text">객체 공간을 극대화하는 객체 스토리지 전용 노드</block>
   <block id="b67abdd7987281e93fb88e16a9dede52" category="list-text">객체 수와 객체 공간을 모두 추가하는 결합된 메타데이터 및 객체 스토리지 노드</block>
@@ -3232,22 +3199,18 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="0987bb97934aa3a8ea668bd0c91ce52d" category="sidebar">StorageGRID 의 보안 기능 - 객체 저장소의 데이터 및 메타데이터 보안</block>
   <block id="243c98f4ed7a2d56d634e9cc955fda88" category="sidebar">StorageGRID 재해 복구 - Veritas Enterprise Vault를 사용하여 사이트 장애 조치를 위한 StorageGRID 구성</block>
   <block id="6296eecae5fd6a7ad4c379ebb94e6ecf" category="section-title">다른 버전이 없는 삭제 마커를 제거하고, "accounts_ prefix"가 있는 개체의 경우 4개의 비현재 버전과 최소 30일 분의 기록을 유지하고, 다른 모든 개체 버전의 경우 2개의 버전과 최소 10일 분의 기록을 유지합니다.</block>
-  <block id="3c8cdd15a6a530650da7bd29f3a5558a" category="paragraph">최소 StorageGRID 배포는 단일 사이트의 관리 노드와 3개의 스토리지 노드로 구성됩니다.  단일 그리드는 최대 220개 노드까지 확장될 수 있습니다.  StorageGRID 단일 사이트로 배포하거나 16개 사이트까지 확장할 수 있습니다.</block>
   <block id="fc7ef6488361c9c97f3d756ad91297b1" category="paragraph">관리 노드에는 측정 항목과 로깅을 위한 중앙 지점인 관리 인터페이스가 포함되어 있으며 StorageGRID 구성 요소의 구성을 유지 관리합니다.  관리자 노드에는 S3 API 액세스를 위한 통합 로드 밸런서도 포함되어 있습니다.</block>
   <block id="e75c00df26f576c96bb2702f9c563c20" category="paragraph">StorageGRID 소프트웨어 전용, VMware 가상 머신 어플라이언스 또는 특수 목적 어플라이언스로 배포할 수 있습니다.</block>
   <block id="ef0ee1bddd52d01db041108f1228135e" category="paragraph">각 스토리지 노드는 수백 페타바이트 규모의 단일 네임스페이스를 허용하는 객체 스토리지의 멀티 페타바이트 용량으로 확장될 수 있습니다.  StorageGRID 게이트웨이 노드라고 하는 S3 API 작업을 위한 통합 로드 밸런서도 제공합니다.</block>
   <block id="c79c68e59ac4365a8f57819778c2d079" category="paragraph">StorageGRID 사이트 토폴로지에 배치된 노드 컬렉션으로 구성됩니다.  StorageGRID 의 사이트는 고유한 물리적 위치일 수도 있고, 논리적 구조로 그리드의 다른 사이트와 공유되는 물리적 위치에 상주할 수도 있습니다.  StorageGRID 사이트는 여러 물리적 위치에 걸쳐 있어서는 안 됩니다.  사이트는 공유된 LAN(Local Area Network) 인프라와 장애 도메인을 나타냅니다.</block>
   <block id="d0351f8bc75f9766fc04d15d94a8bd0b" category="paragraph">StorageGRID 노드 수준과 드라이브 수준에서 코드 데이터를 지우는 기능을 제공합니다.  StorageGRID 어플라이언스를 사용하면 노드 내의 모든 드라이브에 저장된 데이터의 삭제 코드를 작성하여 여러 디스크 장애로 인한 데이터 손실이나 중단으로부터 로컬 보호를 제공합니다.  드라이브 장애로 인한 재구축은 노드에 국한되므로 네트워크를 통해 데이터를 복제할 필요가 없습니다.</block>
   <block id="111ff3048a18a746f2160bb022a17ec3" category="paragraph">또한 StorageGRID 어플라이언스는 StorageGRID의 ILM 규칙을 통해 노드 장애로부터 보호하면서, 삭제 코딩 방식을 사용하여 사이트 내의 노드 전체 또는 StorageGRID 시스템의 3개 이상의 사이트에 걸쳐 개체 데이터를 저장합니다.</block>
-  <block id="6538e063b9a1941823d45adc0387aa3f" category="paragraph">삭제 코딩은 낮은 오버헤드로 노드 및 사이트 장애에 대한 복원력이 뛰어난 스토리지 레이아웃을 제공하는 반면, 복제는 더 많은 오버헤드로 동일한 작업을 수행할 수 있습니다.  모든 StorageGRID 삭제 코딩 체계는 데이터 청크를 저장하는 데 필요한 최소 노드 수가 충족되는 경우 단일 사이트에 배포할 수 있습니다.  즉, 4+2의 EC 체계에서는 데이터를 수신할 수 있는 노드가 최소 6개 있어야 합니다.</block>
   <block id="9be7d4cba47d08188ba121bdcfbf06f8" category="list-text">*Quorum Strong-global*: 모든 사이트의 모든 클라이언트 요청에 대해 읽기-쓰기 일관성을 보장합니다.  메타데이터 복제본 쿼럼을 달성할 수 있는 경우 여러 노드 또는 사이트 장애에도 일관성을 제공합니다.</block>
   <block id="c56dabcab7c66e3a31beb8e5ec75bc45" category="list-text">QUORUM 일관성은 각 사이트에 3개의 메타데이터 복제본이 있는 스토리지 노드 메타데이터 복제본의 쿼럼으로 정의됩니다.  다음과 같이 계산할 수 있습니다. 1+((N*3)/2) 여기서 N은 총 사이트 수입니다.</block>
   <block id="d063e8f08673adc8df1fe6cec7b7a7bc" category="list-text">예를 들어, 3개 사이트 그리드에서 최소 5개의 복제본을 만들어야 하며, 사이트 내에는 최대 3개의 복제본이 있어야 합니다.</block>
-  <block id="f8dd54c357440b879a762147dcc0262d" category="paragraph">로컬 및 글로벌 부하 분산을 결합하면 RTO를 0으로 보장할 수 있습니다.  중단 없는 클라이언트 액세스를 보장하려면 클라이언트 요청의 부하 분산이 필요합니다.  StorageGRID 솔루션은 각 사이트에 여러 개의 게이트웨이 노드와 고가용성 그룹을 포함할 수 있습니다.  사이트 장애 발생 시에도 모든 사이트의 클라이언트에 중단 없는 액세스를 제공하려면 StorageGRID 게이트웨이 노드와 함께 외부 부하 분산 솔루션을 구성해야 합니다.  각 사이트 내의 부하를 관리하는 게이트웨이 노드 고가용성 그룹을 구성하고 외부 부하 분산 장치를 사용하여 고가용성 그룹 전체에서 부하를 분산합니다.  외부 로드 밸런서는 요청이 운영 사이트에만 전송되는지 확인하기 위해 상태 검사를 수행하도록 구성되어야 합니다.  StorageGRID 사용한 부하 분산에 대한 자세한 내용은 다음을 참조하세요.<block ref="587298665ed077e05405d60ca7617c92" category="inline-link-rx"></block> .</block>
   <block id="08b7575fdd3926665d85a59b0d1eb1e5" category="section-title">StorageGRID 사용한 Zero RPO 요구 사항</block>
   <block id="2cc7dacd3d9a578262f5166ed6f8429b" category="paragraph">다중 사이트 배포의 경우 Quorum Strong Global은 모든 사이트에서 메타데이터가 동기화되도록 보장하는 기본 일관성 모델로, 0 RPO 요구 사항을 충족하는 데 필수적입니다.</block>
   <block id="4340156e4c2f48db5faf8fe946b7b76c" category="paragraph">*다중 사이트 솔루션:* StorageGRID 사용하면 그리드 내의 여러 사이트에 걸쳐 객체를 동기적으로 복제할 수 있습니다.  균형이나 엄격한 동작을 포함하는 정보 수명 주기 관리(ILM) 규칙을 설정하면 객체가 지정된 위치에 즉시 배치됩니다.  버킷 일관성 수준을 Quorum Strong Global로 구성하면 동기식 메타데이터 복제도 보장됩니다.  StorageGRID 단일 글로벌 네임스페이스를 사용하여 객체 배치 위치를 메타데이터로 저장하므로 모든 노드가 모든 복사본이나 삭제 코드 조각의 위치를 ​​알 수 있습니다.  요청이 이루어진 사이트에서 객체를 검색할 수 없는 경우 장애 조치 절차가 필요 없이 원격 사이트에서 자동으로 객체를 검색합니다.</block>
-  <block id="47c37215042d2824804cb9bd9bd0b409" category="paragraph">다음 시나리오에서 StorageGRID 솔루션은 통합 로드 밸런서 고가용성 그룹에 대한 요청을 관리하는 선택적 외부 로드 밸런서로 구성됩니다.  이를 통해 RPO가 0인 것 외에도 RTO도 0이 됩니다.  ILM은 동기식 배치를 위한 균형 잡힌 수집 보호 기능으로 구성됩니다.  각 버킷은 3개 이상의 사이트로 구성된 그리드의 경우 Quorum Strong Global 일관성 모델로 구성되고, 3개 미만의 사이트의 경우 Strong Global 일관성 모델로 구성됩니다.</block>
   <block id="8865f9fe613497bf0177e03d609c23d2" category="paragraph">중복성을 한층 더 강화하기 위해 이 시나리오에서는 두 개의 StorageGRID 클러스터를 사용하고 그리드 간 복제를 사용하여 동기화를 유지합니다.  이 솔루션의 경우 각 StorageGRID 클러스터에는 3개의 사이트가 있습니다.  두 사이트는 객체 스토리지와 메타데이터에 사용되고, 세 번째 사이트는 메타데이터에만 사용됩니다.  두 시스템 모두 두 데이터 사이트 각각에서 삭제 코딩을 사용하여 객체를 동기적으로 저장하기 위한 균형 잡힌 ILM 규칙으로 구성됩니다.  버킷은 Quorum Strong Global 일관성 모델로 구성됩니다.  각 그리드는 모든 버킷에서 양방향 크로스 그리드 복제를 구성합니다.  이는 지역 간 비동기 복제를 제공합니다.  선택적으로 글로벌 로드 밸런서를 구현하여 두 StorageGRID 시스템의 통합 로드 밸런서 고가용성 그룹에 대한 요청을 관리하여 RPO를 0으로 설정할 수 있습니다.</block>
   <block id="80f1c748a0e0ce55abcb6571bb430d38" category="paragraph">감사 로그는 syslog를 통해 내보내질 수 있으며, 이를 통해 Splunk 및 ELK와 같은 도구를 사용하여 감사 메시지를 마이닝할 수 있습니다.  감사 메시지에는 네 가지 유형이 있습니다.</block>
   <block id="34da6679711f958e925f9b135997bbba" category="paragraph">감사 로그는 장기 보관 및 애플리케이션 액세스를 위해 S3 버킷에 저장할 수 있습니다.</block>
@@ -3344,4 +3307,43 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="f7dcf34d77dc4c11838f7765c7dcd650" category="sidebar">StorageGRID 로드 밸런서의 역할에 대해 알아보세요</block>
   <block id="afe2571f5b9a6df9bd38c515313c5337" category="sidebar">브랜치 버킷을 활용한 랜섬웨어 방어 조사</block>
   <block id="1b0f701303c9287515b1ad814889dfbb" category="sidebar">StorageGRID 12.0</block>
+  <block id="1477486e7b73a50110a7e1174a0a9e63" category="paragraph">이 기술 보고서는 사이트 장애 발생 시 복구 지점 목표(RPO)를 0으로 달성하기 위해 StorageGRID 복제 전략을 구현하는 방법에 대한 포괄적인 가이드를 제공합니다. 이 문서에서는 다중 사이트 동기 복제 및 다중 그리드 비동기 복제를 포함하여 StorageGRID 에 대한 다양한 배포 옵션에 대해 자세히 설명합니다. 여기서는 StorageGRID 정보 수명 주기 관리(ILM) 정책을 구성하여 여러 위치에서 데이터 내구성과 가용성을 보장하는 방법을 설명합니다. 또한 이 보고서는 중단 없는 클라이언트 운영을 유지하기 위한 성능 고려 사항, 실패 시나리오 및 복구 프로세스도 다룹니다. 이 문서의 목적은 동기 및 비동기 복제 기술을 모두 활용하여 사이트 전체에 장애가 발생한 경우에도 데이터에 대한 접근 가능성과 일관성을 유지하는 데 필요한 정보를 제공하는 것입니다.</block>
+  <block id="beae719565120c3029e58b8cc07ab0bd" category="paragraph">최소 StorageGRID 배포는 단일 사이트의 관리 노드와 3개의 스토리지 노드로 구성됩니다. 단일 그리드는 최대 220개 노드까지 확장될 수 있습니다. StorageGRID 단일 사이트로 배포하거나 16개 사이트로 확장할 수 있습니다.</block>
+  <block id="7cc586f564adeb8c0359665929373f00" category="paragraph">스토리지 노드는 다음과 같이 배포될 수 있습니다.</block>
+  <block id="ba32bedc804e7bb6a5923493262a3ade" category="list-text">객체 데이터는 실제 기본 데이터를 나타냅니다. 예를 들어 사진, 영화, 의료 기록 등이 있습니다.</block>
+  <block id="5137a04d33fb42650e67ff12f6a52d8e" category="list-text">각 객체의 복제본 사본이나 삭제 코드화된 조각의 현재 저장 위치입니다.</block>
+  <block id="d0736e890c24259e81073f666695f227" category="list-text">세그먼트화된 객체와 다중 파트 객체의 경우 세그먼트 식별자와 데이터 크기입니다.</block>
+  <block id="1bef005b9a6c5e01ff03054f34bc5beb" category="paragraph">삭제 코딩은 복제보다 오버헤드가 낮으면서 노드 및 사이트 장애에 대한 복원력이 뛰어난 스토리지 레이아웃을 제공합니다. 모든 StorageGRID 삭제 코딩 체계는 데이터 청크를 저장하는 데 필요한 최소 노드 수가 충족되는 경우 단일 사이트에 배포할 수 있습니다. 즉, 4+2의 EC 체계에서는 데이터를 수신할 수 있는 노드가 최소 6개 있어야 합니다.</block>
+  <block id="d5766766c59e3d9af63d1473c5ce1b5f" category="list-text">*강력한 글로벌*:</block>
+  <block id="6f4a5fbbb3a2d6cc42df99ed00253a1e" category="list-text">*레거시 스트롱 글로벌*: 모든 사이트의 모든 클라이언트 요청에 대해 읽기-쓰기 일관성을 보장합니다.</block>
+  <block id="8190cb8fa846c6397a4098016aae607b" category="list-text">이는 새로운 Quorum Strong Global로 수동으로 변경하지 않고도 11.9 이하 버전에서 12.0으로 업그레이드한 모든 시스템에 적용되는 기본 동작입니다.</block>
+  <block id="333bd85e6baadc6b1c15e6e34746ceab" category="list-text">이는 12.0 이상으로 새로 설치된 모든 시스템에 대한 기본 동작입니다.</block>
+  <block id="cef7f629c1a1cd896339f424fa22bb83" category="paragraph">듀얼 커밋 옵션은 그리드 내의 두 개의 서로 다른 스토리지 노드에 두 개의 사본을 즉시 만들고 클라이언트에게 요청이 성공했다는 것을 반환합니다. 노드 선택은 요청 사이트 내에서 시도되지만 어떤 상황에서는 다른 사이트의 노드를 사용할 수도 있습니다. 해당 객체는 ILM 대기열에 추가되어 ILM 규칙에 따라 평가되고 배치됩니다.</block>
+  <block id="26c7ee8e48bb07eea6962a93bcc2320a" category="paragraph">균형 잡힌 옵션은 ILM 정책에 대해 객체를 즉시 평가하고 클라이언트에게 요청을 성공적으로 반환하기 전에 객체를 동기적으로 배치합니다. 중단이나 배치 요구 사항을 충족할 만큼의 저장 공간이 부족하여 ILM 규칙을 즉시 충족할 수 없는 경우 대신 이중 커밋이 사용됩니다. 문제가 해결되면 ILM은 정의된 규칙에 따라 객체를 자동으로 배치합니다.</block>
+  <block id="0364e24f1eb145592ee0b598b8005735" category="paragraph">엄격한 옵션은 ILM 정책에 대해 객체를 즉시 평가하고 클라이언트에게 요청을 성공적으로 반환하기 전에 객체를 동기적으로 배치합니다. 중단이나 배치 요구 사항을 충족할 만큼의 저장 공간이 부족하여 ILM 규칙을 즉시 충족할 수 없는 경우 요청은 실패하고 클라이언트는 다시 시도해야 합니다.</block>
+  <block id="7eaf1a666369158296b99d1bae924fb9" category="paragraph">게이트웨이 노드는 기본적으로 게이트웨이 노드가 있는 사이트의 스토리지 노드 간에 부하를 분산합니다. StorageGRID 구성하면 게이트웨이 노드가 여러 사이트의 노드를 사용하여 부하를 분산할 수 있습니다. 이 구성을 사용하면 클라이언트 요청에 대한 응답 지연에 해당 사이트 간의 지연이 추가됩니다. 이는 전체 지연 시간이 클라이언트에게 허용되는 경우에만 구성해야 합니다.</block>
+  <block id="b88fa163d4922e884e42d91e1ba6ae64" category="paragraph">로컬 및 글로벌 부하 분산을 결합하면 RTO를 0으로 보장할 수 있습니다. 중단 없는 클라이언트 액세스를 보장하려면 클라이언트 요청의 부하 분산이 필요합니다. StorageGRID 솔루션은 각 사이트에 여러 개의 게이트웨이 노드와 고가용성 그룹을 포함할 수 있습니다. 사이트 장애 발생 시에도 모든 사이트의 클라이언트에 중단 없는 액세스를 제공하려면 StorageGRID Gateway 노드와 함께 외부 부하 분산 솔루션을 구성해야 합니다. 각 사이트 내의 부하를 관리하는 Gateway 노드 고가용성 그룹을 구성하고 외부 부하 분산 장치를 사용하여 고가용성 그룹 전체에서 부하를 분산합니다. 외부 로드 밸런서는 요청이 운영 사이트에만 전송되는지 확인하기 위해 상태 검사를 수행하도록 구성되어야 합니다. StorageGRID 사용한 부하 분산에 대한 자세한 내용은 다음을 참조하세요.<block ref="587298665ed077e05405d60ca7617c92" category="inline-link-rx"></block>.</block>
+  <block id="aeaea368f9c7df971b29e4e113b40910" category="paragraph">저장 시스템의 객체는 정보 수명 주기 관리(ILM) 규칙에 따라 저장됩니다. 이 규칙은 데이터가 수명 주기 전반에 걸쳐 어떻게, 어디에 저장되는지를 결정합니다. 동기 복제의 경우 엄격한 실행과 균형 실행을 고려할 수 있습니다.</block>
+  <block id="e90289fd7decc74e13e03b1552c30be4" category="paragraph">다음 시나리오에서 StorageGRID 솔루션은 통합 로드 밸런서 고가용성 그룹에 대한 요청을 관리하는 선택적 외부 로드 밸런서로 구성됩니다. 이를 통해 RPO가 0인 것 외에도 RTO도 0이 됩니다. ILM은 동기식 배치를 위한 균형 잡힌 수집 보호 기능으로 구성됩니다. 각 버킷은 3개 이상의 사이트 그리드의 경우 강력한 글로벌 일관성 모델의 Quorum 버전으로 구성되고, 2개 사이트의 경우 강력한 글로벌 일관성의 레거시 버전으로 구성됩니다.</block>
+  <block id="3fa7a1aaa876241f03f99e54b9155fea" category="paragraph">*시나리오 1:*</block>
+  <block id="18a1bb675a43c43a3dfde79cc13f84b7" category="paragraph">2개 사이트 StorageGRID 솔루션에는 모든 객체의 복제본이 최소 2개 있고 모든 메타데이터의 복제본이 6개 있습니다. 장애 복구 시, 장애로 인한 업데이트는 복구된 사이트/노드에 자동으로 동기화됩니다. 사이트가 2개뿐이므로 전체 사이트가 손실되는 상황을 넘어 장애 발생 시 RPO를 0으로 유지하는 것은 불가능합니다.</block>
+  <block id="5ab17dee3d885984e1cdcd607277ac4e" category="paragraph">*시나리오 2:*</block>
+  <block id="cd26f9cc5a308ec85764b3e36bb2f272" category="paragraph">3개 이상의 사이트로 구성된 StorageGRID 솔루션에는 모든 객체의 복제본 또는 EC 청크가 최소 3개 있고 모든 메타데이터의 복제본은 9개 있습니다. 장애 복구 시, 장애로 인한 업데이트는 복구된 사이트/노드에 자동으로 동기화됩니다. 사이트가 3개 이상인 경우 RPO를 0으로 설정하는 것이 가능합니다.</block>
+  <block id="9ab046a736c89c63a7db90494ae7ec75" category="cell">2개 사이트 결과 + 강력한 글로벌 레거시</block>
+  <block id="26c449ea48832ca48a6548bc31d96fd0" category="cell">3개 이상의 사이트 결과 + Quorum Strong Global</block>
+  <block id="1c78a7597bcf74fe02547feb0063affe" category="list-text">그리드에 최소 하나의 복제본이 존재합니다.</block>
+  <block id="00316d3bc04dc064cd3719dd912d32a4" category="list-text">복제본이 존재하지 않습니다</block>
+  <block id="452168b286824cfe8e53ad1f5dda59bd" category="list-text">그리드에 최소한 하나의 복제본이 존재합니다.</block>
+  <block id="7d9747ca777716a4392358b7427ff5c6" category="cell">일부 클라이언트 작업은 장애가 해결될 때까지 중단됩니다. GET 및 HEAD 작업은 중단 없이 계속 진행됩니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요.</block>
+  <block id="36746a7eba38843cafcb9e3af5dea3db" category="cell">일부 클라이언트 작업은 장애가 해결될 때까지 중단됩니다. HEAD 운영은 중단 없이 계속됩니다. 복제본이나 충분한 EC 청크가 있는 경우 GET 작업은 중단 없이 계속됩니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요.</block>
+  <block id="82ce0367a6b3a5de26a62e29a5365b42" category="cell">운영이 중단되거나 데이터가 손실되지 않습니다. 복제본 수에 따라 데이터 손실이 발생할 수 있습니다. 로컬 삭제 코딩을 통해 데이터 손실을 방지할 수 있습니다.</block>
+  <block id="c28323ab18ce37f5ece09594b9447122" category="cell">두 개의 사이트만 존재합니다. 참조: 단일 사이트와 단일 노드.</block>
+  <block id="7b51ff758c223274f7c344f394bdeda8" category="cell">메타데이터 복제본 쿼럼을 충족하지 못하면 작업이 중단됩니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요. 복제본 수에 따라 영구적인 실패로 인한 데이터 손실이 발생할 수 있습니다. 로컬 삭제 코딩을 통해 데이터 손실을 방지할 수 있습니다.</block>
+  <block id="e94aef628672e9a1bcce72cde6e78e6a" category="cell">운영 중인 사이트는 더 이상 남아 있지 않습니다. 적어도 하나의 사이트를 전체적으로 복구할 수 없는 경우 데이터가 손실됩니다.</block>
+  <block id="27feead84299db9e58532f6d84c4af73" category="cell">메타데이터 복제본 쿼럼을 충족하지 못하면 작업이 중단됩니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요. 충분한 삭제 코드 청크가 남아 있지 않으면 영구적인 오류로 인해 데이터가 손실될 가능성이 있습니다. 로컬 삭제 코딩이나 복제 사본을 사용하면 데이터 손실을 방지할 수 있습니다.</block>
+  <block id="d7292a790103a969be501696ea11a6e3" category="cell">오류가 해결될 때까지 클라이언트 작업이 중단됩니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요. 데이터 손실 없음</block>
+  <block id="ae95111240ddd68d1051a50fed4ad211" category="cell">격리된 사이트의 운영은 중단되지만 데이터 손실은 발생하지 않습니다. 이 실패 상태에서도 중단 없이 작업을 계속하려면 버킷 일관성을 읽기-새로 쓰기로 줄이거나 낮추세요. 나머지 사이트에서는 운영이 중단되지 않으며 데이터 손실도 없습니다.</block>
+  <block id="fbca66120bd7d47e4ed9cae5a0bde635" category="inline-link">StorageGRID 소프트웨어 11.5 - 12.0</block>
+  <block id="5934c3c1836e9997b4dabf8595c341fc" category="list-text"><block ref="5934c3c1836e9997b4dabf8595c341fc" category="inline-link-rx"></block></block>
+  <block id="79770fd4c42ac1be271a3e3ea7399421" category="sidebar">StorageGRID 11.5-12.0</block>
 </blocks>
