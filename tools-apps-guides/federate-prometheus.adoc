@@ -2,7 +2,7 @@
 permalink: tools-apps-guides/federate-prometheus.html 
 sidebar: sidebar 
 keywords: prometheus, on-premises, grafana, metrics 
-summary: 이 기술 보고서에서는 외부 Prometheus 및 Grafana 서비스를 사용하여 NetApp StorageGRID 11.6을 구성하는 방법에 대해 자세히 설명합니다. 
+summary: 본 기술 보고서는 NetApp StorageGRID 외부 Prometheus 및 Grafana 서비스와 연동하는 방법에 대한 자세한 지침을 제공합니다. 
 ---
 = Prometheus 및 Grafana를 사용하여 메트릭 보존 기간을 연장합니다
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: 이 기술 보고서에서는 외부 Prometheus 및 Grafana 서비스�
 [role="lead"]
 _ 아론 클라인 _
 
-이 기술 보고서에서는 외부 Prometheus 및 Grafana 서비스를 사용하여 NetApp StorageGRID 11.6을 구성하는 방법에 대해 자세히 설명합니다.
+본 기술 보고서는 NetApp StorageGRID 외부 Prometheus 및 Grafana 서비스와 연동하는 방법에 대한 자세한 지침을 제공합니다.
 
 
 
