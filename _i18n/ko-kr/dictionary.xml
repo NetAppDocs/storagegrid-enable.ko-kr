@@ -3448,4 +3448,7 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="2a304a1348456ccd2234cd71a81bd338" category="inline-link">링크</block>
   <block id="e7231390c57dc37d5702b1a1f744ae19" category="paragraph">더 자세한 내용을 알아보려면 F5의 BIG-IP DNS 공식 문서를 여기에서 확인할 수 있습니다.<block ref="98041f95ee22116ad4e8461c85d3aab4" category="inline-link-rx"></block>. 단계별 지침을 제공하는 수업 운영 가이드도 함께 제공됩니다.<block ref="93a629078016876f75dc8c57122e621c" category="inline-link-rx"></block>.</block>
   <block id="3589fb6a3746ade58489c4cf348140dc" category="summary">본 기술 보고서는 NetApp StorageGRID 외부 Prometheus 및 Grafana 서비스와 연동하는 방법에 대한 자세한 지침을 제공합니다.</block>
+  <block id="c3cbbc5200045db15e74e5cd91bc3f5c" category="list-text">NetApp StorageGRID NIST FIPS 140-3 커널 암호화 인증 <block ref="07269b03af49e81fce537f0040aa007d" category="inline-link-rx"></block></block>
+  <block id="170420c360dbd78303a11b0a7cbdbe0f" category="list-text">NetApp StorageGRID NIST SP 800-90B 엔트로피 인증 <block ref="459857fb7709b7e2d73edb78f17869ea" category="inline-link-rx"></block></block>
+  <block id="c7a996558a05f3b352c4ed7d96e209f6" category="list-text">NetApp StorageGRID 캐나다 사이버 보안 센터 공통 기준 인증 <block ref="af4723441da5d2d8888b51d6ccd71fe3" category="inline-link-rx"></block></block>
 </blocks>

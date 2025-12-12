@@ -42,6 +42,9 @@ NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
 * NetApp StorageGRID: SEC 17a-4(f), FINRA 4511(c) 및 CFTC 1.31(c)-(d) 준수 평가 https://www.netapp.com/media/9041-ar-cohasset-netapp-storagegrid-sec-assessment.pdf[]
+* NetApp StorageGRID NIST FIPS 140-3 커널 암호화 인증 https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5097[]
+* NetApp StorageGRID NIST SP 800-90B 엔트로피 인증 https://csrc.nist.gov/projects/cryptographic-module-validation-program/entropy-validations/certificate/223[]
+* NetApp StorageGRID 캐나다 사이버 보안 센터 공통 기준 인증 https://www.commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/565-LSS%20CT%20v1.0.pdf[]
 * StorageGRID 문서 페이지https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp 제품 설명서 https://www.netapp.com/support-and-training/documentation/[]
 
