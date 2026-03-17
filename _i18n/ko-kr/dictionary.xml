@@ -3174,7 +3174,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="a4a5cea738d6da6085c0db896d047001" category="section-title">버전이 지정된 버킷에 대한 수명 주기 정책 예</block>
   <block id="5808fc2734abb0c3a63ccb7a2efcb814" category="section-title">10일 후 비현재 버전 삭제</block>
   <block id="87fe92caedf00fb0d3b95bb0a8947552" category="paragraph">사용 사례: 이 정책은 시간이 지남에 따라 누적되어 상당한 공간을 차지할 수 있는 최신 버전이 아닌 객체의 저장소를 관리하는 데 도움이 됩니다. 이점: 최신 버전만 보관하여 저장소 사용량을 최적화합니다.</block>
-  <block id="01cd1b232ce05d49443051b40a2458d2" category="section-title">5개의 비현재 버전을 유지하세요</block>
   <block id="f48f877559a5ab472b0c8399aa53ae43" category="paragraph">사례: 복구 또는 감사 목적으로 제한된 수의 이전 버전을 보관하려는 경우에 유용합니다. 이점: 충분한 기록 및 복구 지점을 보장하기 위해 충분한 수의 최신이 아닌 버전을 보관합니다.</block>
   <block id="b36f0366fc8b2a644db0d58b9aec47e6" category="section-title">다른 버전이 없는 경우 삭제 마커를 제거합니다.</block>
   <block id="5a07e328951f2e2665da45b3c8611e70" category="paragraph">사용 사례: 이 정책은 시간이 지남에 따라 누적될 수 있는 모든 비현재 버전을 제거한 후 남은 삭제 마커를 관리하는 데 도움이 됩니다. 이점: 불필요한 잡동사니를 줄입니다.</block>
@@ -3451,4 +3450,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="c3cbbc5200045db15e74e5cd91bc3f5c" category="list-text">NetApp StorageGRID NIST FIPS 140-3 커널 암호화 인증 <block ref="07269b03af49e81fce537f0040aa007d" category="inline-link-rx"></block></block>
   <block id="170420c360dbd78303a11b0a7cbdbe0f" category="list-text">NetApp StorageGRID NIST SP 800-90B 엔트로피 인증 <block ref="459857fb7709b7e2d73edb78f17869ea" category="inline-link-rx"></block></block>
   <block id="c7a996558a05f3b352c4ed7d96e209f6" category="list-text">NetApp StorageGRID 캐나다 사이버 보안 센터 공통 기준 인증 <block ref="af4723441da5d2d8888b51d6ccd71fe3" category="inline-link-rx"></block></block>
+  <block id="61826214d6f329493990f2d79416585b" category="section-title">최신 버전이 아닌 5개 버전을 보관하고 90일 후에 삭제</block>
+  <block id="d05c8031e45ddabc741886852f07058f" category="admonition">*NoncurrentDays*와 *NewerNoncurrentVersions*를 함께 사용해야 합니다.</block>
 </blocks>

@@ -171,7 +171,7 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 ----
 
 
-=== 5개의 비현재 버전을 유지하세요
+=== 최신 버전이 아닌 5개 버전을 보관하고 90일 후에 삭제
 
 사례: 복구 또는 감사 목적으로 제한된 수의 이전 버전을 보관하려는 경우에 유용합니다. 이점: 충분한 기록 및 복구 지점을 보장하기 위해 충분한 수의 최신이 아닌 버전을 보관합니다.
 
@@ -184,12 +184,16 @@ aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configurati
 		"Filter": {},
 		"Status": "Enabled"，
 		"NoncurrentVersionExpiration": {
-		  	"NewerNoncurrentVersions": 5
+		  	"NewerNoncurrentVersions": 5,
+        	"NoncurrentDays": 90
 	    }
     }
 	]
 }
 ----
+
+NOTE: *NoncurrentDays*와 *NewerNoncurrentVersions*를 함께 사용해야 합니다.
+
 
 
 === 다른 버전이 없는 경우 삭제 마커를 제거합니다.
