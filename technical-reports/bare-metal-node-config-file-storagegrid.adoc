@@ -49,6 +49,7 @@ NOTE: 파일 이름은 설치를 위한 실제 노드 이름을 정의합니다.
 
 
 
+[[preparing-the-node-config-files]]
 == 노드 구성 파일 준비
 
 다음 예제에서는 `/dev/disk/by-path` 형식을 사용합니다. 다음 명령을 실행하여 올바른 경로를 확인할 수 있습니다.
@@ -94,6 +95,7 @@ lrwxrwxrwx 1 root root 9 Dec 21 16:42 pci-0000:03:00.0-scsi-0:0:9:0 -> ../../sdi
 ----
 
 
+[[example-for-primary-admin-node]]
 == 기본 관리자 노드의 예
 
 파일 이름 예:
@@ -127,6 +129,7 @@ CLIENT_NETWORK_GATEWAY = 10.193.205.1
 ----
 
 
+[[example-for-a-storage-node]]
 == 스토리지 노드의 예
 
 파일 이름 예:
@@ -154,6 +157,7 @@ GRID_NETWORK_GATEWAY = 10.193.204.1
 ----
 
 
+[[example-for-gateway-node]]
 == 게이트웨이 노드의 예
 
 파일 이름 예:

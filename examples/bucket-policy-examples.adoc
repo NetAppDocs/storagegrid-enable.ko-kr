@@ -16,6 +16,7 @@ summary: StorageGRID의 정책 및 권한.
 
 
 
+[[the-structure-of-a-policy]]
 == 정책의 구조
 
 StorageGRID에서 그룹 정책은 AWS 사용자(IAM) S3 서비스 정책과 동일합니다.
@@ -116,6 +117,7 @@ JSON 정책 형식은 다음과 같습니다.
 ----
 
 
+[[using-the-aws-policy-generator]]
 == AWS 정책 생성기 사용
 
 AWS 정책 생성기는 json 코드를 올바른 형식과 구현하려는 정보로 가져오는 데 도움이 되는 유용한 도구입니다.
@@ -245,10 +247,12 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[group-policies-iam]]
 == 그룹 정책(IAM)
 
 
 
+[[home-directory-style-bucket-access]]
 === 홈 디렉토리 스타일 버킷 액세스
 
 이 그룹 정책은 사용자가 사용자 이름이 인 버킷의 객체에 액세스하는 것만 허용합니다.
@@ -280,6 +284,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[deny-object-lock-bucket-creation]]
 === 오브젝트 잠금 버킷 생성을 거부합니다
 
 이 그룹 정책은 사용자가 버킷에 개체 잠금이 설정된 버킷을 생성할 수 없도록 제한합니다.
@@ -311,6 +316,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[object-lock-retention-limit]]
 === 개체 잠금 보존 제한
 
 이 버킷 정책은 객체 잠금 보존 기간을 10일 이하로 제한합니다
@@ -340,6 +346,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[restrict-users-from-deleting-objects-by-versionid]]
 === 버전 ID를 기준으로 개체를 삭제하지 못하도록 제한합니다
 
 이 그룹 정책은 버전 ID를 기준으로 버전이 지정된 개체를 삭제하지 못하도록 제한합니다
@@ -365,6 +372,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[restrict-a-group-to-single-subdirectory-prefix-with-read-only-access]]
 === 그룹을 읽기 전용 권한으로 단일 하위 디렉토리(접두사)로 제한합니다
 
 이 정책을 사용하면 그룹의 구성원이 버킷 내의 하위 디렉터리(접두사)에 읽기 전용 액세스 권한을 가질 수 있습니다. 버킷 이름은 "study"이고 하위 디렉토리는 "study01"입니다.
@@ -436,10 +444,12 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[bucket-policies]]
 == 버킷 정책
 
 
 
+[[restrict-bucket-to-single-user-with-read-only-access]]
 === 읽기 전용 액세스 권한이 있는 단일 사용자로 버킷을 제한합니다
 
 이 정책을 사용하면 단일 사용자가 버킷에 대한 읽기 전용 액세스를 가질 수 있고 다른 모든 사용자에 대한 액세스를 명시적으로 부인할 수 있습니다. 정책 맨 위에 있는 Deny 문을 그룹화하는 것은 보다 빠른 평가를 위한 좋은 방법입니다.
@@ -482,6 +492,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[restrict-a-bucket-to-a-few-users-with-read-only-access]]
 === 읽기 전용 액세스 권한이 있는 소수의 사용자로 버킷을 제한합니다.
 
 [source, json]
@@ -531,6 +542,7 @@ image:policy/example-output.png["최종 출력"]
 ----
 
 
+[[restrict-user-deletes-of-versioned-objects-in-a-bucket]]
 === 버킷에서 버전 지정된 객체의 사용자 삭제를 제한합니다
 
 이 버킷 정책은 사용자 ID "56622399308951294926"으로 식별된 사용자(versionID로 식별됨)가 버전 ID로 버전이 지정된 객체를 삭제하지 못하도록 제한합니다

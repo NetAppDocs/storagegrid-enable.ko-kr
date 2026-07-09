@@ -20,6 +20,7 @@ summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가�
 
 
 
+[[f5-big-ip-local-traffic-manager-health-check-monitor-for-s3-bucket]]
 == S3 버킷에 대한 F5 BIG-IP 로컬 트래픽 관리자 상태 점검 모니터
 
 F5 BIG-IP 로컬 트래픽 관리자 상태 점검 모니터를 구성하려면 다음 단계를 수행하십시오.
@@ -48,6 +49,7 @@ image:load-balancer/load-balancer-monitor-configuration-page.png["모니터 구�
 
 
 
+[[citrix-netscaler]]
 == Citrix NetScaler를 선택합니다
 
 Citrix NetScaler는 스토리지 엔드포인트에 대한 가상 서버를 생성하고 StorageGRID 스토리지 노드를 애플리케이션 서버로 참조한 다음 서비스 로 그룹화합니다.
@@ -62,18 +64,21 @@ image:load-balancer/load-balancer-configure-monitor.png["Configure-monitor.png"]
 
 
 
+[[loadbalancer-org]]
 == Loadbalancer.org
 
 Loadbalancer.org 에서는 StorageGRID를 사용한 자체 통합 테스트를 수행했으며 다음과 같은 포괄적인 구성 가이드를 보유하고 있습니다. https://pdfs.loadbalancer.org/NetApp_StorageGRID_Deployment_Guide.pdf[]
 
 
 
+[[kemp]]
 == 케이이엠피주식회사
 
 Kemp는 StorageGRID와의 자체 통합 테스트를 수행했으며 광범위한 구성 가이드를 보유하고 있습니다 https://kemptechnologies.com/solutions/netapp/[].
 
 
 
+[[haproxy]]
 == HAProxy
 
 옵션 요청을 사용하도록 HAProxy를 구성하고 hafroxy.cfg의 상태 검사에 대한 200개의 상태 응답을 확인합니다. 프런트 엔드의 바인딩 포트를 443과 같은 다른 포트로 변경할 수 있습니다.

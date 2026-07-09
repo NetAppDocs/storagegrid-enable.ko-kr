@@ -24,6 +24,7 @@ StorageGRID는 모니터링의 주제를 자세히 살펴보는 훌륭한 문서
 
 
 
+[[data-sources]]
 == 데이터 소스
 
 NetApp StorageGRID를 성공적으로 모니터링하려면 StorageGRID 시스템의 상태 및 운영에 대한 데이터를 수집할 위치를 파악하는 것이 중요합니다.
@@ -35,6 +36,7 @@ NetApp StorageGRID를 성공적으로 모니터링하려면 StorageGRID 시스�
 
 
 
+[[where-to-find-additional-information]]
 == 추가 정보를 찾을 수 있는 위치
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.

@@ -13,6 +13,7 @@ summary: 이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니�
 
 
 
+[[netapp-storagegrid-use-cases]]
 == NetApp StorageGRID 사용 사례
 
 NetApp StorageGRID 오브젝트 스토리지 솔루션은 확장성, 데이터 가용성, 보안 및 고성능을 제공합니다. 모든 규모와 다양한 산업 분야의 조직이 광범위한 사용 사례에 StorageGRID S3를 사용합니다. 몇 가지 일반적인 시나리오를 살펴보겠습니다.
@@ -37,6 +38,7 @@ image:datalake-analytics/image1.png["StorageGRID 사용 사례 다이어그램, 
 
 
 
+[[why-storagegrid-for-data-lakes]]
 == 데이터 레이크에 StorageGRID를 사용해야 하는 이유
 
 * 협업 증가 - 업계 표준 API 액세스를 지원하는 대규모 공유 멀티 사이트 멀티 테넌시
@@ -52,9 +54,10 @@ image:datalake-analytics/image2.png["StorageGRID 데이터 레이크 예, width=
 
 
 
+[[benchmarking-data-warehouses-and-lakehouses-with-s3-object-storage-a-comparative-study]]
 == S3 오브젝트 스토리지를 사용한 벤치마킹 데이터 웨어하우스 및 레이크하우스: 비교 연구
 
-이 문서에서는 NetApp StorageGRID를 사용하는 다양한 데이터 웨어하우스 및 레이크하우스 에코시스템에 대한 포괄적인 벤치마크를 제공합니다. S3 오브젝트 스토리지에서 가장 뛰어난 성능을 제공하는 시스템을 결정하는 것이 목표입니다. 데이터와레호스/레이크하우스 아키텍처 및 테이블 형식(Parquet 및 Iceberg)에 대한 자세한 내용은 이 문서를 https://www.dremio.com/wp-content/uploads/2023/02/apache-Iceberg-TDG_ER1.pdf?aliId=eyJpIjoieDRUYjFKN2ZMbXhTRnFRWCIsInQiOiJIUUw0djJsWnlJa21iNUsyQURRalNnPT0ifQ%253D%253D["아파치 아이스버그: 확실한 가이드"]참조하십시오.
+이 문서는 NetApp StorageGRID를 사용하는 다양한 데이터 웨어하우스 및 레이크하우스 에코시스템에 대한 포괄적인 벤치마크를 제공합니다. 목표는 S3 객체 스토리지를 사용하는 시스템에서 어떤 시스템이 가장 우수한 성능을 보이는지 파악하는 것입니다. 데이터 웨어하우스/레이크하우스 아키텍처 및 테이블 형식(Parquet 및 Iceberg)에 대한 자세한 내용은 이 https://hello.dremio.com/wp-apache-iceberg-the-definitive-guide-reg.html["아파치 아이스버그: 확실한 가이드"]을 참조하십시오.
 
 * 벤치마크 도구 - TPC-DS - https://www.tpc.org/tpcds/[]
 * 빅 데이터 에코시스템

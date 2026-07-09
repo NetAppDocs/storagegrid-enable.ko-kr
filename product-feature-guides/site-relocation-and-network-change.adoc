@@ -19,6 +19,7 @@ link:https://docs.netapp.com/us-en/storagegrid-118/maintain/changing-nodes-netwo
 
 
 
+[[considerations-before-site-relocation]]
 == 사이트 재배치 전 고려 사항
 
 * 사이트 이동을 완료하고 모든 노드를 15일 이내에 온라인으로 전환하여 Cassandra 데이터베이스가 재구축되지 않도록 합니다.
@@ -34,11 +35,11 @@ image:site-relocation/s3-completed-request.png["S3 개요 Grafana 차트 샘플"
 
 
 
+[[procedure-to-change-grid-ip-address-before-site-relocation]]
 === 사이트 재배치 전 그리드 IP 주소를 변경하는 절차
 
 .단계
-. 새 그리드 네트워크 서브넷을 새 위치에서 사용할 경우
-link:https://docs.netapp.com/us-en/storagegrid-118/expand/updating-subnets-for-grid-network.htmll["그리드 네트워크 서브넷 목록에 서브넷을 추가합니다"^]
+. 새로운 위치에서 새로운 그리드 네트워크 서브넷을 사용할 경우, link:https://docs.netapp.com/us-en/storagegrid/expand/updating-subnets-for-grid-network.html["그리드 네트워크 서브넷 목록에 서브넷을 추가합니다"^]
 . 기본 관리자 노드에 로그인하고 change-IP를 사용하여 그리드 IP를 변경합니다. 변경을 위해 노드를 종료하기 전에 * 단계 * 해야 합니다.
 +
 .. 그리드 IP 변경에 대해 2와 1을 차례로 선택합니다
@@ -75,6 +76,7 @@ image:site-relocation/ip-change-6.png["계속 진행"]
 
 
 
+[[appliance-vlan-change]]
 === 어플라이언스 VLAN 변경
 
 아래 절차에서는 StorageGRID 어플라이언스의 관리자 또는 클라이언트 네트워크에 원격으로 액세스하여 원격으로 변경을 수행하는 것으로 가정합니다.

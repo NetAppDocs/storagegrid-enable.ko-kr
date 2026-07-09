@@ -20,6 +20,7 @@ CommVault와 NetApp은 파트너 관계를 통해 Commvault의 전체 백업 및
 
 
 
+[[about-commvault-and-storagegrid]]
 == Commvault 및 StorageGRID 정보
 
 CommVault Complete Backup and Recovery 소프트웨어는 처음부터 단일 플랫폼에서 통합된 코드 베이스로 구축된 엔터프라이즈급 통합 데이터 및 정보 관리 솔루션입니다. 모든 기능은 백엔드 기술을 공유하므로 데이터 보호, 관리 및 액세스에 대해 완벽하게 통합된 접근 방식의 탁월한 장점과 이점을 제공합니다. 이 소프트웨어에는 데이터를 보호, 보관, 분석, 복제 및 검색하는 모듈이 포함되어 있습니다. 이 모듈은 서로 원활하게 상호 작용하는 공통 백엔드 서비스와 고급 기능을 공유합니다. 이 솔루션은 기업의 모든 데이터 관리 측면을 해결하는 동시에 무한한 확장성과 데이터 및 정보에 대한 전례 없는 제어를 제공합니다.
@@ -38,6 +39,7 @@ StorageGRID에서 오브젝트를 저장할 때 오브젝트는 위치나 복사
 
 
 
+[[key-features]]
 == 주요 기능
 
 Commvault 소프트웨어 플랫폼의 주요 기능은 다음과 같습니다.
@@ -58,6 +60,7 @@ Commvault 소프트웨어 플랫폼의 주요 기능은 다음과 같습니다.
 
 
 
+[[backup-options]]
 == 백업 옵션
 
 Commvault Complete 백업 및 복구 소프트웨어와 클라우드 스토리지를 구축한 경우 두 가지 백업 옵션이 있습니다.
@@ -103,13 +106,13 @@ StorageGRID를 포괄적인 백업 타겟으로 사용하여 구축을 단순화
 |===
 
 
+[[where-to-find-additional-information]]
 == 추가 정보를 찾을 수 있는 위치
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
 
-* StorageGRID 11.9 설명서 센터+ https://docs.netapp.com/us-en/storagegrid-119/[]
+* StorageGRID 11.9 문서 센터 + https://docs.netapp.com/us-en/storagegrid/[]
 * NetApp 제품 설명서 +
 https://docs.netapp.com[]
-* Commvault 설명서 +
-https://documentation.commvault.com/2024/essential/index.html[]
+* Commvault 문서 + https://documentation.commvault.com/2024e/software/index.html[]
 

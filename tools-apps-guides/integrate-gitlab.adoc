@@ -18,6 +18,7 @@ NetApp은 GitLab에서 StorageGRID를 테스트했습니다. 아래의 GitLab �
 
 
 
+[[object-storage-connection-example]]
 == 객체 저장소 연결 예
 
 Linux 패키지 설치의 경우, 이 예제는 의 예입니다 `connection` 통합 양식의 설정입니다. 편집 `/etc/gitlab/gitlab.rb` 원하는 값으로 다음 줄을 추가합니다.

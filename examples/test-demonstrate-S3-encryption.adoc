@@ -20,12 +20,14 @@ StorageGRID와 S3 API를 사용하면 유휴 데이터를 다양한 방법으로
 
 
 
+[[server-side-encryption-sse]]
 == 서버 측 암호화(SSE)
 
 SSE를 사용하면 클라이언트가 개체를 저장하고 StorageGRID에서 관리하는 고유 키로 암호화할 수 있습니다. 개체가 요청되면 StorageGRID 에 저장된 키에 의해 개체가 해독됩니다.
 
 
 
+[[sse-example]]
 === SSE 예
 
 * SSE가 있는 개체를 넣습니다
@@ -63,12 +65,14 @@ aws s3api get-object --bucket <bucket>  --key <file> <file> --endpoint-url https
 
 
 
+[[server-side-encryption-with-customer-provided-keys-sse-c]]
 == 고객 제공 키(SSE-C)를 사용한 서버측 암호화
 
 SSE를 사용하면 클라이언트가 객체를 저장하고 해당 객체와 함께 제공된 고유 키를 사용하여 해당 객체를 암호화할 수 있습니다. 개체가 요청될 때 개체를 해독하고 반환하려면 동일한 키를 제공해야 합니다.
 
 
 
+[[sse-c-example]]
 === SSE-C의 예
 
 * 테스트 또는 데모용으로 암호화 키를 만들 수 있습니다
@@ -132,12 +136,14 @@ NOTE: 암호화 키를 제공하지 않으면 "GetObject 작업을 호출할 때
 
 
 
+[[bucket-server-side-encryption-sse-s3]]
 == 버킷 서버 측 암호화(SSE-S3)
 
 SSE-S3를 사용하면 클라이언트가 버킷에 저장된 모든 오브젝트에 대해 기본 암호화 동작을 정의할 수 있습니다. 개체는 StorageGRID 에서 관리하는 고유 키로 암호화됩니다. 개체가 요청되면 StorageGRID 에 저장된 키에 의해 개체가 해독됩니다.
 
 
 
+[[bucket-sse-s3-example]]
 === 버킷 SSE-S3의 예
 
 * 새 버킷을 생성하고 기본 암호화 정책을 설정합니다

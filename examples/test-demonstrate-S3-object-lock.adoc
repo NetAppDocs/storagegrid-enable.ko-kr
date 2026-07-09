@@ -20,6 +20,7 @@ Object Lock은 개체가 삭제되거나 덮어써지는 것을 방지하는 WOR
 
 
 
+[[legal-hold]]
 == 법적 증거 자료 보관
 
 * 개체 잠금 법적 보류는 개체에 적용되는 간단한 켜기/끄기 상태입니다.
@@ -68,6 +69,7 @@ aws s3api get-object-legal-hold --bucket <bucket> --key <file> --endpoint-url ht
 
 
 
+[[compliance-mode]]
 == 준수 모드
 
 * 개체 보존은 타임스탬프까지 보존하여 수행됩니다.
@@ -97,6 +99,7 @@ aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url htt
 
 
 
+[[default-retention]]
 == 기본 보존
 
 * 객체 API에 정의된 보존 종료 날짜를 기준으로 보존 기간을 일 및 년 단위로 설정합니다.
@@ -152,6 +155,7 @@ aws s3api get-object-retention --bucket <bucket> --key <file> --endpoint-url htt
 
 
 
+[[test-deleting-an-object-with-a-defined-retention]]
 == 정의된 보존 개체가 있는 개체 삭제 테스트
 
 오브젝트 잠금은 버전 관리를 기반으로 합니다. 보존은 개체 버전에 정의됩니다. 보존이 정의되어 있고 버전이 지정되지 않은 개체를 삭제하려고 하면 삭제 표식이 개체의 현재 버전으로 만들어집니다.

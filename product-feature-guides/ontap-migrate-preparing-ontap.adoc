@@ -16,6 +16,7 @@ ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 �
 
 
 
+[[preparing-ontap]]
 == ONTAP 준비 중
 
 데모를 위해 SVM 오브젝트 저장소 서버, 사용자, 그룹, 그룹 정책 및 버킷을 생성합니다.

@@ -16,6 +16,7 @@ ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 �
 
 
 
+[[migration-demo]]
 == 마이그레이션 데모
 
 이 데모는 사용자 및 버킷을 ONTAP S3에서 StorageGRID로 마이그레이션하는 데 사용됩니다.

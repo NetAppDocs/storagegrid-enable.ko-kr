@@ -16,6 +16,7 @@ summary: 이 가이드는 NetApp StorageGRID 11.6 검색 통합 서비스를 Ama
 
 
 
+[[introduction]]
 == 소개
 
 StorageGRID는 세 가지 유형의 플랫폼 서비스를 지원합니다.
@@ -33,6 +34,7 @@ StorageGRID는 세 가지 유형의 플랫폼 서비스를 지원합니다.
 
 
 
+[[create-tenant-and-enable-platform-services]]
 == 테넌트 생성 및 플랫폼 서비스 활성화
 
 . Grid Manager를 사용하여 S3 테넌트를 생성하고 표시 이름을 입력한 다음 S3 프로토콜을 선택합니다.
@@ -50,10 +52,12 @@ image:storagegrid-search-integration-service/sg-sis-select-permissions.png["권�
 
 
 
+[[search-integration-services-with-amazon-opensearch]]
 == Amazon OpenSearch로 통합 서비스를 검색합니다
 
 
 
+[[amazon-opensearch-formerly-elasticsearch-service-setup]]
 === Amazon OpenSearch(이전의 Elasticsearch) 서비스 설정
 
 테스트/데모용으로만 OpenSearch 서비스를 빠르고 간편하게 설정하려면 이 절차를 사용하십시오. 온-프레미스 Elasticsearch를 사용하여 검색 통합 서비스를 사용하는 경우 섹션을 참조하십시오 xref:search-integration-services-with-on-premises-elasticsearch[온-프레미스 Elasticsearch와 통합 서비스를 검색합니다].
@@ -126,6 +130,7 @@ image:storagegrid-search-integration-service/sg-sis-verifying-the-index.png["ver
 
 
 
+[[platform-services-endpoint-configuration]]
 == 플랫폼 서비스 엔드포인트 구성
 
 플랫폼 서비스 끝점을 구성하려면 다음 단계를 수행하십시오.
@@ -156,10 +161,12 @@ image:storagegrid-search-integration-service/sg-sis-platform-service-endpoints.p
 
 
 
+[[search-integration-services-with-on-premises-elasticsearch]]
 == 온-프레미스 Elasticsearch와 통합 서비스를 검색합니다
 
 
 
+[[on-premises-elasticsearch-setup]]
 === 온-프레미스 Elasticsearch 설정
 
 이 절차는 테스트 목적으로만 Docker를 사용하여 사내 Elasticsearch 및 Kibana를 빠르게 설정하기 위한 것입니다. Elasticsearch 및 Kibana 서버가 이미 있는 경우 5단계로 이동합니다.
@@ -211,6 +218,7 @@ image:storagegrid-search-integration-service/sg-sis-execute-put-command.png["PUT
 
 
 
+[[platform-services-endpoint-configuration]]
 == 플랫폼 서비스 엔드포인트 구성
 
 플랫폼 서비스에 대한 끝점을 구성하려면 다음 단계를 수행하십시오.
@@ -238,6 +246,7 @@ image:storagegrid-search-integration-service/sg-sis-successfully-verified-endpoi
 
 
 
+[[bucket-search-integration-service-configuration]]
 == 버킷 검색 통합 서비스 구성
 
 플랫폼 서비스 끝점을 만든 후 다음 단계는 개체가 생성, 삭제 또는 해당 메타데이터 또는 태그가 업데이트될 때마다 개체 메타데이터를 정의된 끝점으로 보내도록 버킷 수준에서 이 서비스를 구성하는 것입니다.
@@ -318,6 +327,7 @@ image:storagegrid-search-integration-service/sg-sis-query-two-sample.png["쿼리
 
 
 
+[[where-to-find-additional-information]]
 == 추가 정보를 찾을 수 있는 위치
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.

@@ -20,12 +20,14 @@ image:monitor/monitor-storagegrid-gmi-dashboard.png["monitoring-laff-gmi-대시�
 
 
 
+[[information-that-you-should-monitor-regularly]]
 == 정기적으로 모니터링해야 하는 정보입니다
 
 이 기술 보고서의 이전 버전에는 주기적으로 확인해야 할 메트릭과 트렌드가 나열되어 있습니다. 이제 해당 정보가 에 https://docs.netapp.com/us-en/storagegrid-118/landing-monitor-troubleshoot/index.html["모니터링 및 문제 해결 설명서"^]포함됩니다.
 
 
 
+[[monitor-storage]]
 == 스토리지 모니터링
 
 이 기술 보고서의 이전 버전에는 객체 스토리지 공간, 메타데이터 공간, 네트워크 리소스 등과 같은 중요한 메트릭의 모니터링 위치가 나열되어 있습니다. 이제 해당 정보가 에 https://docs.netapp.com/us-en/storagegrid-118/landing-monitor-troubleshoot/index.html["모니터링 및 문제 해결 설명서"^]포함됩니다.

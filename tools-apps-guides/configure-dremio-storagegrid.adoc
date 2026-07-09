@@ -18,10 +18,12 @@ Dremio는 클라우드 기반 또는 온프레미스 오브젝트 스토리지�
 
 
 
+[[configure-dremio-data-source]]
 == Dremio 데이터 소스를 구성합니다
 
 
 
+[[prerequisites]]
 === 필수 구성 요소
 
 * StorageGRID S3 끝점 URL, 테넌트 S3 액세스 키 ID 및 보안 액세스 키
@@ -31,12 +33,14 @@ Dremio는 쿼리 중에 동일한 개체 내에서 다른 바이트 범위를 �
 
 
 
+[[dremio-guide]]
 === Dremio 가이드
 
 https://docs.dremio.com/current/sonar/data-sources/object/s3/["Amazon S3에 연결 - S3 호환 스토리지 구성"^].
 
 
 
+[[instruction]]
 == 지침
 
 . Dremio Datasets 페이지에서 + 기호를 클릭하여 소스를 추가하고 'Amazon S3'를 선택합니다.

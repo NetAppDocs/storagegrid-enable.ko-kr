@@ -16,6 +16,7 @@ ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 �
 
 
 
+[[preparing-storagegrid]]
 == StorageGRID 준비 중
 
 이 데모의 구성을 계속하면 테넌트, 사용자, 보안 그룹, 그룹 정책 및 버킷을 생성합니다.

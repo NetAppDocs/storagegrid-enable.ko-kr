@@ -18,6 +18,7 @@ Commvault Complete NetApp 백업 및 복구를 사용하여 StorageGRID를 구�
 
 
 
+[[step-1-configure-commvault-with-storagegrid]]
 == 1단계: StorageGRID로 Commvault 구성
 
 .단계
@@ -37,6 +38,7 @@ image:commvault/add-cloud.png["클라우드 추가"]
 
 
 
+[[step-2-create-a-backup-plan-with-storagegrid-as-the-primary-target]]
 == 2단계: StorageGRID를 기본 타겟으로 사용하여 백업 계획을 생성합니다
 
 .단계
@@ -52,6 +54,7 @@ image:commvault/create-server.png["서버 백업 계획을 만듭니다"]
 
 
 
+[[step-3-start-a-backup-job-to-protect-your-workloads]]
 == 3단계: 워크로드를 보호하기 위한 백업 작업을 시작합니다
 
 .단계

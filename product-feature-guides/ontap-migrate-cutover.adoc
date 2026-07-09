@@ -16,6 +16,7 @@ ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 �
 
 
 
+[[migrate-s3-keys]]
 == S3 키를 마이그레이션합니다
 
 마이그레이션의 경우 대부분의 경우 대상 측에서 새 자격 증명을 생성하지 않고 사용자의 자격 증명을 마이그레이션합니다. StorageGRID는 사용자에게 S3 키를 가져올 수 있도록 API를 제공합니다.
@@ -44,6 +45,7 @@ image:ontap-migrate/sg-user-keys.png["사용자 키"]
 
 
 
+[[the-final-cut-over]]
 === 마지막 컷오버입니다
 
 ONTAP에서 StorageGRID로 영구 복제하는 버킷이 의도라면 여기서 끝낼 수 있습니다. ONTAP S3에서 StorageGRID로 마이그레이션하는 경우에는 데이터를 중단하고 컷오버할 때입니다.

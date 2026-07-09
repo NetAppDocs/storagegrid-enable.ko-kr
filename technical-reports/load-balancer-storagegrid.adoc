@@ -20,6 +20,7 @@ NetApp® StorageGRID® 게이트웨이 노드를 구현하기 위한 일반 지�
 
 
 
+[[storagegrid-gateway-node-load-balancer-versus-third-party-load-balancer]]
 == StorageGRID 게이트웨이 노드 로드 밸런서 대 타사 로드 밸런서
 
 StorageGRID는 S3 호환 오브젝트 스토리지 공급업체에서는 특별 제작된 어플라이언스, VM 또는 컨테이너로 제공되는 네이티브 로드 밸런서를 제공한다는 점에서 차별화됩니다. StorageGRID에서 제공하는 로드 밸런서를 게이트웨이 노드라고도 합니다.

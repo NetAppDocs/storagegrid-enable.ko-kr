@@ -18,6 +18,7 @@ StorageGRID을 구축하기 위한 컴퓨팅, 스토리지, 네트워크, Docker
 
 
 
+[[compute-requirements]]
 == 컴퓨팅 요구사항
 
 아래 표에는 각 StorageGRID 노드 유형에 대해 지원되는 최소 리소스 요구사항이 나와 있습니다. StorageGRID 노드에 필요한 최소 리소스입니다.
@@ -43,6 +44,7 @@ StorageGRID을 구축하기 위한 컴퓨팅, 스토리지, 네트워크, Docker
 
 
 
+[[networking-requirements]]
 == 네트워킹 요구 사항
 
 StorageGRID 트래픽의 3가지 유형은 다음과 같습니다.
@@ -60,6 +62,7 @@ StorageGRID 시스템에서 사용할 네트워크를 최대 3개까지 구성�
 
 
 
+[[note-on-docker-networking]]
 === Docker 네트워킹에 대한 참고 사항
 
 StorageGRID는 일부 Docker 컨테이너 구현과 다른 방식으로 네트워킹을 사용합니다. Docker(또는 Kubernetes 또는 Swarm) 제공 네트워킹을 사용하지 않습니다. 대신 StorageGRID는 실제로 컨테이너를 -net=none으로 생성하므로 Docker가 컨테이너를 네트워크에 연결하는 데 아무런 작업도 수행하지 않습니다. StorageGRID 서비스에 의해 컨테이너가 생성된 후 노드 구성 파일에 정의된 인터페이스에서 새 macvlan 디바이스가 생성됩니다. 이 장치는 새 MAC 주소를 가지며 물리적 인터페이스에서 패킷을 수신할 수 있는 별도의 네트워크 장치 역할을 합니다. 그런 다음 macvlan 디바이스가 컨테이너 네임스페이스로 이동되고 컨테이너 내부의 eth0, eth1 또는 eth2 중 하나로 이름이 변경됩니다. 이 시점에서 네트워크 장치가 더 이상 호스트 OS에 표시되지 않습니다. 이 예에서 그리드 네트워크 디바이스는 Docker 컨테이너 내부의 eth0이고 클라이언트 네트워크는 eth2입니다. 관리자 네트워크가 있는 경우 디바이스는 컨테이너에 eth1이 됩니다.
@@ -69,12 +72,13 @@ NOTE: 컨테이너 네트워크 장치의 새 MAC 주소는 일부 네트워크 
 
 
 
+[[storage-requirements]]
 == 구축하는 것이었습니다
 
 각 노드에는 다음 표에 나와 있는 크기의 SAN 기반 또는 로컬 디스크 디바이스가 필요합니다.
 
 
-NOTE: 표의 숫자는 전체 그리드 또는 각 물리적 호스트에 대한 숫자가 아니라 각 StorageGRID 서비스 유형에 대한 것입니다. 구축 선택 사항에 따라 이 문서의 뒷부분에 나오는 에서 각 물리적 호스트의 수를 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"]계산합니다. ++++ 별표로 표시된 경로 또는 파일 시스템은 설치 관리자에 의해 StorageGRID 컨테이너 자체에 만들어집니다. 관리자가 수동으로 구성하거나 파일 시스템을 생성할 필요는 없지만 이러한 요구 사항을 충족하기 위해서는 호스트에 블록 디바이스가 필요합니다. 즉, 블록 디바이스는 명령을 사용하여 나타나지만 `lsblk` 호스트 OS 내에서 포맷하거나 마운트되지는 않습니다. ++++
+NOTE: 표에 있는 숫자는 전체 그리드 또는 각 물리적 호스트가 아닌 각 StorageGRID 서비스 유형에 대한 것입니다. 배포 옵션에 따라 각 물리적 호스트에 대한 숫자는 link:bare-metal-prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"] 이 문서 뒷부분에서 계산됩니다. ++ ++ 별표(*)로 표시된 경로 또는 파일 시스템은 설치 프로그램에 의해 StorageGRID 컨테이너 자체에 생성됩니다. 관리자가 수동으로 구성하거나 파일 시스템을 생성할 필요는 없지만, 호스트는 이러한 요구 사항을 충족하기 위해 블록 장치가 필요합니다. 즉, 블록 장치는 명령어  `lsblk`를 사용하여 표시되어야 하지만 호스트 OS 내에서 포맷되거나 마운트되어서는 안 됩니다. ++ ++
 
 [cols="15,20,15,15,15,20"]
 |===
@@ -101,14 +105,16 @@ NOTE: 표의 숫자는 전체 그리드 또는 각 물리적 호스트에 대한
 BLOCK_DEVICE_RANGEDB_001 = /dev/mapper/SN-Db01
 BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02` 
 |===
-이 예에서는 컨테이너 유형별로 다음 표에 나와 있는 디스크 크기가 필요합니다. 물리적 호스트별 요구 사항은 이 문서의 뒷부분에 설명되어 link:prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"]있습니다.
+이 예시에서는 다음 표에 표시된 디스크 크기가 컨테이너 유형별로 필요합니다. 물리적 호스트별 요구 사항은 link:bare-metal-prerequisites-install-storagegrid.html#physical-host-layout-and-requirements["물리적 호스트 레이아웃 및 요구 사항"]이 문서 뒷부분에 설명되어 있습니다.
 
 
 
+[[disk-sizes-per-container-type]]
 == 컨테이너 유형별 디스크 크기입니다
 
 
 
+[[admin-container]]
 === 관리 컨테이너
 
 [cols="50,50"]
@@ -129,6 +135,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[storage-container]]
 === 스토리지 컨테이너
 
 [cols="50,50"]
@@ -152,6 +159,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[gateway-container]]
 === 게이트웨이 컨테이너
 
 [cols="50,50"]
@@ -166,6 +174,7 @@ BLOCK_DEVICE_RANGEDB_002 = /dev/mapper/SN-Db02`
 |===
 
 
+[[physical-host-layout-and-requirements]]
 == 물리적 호스트 레이아웃 및 요구 사항
 
 위 표에 나와 있는 컴퓨팅 및 네트워크 요구 사항을 결합하면 16코어, 64GB RAM 및 2개의 네트워크 인터페이스를 갖춘 물리적 서버(또는 가상) 3대를 설치하는 데 필요한 기본 하드웨어 세트를 확보할 수 있습니다. 더 높은 처리량을 원할 경우 그리드 또는 클라이언트 네트워크에서 두 개 이상의 인터페이스를 연결하고 노드 구성 파일에서 bond0.520과 같은 VLAN 태그가 지정된 인터페이스를 사용할 수 있습니다. 작업 부하가 더 강할 경우 호스트와 컨테이너 모두에 더 많은 메모리가 더 적합합니다.
@@ -298,6 +307,7 @@ Docker 저장소는 /var/local(컨테이너당)당 100GB x 2개의 컨테이너 
 
 
 
+[[preparing-the-nodes]]
 == 노드 준비
 
 StorageGRID의 초기 설치를 준비하려면 먼저 RHEL 버전 9.2를 설치하고 SSH를 활성화하십시오. 모범 사례에 따라 네트워크 인터페이스, NTP(Network Time Protocol), DNS 및 호스트 이름을 설정합니다. 그리드 네트워크에는 적어도 하나의 활성화된 네트워크 인터페이스가 필요하고 클라이언트 네트워크에는 다른 인터페이스가 필요합니다. VLAN 태그가 지정된 인터페이스를 사용하는 경우 아래 예에 따라 구성하십시오. 그렇지 않으면 단순한 표준 네트워크 인터페이스 구성으로 충분합니다.
@@ -326,9 +336,10 @@ ONBOOT=yes
 
 
 
+[[optional-storage-setup-with-iscsi]]
 == iSCSI를 사용한 저장소 설정(옵션
 
-iSCSI 스토리지를 사용하지 않는 경우 host1, host2 및 host3에 요구 사항을 충족하기에 충분한 크기의 블록 디바이스가 포함되어 있는지 확인해야 합니다. host1, host2 및 host3 스토리지 요구 사항은 을 link:prerequisites-install-storagegrid.html#disk-sizes-per-container-type["컨테이너 유형별 디스크 크기입니다"] 참조하십시오.
+iSCSI 스토리지를 사용하지 않는 경우 호스트1, 호스트2 및 호스트3에 필요한 용량을 충족하는 블록 장치가 있는지 확인해야 합니다. link:bare-metal-prerequisites-install-storagegrid.html#disk-sizes-per-container-type["컨테이너 유형별 디스크 크기입니다"]에서 호스트1, 호스트2 및 호스트3 스토리지 요구 사항을 참조하십시오.
 
 iSCSI를 사용하여 스토리지를 설정하려면 다음 단계를 완료하십시오.
 
@@ -347,7 +358,7 @@ sudo yum install device-mapper-multipath
 # cat /etc/iscsi/initiatorname.iscsi
 InitiatorName=iqn.2006-04.com.example.node1
 ----
-. 2단계의 이니시에이터 이름을 사용하여 스토리지 디바이스의 LUN(표에 표시된 숫자 및 크기 link:prerequisites-install-storagegrid.html#storage-requirements["구축하는 것이었습니다"] )을 각 스토리지 노드에 매핑합니다.
+. 2단계에서 얻은 이니시에이터 이름을 사용하여 스토리지 장치의 LUN( link:bare-metal-prerequisites-install-storagegrid.html#storage-requirements["구축하는 것이었습니다"] 표에 표시된 개수 및 크기)을 각 스토리지 노드에 매핑합니다.
 . 을 사용하여 새로 생성된 LUN을 `iscsiadm` 검색하고 로그인합니다.
 +
 [listing]
@@ -437,6 +448,7 @@ iSCSI 지원 LUN을 사용하는 경우 fstab 파일에 다음 줄과 유사한 
 ----
 
 
+[[preparing-for-docker-installation]]
 == Docker 설치를 준비하는 중입니다
 
 Docker 설치를 준비하려면 다음 단계를 완료하십시오.

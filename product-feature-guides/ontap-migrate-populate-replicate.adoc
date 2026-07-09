@@ -16,6 +16,7 @@ ONTAP S3에서 StorageGRID로 오브젝트 기반 스토리지를 원활하게 �
 
 
 
+[[populate-the-source-bucket]]
 == 소스 버킷을 채웁니다
 
 소스 ONTAP 버킷에 일부 오브젝트를 배치하도록 한다. 이 데모에서는 S3Browser를 사용할 예정이지만 편안한 도구를 사용할 수 있습니다.
@@ -48,6 +49,7 @@ image:ontap-migrate/ontap-s3browser-versions.png["버전 보기"]
 
 
 
+[[establish-the-replication-relationship]]
 === 복제 관계를 설정합니다
 
 ONTAP에서 StorageGRID로 데이터 전송을 시작합니다.
@@ -93,6 +95,7 @@ image:ontap-migrate/ontap-snapmirror-status.png["SnapMirror 관계를 확인합�
 
 
 
+[[the-replication-details]]
 === 복제 세부 정보입니다
 
 이제 ONTAP에서 StorageGRID로 성공적으로 복제 버킷이 생겼습니다. 그렇다면 실제로 복제되는 것은 무엇일까요? 우리의 소스와 대상은 모두 버전이 지정된 버킷입니다. 이전 버전도 대상으로 복제됩니까? S3Browser로 StorageGRID 버킷을 보면 기존 버전이 복제되지 않았고 삭제된 객체가 존재하지 않으며 해당 객체에 대한 삭제 마커도 없는 것을 알 수 있습니다. 복제된 오브젝트는 StorageGRID 버킷에 1개의 버전만 있습니다.

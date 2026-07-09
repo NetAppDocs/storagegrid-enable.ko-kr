@@ -37,6 +37,7 @@ NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토
 
 
 
+[[where-to-find-additional-information]]
 == 추가 정보를 찾을 수 있는 위치
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
@@ -51,6 +52,7 @@ NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토
 
 
 
+[[terms-and-acronyms]]
 == 용어 및 약어
 
 이 섹션에서는 문서에 사용된 용어에 대한 정의를 제공합니다.

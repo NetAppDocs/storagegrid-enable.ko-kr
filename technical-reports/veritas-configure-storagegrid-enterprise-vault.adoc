@@ -19,6 +19,7 @@ StorageGRID 11.5 이상 및 Veritas Enterprise Vault 14.1 이상에 대한 기�
 
 
 
+[[prerequisites-to-configure-storagegrid-and-veritas-enterprise-vault]]
 == StorageGRID 및 Veritas Enterprise Vault를 구성하기 위한 필수 구성 요소
 
 * Veritas Enterprise Vault를 사용하여 StorageGRID를 구성하기 전에 다음 사전 요구 사항을 확인하십시오.
@@ -42,6 +43,7 @@ NOTE: WORM 스토리지(Object Lock)의 경우 Enterprise Vault 버전 14.2.2 �
 
 
 
+[[configure-storagegrid-with-veritas-enterprise-vault]]
 == Veritas Enterprise Vault를 사용하여 StorageGRID를 구성합니다
 
 Veritas Enterprise Vault를 사용하여 StorageGRID를 구성하려면 다음 단계를 완료하십시오.

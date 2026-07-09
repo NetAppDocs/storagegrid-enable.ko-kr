@@ -18,6 +18,7 @@ summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가�
 
 
 
+[[commvault-sizing-inputs]]
 == Commvault 크기 조정 입력
 
 다음 작업을 사용하여 데이터 보호 솔루션의 크기 조정을 위한 검색을 수행할 수 있습니다.
@@ -34,6 +35,7 @@ summary: 고객과 NetApp IT가 구현한 StorageGRID 구성에 대한 몇 가�
 
 
 
+[[storagegrid-sizing-guidance]]
 == StorageGRID 사이징 가이드
 
 NetApp StorageGRID 사이징을 수행하기 전에 워크로드의 다음 측면을 고려하십시오.
@@ -115,6 +117,7 @@ StorageGRID는 일반적으로 데이터를 복제하는 데이터 보호 정책
 
 
 
+[[scaling]]
 == 확장
 
 스토리지 노드에 스토리지를 추가하거나, 기존 사이트에 새 그리드 노드를 추가하거나, 새 데이터 센터 사이트를 추가하여 NetApp StorageGRID 시스템을 확장할 수 있습니다. 현재 시스템의 운영을 중단하지 않고도 확장을 수행할 수 있습니다.

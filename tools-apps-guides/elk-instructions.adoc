@@ -18,6 +18,7 @@ StorageGRID syslog 포워드 기능을 사용하면 StorageGRID 로그 메시지
 
 
 
+[[requirements]]
 == 요구 사항
 
 * StorageGRID 11.6.0.2 이상
@@ -26,6 +27,7 @@ StorageGRID syslog 포워드 기능을 사용하면 StorageGRID 로그 메시지
 
 
 
+[[sample-files]]
 == 샘플 파일
 
 * link:../media/elk-config/elk7-sample.zip["Logstash 7.x 샘플 파일 패키지를 다운로드합니다"] + * MD5 체크섬 * 148c23d0021d9a4b4a6c0287464deab + * SHA256 체크섬 * f51ec9e2e3f842d5a7861566ba561bbbb4373038b4e7b3b3b3d522adf2d6
@@ -35,12 +37,14 @@ StorageGRID syslog 포워드 기능을 사용하면 StorageGRID 로그 메시지
 
 
 
+[[assumption]]
 == 가정
 
 독자는 StorageGRID 및 ELK 용어와 운영에 대해 잘 알고 있습니다.
 
 
 
+[[instruction]]
 == 지침
 
 두 가지 샘플 버전은 그로크 패턴으로 정의된 이름의 차이로 인해 제공됩니다. 예를 들어, Logstash 구성 파일의 SYSLOGBASE 그로크 패턴은 설치된 Logstash 버전에 따라 필드 이름을 다르게 정의합니다.
@@ -119,11 +123,12 @@ image:elk-config/kibana-import-conflict.png["키바나 갈등"]
 
 
 
+[[additional-resources]]
 == 추가 리소스
 
 * https://coralogix.com/blog/syslog-101-everything-you-need-to-know-to-get-started/["syslog101"]
 * https://www.elastic.co/what-is/elk-stack["엘크 스택"]
-* https://github.com/hpcugent/logstash-patterns/blob/master/files/grok-patterns["Grok 패턴 목록"]
+* https://github.com/hpcugent/logstash-patterns/["Grok 패턴"]
 * https://logz.io/blog/logstash-grok/["Logstash:Grok에 대한 초보자용 가이드"]
 * https://coralogix.com/blog/a-practical-guide-to-logstash-syslog-deep-dive/["Logstash: syslog 심층 탐구 실습 가이드"]
 * https://www.elastic.co/guide/en/kibana/master/document-explorer.html["Kibana 가이드 – 문서 탐색"]
