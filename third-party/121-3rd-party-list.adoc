@@ -1,0 +1,140 @@
+---
+permalink: third-party/120-3rd-party-list.html 
+sidebar: sidebar 
+keywords: 12.1, third-party applications, storagegrid, ISV 
+summary: StorageGRID 12.1에 대해 검증된 타사 솔루션 
+---
+= StorageGRID 12.0 검증된 타사 솔루션
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다음은 StorageGRID 12.1과 함께 사용할 수 있도록 검증된 타사 솔루션입니다. + 찾으시는 솔루션이 목록에 없는 경우 NetApp 계정 담당자에게 문의하십시오.
+
+
+
+[[third-party-solutions-validated-on-storagegrid]]
+== StorageGRID에서 검증된 타사 솔루션
+
+이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
+
+* Actifio(활성)
+* 알럭시오
+* 아파치 카프카
+* AWS 마운트 지점
+* 브리지스톤
+* 캔템오
+* Citrix 콘텐츠 협업
+* Collibra(최소 Collibra 데이터 품질 버전 2024.02)
+* Commvault 11
+* 카우치베이스 엔터프라이즈 애널리틱스 2.0
+* Ctera 포털 6
+* 다레트
+* 다타도비
+* Data Dynamics StorageX를 나타냅니다
+* DefendX
+* 디스크 오버 데이터
+* 드리미오
+* Elasticsearch 스냅샷(동결된 계층 포함)
+* eMAM
+* Fujifilm 개체 아카이브
+* GitHub 엔터프라이즈 서버
+* IBM Storage Deep Archive 1.3
+* IBM Filenet
+* IBM 스토리지 프로텍트
+* 인터카
+* 고마프라이즈
+* Microsoft SQL Server 빅 데이터 클러스터
+* 모델9
+* Modzy
+* 문워크 유니버설
+* 멋져
+* 나스니
+* OpenText Documentum 16.4
+* OpenText Documentum 21.4
+* OpenText InfoArchive 16 EP7
+* CyanGate Cloud를 사용한 OpenText Media Management 16.5
+* 판주라
+* PixitMedia ngenea 를 참조하십시오
+* 포인트 아카이브 게이트웨이 2.0
+* 포인트 스토리지 관리자 6.4
+* Primestream
+* Quantum StorNext 5.4.0.1
+* Reveille v10 빌드 220706 이상
+* Rubrik CDM
+* s3a 를 참조하십시오
+* 용감합니다
+* 스노우플레이크
+* Spectra Logic On-Premise Glacier의 약어입니다
+* Splunk 스마트스토어
+* 별 모양
+* 간편한 보관
+* 트리노
+* Varnish Enterprise 6.0.4
+* Veeam 12
+* Veritas Enterprise Vault 15.1
+* Veritas NetBackup 10.1.1 이상
+* Vertica 10.x
+* 비딘
+* Virtalica StorageFabric
+* Weka v3.10 이상
+
+
+
+
+[[third-party-solutions-validated-on-storagegrid-with-object-lock]]
+== StorageGRID에서 오브젝트 잠금을 통해 검증된 타사 솔루션
+
+이러한 솔루션은 해당 파트너와 협력하여 테스트를 거쳤습니다.
+
+* CommVault 11 기능 릴리스 26
+* IBM Filenet
+* IBM 스토리지 프로텍트
+* OpenText Documentum 21.4
+* Rubrik으로 이동합니다
+* Veeam 12
+* Veritas Enterprise Vault 15.1
+* Veritas NetBackup 10.1.1 이상
+
+
+
+
+[[third-party-solutions-supported-on-storagegrid]]
+== StorageGRID에서 지원되는 타사 솔루션
+
+이러한 솔루션은 테스트를 거쳤습니다.
+
+* Archiware를 참조하십시오
+* Axis 통신
+* 코너 360
+* DataFrameworks
+* EcoDigital DIVA 플랫폼
+* Encoding.com
+* Fujifilm 개체 아카이브
+* GE Centricity Enterprise Archive
+* 기트랩주식회사
+* 하이랜드 아쿠오
+* IBM Aspera
+* 마일스톤 시스템
+* ONSSI
+* 리치 엔진
+* SilverTrak
+* 소프트NAS
+* 품질
+* 벨라시아
+
+
+
+
+[[key-managers-supported-on-storagegrid]]
+== StorageGRID에서 지원되는 주요 관리자
+
+이러한 솔루션은 테스트를 거쳤습니다.
+
+* Entrust 암호화 보안 플랫폼 v10.4.5
+* Hashicorp Vault 1.21.1
+* Thales CipherTrust Manager 2.21
+
