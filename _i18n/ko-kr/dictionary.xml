@@ -3455,4 +3455,5 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="0abd84cfb134f23ccdf2dace5cdafdf0" category="paragraph">다음은 StorageGRID 12.1과 함께 사용할 수 있도록 검증된 타사 솔루션입니다. + 찾으시는 솔루션이 목록에 없는 경우 NetApp 계정 담당자에게 문의하십시오.</block>
   <block id="f480816d606925917374f2fbcc635e8f" category="list-text">Hashicorp Vault 1.21.1</block>
   <block id="8f58f72ce7022a4fdfe329ca00a2e451" category="list-text">Thales CipherTrust Manager 2.21</block>
+  <block id="b0ff3f641f5c47519d662ddd7719ff87" category="sidebar">StorageGRID 12.1</block>
 </blocks>
