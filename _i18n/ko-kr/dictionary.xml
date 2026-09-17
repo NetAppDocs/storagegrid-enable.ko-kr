@@ -3457,4 +3457,5 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="8f58f72ce7022a4fdfe329ca00a2e451" category="list-text">Thales CipherTrust Manager 2.21</block>
   <block id="b0ff3f641f5c47519d662ddd7719ff87" category="sidebar">StorageGRID 12.1</block>
   <block id="147e111488eb55eac75032941f65577f" category="list-text">WEKA v3.10 이상</block>
+  <block id="7408450fc527ea7cf95ee02a041a379b" category="paragraph">빅데이터 분석은 오브젝트 스토리지 기반 데이터 레이크의 가장 일반적인 사용 사례 중 하나입니다. 분석 플랫폼을 선택할 때 데이터 웨어하우스 및 레이크하우스 기술이 S3 오브젝트 스토리지와 어떻게 상호 작용하는지 이해하면 성능, 확장성 및 운영 효율성을 최적화하는 데 도움이 됩니다. StorageGRID는 Apache Spark, Dremio, Trino, Starburst 등의 플랫폼을 포함한 분석 워크로드에 S3 호환 오브젝트 스토리지를 제공합니다.</block>
 </blocks>

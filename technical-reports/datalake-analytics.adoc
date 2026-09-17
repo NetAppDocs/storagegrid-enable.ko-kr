@@ -11,6 +11,9 @@ summary: 이 보고서에서는 StorageGRID의 빅데이터 분석을 다룹니�
 :imagesdir: ../media/
 
 
+[role="lead"]
+빅데이터 분석은 오브젝트 스토리지 기반 데이터 레이크의 가장 일반적인 사용 사례 중 하나입니다. 분석 플랫폼을 선택할 때 데이터 웨어하우스 및 레이크하우스 기술이 S3 오브젝트 스토리지와 어떻게 상호 작용하는지 이해하면 성능, 확장성 및 운영 효율성을 최적화하는 데 도움이 됩니다. StorageGRID는 Apache Spark, Dremio, Trino, Starburst 등의 플랫폼을 포함한 분석 워크로드에 S3 호환 오브젝트 스토리지를 제공합니다.
+
 
 
 [[netapp-storagegrid-use-cases]]
