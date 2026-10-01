@@ -696,7 +696,6 @@
   <block id="1c83729b0147981bd53a386123e950b2" category="list-text">다음 줄을 삽입하고 메트릭 데이터의 보존 기간을 1년으로 설정하는 #- storage.tsdb.retention.time=1y#를 확인합니다. 또는 #- storage.sdb.retention.size=300GiB#를 사용하여 스토리지 제한에 따라 기본 보존을 수행할 수도 있습니다. 메트릭 보존을 설정할 수 있는 유일한 위치입니다.</block>
   <block id="c44e8fe3436b496aa03fa98464a357bb" category="list-text">새 Prometheus 서비스를 등록하려면 시스템 서비스를 다시 로드하십시오. 그런 다음 Prometheus 서비스를 시작하고 활성화합니다.</block>
   <block id="a95dc294578d84798aa85e589b1d7169" category="list-text">서비스가 올바르게 실행되는지 확인합니다</block>
-  <block id="efb4923d4171f8bbe31a74fc17e7a4ea" category="list-text">이제 Prometheus 서버의 UI로 이동할 수 있습니다<block ref="9c036ae021e9b80558a889223ee0da28" category="inline-link-rx"></block> UI를 참조하십시오</block>
   <block id="6246893720a6bc3db5f56c322fc01d95" category="image-alt">Prometheus UI 페이지</block>
   <block id="bc9d8c8501595ac689577e371305dd0c" category="list-text">"상태" 대상 아래에서 Prometheus.yml에서 구성한 StorageGRID 끝점의 상태를 볼 수 있습니다</block>
   <block id="ef446049ce3cd8c094f34cb3047e10d7" category="image-alt">Prometheus 상태 메뉴</block>
@@ -710,7 +709,6 @@
   <block id="2b486298e7630814372aec36baee859f" category="list-text">안정적인 릴리스를 위해 이 리포지토리를 추가합니다.</block>
   <block id="166a21daf7286fbeb21167b5802de660" category="list-text">리포지토리를 추가한 후</block>
   <block id="2557b3cde7450f332315bc10e61bdba8" category="list-text">새 이식편 서비스를 등록하려면 시스템 서비스를 다시 로드하십시오. 그런 다음 Grafana 서비스를 시작 및 활성화합니다.</block>
-  <block id="c96bdac515037faefe395a7292cce691" category="list-text">Grafana가 이제 설치 및 실행 중입니다. 브라우저를 열고 HTTP://Prometheus-server:3000을 열면 Grafana 로그인 페이지가 표시됩니다.</block>
   <block id="b5ed0857233fefc7884d300cb79511cc" category="list-text">기본 로그인 자격 증명은 admin/admin이며, 메시지가 표시되면 새 암호를 설정해야 합니다.</block>
   <block id="a201e49270e34f12f6f8e8e17b7f63b4" category="section-title">StorageGRID에 대한 Grafana 대시보드를 생성합니다</block>
   <block id="8fa4555fc2e45c8e0b51029500b0ed27" category="paragraph">Grafana와 Prometheus가 설치 및 실행되었으므로 이제 데이터 소스를 생성하고 대시보드를 구축하여 두 가지를 연결할 시간입니다</block>
@@ -2050,7 +2048,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="bd3813fae65cb7c59dcb2440c1767ac0" category="inline-link">StorageGRID 강화 가이드 를 참조하십시오</block>
   <block id="a0a2b190d72ee4645ce0b2c9bb0daaac" category="inline-link">StorageGRID 설명서</block>
   <block id="0c39f21f8929ee8b7354d8a05b4f2494" category="inline-link">NetApp 제품 보안 취약성 대응 및 알림 정책</block>
-  <block id="e49b7c4182308a3c27dbec32987e8e67" category="paragraph">이 보고서에 설명된 기능 외에도 StorageGRID는 를<block ref="304cf4448819c099eaccd4f8123ab72d" category="inline-link-rx"></block>따릅니다. 보고된 취약성은 제품 보안 사고 대응 프로세스에 따라 확인 및 대응됩니다.</block>
   <block id="23e21fdb0716a632da9ef25685dbc487" category="paragraph">NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토리지 사용 사례를 위한 고급 보안 기능을 제공합니다.</block>
   <block id="3bdba8537a031ec25e6ed46ff2e22424" category="list-text">NetApp StorageGRID: SEC 17a-4(f), FINRA 4511(c) 및 CFTC 1.31(c)-(d) 준수 평가 <block ref="dc6d251ee495c96de57ac351b8ca3a6f" category="inline-link-rx"></block></block>
   <block id="682026a33ae6dd46be9dad491b716b01" category="section-title">용어 및 약어</block>
@@ -2823,8 +2820,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="e1b2071d5db8fac237a17040ea82b8ef" category="list-text">Veritas Enterprise Vault 14.1 이상이 설치되어 있습니다.</block>
   <block id="367e5e1fbaf108d8dbf97e500327dc8b" category="list-text">볼트 저장소 그룹과 볼트 저장소가 생성되었습니다. 자세한 내용은 Veritas Enterprise Vault 관리 가이드 를 참조하십시오.</block>
   <block id="6c73463ffeddef6e57a34a14bafd3419" category="inline-link">Veritas 기술 자료 문서</block>
-  <block id="ddf1e2343a6c7e2d16b8597f3e961548" category="list-text">자체 서명된 인증서를 사용하는 경우 StorageGRID 자체 서명된 CA 인증서를 Enterprise Vault Server에 추가합니다. 자세한 내용은 여기를 참조하십시오<block ref="96b16704d1203901b729f96db3886a57" category="inline-link-rx"></block>.</block>
-  <block id="15022c2cf46544f0b3a7bf0180d8ebe5" category="list-text">최신 Enterprise Vault 구성 파일을 업데이트하고 적용하여 NetApp StorageGRID와 같은 지원되는 스토리지 솔루션을 활성화합니다. 자세한 내용은 여기를 참조하십시오<block ref="9c1aa3a99115a819862872de47644b63" category="inline-link-rx"></block>.</block>
   <block id="2b95da50afe417c5fdfe08882fc95a9a" category="section-title">Veritas Enterprise Vault를 사용하여 StorageGRID를 구성합니다</block>
   <block id="5785dc46caf2287e47aa188701676c27" category="paragraph">Veritas Enterprise Vault를 사용하여 StorageGRID를 구성하려면 다음 단계를 완료하십시오.</block>
   <block id="e5c9b80471f693a4c039200dd452f7e7" category="inline-image-macro">미디어/Veritas/Veritas - 엔터프라이즈 소산</block>
@@ -3420,7 +3415,6 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="30002530dd9d601ecfd25a0f9db45aac" category="list-text">Commvault 문서 + <block ref="e95efabe50ab92e4e6c01005628c651c" category="inline-link-rx"></block></block>
   <block id="c595219c0ed8ec59057d33c30bc5dc10" category="paragraph">이 문서는 NetApp StorageGRID를 사용하는 다양한 데이터 웨어하우스 및 레이크하우스 에코시스템에 대한 포괄적인 벤치마크를 제공합니다. 목표는 S3 객체 스토리지를 사용하는 시스템에서 어떤 시스템이 가장 우수한 성능을 보이는지 파악하는 것입니다. 데이터 웨어하우스/레이크하우스 아키텍처 및 테이블 형식(Parquet 및 Iceberg)에 대한 자세한 내용은 이 <block ref="c3c3137daa53bef038cd79c515f7a456" category="inline-link-rx"></block>을 참조하십시오.</block>
   <block id="895e351c0837e8e1603831896d6eff24" category="list-text">Loadbalancer.org— NetApp StorageGRID 부하 분산 <block ref="0daf5e2b69f614a44c5f349c4458af38" category="inline-link-rx"></block></block>
-  <block id="4e9aec4caf563076c3e5a362fb3ffa9c" category="paragraph">이제 인증 토큰 문자열을 사용하여 cURL을 통해 메트릭에 액세스할 수 있습니다. 메트릭에 액세스하는 과정은 <block ref="370a8c788bfc0d36ebdde42d5a0e61ed" category="inline-link-macro-rx"></block> 섹션의 단계와 유사합니다. 하지만 설명을 위해 메트릭 범주에서 GET /grid/metric-labels/{label}/values를 선택한 예시를 보여드리겠습니다.</block>
   <block id="bba97812b5b364c799918082c0382688" category="inline-image-macro">veritas/veritas-create-bucket.png</block>
   <block id="5478aec58cd50a76fe7b0ac2dc424663" category="paragraph"><block ref="5478aec58cd50a76fe7b0ac2dc424663" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3af07c1332ec0aab0ab6da0d4d2d723f" category="inline-image-macro">veritas/veritas-create-bucket-2.png</block>
@@ -3458,4 +3452,10 @@ StorageGRID는 스토리지 노드에 고성능 노드를 사용하거나 로드
   <block id="b0ff3f641f5c47519d662ddd7719ff87" category="sidebar">StorageGRID 12.1</block>
   <block id="147e111488eb55eac75032941f65577f" category="list-text">WEKA v3.10 이상</block>
   <block id="7408450fc527ea7cf95ee02a041a379b" category="paragraph">빅데이터 분석은 오브젝트 스토리지 기반 데이터 레이크의 가장 일반적인 사용 사례 중 하나입니다. 분석 플랫폼을 선택할 때 데이터 웨어하우스 및 레이크하우스 기술이 S3 오브젝트 스토리지와 어떻게 상호 작용하는지 이해하면 성능, 확장성 및 운영 효율성을 최적화하는 데 도움이 됩니다. StorageGRID는 Apache Spark, Dremio, Trino, Starburst 등의 플랫폼을 포함한 분석 워크로드에 S3 호환 오브젝트 스토리지를 제공합니다.</block>
+  <block id="d77c7fe571d64360574a008fef027611" category="paragraph">본 보고서에 설명된 기능 외에도 StorageGRID는 다음 보안 규정을 준수합니다<block ref="4c5cf57627dd488a7f6d94df4e8db4eb" category="inline-link-rx"></block>. 보고된 취약점은 제품 보안 사고 대응 프로세스에 따라 검증 및 대응됩니다.</block>
+  <block id="8bda80a292ea4d1faa5345b4f4e1573e" category="paragraph">이제 인증 토큰 문자열을 사용하여 cURL을 통해 메트릭에 액세스할 수 있습니다. 메트릭에 액세스하는 과정은 <block ref="e8dade55d94bbf79f5a9e0d60e8b9163" category="inline-link-macro-rx"></block> 섹션의 단계와 유사합니다. 하지만 설명을 위해 메트릭 범주에서 GET /grid/metric-labels/{label}/values를 선택한 예시를 보여드리겠습니다.</block>
+  <block id="0ce920314adee107ea9f4715efc55472" category="list-text">자체 서명 인증서를 사용하는 경우 StorageGRID 자체 서명 CA 인증서를 Enterprise Vault 서버에 추가하십시오. 자세한 내용은 여기<block ref="56b9bfe01d3cf04b3f107f3f8178a5e6" category="inline-link-rx"></block>를 참조하십시오.</block>
+  <block id="77a99c68d4a1bcc489efaedf2f81d8ac" category="list-text">NetApp StorageGRID 등 지원되는 스토리지 솔루션을 활성화하려면 최신 Enterprise Vault 구성 파일을 업데이트하고 적용하십시오. 자세한 내용은 이를 참조하십시오.<block ref="5906a7358f9e1d2351926b6621eb4acd" category="inline-link-rx"></block></block>
+  <block id="00a090a871a0df6adc9219e75e6aed51" category="list-text">이제 prometheus 서버의 UI http://&lt;prometheus-server-ip&gt;:9090으로 접속하여 UI를 확인할 수 있습니다.</block>
+  <block id="973ed7db4a25bc3f01fccde97b27c7a1" category="list-text">이제 Grafana가 설치되어 실행 중입니다. 브라우저에서 \http://&lt;prometheus-server-ip&gt;:3000으로 접속하면 Grafana 로그인 페이지가 나타납니다.</block>
 </blocks>

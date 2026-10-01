@@ -31,7 +31,7 @@ StorageGRID 오브젝트 스토리지 솔루션의 핵심 보안 기능에 대�
 
 본 문서는 보안 데이터시트로 작성되었으며, 기본적으로 구성되지 않은 보안 기능을 지원하도록 시스템을 구성하는 방법에 대한 자세한 설명은 제공하지 않습니다.  그만큼 https://docs.netapp.com/us-en/storagegrid/harden/index.html["StorageGRID 강화 가이드 를 참조하십시오"^] 공식에서 사용 가능합니다 https://docs.netapp.com/us-en/storagegrid/["StorageGRID 설명서"^] 페이지.
 
-이 보고서에 설명된 기능 외에도 StorageGRID는 를 https://www.netapp.com/us/legal/vulnerability-response.aspx["NetApp 제품 보안 취약성 대응 및 알림 정책"^]따릅니다. 보고된 취약성은 제품 보안 사고 대응 프로세스에 따라 확인 및 대응됩니다.
+본 보고서에 설명된 기능 외에도 StorageGRID는 다음 보안 규정을 준수합니다 https://security.netapp.com/policy/["NetApp 제품 보안 취약성 대응 및 알림 정책"^]. 보고된 취약점은 제품 보안 사고 대응 프로세스에 따라 검증 및 대응됩니다.
 
 NetApp StorageGRID는 매우 까다로운 엔터프라이즈 오브젝트 스토리지 사용 사례를 위한 고급 보안 기능을 제공합니다.
 

@@ -37,8 +37,8 @@ NOTE: WORM 스토리지(Object Lock)의 경우 Enterprise Vault 버전 14.2.2 �
 * 볼트 저장소 그룹과 볼트 저장소가 생성되었습니다. 자세한 내용은 Veritas Enterprise Vault 관리 가이드 를 참조하십시오.
 * StorageGRID 테넌트, 액세스 키, 비밀 키 및 버킷이 생성되었습니다.
 * StorageGRID 로드 밸런서 끝점이 생성되었습니다(HTTP 또는 HTTPS).
-* 자체 서명된 인증서를 사용하는 경우 StorageGRID 자체 서명된 CA 인증서를 Enterprise Vault Server에 추가합니다. 자세한 내용은 여기를 참조하십시오 https://www.veritas.com/support/en_US/article.100049744["Veritas 기술 자료 문서"^].
-* 최신 Enterprise Vault 구성 파일을 업데이트하고 적용하여 NetApp StorageGRID와 같은 지원되는 스토리지 솔루션을 활성화합니다. 자세한 내용은 여기를 참조하십시오 https://www.veritas.com/content/support/en_US/article.100039174["Veritas 기술 자료 문서"^].
+* 자체 서명 인증서를 사용하는 경우 StorageGRID 자체 서명 CA 인증서를 Enterprise Vault 서버에 추가하십시오. 자세한 내용은 여기 https://supportenterprisevault.cloud.com/support-home/kbsearch/article?articleNumber=100049744["Veritas 기술 자료 문서"^]를 참조하십시오.
+* NetApp StorageGRID 등 지원되는 스토리지 솔루션을 활성화하려면 최신 Enterprise Vault 구성 파일을 업데이트하고 적용하십시오. 자세한 내용은 이를 참조하십시오. https://supportenterprisevault.cloud.com/support-home/kbsearch/article?articleNumber=100039174["Veritas 기술 자료 문서"^]
 
 
 
